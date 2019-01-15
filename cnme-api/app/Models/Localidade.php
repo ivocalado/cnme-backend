@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Localidade extends Model
 {
     protected $fillable = [
-        'nome', 'email', 'codigo_inep', 'diretor', 'telefone', 'url'
+        'logradouro', 'numero', 'bairro', 'cep', 'complemento', 'estado_id','municipio_id'
     ];
 
     public function municipio(){

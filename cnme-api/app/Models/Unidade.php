@@ -10,7 +10,7 @@ class Unidade extends Model
 {
 
     protected $fillable = [
-        'nome', 'email', 'codigo_inep', 'diretor', 'telefone', 'url'
+        'nome', 'email', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
     ];
 
 
