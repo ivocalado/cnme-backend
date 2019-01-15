@@ -15,11 +15,13 @@ class CreateUnidadesTable extends Migration
     {
         Schema::create('unidades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo_inep');
+            $table->string('codigo_inep')->nullable();;
             $table->string('nome',255);
-            $table->string('email');
-            $table->string('diretor');
-            $table->string('telefone');
+            $table->string('email',100);
+            $table->string('url',255)->nullable();
+
+            $table->string('diretor',200)->nullable();
+            $table->string('telefone',50)->nullable();
             $table->timestamps();
         });
     }

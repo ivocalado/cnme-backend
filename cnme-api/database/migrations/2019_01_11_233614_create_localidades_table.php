@@ -15,6 +15,13 @@ class CreateLocalidadesTable extends Migration
     {
         Schema::create('localidades', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('logradouro',255);
+            $table->string('numero',10);
+            $table->string('bairro',100);
+            $table->string('cep',10);
+            $table->string('complemento',255)->nullable();
+
             $table->timestamps();
         });
     }
