@@ -14,6 +14,18 @@ class UnidadeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'email' => $this->email,
+            'codigoInep' => $this->codigo_inep,
+            'diretor' => $this->diretor,
+            'telefone' => $this->telefone,
+            'url' => $this->url,
+            'localidade' => new LocalidadeResource($this->localidade),
+            'tipoUnidade' => $this->tipoUnidade,
+            'responsavel' => $this->responsavel,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at];
     }
 }

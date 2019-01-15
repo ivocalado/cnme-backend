@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Unidade;
+use App\Http\Resources\UserResource;
+use App\Http\Resources\UnidadeResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +22,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/users', function() {
-    return User::all();
-});
+// Route::get('unidades/{unidadeId}/usuarios', function() {
+//     //return new UserResource(User::find(1));;
+//     return UserResource::collection(User::paginate());
+// });
 
-Route::get('/unidades', function() {
-    return Unidade::all();
-});
+// Route::get('/unidades/{id}', function() {
+//     return new UnidadeResource(Unidade::find(3));
+// });
+
+Route::apiResource('unidades', 'API\UnidadeController');
+Route::apiResource('usuarios', 'API\UsuarioController');
