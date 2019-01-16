@@ -23,7 +23,9 @@ class UserResource extends JsonResource
             'cpf' => $this->cpf,
             'funcao' => $this->funcao,
             'tipo' => $this->tipo,
-            'unidade' => new UnidadeResource($this->unidade)
+            'unidade' => new UnidadeResource($this->unidade),
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at
 
         ];
     }
