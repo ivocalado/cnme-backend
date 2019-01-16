@@ -14,11 +14,16 @@ class UsuarioController extends Controller
     {
         return UserResource::collection(User::paginate(25));
     }
-
     
     public function store(Request $request)
     {
-        //
+        $usuario = $request->has('id') ? User::findOrFail($request->id) : new User();
+
+        $userData = $request->all();
+        $usuario->fill($userData);
+		$usuario->save();
+        
+        return new UserResource($usuario);
     }
 
    
@@ -30,12 +35,24 @@ class UsuarioController extends Controller
     
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        $usuarioData = $request->all();
+        $usuario->fill($usuarioData);
+        $usuario->save();
+
+
+        return new UserResource($usuario);
     }
 
     
     public function destroy($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        if(isset($usuario)){
+            $usuario->delete();
+            return response(null,204);
+        }
+
+        return response('Usuário não encontrado.', 404);
     }
 }

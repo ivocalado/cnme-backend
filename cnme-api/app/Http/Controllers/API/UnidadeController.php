@@ -66,7 +66,7 @@ class UnidadeController extends Controller
             }
 
             $unidade->delete();
-            return '204';
+            return response(null,204);
         }
 
         return response('Unidade não encontrada.', 404);
