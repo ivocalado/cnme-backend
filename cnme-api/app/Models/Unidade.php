@@ -48,7 +48,7 @@ class Unidade extends Model
         'unique' => 'Já existe um registro com :attribute igual a :input',
         'url' => 'O campo :attribute deve possuir um endereço(url) válido',
         'active_url' => 'O campo :attribute deve possuir um endereço(url) válido',
-        'codigo_inep.size' => 'O código INEP deve possuir 8 caracteres',
+        'codigo_inep.size' => 'O código INEP deve possuir :max caracteres',
         'tipo_unidade_id'  => 'Um tipo de unidade deve ser determinado',
         'responsavel_id'   => 'Um responsável da unidade deve ser determinado'
     ];

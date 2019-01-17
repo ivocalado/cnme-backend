@@ -33,4 +33,24 @@ class User extends Authenticatable
     public function unidade(){
         return $this->belongsTo(Unidade::class);
     }
+
+    public $rules = [
+        'name'          =>  'required|max:255',
+        'email'         =>  'required|unique:users|max:255|email',
+        'password'      =>  'required',
+        'cpf'           =>  'required|unique:users',
+        'telefone'      =>  'nullable|max:50',
+        'unidade_id'    =>  'required|integer',
+        'tipo'          =>  'required|max:20'
+
+       
+       
+    ];
+
+    public $messages = [
+        'required' => 'O campo :attribute é obrigatório',
+        'email' => 'Esse campo deve possuir um email válido',
+        'unique' => 'Já existe um registro com :attribute igual a :input',
+        'max'   => 'O campo :attribute deve ter até :max caracteres'
+    ];
 }

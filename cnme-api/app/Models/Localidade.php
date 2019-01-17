@@ -32,6 +32,7 @@ class Localidade extends Model
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
         'max' => 'No campo :attribute, o valor :input deve possuir no máximo :max caracteres',
-        'between' => 'O :attribute deve possuir entre :min e :max caracteres'
+        'between' => 'O :attribute deve possuir entre :min e :max caracteres',
+        'min' => 'No campo :attribute, o valor atual é :input, porém deve possuir no mínimo :min caracteres'
     ];
 }

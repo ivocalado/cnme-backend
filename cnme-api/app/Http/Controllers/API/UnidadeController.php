@@ -14,9 +14,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UnidadeController extends Controller
 {
-   
-    
-
     public function index()
     {
         return UnidadeResource::collection(Unidade::paginate(25));
@@ -47,14 +44,35 @@ class UnidadeController extends Controller
    
     public function show($id)
     {
-        return new UnidadeResource(Unidade::find($id));
+        $unidade = Unidade::find($id);
+        if(!isset($unidade)){
+            return response()->json(
+                array('message' => 'Unidade não encontrada.') , 404);
+        }
+
+        return new UnidadeResource($unidade);
     }
 
     
     public function update(Request $request, $id)
     {
-        $unidade = Unidade::findOrFail($id);
+        $unidade = Unidade::find($id);
+        if(!isset($unidade)){
+            return response()->json(
+                array('message' => 'Unidade não encontrada.') , 404);
+        }
+
         $unidadeData = $request->all();
+
+        $validator = Validator::make($unidadeData, $unidade->rules, $unidade->messages);
+
+        if ($validator->fails()) {
+            return response()->json(
+                array(
+                "messages" => $validator->errors()
+                ), 422); 
+        }
+
         $unidade->fill($unidadeData);
         $unidade->save();
 
@@ -79,7 +97,8 @@ class UnidadeController extends Controller
             return response(null,204);
         }
 
-        return response('Unidade não encontrada.', 404);
+        return response()->json(
+            array('message' => 'Unidade não encontrada.') , 404);
         
     }
 
