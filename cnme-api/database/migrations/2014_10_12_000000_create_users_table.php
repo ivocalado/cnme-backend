@@ -23,9 +23,9 @@ class CreateUsersTable extends Migration
 
             $table->string('telefone',50)->nullable();
             $table->string('cpf',15);
-            $table->string('funcao', 15)->nullable();
+            $table->string('funcao', 20)->nullable();
 
-            $table->string('tipo', 10);
+            $table->string('tipo', 20);
 
             $table->timestamps();
         });

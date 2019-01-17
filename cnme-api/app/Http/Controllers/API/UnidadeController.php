@@ -10,6 +10,7 @@ use App\Models\Localidade;
 use App\Http\Resources\LocalidadeResource;
 use App\User;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Validator;
 
 class UnidadeController extends Controller
 {
@@ -26,8 +27,17 @@ class UnidadeController extends Controller
     {
 
         $unidade = $request->has('id') ? Unidade::findOrFail($request->id) : new Unidade;
-
         $unidadeData = $request->all();
+
+        $validator = Validator::make($unidadeData, $unidade->rules, $unidade->messages);
+
+        if ($validator->fails()) {
+            return response()->json(
+                array(
+                "errors" => $validator->errors()
+                ), 422); 
+       }
+
         $unidade->fill($unidadeData);
 		$unidade->save();
         

@@ -31,26 +31,25 @@ class Unidade extends Model
     }
 
     public $rules = [
-        'nome'    =>  'required|unique:unidades|max:20',
-        'email'    =>  'required|max:255',
-        'codigo_inep'       =>  'string|min:4',
+        'nome'    =>  'required|unique:unidades|max:255',
+        'email'    =>  'required|unique:unidades|email|max:255',
+        'codigo_inep'       =>  '|nullable|unique:unidades|size:8',
         'diretor'   => 'nullable',
-        'telefone' => 'required|string',
-        'url'   => 'active_url|max:200',
+        'telefone'   => 'nullable',
+        'url'   => 'active_url|max:255',
         'tipo_unidade_id' => 'required|integer',
         'responsavel_id' => 'required|integer'
        
     ];
 
     public $messages = [
-        'required' => 'O campo :attribute é requerido',
-        'numero.max' => 'O campo :attribute deve ter no máximo 20 caracteres',
-        'url.max' => 'O campo :attribute deve ter no máximo 200 caracteres',
-        'ano.min' => 'O campo :attribute deve ter no mínimo 4 caracteres',
-        'titulo.max'  => 'O campo :attribute deve ter no máximo 255 caracteres',
-        'numero.unique'   => 'O número deve ser único entre os orgão. Dica: Use junto com a sigla do seu orgão',
-        'integer' => 'O campo :attribute deve inteiro',
-        'arquivo.mimes'   => 'O documento anexado tem que estar no formato PDF',
-        'active_url' => 'A url deve ter um formato válido. Ex.: http://www.seuorgao.com/arquivos/resolucao123'
+        'required' => 'O campo :attribute é obrigatório',
+        'email' => 'Esse campo deve possuir um email válido',
+        'unique' => 'Já existe um registro com :attribute igual a :input',
+        'url' => 'O campo :attribute deve possuir um endereço(url) válido',
+        'active_url' => 'O campo :attribute deve possuir um endereço(url) válido',
+        'codigo_inep.size' => 'O código INEP deve possuir 8 caracteres',
+        'tipo_unidade_id'  => 'Um tipo de unidade deve ser determinado',
+        'responsavel_id'   => 'Um responsável da unidade deve ser determinado'
     ];
 }
