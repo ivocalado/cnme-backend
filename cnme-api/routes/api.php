@@ -36,7 +36,7 @@ Route::apiResource('unidades', 'API\UnidadeController');
 Route::post('unidades/{unidadeId}/add-localidade','API\UnidadeController@addLocalidade')
         ->name('unidade-addLocalidade');
 
-Route::post('unidades/{unidadeId}/update-localidade','API\UnidadeController@updateLocalidade')
+Route::put('unidades/{unidadeId}/update-localidade','API\UnidadeController@updateLocalidade')
     ->name('unidade-updateLocalidade');
 
 Route::get('unidades/{unidadeId}/usuarios','API\UnidadeController@usuarios')

@@ -34,7 +34,7 @@ class UnidadeController extends Controller
         if ($validator->fails()) {
             return response()->json(
                 array(
-                "errors" => $validator->errors()
+                "messages" => $validator->errors()
                 ), 422); 
        }
 
@@ -88,6 +88,14 @@ class UnidadeController extends Controller
         $localidade = new Localidade();
         $localidadeData = $request->all();
 
+        $validator = Validator::make($localidadeData, $localidade->rules, $localidade->messages);
+        if ($validator->fails()) {
+            return response()->json(
+                array(
+                "messages" => $validator->errors()
+                ), 422); 
+       }
+
         $localidade->fill($localidadeData);
         $localidade->save();
 
@@ -102,6 +110,14 @@ class UnidadeController extends Controller
         $unidade = Unidade::find($idUnidade);
         $localidade = Localidade::find($unidade->localidade_id);
         $localidadeData = $request->all();
+
+        $validator = Validator::make($localidadeData, $localidade->rules, $localidade->messages);
+        if ($validator->fails()) {
+            return response()->json(
+                array(
+                "messages" => $validator->errors()
+                ), 422); 
+       }
 
         $localidade->fill($localidadeData);
         $localidade->save();

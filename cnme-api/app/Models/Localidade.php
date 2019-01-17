@@ -17,4 +17,21 @@ class Localidade extends Model
     public function estado(){
         return $this->belongsTo(Estado::class);
     }
+
+    public $rules = [
+        'logradouro'    =>  'required|max:255',
+        'numero'    =>  'required|max:10',
+        'bairro'       =>  '|required|max:100',
+        'cep'   => 'required|min:8|max:9',
+        'complemento'   => 'nullable',
+        'estado_id'   => 'required|integer',
+        'municipio_id' => 'required|integer',
+       
+    ];
+
+    public $messages = [
+        'required' => 'O campo :attribute é obrigatório',
+        'max' => 'No campo :attribute, o valor :input deve possuir no máximo :max caracteres',
+        'between' => 'O :attribute deve possuir entre :min e :max caracteres'
+    ];
 }
