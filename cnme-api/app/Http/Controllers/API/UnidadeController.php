@@ -16,14 +16,14 @@ class UnidadeController extends Controller
 {
     public function index()
     {
-        return UnidadeResource::collection(Unidade::paginate(25));
+        return UnidadeResource::collection(Unidade::paginate(5));
     }
 
     
     public function store(Request $request)
     {
 
-        $unidade = $request->has('id') ? Unidade::findOrFail($request->id) : new Unidade;
+        $unidade = $request->has('id') ? Unidade::find($request->id) : new Unidade;
         $unidadeData = $request->all();
 
         $validator = Validator::make($unidadeData, $unidade->rules, $unidade->messages);
@@ -90,6 +90,9 @@ class UnidadeController extends Controller
             $localidade = Localidade::find($unidade->localidade_id);
 
             if(isset($localidade)){
+
+                $unidade->localidade()->dissociate();
+                $unidade->save();
                 $localidade->delete();
             }
 
@@ -145,7 +148,10 @@ class UnidadeController extends Controller
     }
 
     public function usuarios($idUnidade){
-        
-        return UserResource::collection(User::where('unidade_id', $idUnidade)->paginate(25));
+     
+        return response()->json(
+            array(
+            "data" => UserResource::collection(User::where('unidade_id', $idUnidade)->paginate(25))
+            ), 200);
     }
 }
