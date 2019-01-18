@@ -13,6 +13,6 @@ class TipoUnidadeTableSeeder extends Seeder
     public function run()
     {
         DB::table('tipo_unidades')->delete();
-        TipoUnidade::create(['id' => 1, 'nome' => 'Escola', 'descricao' => '','categoria' => 'Educação']);
+        TipoUnidade::create(['nome' => 'Escola', 'descricao' => '','categoria' => 'Educação']);
     }
 }

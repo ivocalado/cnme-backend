@@ -22,15 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-// Route::get('unidades/{unidadeId}/usuarios', function() {
-//     //return new UserResource(User::find(1));;
-//     return UserResource::collection(User::paginate());
-// });
-
-// Route::get('/unidades/{id}', function() {
-//     return new UnidadeResource(Unidade::find(3));
-// });
-
 Route::apiResource('unidades', 'API\UnidadeController');
 
 Route::post('unidades/{unidadeId}/add-localidade','API\UnidadeController@addLocalidade')
@@ -43,6 +34,7 @@ Route::get('unidades/{unidadeId}/usuarios','API\UnidadeController@usuarios')
     ->name('unidade-usuarios');
 
 Route::apiResource('usuarios', 'API\UsuarioController');
+Route::apiResource('tipounidades', 'API\TipoUnidadeController');
 
 
 Route::get('localidades/estados', 'API\LocalidadeController@estados');
