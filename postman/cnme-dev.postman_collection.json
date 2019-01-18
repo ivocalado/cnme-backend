@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "fff6bbfd-4cab-45d7-9e64-662e90f96ab1",
+		"name": "cnme-dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST/api/unidades",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"codigo_inep\": \"12345619\",\n\"nome\": \"Unidade Colégio Maria do Amparo\",\n\"email\": \"mariadoamparo@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"responsavel_id\": \"1\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/unidades",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unidades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD POST/api/unidades/8/add-localidade",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"unidade_id\": \"8\",\n\t\"logradouro\": \"Josefa de Melo2\",\n\t\"numero\": \"100\",\n\t\"bairro\": \"Barro Duro\",\n\t\"cep\": \"57034334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n\t\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/unidades/8/add-localidade",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unidades",
+						"8",
+						"add-localidade"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/unidades",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unidades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT/api/unidades/8/update-localidade",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"nome\": \"Unidade Colégio Hélio Soares2\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/unidades/7",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unidades",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/10/usuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/unidades/3/usuarios",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unidades",
+						"3",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/unidades/8",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/unidades/8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unidades",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/localidades/estados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/localidades/estados",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"localidades",
+						"estados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/localidades/estados/AL/municipios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/localidades/estados/AL/municipios",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"localidades",
+						"estados",
+						"AL",
+						"municipios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/usuarios",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Administrador CNME\",\n\t\"email\": \"cnme@mec.gov.br\",\n\t\"password\": \"$2y$10$TrooWD7Z8zYNIcMiEqZUlOwtech0WJqdLU0VHX2346Y40qUDvlcHm\",\n\t\"cpf\": \"000.123.312-23\",\n\t\"unidade_id\": \"3\",\n\t\"tipo\": \"administrador\"\n\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/usuarios",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/usuarios",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/usuarios/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/usuarios/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "unidades/3/usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/unidades/3/usuarios",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"unidades",
+						"3",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT/api/usuarios/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Thiago Araújo Silva de Oliveira\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/usuarios/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT/api/usuarios/2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Administrador3 CNME--\"\n}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/usuarios/30",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios",
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/usuarios/2",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/usuarios/2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"usuarios",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
