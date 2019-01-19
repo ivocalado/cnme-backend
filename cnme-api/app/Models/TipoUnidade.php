@@ -16,7 +16,7 @@ class TipoUnidade extends Model
     }
 
     public $rules = [
-        'nome'    =>  'required|max:100',
+        'nome'    =>  'required|unique:tipo_unidades|max:100',
         'descricao'    =>  'nullable|max:255',
         'categoria'       =>  'nullable|max:50',
     
@@ -24,7 +24,8 @@ class TipoUnidade extends Model
 
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
-        'max' => 'No campo :attribute, o valor :input deve possuir no máximo :max caracteres'
+        'max' => 'No campo :attribute, o valor :input deve possuir no máximo :max caracteres',
+        'unique' => 'Já existe um registro com :attribute igual a :input' 
     ];
 
 }
