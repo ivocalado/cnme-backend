@@ -72,7 +72,8 @@ class SolicitacaoProjetoController extends Controller
         DB::beginTransaction();
 
         try {
-            $solicitacao = SolicitacaoCnme::find($request->id);
+ 
+            $solicitacao = SolicitacaoCnme::find($id);
             $solicitacaoData = $request->all();
     
             $solicitacao->fill($solicitacaoData);

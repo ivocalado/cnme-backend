@@ -9,6 +9,7 @@ use App\Models\ProjetoCnme;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\SolicitacaoCnme;
+use Illuminate\Support\Facades\Validator;
 
 class ProjetoController extends Controller
 {
@@ -70,7 +71,7 @@ class ProjetoController extends Controller
         DB::beginTransaction();
 
         try {
-            $projeto = ProjetoCnme::find($request->id);
+            $projeto = ProjetoCnme::find($id);
             $projetoData = $request->all();
     
 
@@ -105,7 +106,7 @@ class ProjetoController extends Controller
                 $solicitacao->save();
             }
 
-            $projeto->save();
+            $projeto->delete();
             DB::commit();
 
             return response(null,204);
