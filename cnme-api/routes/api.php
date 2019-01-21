@@ -37,6 +37,7 @@ Route::apiResource('usuarios', 'API\UsuarioController');
 Route::apiResource('tipounidades', 'API\TipoUnidadeController');
 Route::apiResource('solicitacao-cnme', 'API\SolicitacaoProjetoController');
 Route::apiResource('projeto-cnme', 'API\ProjetoController');
+Route::apiResource('etapa', 'API\EtapaController');
 
 
 Route::get('localidades/estados', 'API\LocalidadeController@estados');

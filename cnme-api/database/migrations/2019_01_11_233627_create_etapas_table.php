@@ -15,6 +15,9 @@ class CreateEtapasTable extends Migration
     {
         Schema::create('etapas', function (Blueprint $table) {
             $table->increments('id');
+
+           
+
             $table->timestamps();
         });
     }
