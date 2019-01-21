@@ -14,7 +14,7 @@ class AddFkLocalidadeUnidadeTable extends Migration
     public function up()
     {
         Schema::table('unidades', function($table) {
-            $table->integer('localidade_id')->unsigned();
+            $table->integer('localidade_id')->unsigned()->nullable();
             $table->foreign('localidade_id')->references('id')->on('localidades');
 
 
@@ -31,6 +31,8 @@ class AddFkLocalidadeUnidadeTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('localidade_id');
+        Schema::table('unidades', function($table) {
+            $table->dropForeign('localidade_id');
+        });
     }
 }

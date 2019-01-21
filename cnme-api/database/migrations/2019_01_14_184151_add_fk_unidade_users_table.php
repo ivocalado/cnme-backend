@@ -28,7 +28,9 @@ class AddFkUnidadeUsersTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('unidade_id');
-        $table->dropForeign('tipo_unidade_id');
+        Schema::table('users', function($table) {
+            $table->dropForeign('unidade_id');
+            $table->dropForeign('tipo_unidade_id');
+        });
     }
 }

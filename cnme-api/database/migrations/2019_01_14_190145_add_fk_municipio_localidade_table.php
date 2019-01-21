@@ -30,7 +30,9 @@ class AddFkMunicipioLocalidadeTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('estado_id');
-        $table->dropForeign('municipio_id');
+        Schema::table('localidades', function($table) {
+            $table->dropForeign('estado_id');
+            $table->dropForeign('municipio_id');
+        });
     }
 }

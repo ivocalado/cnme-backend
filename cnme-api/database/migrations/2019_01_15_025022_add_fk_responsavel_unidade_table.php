@@ -28,6 +28,8 @@ class AddFkResponsavelUnidadeTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign('responsavel_id');
+        Schema::table('unidades', function($table) {
+            $table->dropForeign('responsavel_id');
+        });
     }
 }
