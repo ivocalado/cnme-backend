@@ -18,6 +18,7 @@ class CreateSolicitacaoCnmesTable extends Migration
             $table->increments('id');
 
             $table->mediumText('descricao');
+            $table->string('status',50);
 
             $table->integer('usuario_id')->unsigned()->nullable();
             $table->foreign('usuario_id')->references('id')->on('users');
