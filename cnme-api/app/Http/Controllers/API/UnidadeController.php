@@ -39,6 +39,24 @@ class UnidadeController extends Controller
                     "messages" => $validator->errors()
                     ), 422); 
             }
+
+            if($request->has('localidade')){
+                $localidadeData = $request->localidade;
+                $localidade = new Localidade();
+
+                $validatorLocal = Validator::make($localidadeData, $localidade->rules, $localidade->messages);
+
+                if ($validatorLocal->fails()) {
+                    return response()->json(
+                        array(
+                        "messages" => $validatorLocal->errors()
+                        ), 422); 
+                }else{
+                    $localidade->fill($localidadeData);
+                    $localidade->save();
+                    $unidade->localidade()->associate($localidade);
+                }
+            }
     
             $unidade->fill($unidadeData);
             $unidade->save();
