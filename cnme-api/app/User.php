@@ -35,7 +35,7 @@ class User extends Authenticatable
     }
 
     public $rules = [
-        'name'          =>  'required|max:255',
+        'name'          =>  'required|unique:users|max:255',
         'email'         =>  'required|unique:users|max:255|email',
         'password'      =>  'required',
         'cpf'           =>  'required|unique:users',

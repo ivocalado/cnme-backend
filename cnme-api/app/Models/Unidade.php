@@ -37,13 +37,14 @@ class Unidade extends Model
         'diretor'   => 'nullable',
         'telefone'   => 'nullable',
         'url'   => 'active_url|max:255',
-        'tipo_unidade_id' => 'required|integer',
-        'responsavel_id' => 'required|integer'
+        'tipo_unidade_id' => 'required|integer'
+        //'responsavel_id' => 'required|integer'
        
     ];
 
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
+        'integer' => 'O campo :attribute deve ser um inteiro',
         'email' => 'Esse campo deve possuir um email válido',
         'unique' => 'Já existe um registro com :attribute igual a :input',
         'url' => 'O campo :attribute deve possuir um endereço(url) válido',
@@ -51,5 +52,6 @@ class Unidade extends Model
         'codigo_inep.size' => 'O código INEP deve possuir :size caracteres',
         'tipo_unidade_id'  => 'Um tipo de unidade deve ser determinado',
         'responsavel_id'   => 'Um responsável da unidade deve ser determinado'
+        
     ];
 }
