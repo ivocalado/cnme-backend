@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        /*
+        
         // Not found exception handler
         if($exception instanceof NotFoundHttpException) {
             return response()->json([
@@ -64,7 +64,7 @@ class Handler extends ExceptionHandler
                 'message' => 'Método HTTP não implementado.'
             ], 405);
         }
-        */
+        
 
         return parent::render($request, $exception);
     }
