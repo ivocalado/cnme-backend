@@ -37,7 +37,21 @@ Route::apiResource('usuarios', 'API\UsuarioController');
 Route::apiResource('tipounidades', 'API\TipoUnidadeController');
 Route::apiResource('solicitacao-cnme', 'API\SolicitacaoProjetoController');
 Route::apiResource('projeto-cnme', 'API\ProjetoController');
-Route::apiResource('etapa', 'API\EtapaController');
+
+
+Route::apiResource('etapas', 'API\EtapaController');
+Route::post('etapas/{etapaId}/add-tarefa','API\EtapaController@addTarefa')
+    ->name('etapa-addTarefa');
+
+Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa')
+    ->name('etapa-removeTarefa');
+Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@updateTarefa')
+    ->name('etapa-updateTarefa');
+
+Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
+    ->name('etapa-tarefas');
+
+
 
 
 Route::get('localidades/estados', 'API\LocalidadeController@estados');

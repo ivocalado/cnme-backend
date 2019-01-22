@@ -31,6 +31,8 @@ class EtapaColumns extends Migration
 
             $table->integer('usuario_id')->unsigned()->nullable();
             $table->foreign('usuario_id')->references('id')->on('users');
+
+            $table->timestamps();
            
         });
     }

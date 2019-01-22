@@ -32,6 +32,11 @@ class Etapa extends Model
         return $this->belongsTo(ProjetoCnme::class);
     }
 
+    public function tarefas()
+    {
+        return $this->hasMany(Tarefa::class);
+    }
+
     public $rules = [
         'descricao'    =>  'required|max:255',
         'status'    =>  'required',

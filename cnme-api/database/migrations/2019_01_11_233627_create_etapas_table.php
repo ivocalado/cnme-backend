@@ -18,7 +18,7 @@ class CreateEtapasTable extends Migration
 
            
 
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
