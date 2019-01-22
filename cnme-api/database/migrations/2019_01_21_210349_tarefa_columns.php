@@ -14,6 +14,10 @@ class TarefaColumns extends Migration
     public function up()
     {
         Schema::table('tarefas', function($table) {
+
+            $table->dropColumn('created_at');
+            $table->dropColumn('updated_at');
+
             $table->string('nome', 255);
             $table->mediumText('descricao');
             $table->integer('numero');

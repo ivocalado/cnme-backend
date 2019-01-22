@@ -15,6 +15,9 @@ class EtapaColumns extends Migration
     {
         Schema::table('etapas', function($table) {
             
+            $table->dropColumn('created_at');
+            $table->dropColumn('updated_at');
+
             $table->string('descricao', 255);
 
             $table->string('status', 50);
