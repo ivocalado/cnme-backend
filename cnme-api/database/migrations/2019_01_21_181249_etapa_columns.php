@@ -15,9 +15,6 @@ class EtapaColumns extends Migration
     {
         Schema::table('etapas', function($table) {
             
-            $table->dropColumn('created_at');
-            $table->dropColumn('updated_at');
-
             $table->string('descricao', 255);
 
             $table->string('status', 50);
@@ -33,9 +30,7 @@ class EtapaColumns extends Migration
             $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes');
 
             $table->integer('usuario_id')->unsigned()->nullable();
-            $table->foreign('usuario_id')->references('id')->on('users');
-
-            $table->timestamps();
+            $table->foreign('usuario_id')->references('id')->on('users');      
            
         });
     }
