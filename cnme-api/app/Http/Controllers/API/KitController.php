@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Kit;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\KitResource;
+use App\Models\Equipamento;
+use Illuminate\Support\Facades\DB;
 
 class KitController extends Controller
 {
@@ -96,6 +98,52 @@ class KitController extends Controller
         }else{
             return response()->json(
                 array('message' => 'Não pode ser removida') , 422);
+        }
+    }
+
+    public function addEquipamento(Request $request, $kitId, $equipamentoId){
+
+
+        $kit = Kit::find($kitId);
+        $equipamento = Equipamento::find($equipamentoId);
+
+        if($kit && $equipamento){
+            DB::beginTransaction();
+            if(!$kit->equipamentos->contains($equipamento)){
+                $kit->equipamentos()->attach($equipamento);
+                DB::commit();
+
+
+                $kit = Kit::find($kitId);
+                return new KitResource($kit);
+            }else{
+                return response()->json(
+                    array('message' => 'Equipamento já está inserido no kit') , 422);
+            }
+            
+        }else{
+            return response()->json(
+                array('message' => 'Referencias incorretas') , 422);
+        }
+
+       
+    }
+
+    public function removeEquipamento(Request $request, $kitId, $equipamentoId){
+
+
+        $kit = Kit::find($kitId);
+        $equipamento = Equipamento::find($equipamentoId);
+
+        DB::beginTransaction();
+        if($kit->equipamentos->contains($equipamento)){
+            $kit->equipamentos()->detach($equipamento);
+            DB::commit();
+            $kit = Kit::find($kitId);
+            return new KitResource($kit);
+        }else{
+            return response()->json(
+                array('message' => 'Equipamento não está inserido no kit') , 422);
         }
     }
 }

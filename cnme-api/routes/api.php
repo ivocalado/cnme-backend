@@ -52,6 +52,9 @@ Route::apiResource('tipoequipamentos', 'API\TipoEquipamentoController');
 Route::apiResource('equipamentos', 'API\EquipamentoController');
 Route::apiResource('kits', 'API\KitController');
 
+Route::post('kits/{kitId}/add-equipamento/{equipamentoId}', 'API\KitController@addEquipamento');
+Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitController@removeEquipamento');
+
 
 Route::get('localidades/estados', 'API\LocalidadeController@estados');
 Route::get('localidades/estados/{uf}/municipios', 'API\LocalidadeController@municipios');
