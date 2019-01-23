@@ -70,15 +70,6 @@ class TipoUnidadeController extends Controller
 
         $tipoUnidadeData = $request->all();
 
-        $validator = Validator::make($tipoUnidadeData, $tipoUnidade->rules, $tipoUnidade->messages);
-
-        if ($validator->fails()) {
-            return response()->json(
-                array(
-                "messages" => $validator->errors()
-                ), 422); 
-        }
-
         $tipoUnidade->fill($tipoUnidadeData);
         $tipoUnidade->save();
 

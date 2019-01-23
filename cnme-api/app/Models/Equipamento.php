@@ -12,6 +12,11 @@ class Equipamento extends Model
         return $this->belongsTo(TipoEquipamento::class);
     }
 
+    public function kits()
+    {
+        return $this->belongsToMany(Kit::class, 'kit_equipamento');
+    }
+
     public $rules = [
         'nome'    =>  'required|unique:equipamentos|max:255',
         'descricao'    =>  'required|max:255',
