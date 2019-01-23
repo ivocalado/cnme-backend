@@ -67,15 +67,6 @@ class TipoEquipamentoController extends Controller
 
         $tipoEquipamentoData = $request->all();
 
-        $validator = Validator::make($tipoEquipamentoData, $tipoEquipamento->rules, $tipoEquipamento->messages);
-
-        if ($validator->fails()) {
-            return response()->json(
-                array(
-                "messages" => $validator->errors()
-                ), 422); 
-        }
-
         $tipoEquipamento->fill($tipoEquipamentoData);
         $tipoEquipamento->save();
 

@@ -17,7 +17,8 @@ class EquipamentoColuns extends Migration
            
             $table->string('nome', 255);
             $table->string('descricao', 255);
-            $table->string('requisitos', 255);
+            $table->string('fornecedor', 255)->nullablle();
+            $table->string('requisitos', 255)->nullablle();
 
         });
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipamento extends Model
 {
-    protected $fillable = ['nome', 'descricao','requisitos','tipo_equipamento_id'];
+    protected $fillable = ['nome', 'descricao','requisitos','fornecedor','tipo_equipamento_id'];
 
     public function tipoEquipamento(){
         return $this->belongsTo(TipoEquipamento::class);

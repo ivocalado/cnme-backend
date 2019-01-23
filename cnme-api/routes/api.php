@@ -49,7 +49,7 @@ Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
     ->name('etapa-tarefas');
 
 Route::apiResource('tipoequipamentos', 'API\TipoEquipamentoController');
-
+Route::apiResource('equipamentos', 'API\EquipamentoController');
 
 
 Route::get('localidades/estados', 'API\LocalidadeController@estados');

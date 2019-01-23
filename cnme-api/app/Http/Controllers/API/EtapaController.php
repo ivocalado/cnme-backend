@@ -73,15 +73,6 @@ class EtapaController extends Controller
 
         $etapaData = $request->all();
 
-        $validator = Validator::make($etapaData, $etapa->rules, $etapa->messages);
-
-        if ($validator->fails()) {
-            return response()->json(
-                array(
-                "messages" => $validator->errors()
-                ), 422); 
-        }
-
         $etapa->fill($etapaData);
         $etapa->save();
 
