@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e289dd24-b788-4a93-bbe3-a75b35088929",
+		"_postman_id": "22c0b3f0-e788-4d73-8c5b-c773cce764c5",
 		"name": "cnme-dev",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,9 +12,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -22,14 +20,10 @@
 					"raw": "{\n\"codigo_inep\": \"12345630\",\n\"nome\": \"Unidade Colégio Pinheiro\",\n\"email\": \"pinheiro@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"tipo_unidade_id\" : \"1\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/unidades",
+					"raw": "{{HOSTNAME}}/api/unidades",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades"
@@ -39,15 +33,13 @@
 			"response": []
 		},
 		{
-			"name": "127.0.0.1:8000/api/unidades2",
+			"name": "/api/unidades2",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -55,14 +47,10 @@
 					"raw": "{\n\"codigo_inep\": \"88888888\",\n\"nome\": \"Unidade com localidade\",\n\"email\": \"localidade@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"tipo_unidade_id\" : \"1\",\n\"localidade\": {\n\t\"logradouro\": \"Josefa de Melo2\",\n\t\"numero\": \"100\",\n\t\"bairro\": \"Barro Duro\",\n\t\"cep\": \"57034334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n }\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/unidades",
+					"raw": "{{HOSTNAME}}/api/unidades",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades"
@@ -78,9 +66,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -88,14 +74,10 @@
 					"raw": "{\n\t\"unidade_id\": \"1\",\n\t\"logradouro\": \"Josefa de Melo2\",\n\t\"numero\": \"100\",\n\t\"bairro\": \"Barro Duro\",\n\t\"cep\": \"57034334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n\t\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/unidades/1/add-localidade",
+					"raw": "{{HOSTNAME}}/api/unidades/1/add-localidade",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades",
@@ -116,15 +98,11 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/unidades",
+					"raw": "http://{{HOSTNAME}}/api/unidades",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades"
@@ -140,9 +118,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -150,14 +126,10 @@
 					"raw": "{\n\t \"nome\": \"Unidade Colégio Hélio Soares2\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/unidades/7",
+					"raw": "{{HOSTNAME}}/api/unidades/7",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades",
@@ -169,17 +141,12 @@
 		},
 		{
 			"name": "GET/api/unidades/10/usuarios",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -187,14 +154,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/unidades/3",
+					"raw": "{{HOSTNAME}}/api/unidades/3",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades",
@@ -214,15 +177,11 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/unidades/8",
+					"raw": "http://{{HOSTNAME}}/api/unidades/8",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades",
@@ -242,14 +201,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/localidades/estados",
+					"raw": "{{HOSTNAME}}/api/localidades/estados",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"localidades",
@@ -269,14 +224,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/localidades/estados/AL/municipios",
+					"raw": "{{HOSTNAME}}/api/localidades/estados/AL/municipios",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"localidades",
@@ -295,9 +246,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -305,14 +254,10 @@
 					"raw": "{\n\t\"name\":\"Administrador Pinheiro\",\n\t\"email\": \"pinheiro@mec.gov.br\",\n\t\"password\": \"$2y$10$TrooWD7Z8zYNIcMiEqZUlOwtech0WJqdLU0VHX2346Y40qUDvlcHm\",\n\t\"cpf\": \"000.123.312-27\",\n\t\"unidade_id\": \"1\",\n\t\"tipo\": \"administrador\"\n\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/usuarios",
+					"raw": "{{HOSTNAME}}/api/usuarios",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"usuarios"
@@ -331,14 +276,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/usuarios",
+					"raw": "{{HOSTNAME}}/api/usuarios",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"usuarios"
@@ -357,14 +298,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/usuarios/1",
+					"raw": "{{HOSTNAME}}/api/usuarios/1",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"usuarios",
@@ -384,14 +321,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/unidades/3/usuarios",
+					"raw": "{{HOSTNAME}}/api/unidades/3/usuarios",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"unidades",
@@ -409,9 +342,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -419,14 +350,10 @@
 					"raw": "{\n\t\"name\": \"Thiago Araújo Silva de Oliveira\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/usuarios/1",
+					"raw": "{{HOSTNAME}}/api/usuarios/1",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"usuarios",
@@ -443,9 +370,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -453,14 +378,10 @@
 					"raw": "{\n\t\"name\":\"Administrador3 CNME--\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/usuarios/30",
+					"raw": "{{HOSTNAME}}/api/usuarios/30",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"usuarios",
@@ -477,9 +398,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -487,14 +406,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/usuarios/2",
+					"raw": "{{HOSTNAME}}/api/usuarios/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"usuarios",
@@ -514,14 +429,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/tipounidades",
+					"raw": "{{HOSTNAME}}/api/tipounidades",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"tipounidades"
@@ -540,14 +451,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/tipounidades/1",
+					"raw": "{{HOSTNAME}}/api/tipounidades/1",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"tipounidades",
@@ -564,9 +471,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -574,14 +479,10 @@
 					"raw": "{\n\t\"nome\": \"Institutos\",\n    \"categoria\": \"Educação\",\n    \"descricao\": \"Institutos Federais\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/tipounidades",
+					"raw": "{{HOSTNAME}}/api/tipounidades",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"tipounidades"
@@ -597,9 +498,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -607,14 +506,10 @@
 					"raw": "{\n\t\"nome\": \"Institutos\",\n    \"categoria\": \"Educação\",\n    \"descricao\": \"Institutos Federais de Educação\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/tipounidades/2",
+					"raw": "{{HOSTNAME}}/api/tipounidades/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"tipounidades",
@@ -631,9 +526,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -641,14 +534,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/tipounidades/3",
+					"raw": "{{HOSTNAME}}/api/tipounidades/3",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"tipounidades",
@@ -665,9 +554,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -675,14 +562,10 @@
 					"raw": "{\n\t\"descricao\":\"Solicitação do primeiro CNme do sistema\",\n\t\"usuario_id\": \"1\",\n\t\"unidade_id\": \"1\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/solicitacao-cnme",
+					"raw": "{{HOSTNAME}}/api/solicitacao-cnme",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"solicitacao-cnme"
@@ -693,17 +576,12 @@
 		},
 		{
 			"name": "GET/api/solicitacao-cnme",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -711,14 +589,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/solicitacao-cnme",
+					"raw": "{{HOSTNAME}}/api/solicitacao-cnme",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"solicitacao-cnme"
@@ -728,18 +602,13 @@
 			"response": []
 		},
 		{
-			"name": "PUT/api/solicitacao-cnme",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "/api/solicitacao-cnme",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -747,14 +616,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/solicitacao-cnme/2",
+					"raw": "{{HOSTNAME}}/api/solicitacao-cnme/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"solicitacao-cnme",
@@ -771,9 +636,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -781,14 +644,10 @@
 					"raw": "{\n\t\"descricao\":\"Solicitação do primeiro CNME do sistema\",\n\t\"usuario_id\": \"1\",\n\t\"unidade_id\": \"1\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/solicitacao-cnme/2",
+					"raw": "{{HOSTNAME}}/api/solicitacao-cnme/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"solicitacao-cnme",
@@ -805,9 +664,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -815,14 +672,10 @@
 					"raw": "{\n\t\"descricao\":\"Solicitação do primeiro Cnme do sistema\",\n\t\"usuario_id\": \"1\",\n\t\"unidade_id\": \"1\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/solicitacao-cnme/1",
+					"raw": "{{HOSTNAME}}/api/solicitacao-cnme/1",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"solicitacao-cnme",
@@ -839,9 +692,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -849,14 +700,10 @@
 					"raw": "{\n\t\"numero\":\"24331-23\",\n\t\"status\": \"ABERTO\",\n\t\"descricao\": \"Projeto Bahia 2.1\",\n\t\"usuario_id\": \"1\",\n\t\"unidade_id\": \"1\",\n\t\"solicitacao_cnme_id\": \"2\",\n\t\"data_criacao\": \"2019-01-21\",\n\t\"data_implantacao_prevista\": \"2019-04-30\",\n\t \"data_inicio_entrega\": \"2019-04-20\",\n\t\"data_implantacao_realizada\": \"2019-05-25\"\n\t\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/projeto-cnme",
+					"raw": "{{HOSTNAME}}/api/projeto-cnme",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"projeto-cnme"
@@ -875,14 +722,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/projeto-cnme",
+					"raw": "{{HOSTNAME}}/api/projeto-cnme",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"projeto-cnme"
@@ -901,14 +744,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/projeto-cnme/2",
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"projeto-cnme",
@@ -925,9 +764,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -935,14 +772,10 @@
 					"raw": "{\n\t\"numero\": \"99999-23\"\n}"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/projeto-cnme/2",
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"projeto-cnme",
@@ -959,9 +792,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -969,14 +800,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/projeto-cnme/2",
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"projeto-cnme",
@@ -996,14 +823,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/etapas",
+					"raw": "{{HOSTNAME}}/api/etapas",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"etapas"
@@ -1019,9 +842,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -1029,14 +850,10 @@
 					"raw": "{\n\t\"status\": \"ABERTA\",\n\t\"descricao\" : \"Etapa enviar material para transportador\",\n\t\"tipo\": \"ENVIO\",\n\t\"usuario_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\",\n\t\"data_inicio_prevista\": \"2019-01-02\",\n\t\"data_fim_prevista\" : \"2019-01-30\"\n\t\n\t\n}\n\n"
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/etapas",
+					"raw": "{{HOSTNAME}}/api/etapas",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"etapas"
@@ -1055,14 +872,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "127.0.0.1:8000/api/etapas/4",
+					"raw": "{{HOSTNAME}}/api/etapas/4",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"etapas",
@@ -1079,9 +892,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -1089,15 +900,10 @@
 					"raw": "{\n\t\"nome\": \"planejamento\",\n\t\"descricao\": \"Realizar o planejamento completo da entrega dos materiais\",\n\t\"numero\" : \"1\",\n\t\"status\": \"ABERTA\",\n\t\"tipo\": \"PLANEJAMENTO\",\n\t\"usuario_id\":\"1\",\n\t\"etapa_id\": \"1\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/etapas/1/add-tarefa",
-					"protocol": "http",
+					"raw": "{{HOSTNAME}}/api/etapas/1/add-tarefa",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"etapas",
@@ -1110,17 +916,12 @@
 		},
 		{
 			"name": "GET/api/etapas/1/tarefas",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -1128,15 +929,10 @@
 					"raw": "{\n\t\"nome\": \"planejamento\",\n\t\"descricao\": \"Realizar o planejamento completo da entrega dos materiais\",\n\t\"numero\" : \"1\",\n\t\"status\": \"ABERTA\",\n\t\"tipo\": \"PLANEJAMENTO\",\n\t\"usuario_id\":\"1\",\n\t\"etapa_id\": \"1\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/etapas/1/tarefas",
-					"protocol": "http",
+					"raw": "{{HOSTNAME}}/api/etapas/1/tarefas",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"etapas",
@@ -1154,9 +950,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -1164,15 +958,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/etapas/1/remove-tarefa/2",
-					"protocol": "http",
+					"raw": "{{HOSTNAME}}/api/etapas/1/remove-tarefa/2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"etapas",
@@ -1191,9 +980,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -1201,15 +988,10 @@
 					"raw": "{\n\t\"nome\": \"Planejamento das ações\"\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/etapas/1/update-tarefa/3",
-					"protocol": "http",
+					"raw": "{{HOSTNAME}}/api/etapas/1/update-tarefa/3",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{HOSTNAME}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"etapas",
