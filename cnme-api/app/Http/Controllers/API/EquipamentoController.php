@@ -106,10 +106,10 @@ class EquipamentoController extends Controller
                 $equipamento->delete();
                 DB::commit();
                 return response(null,204);
+            }else{
+                return response()->json(
+                    array('message' => 'Equipamento não encontrado.') , 404);
             }
-
-            return response()->json(
-                array('message' => 'Equipamento não encontrado.') , 404);
 
         }catch(\Exception $e){
             DB::rollback();

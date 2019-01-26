@@ -13,7 +13,7 @@ class CreateItemChecklistProjetosTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_checklist_projetos', function (Blueprint $table) {
+        Schema::create('itens_checklist', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateItemChecklistProjetosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_checklist_projetos');
+        Schema::dropIfExists('itens_checklist');
     }
 }

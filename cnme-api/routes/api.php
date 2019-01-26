@@ -56,5 +56,9 @@ Route::post('kits/{kitId}/add-equipamento/{equipamentoId}', 'API\KitController@a
 Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitController@removeEquipamento');
 
 
+Route::apiResource('checklists', 'API\ChecklistController');
+Route::post('checklists/{checklistId}/add-itemchecklist', 'API\ChecklistController@addItemChecklist');
+Route::delete('checklists/{checklistId}/remove-itemchecklist/{itemId}', 'API\ChecklistController@removeItemChecklist');
+
 Route::get('localidades/estados', 'API\LocalidadeController@estados');
 Route::get('localidades/estados/{uf}/municipios', 'API\LocalidadeController@municipios');

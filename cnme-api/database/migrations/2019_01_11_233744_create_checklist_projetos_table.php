@@ -13,7 +13,7 @@ class CreateChecklistProjetosTable extends Migration
      */
     public function up()
     {
-        Schema::create('checklist_projetos', function (Blueprint $table) {
+        Schema::create('checklists', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateChecklistProjetosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('checklist_projetos');
+        Schema::dropIfExists('checklists');
     }
 }
