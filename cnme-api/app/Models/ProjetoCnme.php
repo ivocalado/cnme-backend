@@ -31,6 +31,14 @@ class ProjetoCnme extends Model
         return $this->belongsTo(SolicitacaoCnme::class);
     }
 
+    public function kit(){
+        return $this->belongsTo(Kit::class);
+    }
+
+    public function equipamentoProjetos(){
+        return $this->hasMany(EquipamentoProjeto::class);
+    }
+
     public $rules = [
         'numero'    =>  'required|unique:projeto_cnmes|max:20',
         'status'    =>  'required',

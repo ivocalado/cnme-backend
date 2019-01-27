@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\SolicitacaoCnme;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Equipamento;
+use App\Models\EquipamentoProjeto;
+use App\Models\Kit;
 
 class ProjetoController extends Controller
 {
@@ -120,6 +123,88 @@ class ProjetoController extends Controller
             return response()->json(
                 array('message' => $e->getMessage()) , 500);
 
+        }
+    }
+
+    public function addKit(Request $request, $projetoId, $kitId){
+        
+        try{
+            $kit = Kit::find($kitId);
+            $equipamentos = $kit->equipamentos;
+            $projeto = ProjetoCnme::find($projetoId);
+
+            foreach($equipamentos as $q){
+                $equipamentoProjeto = new EquipamentoProjeto();
+                $equipamentoProjeto->equipamento()->associate($q);
+                $equipamentoProjeto->projetoCnme()->associate($projeto);
+                $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PROJETO;
+
+                $equipamentoProjeto->save();
+            }
+
+            $projeto->kit()->associate($kit);
+            $projeto->save();
+            
+            return new ProjetoResource($projeto);
+        }catch(\Exception $e){
+            DB::rollback();
+
+            Log::error('ProjetoController::addKit - '.$e->getMessage());
+
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+
+        }
+        
+    }
+
+    public function removeKit(Request $request, $projetoId, $kitId){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        $kit = Kit::find($kitId);
+
+        $projeto->kit()->dissociate();
+
+        if(!isset($kit) || !isset($projeto)){
+            return response()->json(
+                array('message' => "Referẽncias de kit/projeto inconsistentes") , 500); 
+        }
+
+        return new ProjetoResource($projeto);
+
+    }
+
+    public function addEquipamento(Request $request, $projetoId, $equipamentoId){
+        $equipamento = Equipamento::find($equipamentoId);
+
+        $projeto = ProjetoCnme::find($projetoId);
+
+        if($equipamento && $projeto){
+            $equipamentoProjeto = new EquipamentoProjeto();
+            $equipamentoProjeto->equipamento()->associate($equipamento);
+            $equipamentoProjeto->projetoCnme()->associate($projeto);
+            $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PROJETO;
+            $equipamentoProjeto->observacao = $request->observacao;
+            $equipamentoProjeto->detalhes = $request->detalhes;
+    
+            $equipamentoProjeto->save();
+
+            return new ProjetoResource($projeto);
+        }else{
+            return response()->json(
+                array('message' => "Referência equipamento/projeto não encontrada") , 422);
+        }
+    }
+
+    public function removeEquipamento(Request $request,$projetoId, $projetoEquipamentoId){
+        $equipamentoProjeto = EquipamentoProjeto::find($projetoEquipamentoId);
+
+        if($equipamentoProjeto){
+            $equipamentoProjeto->delete();
+            return response(null,204);
+        }else{
+            return response()->json(
+                array('message' => "Referência equipamento/projeto não encontrada") , 422);
         }
     }
 }

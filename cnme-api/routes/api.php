@@ -38,6 +38,12 @@ Route::apiResource('tipounidades', 'API\TipoUnidadeController');
 Route::apiResource('solicitacao-cnme', 'API\SolicitacaoProjetoController');
 Route::apiResource('projeto-cnme', 'API\ProjetoController');
 
+Route::post('projeto-cnme/{projetoId}/add-equipamento/{equipamentoId}','API\ProjetoController@addEquipamento');
+Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId}','API\ProjetoController@removeEquipamento');
+
+Route::post('projeto-cnme/{projetoId}/add-kit/{kitId}','API\ProjetoController@addKit');
+Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoController@removeKit');
+
 Route::apiResource('etapas', 'API\EtapaController');
 Route::post('etapas/{etapaId}/add-tarefa','API\EtapaController@addTarefa')
     ->name('etapa-addTarefa');

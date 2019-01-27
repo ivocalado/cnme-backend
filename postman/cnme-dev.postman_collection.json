@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "22c0b3f0-e788-4d73-8c5b-c773cce764c5",
+		"_postman_id": "41ba49fd-9850-404e-a009-080618e3ff7a",
 		"name": "cnme-dev",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -926,7 +926,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\": \"planejamento\",\n\t\"descricao\": \"Realizar o planejamento completo da entrega dos materiais\",\n\t\"numero\" : \"1\",\n\t\"status\": \"ABERTA\",\n\t\"tipo\": \"PLANEJAMENTO\",\n\t\"usuario_id\":\"1\",\n\t\"etapa_id\": \"1\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+					"raw": ""
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/etapas/1/tarefas",
@@ -998,6 +998,409 @@
 						"1",
 						"update-tarefa",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/etapas/1/update-tarefa/3",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"Planejamento das ações\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/etapas/1/update-tarefa/3",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"etapas",
+						"1",
+						"update-tarefa",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/api/checklists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/checklists",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"checklists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/checklists",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"versao\" : \"Checklist 2019.1\",\n\t\"descricao\": \"Avaliarção do ambiente e equipamentos\",\n\t\"status\": \"ATIVO\",\n\t\"usuario_id\": \"1\",\n\t\"ativo\" : \"true\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklists",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/api/checklists/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklists/1",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklists",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT/api/checklists/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"versao\" : \"Checklist 2019.1V final\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklists/1",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklists",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/checklists/2",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklists/2",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklists",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/checklists/1/add-itemchecklist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descricao\":\"Avaliar a condições A, B e C\",\n\t\"equipamento_id\":\"1\",\n\t\"tipo\":\"EQUIPAMENTO\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklists/1/add-itemchecklist",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklists",
+						"1",
+						"add-itemchecklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/checklists/1/add-itemchecklist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklists/1/remove-itemchecklist/12",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklists",
+						"1",
+						"remove-itemchecklist",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/projeto-cnme/1/add-equipamento/1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"status\":\"DISPONIVEL\",\n\t\"observacao\":\"Abc....2\",\n\t\"detalhes\": \"zzzzzZZZZZZZZZZZZZZZZZZZzzzzzzzzzzzzz\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-equipamento/2",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"projeto-cnme",
+						"1",
+						"add-equipamento",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/projeto-cnme/1/remove-equipamento/2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/remove-equipamento/2",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"projeto-cnme",
+						"1",
+						"remove-equipamento",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/projeto-cnme/1/remove-equipamento/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/addKit/1",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"projeto-cnme",
+						"1",
+						"addKit",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"projeto-cnme",
+						"1",
+						"remove-kit",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/projeto-cnme/1/add-kit/1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-kit/1",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"projeto-cnme",
+						"1",
+						"add-kit",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/kits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/kits",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"kits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/equipamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/equipamentos",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"equipamentos"
 					]
 				}
 			},
