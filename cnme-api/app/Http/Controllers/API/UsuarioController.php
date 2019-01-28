@@ -87,15 +87,6 @@ class UsuarioController extends Controller
 
             $usuarioData = $request->all();
 
-            $validator = Validator::make($usuarioData, $usuario->rules, $usuario->messages);
-
-            if ($validator->fails()) {
-                return response()->json(
-                    array(
-                    "messages" => $validator->errors()
-                    ), 422); 
-            }
-
             $usuario->fill($usuarioData);
             $usuario->save();
             DB::commit();

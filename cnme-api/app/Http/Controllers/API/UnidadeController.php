@@ -103,14 +103,14 @@ class UnidadeController extends Controller
 
             $unidadeData = $request->all();
 
-            $validator = Validator::make($unidadeData, $unidade->rules, $unidade->messages);
+            // $validator = Validator::make($unidadeData, $unidade->rules, $unidade->messages);
 
-            if ($validator->fails()) {
-                return response()->json(
-                    array(
-                    "messages" => $validator->errors()
-                    ), 422); 
-            }
+            // if ($validator->fails()) {
+            //     return response()->json(
+            //         array(
+            //         "messages" => $validator->errors()
+            //         ), 422); 
+            // }
 
             $unidade->fill($unidadeData);
             $unidade->save();
