@@ -36,7 +36,7 @@ class Unidade extends Model
         'codigo_inep'       =>  '|nullable|unique:unidades|size:8',
         'diretor'   => 'nullable',
         'telefone'   => 'nullable',
-        'url'   => 'active_url|max:255',
+        'url'   => 'nullable|active_url|max:255',
         'tipo_unidade_id' => 'required|integer'
         //'responsavel_id' => 'required|integer'
        

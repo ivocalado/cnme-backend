@@ -30,8 +30,7 @@ class SolicitacaoCnme extends Model
         'descricao'    =>  'required',
         'status' => 'required',
         'data_solicitacao'       =>  'date',
-        'usuario_id' => 'required|integer',
-        'unidade_id' => 'required|integer'
+        'usuario_id' => 'required|integer'
        
     ];
 
