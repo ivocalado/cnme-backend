@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EtapaResource extends JsonResource
+class TarefaResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,18 +16,19 @@ class EtapaResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'nome' => $this->nome,
             'descricao' => $this->descricao,
-            'status'    => $this->status,
-            'tipo'      => $this->tipo,
-            //'usuario'          => new UserResource($this->usuario),
-            'usuario'          => $this->usuario,
-            //'projeto'          => new ProjetoResource($this->projetoCnme),
-            'projeto'          => $this->projetoCnme,
+            'status' => $this->status,
+            'tipo' => $this->tipo,
             'data_inicio_prevista' => (string)$this->data_inicio_prevista,
             'data_fim_prevista' => (string)$this->data_fim_prevista,
             'data_inicio' => (string)$this->data_inicio,
-            'data_fim' => (string)$this->data_fim,
-            'tarefas' => $this->tarefas
+            'data_fim'  => (string)$this->data_fim,
+            'usuario'   => $this->usuario,
+            'etapa_id' =>  $this->etapa->id,
+            'responsavel' => $this->responsavel,
+            'unidade_responsavel' => $this->unidadeResponsavel,
+            'equipamentos_projeto' => EquipamentoProjetoResource::collection($this->equipamentosProjetos)
 
         ];
     }

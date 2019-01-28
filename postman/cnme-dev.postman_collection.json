@@ -1405,6 +1405,88 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "POST/api/tarefas/projeto-cnme/1/tarefas/3/add-kit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/tarefas/projeto-cnme/1/tarefas/3/add-kit",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"tarefas",
+						"projeto-cnme",
+						"1",
+						"tarefas",
+						"3",
+						"add-kit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/tarefas/projeto-cnme/1/tarefas/3/add-equipamento/7",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/tarefas/projeto-cnme/1/tarefas/3/remove-equipamento/7",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"tarefas",
+						"projeto-cnme",
+						"1",
+						"tarefas",
+						"3",
+						"remove-equipamento",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/tarefas/projeto-cnme/1/tarefas/3/remove-equipamentos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/tarefas/projeto-cnme/1/tarefas/3/remove-equipamentos",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"tarefas",
+						"projeto-cnme",
+						"1",
+						"tarefas",
+						"3",
+						"remove-equipamentos"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

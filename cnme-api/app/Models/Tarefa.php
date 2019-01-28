@@ -41,6 +41,10 @@ class Tarefa extends Model
         return $this->belongsTo(Unidade::class,'unidade_responsavel_id');
     }
 
+    public function equipamentosProjetos(){
+        return $this->belongsToMany(EquipamentoProjeto::class,'tarefa_equipamento_projeto')->withTimestamps();
+    }
+
     public $rules = [
         'nome'    =>  'required|max:255',
         'descricao'    =>  'required',

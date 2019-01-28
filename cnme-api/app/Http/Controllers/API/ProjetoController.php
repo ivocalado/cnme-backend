@@ -133,6 +133,11 @@ class ProjetoController extends Controller
             $equipamentos = $kit->equipamentos;
             $projeto = ProjetoCnme::find($projetoId);
 
+            if(isset($projeto->kit)){
+                return response()->json(
+                    array('message' => "Já existe um kit associado. Remova o anterior antes de associar um novo.") , 422);
+            }
+
             foreach($equipamentos as $q){
                 $equipamentoProjeto = new EquipamentoProjeto();
                 $equipamentoProjeto->equipamento()->associate($q);

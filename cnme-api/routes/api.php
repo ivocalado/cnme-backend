@@ -54,6 +54,7 @@ Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@upda
 Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
     ->name('etapa-tarefas');
 
+
 Route::apiResource('tipoequipamentos', 'API\TipoEquipamentoController');
 Route::apiResource('equipamentos', 'API\EquipamentoController');
 Route::apiResource('kits', 'API\KitController');
@@ -61,6 +62,10 @@ Route::apiResource('kits', 'API\KitController');
 Route::post('kits/{kitId}/add-equipamento/{equipamentoId}', 'API\KitController@addEquipamento');
 Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitController@removeEquipamento');
 
+Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-kit','API\TarefaController@addKitAll');
+Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}','API\TarefaController@addEquipamentoProjeto');
+Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamento/{equipamentoProjetoId}','API\TarefaController@removeEquipamentoProjeto');
+Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos','API\TarefaController@clearEquipamentoProjeto');
 
 Route::apiResource('checklists', 'API\ChecklistController');
 Route::post('checklists/{checklistId}/add-itemchecklist', 'API\ChecklistController@addItemChecklist');

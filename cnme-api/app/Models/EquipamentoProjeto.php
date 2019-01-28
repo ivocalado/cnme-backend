@@ -21,6 +21,10 @@ class EquipamentoProjeto extends Model
         return $this->belongsTo(ProjetoCnme::class); 
     }
 
+    public function tarefas(){
+        return $this->belongsToMany(Tarefa::class,'tarefa_equipamento_projeto')->withTimestamps();
+    }
+
     public $rules = [
         'observacao' =>  'nullable|max:20',
         'status' =>  'required|max:20',
