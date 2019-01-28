@@ -1034,6 +1034,35 @@
 			"response": []
 		},
 		{
+			"name": "GET/api/etapas/1/equipamentos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/etapas/1/equipamentos",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"etapas",
+						"1",
+						"equipamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "{{url}}/api/checklists",
 			"request": {
 				"method": "GET",

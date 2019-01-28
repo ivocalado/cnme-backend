@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tarefa;
 use Illuminate\Support\Facades\Log;
+use App\Http\Resources\EquipamentoProjetoResource;
 
 class EtapaController extends Controller
 {
@@ -204,4 +205,17 @@ class EtapaController extends Controller
         );
 
     }
+
+    public function equipamentos(Request $request, $etapaId){
+        $etapa = Etapa::find($etapaId);
+
+        if(!isset($etapa)){
+            return response()->json(
+                array('message' => 'A etapa não existe.') , 404);
+        }
+
+        return EquipamentoProjetoResource::collection($etapa->equipamentos());
+
+    }
+
 }

@@ -37,6 +37,19 @@ class Etapa extends Model
         return $this->hasMany(Tarefa::class);
     }
 
+    public function equipamentos()
+    {
+        $ids =  $this->tarefas()->pluck('id');
+        $equipamentosProjetos = EquipamentoProjeto::whereHas('tarefas', function($query) use ($ids)
+        {
+            $query->whereIn('id', $ids);
+        })
+        ->with('tarefas')
+        ->get();
+
+        return  $equipamentosProjetos;
+    }
+
     public $rules = [
         'descricao'    =>  'required|max:255',
         'status'    =>  'required',
