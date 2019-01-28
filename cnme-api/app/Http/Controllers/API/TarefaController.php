@@ -148,4 +148,38 @@ class TarefaController extends Controller
         }
     }
 
+    public function syncEquipamentosProjeto(Request $request, $projetoId, $tarefaId){
+        try{
+            DB::beginTransaction();
+        
+            $projeto = ProjetoCnme::find($projetoId);
+            $tarefa = Tarefa::find($tarefaId);
+
+            if(!isset($projeto) || !isset($tarefa)){
+                return response()->json(
+                    array('message' => "Referências inválidas.") , 422);
+            }
+    
+            if($request->has('ids')){
+                $tarefa->equipamentosProjetos()->attach($request->ids);
+            }else{
+                return response()->json(
+                    array('message' => "Parâmetros(ids) não enviados.") , 422);
+            }
+            
+            $tarefa->save();
+            DB::commit();
+
+            return new TarefaResource($tarefa);
+    
+        }catch(\Exception $e){
+            DB::rollback();
+
+            Log::error('TarefaController::addKitAll - message: '. $e->getMessage());
+
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+        }
+    }
+
 }

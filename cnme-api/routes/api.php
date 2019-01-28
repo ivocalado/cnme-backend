@@ -72,7 +72,7 @@ Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@upda
 Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
     ->name('etapa-tarefas');
     Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos')
-    ->name('etapa-tarefas');
+    ->name('etapa-equipamentos');
 
 
 
@@ -94,6 +94,7 @@ Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitControl
 
 
 Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-kit','API\TarefaController@addKitAll');
+Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento-ids','API\TarefaController@syncEquipamentosProjeto');
 Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}','API\TarefaController@addEquipamentoProjeto');
 Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamento/{equipamentoProjetoId}','API\TarefaController@removeEquipamentoProjeto');
 Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos','API\TarefaController@clearEquipamentoProjeto');
