@@ -201,6 +201,49 @@ class ProjetoController extends Controller
         }
     }
 
+    public function addEquipamentoList(Request $request, $projetoId){
+        try{
+            $projeto = ProjetoCnme::find($projetoId);
+
+            if(!isset($projeto)){
+                return response()->json(
+                    array('message' => "Referência projeto não encontrada") , 422);
+            }
+            $ids = $request->ids;
+    
+            foreach($ids as $equipamentoId){
+                $equipamento = Equipamento::find($equipamentoId);
+    
+                if(!isset($equipamento)){
+                    DB::rollback();
+                    return response()->json(
+                        array('message' => "Referência de equipamento(".$equipamentoId.") não encontrada") , 422);
+                }
+    
+                $equipamentoProjeto = new EquipamentoProjeto();
+                $equipamentoProjeto->equipamento()->associate($equipamento);
+                $equipamentoProjeto->projetoCnme()->associate($projeto);
+                $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PROJETO;
+               
+        
+                $equipamentoProjeto->save();
+            }
+
+            DB::commit();
+            return new ProjetoResource($projeto);
+
+        }catch(\Exception $e){
+            DB::rollback();
+
+            Log::error('ProjetoController::addKit - '.$e->getMessage());
+
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+        }
+       
+
+    }
+
     public function removeEquipamento(Request $request,$projetoId, $projetoEquipamentoId){
         $equipamentoProjeto = EquipamentoProjeto::find($projetoEquipamentoId);
 
