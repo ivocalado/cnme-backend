@@ -129,6 +129,27 @@ class KitController extends Controller
        
     }
 
+    public function addEquipamentoList(Request $request, $kitId){
+        $kit = Kit::find($kitId);
+
+        if(!isset($kit)){
+            return response()->json(
+                array('message' => "Referência de kit(".$kitId.") não encontrada") , 422);
+        }
+        if(!$request->has('ids')){
+            return response()->json(
+                array('message' => "Campo ids é obrigatório") , 422);
+        }
+        $ids = $request->ids;
+        $kit->equipamentos()->attach($ids);
+
+        $kit->save();
+        
+        return new KitResource($kit);
+
+
+    }
+
     public function removeEquipamento(Request $request, $kitId, $equipamentoId){
 
 

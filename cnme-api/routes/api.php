@@ -89,6 +89,7 @@ Route::apiResource('equipamentos', 'API\EquipamentoController');
 
 Route::apiResource('kits', 'API\KitController');
 Route::post('kits/{kitId}/add-equipamento/{equipamentoId}', 'API\KitController@addEquipamento');
+Route::post('kits/{kitId}/add-equipamentos', 'API\KitController@addEquipamentoList');
 Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitController@removeEquipamento');
 
 
