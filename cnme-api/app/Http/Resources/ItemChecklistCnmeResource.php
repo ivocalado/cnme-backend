@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ItemChecklistResource extends JsonResource
+class ItemChecklistCnmeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,14 +14,11 @@ class ItemChecklistResource extends JsonResource
      */
     public function toArray($request)
     {
-        
         return [
-            'id' => $this->id,
-            'descricao' => $this->descricao,
-            'tipo' => $this->tipo,
-            'equipamento' => new EquipamentoResource($this->equipamento)
-
+            'id'        => $this->id,
+            'status'    => $this->status,
+            'observacao'    => $this->observacao,
+            'item_checklist'    => new ItemChecklistResource($this->itemChecklist),
         ];
-        
     }
 }

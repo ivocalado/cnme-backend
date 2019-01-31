@@ -1197,6 +1197,37 @@
 			"response": []
 		},
 		{
+			"name": "{{HOSTNAME}}/api/checklists/1/add-itemchecklist -2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descricao\":\"Internet de no mínimo 10MB\",\n\t\"tipo\":\"AMBIENTE\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklists/1/add-itemchecklist",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklists",
+						"1",
+						"add-itemchecklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST/checklists/1/add-itemchecklist",
 			"request": {
 				"method": "POST",
@@ -1286,6 +1317,37 @@
 						"1",
 						"add-equipamento",
 						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/projeto-cnme/1/add-equipamentos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ids\": [2]\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-equipamentos",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"projeto-cnme",
+						"1",
+						"add-equipamentos"
 					]
 				}
 			},
@@ -1392,6 +1454,35 @@
 			"response": []
 		},
 		{
+			"name": "POST/api/kits",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"Kit 2\",\n\t\"descricao\": \"Kit 2 em uso após a mudança...\",\n\t\"versao\":\"2019-1\",\n\t\"status\": \"ATIVO\",\n\t\"usuario_id\":\"1\",\n\t\"data_inicio\":\"2019-06-01\",\n\t\"data_fim\":\"2019-12-31\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/kits",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"kits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "{{HOSTNAME}}/api/kits",
 			"request": {
 				"method": "GET",
@@ -1408,6 +1499,59 @@
 					"path": [
 						"api",
 						"kits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/kits/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/kits",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"kits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ids\": [1,2]\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/kits/4/add-equipamentos",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"kits",
+						"4",
+						"add-equipamentos"
 					]
 				}
 			},
@@ -1512,6 +1656,255 @@
 						"tarefas",
 						"3",
 						"remove-equipamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/tarefas/projeto-cnme/1/tarefas/3/add-equipamento-ids",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ids\" : [1,3,4]\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/tarefas/projeto-cnme/1/tarefas/3/add-equipamento-ids",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"tarefas",
+						"projeto-cnme",
+						"1",
+						"tarefas",
+						"3",
+						"add-equipamento-ids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/checklist-cnmes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"descricao\": \"Avaliarção do ambiente e equipamentos. NOVOOooOOOo\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"checklist_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklist-cnmes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT/api/checklist-cnmes",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"descricao\": \"Atenção aos itens de checklist. Avaliar a temperatura da sala.\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes/2",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklist-cnmes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/checklist-cnmes/2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes/1",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklist-cnmes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/checklist-cnmes/3",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes/2",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklist-cnmes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/checklist-cnmes/1/add-itemchecklist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descricao\":\"\",\n\t\"status\":\"PENDENTE\",\n\t\"checklist_cnme_id\": \"1\",\n\t\"item_checklist_id\": \"11\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes/1/add-itemchecklist",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklist-cnmes",
+						"1",
+						"add-itemchecklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/checklist-cnmes/1/remove-itemchecklist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"descricao\":\"\",\n\t\"status\":\"PENDENTE\",\n\t\"checklist_cnme_id\": \"1\",\n\t\"item_checklist_id\": \"11\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes/1/remove-itemchecklist/2",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklist-cnmes",
+						"1",
+						"remove-itemchecklist",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/checklist-cnmes/all",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"descricao\": \"Avaliarção do ambiente e equipamentos. NOVOOooOOOo\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"checklist_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes/all",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"checklist-cnmes",
+						"all"
 					]
 				}
 			},

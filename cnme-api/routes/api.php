@@ -110,7 +110,10 @@ Route::post('checklists/{checklistId}/add-itemchecklist', 'API\ChecklistControll
 Route::delete('checklists/{checklistId}/remove-itemchecklist/{itemId}', 'API\ChecklistController@removeItemChecklist');
 
 
-
+Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
+Route::post('checklist-cnmes/{checklistCnmeId}/clear-add-items-all', 'API\ChecklistCnmeController@clearAndAddItemsAll');
+Route::post('checklist-cnmes/{checklistCnmeId}/add-itemchecklist', 'API\ChecklistCnmeController@addItemChecklist');
+Route::delete('checklist-cnmes/{checklistCnmeId}/remove-itemchecklist/{itemId}', 'API\ChecklistCnmeController@removeItemChecklist');
 
 
 

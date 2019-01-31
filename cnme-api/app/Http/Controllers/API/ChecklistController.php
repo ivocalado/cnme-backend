@@ -152,7 +152,7 @@ class ChecklistController extends Controller
         }catch(\Exception $e){
             DB::rollback();
 
-            Log::error('ChecklistController::addItemEquipamentoChecklist - '.$e->getMessage());
+            Log::error('ChecklistController::addItemChecklist - '.$e->getMessage());
 
             return response()->json(
                 array('message' => $e->getMessage()) , 500);

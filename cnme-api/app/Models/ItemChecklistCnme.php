@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItemChecklistCnme extends Model
 {
+
+    public const STATUS_PENDENTE = 'PENDENTE';
+    public const STATUS_OK = 'OK';
+
     protected $fillable = ['descricao','status', 'observacao','checklist_cnme_id','item_checklist_id'];
 
 
@@ -13,8 +17,8 @@ class ItemChecklistCnme extends Model
         return $this->belongsTo(ChecklistCnme::class); 
     }
 
-    public function itemChecklistCnme(){
-        return $this->belongsTo(ItemChecklistCnme::class); 
+    public function itemChecklist(){
+        return $this->belongsTo(ItemChecklist::class); 
     }
 
 
