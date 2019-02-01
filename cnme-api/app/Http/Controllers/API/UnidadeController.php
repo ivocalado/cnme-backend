@@ -167,6 +167,16 @@ class UnidadeController extends Controller
         }
     }
 
+    public function checkEmail(Request $request, $email){
+        $emailValido = filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+
+        return response()->json($emailValido && Unidade::where("email",$email)->count() == 0, 200);
+    }
+
+    public function checkInep(Request $request, $inep){
+        return response()->json(Unidade::where("codigo_inep", $inep)->count() == 0, 200);
+    }
+
     public function addLocalidade(Request $request, $idUnidade){
 
         DB::beginTransaction();

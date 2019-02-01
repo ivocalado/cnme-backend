@@ -33,12 +33,27 @@ Route::get('unidades/{unidadeId}/usuarios','API\UnidadeController@usuarios')
 
 
 
+Route::get('unidades/check-email-disponivel/{email}','API\UnidadeController@checkEmail');
+Route::get('unidades/check-inep-disponivel/{inep}','API\UnidadeController@checkInep');
+
+
+
+
 
 
 
 
 
 Route::apiResource('usuarios', 'API\UsuarioController');
+Route::get('usuarios/check-email-disponivel/{email}','API\UsuarioController@checkEmail');
+Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf');
+
+
+
+
+
+
+
 Route::apiResource('tipounidades', 'API\TipoUnidadeController');
 Route::apiResource('solicitacao-cnme', 'API\SolicitacaoProjetoController');
 Route::apiResource('projeto-cnme', 'API\ProjetoController');

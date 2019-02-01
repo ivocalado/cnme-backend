@@ -131,4 +131,14 @@ class UsuarioController extends Controller
 
         }
     }
+
+    public function checkEmail(Request $request, $email){
+        $emailValido = filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+        return response()->json($emailValido && User::where("email",$email)->count() == 0,200) ;
+    }
+
+    public function checkCpf(Request $request, $cpf){
+        return response()->json(User::where("cpf",$cpf)->count() == 0, 200);
+    }
+
 }
