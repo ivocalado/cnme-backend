@@ -112,6 +112,18 @@ class UsuarioController extends Controller
         try {
 
             $usuario = User::find($id);
+
+            if($usuario->tipo === User::TIPO_GESTOR){
+                $countGestoresUnidade =  DB::table('users')->where([
+                    ['unidade_id',$usuario->unidade_id],
+                    ['tipo', User::TIPO_GESTOR]
+                    ])->count();
+                    
+                if($countGestoresUnidade === 1)
+                    return response()->json(
+                        array('message' => 'A unidade '.$usuario->unidade->nome.' possui apenas esse usuário como gestor. Indique um novo responsável pela unidade.'), 422);
+            }
+
             if(isset($usuario)){
                 $usuario->delete();
                 DB::commit();

@@ -137,6 +137,10 @@ class UnidadeController extends Controller
 
             $unidade = Unidade::find($id);
 
+            if($unidade->admin)
+                return response()->json(
+                    array('message' => 'Unidade '.$unidade->nome.' é gestora não pode ser removida.') , 422);
+
             if(isset($unidade)){
 
                 $localidade = Localidade::find($unidade->localidade_id);
