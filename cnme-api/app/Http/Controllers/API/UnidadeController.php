@@ -13,6 +13,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 class UnidadeController extends Controller
 {
@@ -60,6 +61,22 @@ class UnidadeController extends Controller
     
             $unidade->fill($unidadeData);
             $unidade->save();
+
+
+            /**create usuario gestor */
+
+            $usuarioGestor = new User();
+            $usuarioGestor->name = 'Gestor '. $unidade->nome;
+            $usuarioGestor->email = $unidade->email;
+            $usuarioGestor->tipo = User::TIPO_GESTOR;
+            $usuarioGestor->unidade()->associate($unidade);
+            $passwordAleatorio = bin2hex(openssl_random_pseudo_bytes(4));
+            $usuarioGestor->password = Hash::make($passwordAleatorio);
+            $usuarioGestor->save();
+
+            $unidade->responsavel_id = $usuarioGestor->id;
+            $unidade->save();
+
             DB::commit();
 
             return new UnidadeResource($unidade);

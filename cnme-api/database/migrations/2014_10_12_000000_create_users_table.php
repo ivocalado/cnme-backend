@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
 
             $table->string('telefone',50)->nullable();
-            $table->string('cpf',20);
+            $table->string('cpf',20)->nullable();
             $table->string('funcao', 20)->nullable();
 
             $table->string('tipo', 20);
