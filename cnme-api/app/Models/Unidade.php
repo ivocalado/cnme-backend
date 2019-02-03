@@ -9,6 +9,7 @@ use App\User;
 class Unidade extends Model
 {
 
+    public const CLASSE_ADMIN = 'admin';
     public const CLASSE_MEC = 'mec';
     public const CLASSE_TVESCOLA = 'tvescola';
     public const CLASSE_POLO = 'polo';

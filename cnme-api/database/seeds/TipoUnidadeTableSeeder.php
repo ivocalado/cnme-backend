@@ -18,6 +18,7 @@ class TipoUnidadeTableSeeder extends Seeder
         TipoUnidade::create(['nome' => 'TV Escola', 'descricao' => '','classe' => Unidade::CLASSE_TVESCOLA,'admin' => true]);
         TipoUnidade::create(['nome' => 'Escola', 'descricao' => '','classe' => Unidade::CLASSE_POLO]);
         TipoUnidade::create(['nome' => 'Empresa', 'descricao' => '','classe' => Unidade::CLASSE_EMPRESA]);
+        TipoUnidade::create(['nome' => 'Admin', 'descricao' => '','classe' => Unidade::CLASSE_ADMIN,'admin' => true]);
         
     }
 }

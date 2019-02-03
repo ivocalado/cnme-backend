@@ -29,6 +29,7 @@ class UsuarioGestorTableSeeder extends Seeder
         $mec->responsavel()->associate($gestorMec);
         $mec->save();
 
+        /***************************************** */
 
         $tv = Unidade::where('classe', Unidade::CLASSE_TVESCOLA)->first();
 
@@ -45,5 +46,20 @@ class UsuarioGestorTableSeeder extends Seeder
 
         $tv->responsavel()->associate($gestorTV);
         $tv->save();
+
+        /****************************************** */
+
+        $admin = Unidade::where('classe', Unidade::CLASSE_ADMIN)->first();
+
+        $gestorAdmin = User::create([
+            'name' => 'Admin', 
+            'email' => 'admin@cnme.gov.br',
+            'password' => Hash::make('123456'),
+            'tipo' => User::TIPO_ADMINISTRADOR,
+            'unidade_id' => $admin->id
+        ]);
+
+        $admin->responsavel()->associate($gestorAdmin);
+        $admin->save();
     }
 }
