@@ -37,6 +37,12 @@ Route::get('unidades/check-email-disponivel/{email}','API\UnidadeController@chec
 Route::get('unidades/check-inep-disponivel/{inep}','API\UnidadeController@checkInep');
 
 
+Route::get('unidades/u/mec/','API\UnidadeController@mec');
+Route::get('unidades/u/tvescola/','API\UnidadeController@tvescola');
+Route::get('unidades/u/gestoras/','API\UnidadeController@gestoras');
+Route::get('unidades/u/polos/','API\UnidadeController@polos');
+Route::get('unidades/u/empresas/','API\UnidadeController@empresas');
+
 
 
 

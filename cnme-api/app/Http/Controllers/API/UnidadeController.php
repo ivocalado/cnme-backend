@@ -262,4 +262,34 @@ class UnidadeController extends Controller
             "data" => UserResource::collection(User::where('unidade_id', $idUnidade)->paginate(25))
             ), 200);
     }
+
+
+    public function mec(Request $request){
+        $unidade = Unidade::where('classe', Unidade::CLASSE_MEC)->first();
+        return new UnidadeResource($unidade);
+    }
+
+    public function tvescola(Request $request){
+        $unidade = Unidade::where('classe', Unidade::CLASSE_TVESCOLA)->first();
+        return new UnidadeResource($unidade);
+    }
+
+    public function gestoras(Request $request){
+        $unidades = Unidade::orWhere('classe', Unidade::CLASSE_MEC)
+            ->orWhere('classe', Unidade::CLASSE_TVESCOLA)->get();
+
+        return UnidadeResource::collection($unidades);
+    }
+
+    public function polos(Request $request){
+        $unidades = Unidade::where('classe', Unidade::CLASSE_POLO)->paginate(25);
+
+        return UnidadeResource::collection($unidades);
+    }
+
+    public function empresas(Request $request){
+        $unidades = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate(25);
+
+        return UnidadeResource::collection($unidades);
+    }
 }

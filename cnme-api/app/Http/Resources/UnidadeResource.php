@@ -17,7 +17,9 @@ class UnidadeResource extends JsonResource
         return [
             'id' => $this->id,
             'nome' => $this->nome,
+            'classe' => $this->classe,
             'email' => $this->email,
+            'email_institucional' => $this->email_institucional,
             'codigo_inep' => $this->codigo_inep,
             'diretor' => $this->diretor,
             'telefone' => $this->telefone,
