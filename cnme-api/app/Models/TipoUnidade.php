@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TipoUnidade extends Model
 {
     protected $fillable = [
-        'nome', 'descricao', 'categoria'
+        'nome', 'descricao','classe'
     ];
 
 
@@ -15,10 +15,14 @@ class TipoUnidade extends Model
         return $this->hasMany(Unidade::class);
     }
 
+    public function isAdmin(){
+        return $this->admin;
+    }
+
     public $rules = [
         'nome'    =>  'required|unique:tipo_unidades|max:100',
         'descricao'    =>  'nullable|max:255',
-        'categoria'       =>  'nullable|max:50',
+        'classe'    =>  'nullable|max:20'
     
     ];
 

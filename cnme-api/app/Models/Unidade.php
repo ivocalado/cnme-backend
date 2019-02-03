@@ -9,8 +9,13 @@ use App\User;
 class Unidade extends Model
 {
 
+    public const CLASSE_MEC = 'mec';
+    public const CLASSE_TVESCOLA = 'tvescola';
+    public const CLASSE_POLO = 'polo';
+    public const CLASSE_EMPRESA = 'empresa';
+
     protected $fillable = [
-        'id','nome', 'email', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
+        'id','nome','classe', 'email','email_institucional','descricao', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
     ];
 
 
@@ -30,10 +35,33 @@ class Unidade extends Model
         return $this->hasMany(User::class, 'unidade_id', 'id');
     }
 
+    public function isPolo(){
+        return $this->classe === Unidade::CLASSE_POLO;
+    }
+
+    public function isEmpresa(){
+        return $this->classe === Unidade::CLASSE_EMPRESA; 
+    }
+
+    public function isMec(){
+        return $this->classe === Unidade::CLASSE_MEC;
+    }
+
+    public function isTvEscola(){
+        return $this->classe === Unidade::CLASSE_TVESCOLA;
+    }
+
+    public function isGestora(){
+        return $this->isMec() || $this->isTvEscola();
+    }
+
+
+
     public $rules = [
         'nome'    =>  'required|unique:unidades|max:255',
         'email'    =>  'required|unique:unidades|email|max:255',
-        'codigo_inep'       =>  '|nullable|unique:unidades|size:8',
+        'codigo_inep'       =>  'nullable|unique:unidades|size:8',
+        'classe'            =>  'nullable|max:20',
         'diretor'   => 'nullable',
         'telefone'   => 'nullable',
         'url'   => 'nullable|active_url|max:255',

@@ -10,6 +10,12 @@ use App\Models\Unidade;
 
 class User extends Authenticatable
 {
+
+    public const TIPO_GESTOR = 'gestor';
+    public const TIPO_COLABORADOR = 'colaborador';
+    public const TIPO_ADMINISTRADOR = 'administrador';
+    public const TIPO_TERCEIRO = 'terceiro';
+
     use Notifiable;
 
     /**
