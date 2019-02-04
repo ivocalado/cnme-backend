@@ -22,7 +22,7 @@ class ProjetoResource extends JsonResource
             'unidade' => $this->unidade,
             'usuario' => new UserResource($this->usuario),
             'solicitacao_cnme' => isset($this->solicitacaoCnme)?$this->solicitacaoCnme->id:null,
-            'kit' => isset($this->kit)?$this->kit->id:null,
+            'kit_id' => isset($this->kit)?$this->kit->id:null,
             'equipamentos_projeto' =>   $this->equipamentoProjetos,
             'data_criacao' => (string)$this->data_criacao,
             'data_implantacao_prevista' => (string)$this->data_implantacao_prevista,

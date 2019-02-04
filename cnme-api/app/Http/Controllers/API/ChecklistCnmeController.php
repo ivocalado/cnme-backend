@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Checklist;
+use App\Models\ProjetoCnme;
 
 class ChecklistCnmeController extends Controller
 {
@@ -39,23 +40,11 @@ class ChecklistCnmeController extends Controller
             $checklist->save();
 
 
-            $checklistModelo = Checklist::find($request->checklist_id);
+            dd( $checklist);
 
-            foreach($checklistModelo->itemChecklists as $item){
-                $itemCnme = new ItemChecklistCnme();
-                $itemCnme->status = ItemChecklistCnme::STATUS_PENDENTE;
-                $itemCnme->checklistCnme()->associate($checklist);
-                $itemCnme->itemChecklist()->associate($item);
+            // DB::commit();
 
-
-                $checklist->itemChecklistCnmes->push($itemCnme);
-
-                $itemCnme->save();
-                $checklist->save();
-            }
-            DB::commit();
-
-            return new ChecklistCnmeResource($checklist);
+            // return new ChecklistCnmeResource($checklist);
 
         }catch(\Exception $e){
             DB::rollback();
@@ -134,6 +123,29 @@ class ChecklistCnmeController extends Controller
         }
     }
 
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * COLD CODE - FUNCIONALIDADES FUTURAS
+     */
     public function clearAndAddItemsAll(Request $request, $checklistCnmeId){
         DB::beginTransaction();
         try {
@@ -171,6 +183,9 @@ class ChecklistCnmeController extends Controller
         }
     }
 
+     /**
+     * COLD CODE - FUNCIONALIDADES FUTURAS
+     */
     public function addItemChecklist(Request $request, $checklistCnmeId){
 
         DB::beginTransaction();
@@ -213,6 +228,9 @@ class ChecklistCnmeController extends Controller
 
     }
 
+     /**
+     * COLD CODE - FUNCIONALIDADES FUTURAS
+     */
     public function removeItemChecklist(Request $request, $checklistCnmeId, $itemChecklistCnmeId){
         DB::beginTransaction();
         try {

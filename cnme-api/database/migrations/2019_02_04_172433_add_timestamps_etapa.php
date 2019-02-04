@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChecklistColumns extends Migration
+class AddTimestampsEtapa extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,11 @@ class ChecklistColumns extends Migration
      */
     public function up()
     {
-        Schema::table('checklists', function($table) {
-            $table->string('versao', 100);
+        Schema::table('etapas', function($table) {
 
-            $table->string('descricao', 255);
-            $table->boolean('ativo')->default(true);
-
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users'); 
+            $table->timestamps();
 
         });
-
-        
     }
 
     /**

@@ -25,7 +25,7 @@ class CreateProjetoCnmesTable extends Migration
             $table->integer('usuario_id')->unsigned()->nullable();
             $table->foreign('usuario_id')->references('id')->on('users');
 
-            $table->integer('solicitacao_cnme_id')->unsigned();
+            $table->integer('solicitacao_cnme_id')->unsigned()->nullable();
             $table->foreign('solicitacao_cnme_id')->references('id')->on('solicitacao_cnmes');
 
             $table->date('data_criacao')->nullable();

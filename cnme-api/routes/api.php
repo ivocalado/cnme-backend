@@ -125,17 +125,19 @@ Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipa
 
 
 
-
+/*
 Route::apiResource('checklists', 'API\ChecklistController');
 Route::post('checklists/{checklistId}/add-itemchecklist', 'API\ChecklistController@addItemChecklist');
 Route::delete('checklists/{checklistId}/remove-itemchecklist/{itemId}', 'API\ChecklistController@removeItemChecklist');
+*/
 
 
 Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
+/*
 Route::post('checklist-cnmes/{checklistCnmeId}/clear-add-items-all', 'API\ChecklistCnmeController@clearAndAddItemsAll');
 Route::post('checklist-cnmes/{checklistCnmeId}/add-itemchecklist', 'API\ChecklistCnmeController@addItemChecklist');
 Route::delete('checklist-cnmes/{checklistCnmeId}/remove-itemchecklist/{itemId}', 'API\ChecklistCnmeController@removeItemChecklist');
-
+*/
 
 
 Route::get('localidades/estados', 'API\LocalidadeController@estados');

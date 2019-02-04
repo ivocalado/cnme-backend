@@ -13,7 +13,11 @@ class AddColumnsChecklist extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('checklist_cnmes', function($table) {
+
+            $table->mediumText('avaliacao')->nullable();
+
+        });
     }
 
     /**

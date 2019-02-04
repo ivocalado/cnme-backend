@@ -116,6 +116,25 @@ class ChecklistController extends Controller
         }
     }
 
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * COLD CODE - FUNCIONALIDADES FUTURAS
+     */
+
     public function addItemChecklist(Request $request, $checklistId){
         DB::beginTransaction();
         try {
@@ -159,6 +178,20 @@ class ChecklistController extends Controller
 
         }
     }
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * COLD CODE - FUNCIONALIDADES FUTURAS
+     */
 
     public function removeItemChecklist(Request $request, $checklistId, $itemChecklistId){
         DB::beginTransaction();

@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class ChecklistCnme extends Model
 {
-    protected $fillable = ['descricao','status','checklist_id','projeto_cnme_id'];
+
+    public const STATUS_ABERTO = 'ABERTO';
+    public const STATUS_AVALIANDO = 'AVALIANDO';
+    public const STATUS_OK = 'OK';
+    public const STATUS_PENDENTE = 'PENDENTE';
+    
+    protected $fillable = ['descricao','avaliacao','status','projeto_cnme_id'];
 
 
     public function checklist(){
@@ -22,9 +28,8 @@ class ChecklistCnme extends Model
     }
 
     public $rules = [
-        'descricao' =>  'required|max:255',
+        'descricao' =>  'required',
         'status' =>  'required|max:20',
-        'checklist_id' =>  'required|integer',
         'projeto_cnme_id' =>  'required|integer',
     
     ];

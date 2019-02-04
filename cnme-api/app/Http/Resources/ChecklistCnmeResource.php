@@ -17,6 +17,7 @@ class ChecklistCnmeResource extends JsonResource
         return [
             'id'        => $this->id,
             'descricao' => $this->descricao,
+            'avaliacao' => $this->avaliacao,
             'status'    => $this->status,
             'checklist_id' => $this->checklist_id,
             'projeto_cnme' => $this->projetoCnme,
