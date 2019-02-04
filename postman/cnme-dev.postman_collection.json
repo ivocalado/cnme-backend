@@ -17,7 +17,34 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"codigo_inep\": \"12345630\",\n\"nome\": \"Unidade Colégio Pinheiro\",\n\"email\": \"pinheiro@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"tipo_unidade_id\" : \"1\"\n}"
+					"raw": "{\n\"codigo_inep\": \"12345630\",\n\"nome\": \"Unidade Colégio Pinheiro\",\n\"email\": \"pinheiro@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"classe\": \"polo\",\n\"tipo_unidade_id\" : \"3\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/unidades - EMPRESA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"nome\": \"Transportadora da alegria\",\n\"email\": \"transportadora@gmail.com\",\n\"url\":\"http://transportadora.com\",\n\"tipo_unidade_id\" : \"4\",\n\"classe\": \"empresa\"\n}"
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/unidades",
@@ -44,7 +71,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"codigo_inep\": \"88888888\",\n\"nome\": \"Unidade com localidade\",\n\"email\": \"localidade@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"tipo_unidade_id\" : \"1\",\n\"localidade\": {\n\t\"logradouro\": \"Josefa de Melo2\",\n\t\"numero\": \"100\",\n\t\"bairro\": \"Barro Duro\",\n\t\"cep\": \"57034334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n }\n}"
+					"raw": "{\n\"codigo_inep\": \"88888334\",\n\"nome\": \"Unidade 04\",\n\"email\": \"unidade4@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"tipo_unidade_id\" : \"1\",\n\"localidade\": {\n\t\"logradouro\": \"Josefa de Melo2\",\n\t\"numero\": \"100\",\n\t\"bairro\": \"Barro Duro\",\n\t\"cep\": \"57034334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n }\n}"
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/unidades",
@@ -177,7 +204,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{HOSTNAME}}/api/unidades/8",
+					"raw": "http://{{HOSTNAME}}/api/unidades/1",
 					"protocol": "http",
 					"host": [
 						"{{HOSTNAME}}"
@@ -185,7 +212,7 @@
 					"path": [
 						"api",
 						"unidades",
-						"8"
+						"1"
 					]
 				}
 			},
@@ -321,14 +348,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{HOSTNAME}}/api/unidades/3/usuarios",
+					"raw": "{{HOSTNAME}}/api/unidades/4/usuarios",
 					"host": [
 						"{{HOSTNAME}}"
 					],
 					"path": [
 						"api",
 						"unidades",
-						"3",
+						"4",
 						"usuarios"
 					]
 				}
@@ -697,7 +724,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"numero\":\"24331-23\",\n\t\"status\": \"ABERTO\",\n\t\"descricao\": \"Projeto Bahia 2.1\",\n\t\"usuario_id\": \"1\",\n\t\"unidade_id\": \"1\",\n\t\"solicitacao_cnme_id\": \"2\",\n\t\"data_criacao\": \"2019-01-21\",\n\t\"data_implantacao_prevista\": \"2019-04-30\",\n\t \"data_inicio_entrega\": \"2019-04-20\",\n\t\"data_implantacao_realizada\": \"2019-05-25\"\n\t\n}"
+					"raw": "{\n\t\"numero\":\"24331-23\",\n\t\"status\": \"ABERTO\",\n\t\"descricao\": \"Projeto Bahia 2.1\",\n\t\"usuario_id\": \"4\",\n\t\"unidade_id\": \"4\",\n\t\"data_criacao\": \"2019-01-21\",\n\t\"data_implantacao_prevista\": \"2019-04-30\",\n\t \"data_inicio_entrega\": \"2019-04-20\",\n\t\"data_implantacao_realizada\": \"2019-05-25\"\n\t\n}"
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/projeto-cnme",
@@ -744,14 +771,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/2",
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/3",
 					"host": [
 						"{{HOSTNAME}}"
 					],
 					"path": [
 						"api",
 						"projeto-cnme",
-						"2"
+						"3"
 					]
 				}
 			},
@@ -847,7 +874,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"status\": \"ABERTA\",\n\t\"descricao\" : \"Etapa enviar material para transportador\",\n\t\"tipo\": \"ENVIO\",\n\t\"usuario_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\",\n\t\"data_inicio_prevista\": \"2019-01-02\",\n\t\"data_fim_prevista\" : \"2019-01-30\"\n\t\n\t\n}\n\n"
+					"raw": "{\n\t\"status\": \"ABERTA\",\n\t\"descricao\" : \"Etapa enviar material para transportador\",\n\t\"tipo\": \"ENVIO\",\n\t\"usuario_id\": \"1\",\n\t\"projeto_cnme_id\" : \"3\",\n\t\"data_inicio_prevista\": \"2019-01-02\",\n\t\"data_fim_prevista\" : \"2019-01-30\"\n\t\n\t\n}\n\n"
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/etapas",
@@ -886,7 +913,7 @@
 			"response": []
 		},
 		{
-			"name": "POST/api/etapas/1/tarefas",
+			"name": "POST/api/etapas/1/add-tarefa",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -897,7 +924,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\": \"planejamento\",\n\t\"descricao\": \"Realizar o planejamento completo da entrega dos materiais\",\n\t\"numero\" : \"1\",\n\t\"status\": \"ABERTA\",\n\t\"tipo\": \"PLANEJAMENTO\",\n\t\"usuario_id\":\"1\",\n\t\"etapa_id\": \"1\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+					"raw": "{\n\t\"nome\": \"planejamento\",\n\t\"descricao\": \"Realizar o planejamento completo da entrega dos materiais\",\n\t\"numero\" : \"1\",\n\t\"status\": \"ABERTA\",\n\t\"tipo\": \"PLANEJAMENTO\",\n\t\"usuario_id\":\"4\",\n\t\"etapa_id\": \"1\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/etapas/1/add-tarefa",
@@ -1379,31 +1406,6 @@
 			"response": []
 		},
 		{
-			"name": "POST/api/projeto-cnme/1/remove-equipamento/2",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/addKit/1",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"projeto-cnme",
-						"1",
-						"addKit",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
 			"request": {
 				"method": "DELETE",
@@ -1438,14 +1440,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-kit/1",
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/3/add-kit/1",
 					"host": [
 						"{{HOSTNAME}}"
 					],
 					"path": [
 						"api",
 						"projeto-cnme",
-						"1",
+						"3",
 						"add-kit",
 						"1"
 					]
@@ -1467,7 +1469,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\": \"Kit 2\",\n\t\"descricao\": \"Kit 2 em uso após a mudança...\",\n\t\"versao\":\"2019-1\",\n\t\"status\": \"ATIVO\",\n\t\"usuario_id\":\"1\",\n\t\"data_inicio\":\"2019-06-01\",\n\t\"data_fim\":\"2019-12-31\"\n}"
+					"raw": "{\n\t\"nome\": \"Kit 100x\",\n\t\"descricao\": \"Kit 100x\",\n\t\"versao\":\"2019-1\",\n\t\"status\": \"ATIVO\",\n\t\"usuario_id\":\"1\",\n\t\"data_inicio\":\"2019-01-01\",\n\t\"data_fim\":\"2019-12-31\"\n}"
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/kits",
@@ -1540,18 +1542,82 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"ids\": [1,2]\n}"
+					"raw": "{\n\t\"ids\": [2,3,4,5,6,7]\n}"
 				},
 				"url": {
-					"raw": "{{HOSTNAME}}/api/kits/4/add-equipamentos",
+					"raw": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
 					"host": [
 						"{{HOSTNAME}}"
 					],
 					"path": [
 						"api",
 						"kits",
-						"4",
+						"1",
 						"add-equipamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/kits/1/remove-equipamento/7",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ids\": [2,3,4,5,6,7]\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/kits/1/remove-equipamento/7",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"kits",
+						"1",
+						"remove-equipamento",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/kits/1/add-equipamento/7",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ids\": [2,3,4,5,6,7]\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/kits/1/add-equipamento/7",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"kits",
+						"1",
+						"add-equipamento",
+						"7"
 					]
 				}
 			},
@@ -1609,14 +1675,14 @@
 		{
 			"name": "POST/api/tarefas/projeto-cnme/1/tarefas/3/add-equipamento/7",
 			"request": {
-				"method": "DELETE",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{HOSTNAME}}/api/tarefas/projeto-cnme/1/tarefas/3/remove-equipamento/7",
+					"raw": "{{HOSTNAME}}/api/tarefas/projeto-cnme/3/tarefas/1/add-equipamento/6",
 					"host": [
 						"{{HOSTNAME}}"
 					],
@@ -1624,11 +1690,11 @@
 						"api",
 						"tarefas",
 						"projeto-cnme",
-						"1",
-						"tarefas",
 						"3",
-						"remove-equipamento",
-						"7"
+						"tarefas",
+						"1",
+						"add-equipamento",
+						"6"
 					]
 				}
 			},
@@ -1696,6 +1762,34 @@
 			"response": []
 		},
 		{
+			"name": "DELETE/api/tarefas/projeto-cnme/1/tarefas/3/remove-equipamento/4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/tarefas/projeto-cnme/3/tarefas/1/remove-equipamento/4",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"tarefas",
+						"projeto-cnme",
+						"3",
+						"tarefas",
+						"1",
+						"remove-equipamento",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST/api/checklist-cnmes",
 			"request": {
 				"method": "POST",
@@ -1709,7 +1803,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\n\t\"descricao\": \"Avaliarção do ambiente e equipamentos. NOVOOooOOOo\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"checklist_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\"\n}"
+					"raw": "{\n\t\n\t\"descricao\": \"NOVO. Já inclui os itens\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"checklist_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\"\n}"
 				},
 				"url": {
 					"raw": "{{HOSTNAME}}/api/checklist-cnmes",
@@ -1897,14 +1991,287 @@
 					"raw": "{\n\t\n\t\"descricao\": \"Avaliarção do ambiente e equipamentos. NOVOOooOOOo\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"checklist_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\"\n}"
 				},
 				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes/all",
+					"raw": "{{HOSTNAME}}/api/checklist-cnmes/2/clear-add-items-all",
 					"host": [
 						"{{HOSTNAME}}"
 					],
 					"path": [
 						"api",
 						"checklist-cnmes",
-						"all"
+						"2",
+						"clear-add-items-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/check-email-disponivel/pinheiro@educacao.al.gov.br",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades/check-email-disponivel/pinheiro@educacao.al.gov.br",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades",
+						"check-email-disponivel",
+						"pinheiro@educacao.al.gov.br"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/check-inep-disponivel/pinheiro@educacao.al.gov.br",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades/check-inep-disponivel/88888888",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades",
+						"check-inep-disponivel",
+						"88888888"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/usuarios/check-email-disponivel/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/usuarios/check-email-disponivel/joao@gmail.com",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"usuarios",
+						"check-email-disponivel",
+						"joao@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST/api/usuarios/check-cpf-disponivel/000.123.312-23",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/usuarios/check-cpf-disponivel/000.123.312-22",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"usuarios",
+						"check-cpf-disponivel",
+						"000.123.312-22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/u/mec",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades/u/mec",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades",
+						"u",
+						"mec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/u/tvescola",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades/u/tvescola",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades",
+						"u",
+						"tvescola"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/u/gestoras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades/u/gestoras",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades",
+						"u",
+						"gestoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/u/polos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades/u/polos",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades",
+						"u",
+						"polos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/unidades/u/empresas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/unidades/u/empresas",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"unidades",
+						"u",
+						"empresas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/etapas/1/add-tarefa - 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"planejamento\",\n\t\"descricao\": \"Realizar o planejamento completo da entrega dos materiais\",\n\t\"numero\" : \"1\",\n\t\"status\": \"ABERTA\",\n\t\"tipo\": \"PLANEJAMENTO\",\n\t\"usuario_id\":\"4\",\n\t\"etapa_id\": \"1\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/etapas/1/add-tarefa",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"etapas",
+						"1",
+						"add-tarefa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{HOSTNAME}}/api/etapas 0",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"status\": \"CONCLUIDA\",\n\t\"descricao\" : \"Preparar lista de material e cronograma\",\n\t\"tipo\": \"PLANEJAMENTO\",\n\t\"usuario_id\": \"1\",\n\t\"projeto_cnme_id\" : \"3\",\n\t\"data_inicio_prevista\": \"2019-01-02\",\n\t\"data_fim_prevista\" : \"2019-01-30\"\n\t\n\t\n}\n\n"
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/etapas",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"etapas"
 					]
 				}
 			},
