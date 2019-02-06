@@ -153,4 +153,17 @@ class UsuarioController extends Controller
         return response()->json(User::where("cpf",$cpf)->count() == 0, 200);
     }
 
+
+    public function search(Request $request){
+        $list = User::query();
+        if($request->has('q')){       
+            $list->orWhere("name", 'ILIKE', '%'.$request->q.'%');
+            $list->orWhere("email", 'ILIKE', '%'.$request->q.'%');
+            $list->orWhere("cpf",$request->q);
+        }
+
+        return UserResource::collection($list->orderBy('name')->paginate(25));
+
+    }
+
 }

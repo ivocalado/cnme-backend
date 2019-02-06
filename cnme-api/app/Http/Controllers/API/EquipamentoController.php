@@ -131,7 +131,7 @@ class EquipamentoController extends Controller
         }
 
         if($request->has('tipo')){
-          
+            
             $this->q = $request->tipo;
             return $list->orWhereHas('tipoEquipamento', function($query) {
                 $query->where('nome', $this->q);

@@ -53,6 +53,8 @@ Route::get('unidades/u/empresas/','API\UnidadeController@empresas');
 
 
 Route::apiResource('usuarios', 'API\UsuarioController');
+Route::get('usuarios/u/pesquisar','API\UsuarioController@search');
+
 Route::get('usuarios/check-email-disponivel/{email}','API\UsuarioController@checkEmail');
 Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf');
 
