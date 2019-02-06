@@ -12,19 +12,31 @@ class ChecklistCnme extends Model
     public const STATUS_OK = 'OK';
     public const STATUS_PENDENTE = 'PENDENTE';
     
-    protected $fillable = ['descricao','avaliacao','status','projeto_cnme_id'];
+    protected $fillable = ['descricao','requisitos','avaliacao','status','projeto_cnme_id'];
 
 
-    public function checklist(){
-        return $this->belongsTo(Checklist::class); 
-    }
+    // public function checklist(){
+    //     return $this->belongsTo(Checklist::class); 
+    // }
 
     public function projetoCnme(){
         return $this->belongsTo(ProjetoCnme::class); 
     }
 
-    public function itemChecklistCnmes(){
-        return $this->hasMany(ItemChecklistCnme::class);
+    // public function itemChecklistCnmes(){
+    //     return $this->hasMany(ItemChecklistCnme::class);
+    // }
+
+    public function requisitosList(){
+        return $this->projetoCnme->equipamentoProjetos->map(function ($eqP, $key) {
+            $req['id'] = $eqP->equipamento->id;
+            $req['tipo'] = $eqP->equipamento->tipoEquipamento->nome;
+            $req['equipamento'] = $eqP->equipamento->nome;
+            $req['requisitos'] = $eqP->equipamento->requisitos;  
+
+            //return $eqP->equipamento->requisitos;
+            return $req;
+        });
     }
 
     public $rules = [

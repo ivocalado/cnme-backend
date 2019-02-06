@@ -19,9 +19,10 @@ class ChecklistCnmeResource extends JsonResource
             'descricao' => $this->descricao,
             'avaliacao' => $this->avaliacao,
             'status'    => $this->status,
-            'checklist_id' => $this->checklist_id,
-            'projeto_cnme' => $this->projetoCnme,
-            'itens_checklist' => ItemChecklistCnmeResource::collection($this->itemChecklistCnmes)
+            'requisitos_html' => $this->requisitos,
+            'requisitos_array' => $this->requisitosList(),
+            'projeto_cnme' => $this->projetoCnme
+            //'itens_checklist' => ItemChecklistCnmeResource::collection($this->itemChecklistCnmes)
             
         ];
     }

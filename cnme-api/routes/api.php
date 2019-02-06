@@ -82,8 +82,6 @@ Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoControll
 
 
 
-
-
 Route::apiResource('etapas', 'API\EtapaController');
 Route::post('etapas/{etapaId}/add-tarefa','API\EtapaController@addTarefa')
     ->name('etapa-addTarefa');

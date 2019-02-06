@@ -35,16 +35,34 @@ class ChecklistCnmeController extends Controller
                     ), 422); 
             }
 
+            $requisitos = [];
+            $requisitos_html = "<ul>";
+            $projetoCnme = ProjetoCnme::find($checklistData['projeto_cnme_id']);
+
+            foreach($projetoCnme->equipamentoProjetos as $eqP){
+                $requisitos_html .= "<li><dl>";
+                $req['tipo'] = $eqP->equipamento->tipoEquipamento->nome;
+                $req['equipamento'] = $eqP->equipamento->nome;
+                $req['requisitos'] = $eqP->equipamento->requisitos;
+                $requisitos[] = $req;  
+
+                $requisitos_html .= "<dt>".$eqP->equipamento->tipoEquipamento->nome." - ".$eqP->equipamento->nome."</dt>";
+                $requisitos_html .= "<dt>".$eqP->equipamento->requisitos."</dt>";
+                $requisitos_html .= "</dl></li>";
+            }
+
+            $requisitos_html .= "<ul>";
+
             
+            $checklist->requisitos = $requisitos_html;
             $checklist->fill($checklistData);
             $checklist->save();
 
+            //dd($checklist->requisitosList());
 
-            dd( $checklist);
+            DB::commit();
 
-            // DB::commit();
-
-            // return new ChecklistCnmeResource($checklist);
+            return new ChecklistCnmeResource($checklist);
 
         }catch(\Exception $e){
             DB::rollback();

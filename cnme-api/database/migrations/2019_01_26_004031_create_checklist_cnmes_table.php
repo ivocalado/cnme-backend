@@ -16,8 +16,8 @@ class CreateChecklistCnmesTable extends Migration
         Schema::create('checklist_cnmes', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('checklist_id')->unsigned();
-            $table->foreign('checklist_id')->references('id')->on('checklists')->onDelete('cascade');
+            // $table->integer('checklist_id')->unsigned();
+            // $table->foreign('checklist_id')->references('id')->on('checklists')->onDelete('cascade');
 
             $table->integer('projeto_cnme_id')->unsigned();
             $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes')->onDelete('cascade');
