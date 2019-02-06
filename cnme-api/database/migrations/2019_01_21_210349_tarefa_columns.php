@@ -19,7 +19,6 @@ class TarefaColumns extends Migration
             $table->mediumText('descricao');
             $table->integer('numero');
             $table->string('status', 50);
-            $table->string('tipo', 50);
 
             $table->date('data_inicio_prevista');
             $table->date('data_fim_prevista');

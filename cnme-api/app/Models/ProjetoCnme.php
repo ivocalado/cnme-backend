@@ -8,10 +8,9 @@ use App\User;
 class ProjetoCnme extends Model
 {
 
-    public const STATUS_ABERTO = 'ABERTO';
-    public const STATUS_EM_ANDAMENTO = 'EM_ANDAMENTO';
-    public const STATUS_CONCLUIDO = 'CONCLUIDO';
-    public const STATUS_PARALIZADO = 'PARALIZADO';
+    public const STATUS_PLANEJAMENTO = 'PLANEJAMENTO';
+    public const STATUS_EXECUCAO = 'EXECUCAO';
+    public const STATUS_FINALIZADO = 'FINALIZADO';
     public const STATUS_CANCELADO = 'CANCELADO';
 
     protected $fillable = [
@@ -33,6 +32,10 @@ class ProjetoCnme extends Model
 
     public function kit(){
         return $this->belongsTo(Kit::class);
+    }
+
+    public function etapas(){
+        return $this->hasMany(Etapa::class);
     }
 
     public function equipamentoProjetos(){
