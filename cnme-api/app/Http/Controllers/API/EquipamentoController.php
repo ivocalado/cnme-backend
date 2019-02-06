@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Log;
 
 class EquipamentoController extends Controller
 {
+
+    protected $q;
    
     public function index()
     {
@@ -120,5 +122,26 @@ class EquipamentoController extends Controller
                 array('message' => $e->getMessage()) , 500);
 
         }
+    }
+
+    public function search(Request $request){
+        $list = Equipamento::query();
+        if($request->has('q')){       
+            $list->orWhere("nome", 'ILIKE', '%'.$request->q.'%');
+        }
+
+        if($request->has('tipo')){
+          
+            $this->q = $request->tipo;
+            return $list->orWhereHas('tipoEquipamento', function($query) {
+                $query->where('nome', $this->q);
+            })->get();
+            
+            
+        }
+
+        return EquipamentoResource::collection($list->orderBy('nome')->paginate(25));
+
+
     }
 }

@@ -29,6 +29,8 @@ Route::put('unidades/{unidadeId}/update-localidade','API\UnidadeController@updat
     ->name('unidade-updateLocalidade');
 Route::get('unidades/{unidadeId}/usuarios','API\UnidadeController@usuarios')
     ->name('unidade-usuarios');
+Route::get('unidades/u/pesquisar','API\UnidadeController@search');
+
 
 
 
@@ -91,7 +93,7 @@ Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@upda
     ->name('etapa-updateTarefa');
 Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
     ->name('etapa-tarefas');
-    Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos')
+Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos')
     ->name('etapa-equipamentos');
 
 
@@ -99,6 +101,8 @@ Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
 
 Route::apiResource('tipoequipamentos', 'API\TipoEquipamentoController');
 Route::apiResource('equipamentos', 'API\EquipamentoController');
+
+Route::get('equipamentos/u/pesquisar','API\EquipamentoController@search');
 
 
 

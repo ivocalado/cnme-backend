@@ -263,6 +263,17 @@ class UnidadeController extends Controller
             ), 200);
     }
 
+    public function search(Request $request){
+        $list = Unidade::query();
+        if($request->has('q')){       
+            $list->orWhere("codigo_inep",$request->q);
+            $list->orWhere("nome", 'ILIKE', '%'.$request->q.'%');
+        }
+
+        return UnidadeResource::collection($list->orderBy('nome')->paginate(25));
+
+    }
+
 
     public function mec(Request $request){
         $unidade = Unidade::where('classe', Unidade::CLASSE_MEC)->first();
