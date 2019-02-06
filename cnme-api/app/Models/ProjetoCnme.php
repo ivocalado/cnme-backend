@@ -9,7 +9,9 @@ class ProjetoCnme extends Model
 {
 
     public const STATUS_PLANEJAMENTO = 'PLANEJAMENTO';
-    public const STATUS_EXECUCAO = 'EXECUCAO';
+    public const STATUS_ENVIO = 'ENVIO';
+    public const STATUS_INSTALACAO = 'INSTALACAO';
+    public const STATUS_ATIVACAO = 'ATIVACAO';
     public const STATUS_FINALIZADO = 'FINALIZADO';
     public const STATUS_CANCELADO = 'CANCELADO';
 

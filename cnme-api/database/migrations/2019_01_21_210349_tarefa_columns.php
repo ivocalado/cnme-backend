@@ -16,8 +16,7 @@ class TarefaColumns extends Migration
         Schema::table('tarefas', function($table) {
           
             $table->string('nome', 255);
-            $table->mediumText('descricao');
-            $table->integer('numero');
+            $table->mediumText('descricao')->nullable();
             $table->string('status', 50);
 
             $table->date('data_inicio_prevista');

@@ -164,18 +164,39 @@ class ProjetoController extends Controller
     }
 
     public function removeKit(Request $request, $projetoId, $kitId){
-        $projeto = ProjetoCnme::find($projetoId);
 
-        $kit = Kit::find($kitId);
+        try{
+            DB::beginTransaction();
+            $projeto = ProjetoCnme::find($projetoId);
 
-        $projeto->kit()->dissociate();
+            $kit = Kit::find($kitId);
 
-        if(!isset($kit) || !isset($projeto)){
+            $projeto->kit()->dissociate();
+            $projeto->save();
+            
+            $ids = $kit->equipamentos->pluck('id')->all();
+
+            EquipamentoProjeto::
+                where('projeto_cnme_id',$projetoId)
+                ->whereIn('equipamento_id', $ids)->delete(); 
+
+            if(!isset($kit) || !isset($projeto)){
+                return response()->json(
+                    array('message' => "Referẽncias de kit/projeto inconsistentes") , 500); 
+            }
+
+            $projeto = ProjetoCnme::find($projetoId);
+            
+            DB::commit();
+            return new ProjetoResource($projeto);
+        }catch(\Exception $e){
+            DB::rollback();
+
+            Log::error('ProjetoController::removeKit - '.$e->getMessage());
+
             return response()->json(
-                array('message' => "Referẽncias de kit/projeto inconsistentes") , 500); 
+                array('message' => $e->getMessage()) , 500);
         }
-
-        return new ProjetoResource($projeto);
 
     }
 
@@ -203,6 +224,7 @@ class ProjetoController extends Controller
 
     public function addEquipamentoList(Request $request, $projetoId){
         try{
+            DB::beginTransaction();
             $projeto = ProjetoCnme::find($projetoId);
 
             if(!isset($projeto)){
@@ -244,8 +266,11 @@ class ProjetoController extends Controller
 
     }
 
-    public function removeEquipamento(Request $request,$projetoId, $projetoEquipamentoId){
-        $equipamentoProjeto = EquipamentoProjeto::find($projetoEquipamentoId);
+    public function removeEquipamento(Request $request,$projetoId, $equipamentoId){
+        $equipamentoProjeto = EquipamentoProjeto::where([
+            ['projeto_cnme_id', $projetoId],
+            ['equipamento_id',  $equipamentoId]
+        ])->first();
 
         if($equipamentoProjeto){
             $equipamentoProjeto->delete();

@@ -159,15 +159,26 @@ Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos')
 
 
 
-
+/**
+ * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-kit                                        * Adiciona na tarefa todos os equipamentos do projeto naquela tarefa
+ * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}         * Adiciona na tarefa um equipamento que já esteja associado ao projeto
+ * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento-ids                            * Sincroniza na tarefa os equipamentos enviados como parâmetro ids. Ex.:  [1,3,4]  
+ * DELETE   /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamento/{equipamentoProjetoId}      * Remove da tarefa um equipamento relacionado ao projeto
+ * DELETE   /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos                            * Remove todos os equipamentos da tarefa
+ */
 
 Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-kit','API\TarefaController@addKitAll');
-Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento-ids','API\TarefaController@syncEquipamentosProjeto');
 Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}','API\TarefaController@addEquipamentoProjeto');
+Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento-ids','API\TarefaController@syncEquipamentosProjeto');
+
 Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamento/{equipamentoProjetoId}','API\TarefaController@removeEquipamentoProjeto');
 Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos','API\TarefaController@clearEquipamentoProjeto');
 
 
+/**
+ * API      /api/checklist-cnmes
+ */
+Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
 
 
 /*
@@ -182,7 +193,6 @@ Route::delete('checklists/{checklistId}/remove-itemchecklist/{itemId}', 'API\Che
 */
 
 
-Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
 /*
 * Removidos - Tratam itens do checklist de forma individual.
 *
