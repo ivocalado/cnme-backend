@@ -142,6 +142,7 @@ Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId
 Route::post('projeto-cnme/{projetoId}/add-kit/{kitId}','API\ProjetoController@addKit');
 Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoController@removeKit');
 Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
+Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
 
 
 

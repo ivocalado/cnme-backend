@@ -301,29 +301,33 @@ class ProjetoController extends Controller
 
             $list = $list->orWhere('descricao','ilike','%'.$request->q.'%');
 
-
-
             $list =  $list->orWhereHas('unidade', function ($query) {
                 $query->orWhere('nome', 'ilike', '%'.$this->q.'%');
+                $query->orWhere('codigo_inep', $this->q);
             });
+
+           
         }
 
-        if($request->has('atrasadas')){
+        return ProjetoResource::collection($list->paginate(25));
+    }
 
-            $list = $list->orWhereHas('etapas', function ($query) {
-                $query->where('status',Etapa::STATUS_EXECUCAO)
-                        ->whereNull('data_fim')
-                        ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
-            });
-
-            $list = $list->orWhereHas('etapas.tarefas', function ($query) {
-                
-                $query->where('status', Tarefa::STATUS_EXECUCAO)
+    public function atrasados(){
+        $list = ProjetoCnme::query();
+        $list = $list->orWhereHas('etapas', function ($query) {
+            $query->where('status',Etapa::STATUS_EXECUCAO)
                     ->whereNull('data_fim')
                     ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
-                    
-            });
-        }
+        });
+
+        $list = $list->orWhereHas('etapas.tarefas', function ($query) {
+            
+            $query->where('status', Tarefa::STATUS_EXECUCAO)
+                ->whereNull('data_fim')
+                ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
+
+        });
+
 
         return ProjetoResource::collection($list->paginate(25));
     }
