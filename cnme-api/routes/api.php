@@ -43,6 +43,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * GET      /api/unidades/u/tvescola/
  * GET      /api/unidades/u/gestoras/
  * GET      /api/unidades/u/polos/
+ * * GET    /api/unidades/u/polos/novos               * Polos sem projeto iniciado
  * GET      /api/unidades/u/empresas/
  */
 
@@ -68,6 +69,10 @@ Route::get('unidades/u/tvescola/','API\UnidadeController@tvescola');
 Route::get('unidades/u/gestoras/','API\UnidadeController@gestoras');
 Route::get('unidades/u/polos/','API\UnidadeController@polos');
 Route::get('unidades/u/empresas/','API\UnidadeController@empresas');
+
+Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
+
+
 
 /**
  * ################################################################################################################
@@ -121,21 +126,30 @@ Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitControl
  * POST             /api/projeto-cnme/{projetoId}/add-equipamentos                              * Adiciona uma lista de equimamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
  * DELETE           /api/projeto-cnme/{projetoId}/remove-equipamento/{equipamentoId}            * Remove um equipamento específico, 
  * POST             /api/projeto-cnme/{projetoId}/add-kit/{kitId}                               * Adiciona todos os equipamentos de um dado kit ao projeto
- * delete           /api/projeto-cnme/{projetoId}/remove-kit/{kitId}                            * Remove todos os equipamentos do kit que estão no projeto
+ * DELETE           /api/projeto-cnme/{projetoId}/remove-kit/{kitId}                            * Remove todos os equipamentos do kit que estão no projeto
+ * GET              /api/projeto-cnme/p/pesquisar                                               * Pesquisar por 
+ *                                                                                                  q(descricao do projeto, nome da unidade), 
+ *                                                                                                  status("PLANEJAMENTO",ENVIO,INSTALACAO,ATIVACAO,
+ *                                                                                                          FINALIZADO,CANCELADO)
+ *                                                                                                  atrasados
  */
 
 Route::apiResource('projeto-cnme', 'API\ProjetoController');
+Route::get('projeto-cnme/p/status','API\ProjetoController@status');
 Route::post('projeto-cnme/{projetoId}/add-equipamento/{equipamentoId}','API\ProjetoController@addEquipamento');
 Route::post('projeto-cnme/{projetoId}/add-equipamentos','API\ProjetoController@addEquipamentoList');
 Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId}','API\ProjetoController@removeEquipamento');
 Route::post('projeto-cnme/{projetoId}/add-kit/{kitId}','API\ProjetoController@addKit');
 Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoController@removeKit');
+Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
 
 
 
 
 
 Route::apiResource('etapas', 'API\EtapaController');
+Route::get('etapas/e/status','API\EtapaController@status');
+Route::get('etapas/e/tipos','API\EtapaController@tipos');
 Route::post('etapas/{etapaId}/add-tarefa','API\EtapaController@addTarefa')
     ->name('etapa-addTarefa');
 Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa')
@@ -146,17 +160,6 @@ Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
     ->name('etapa-tarefas');
 Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos')
     ->name('etapa-equipamentos');
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
@@ -179,6 +182,7 @@ Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipa
  * API      /api/checklist-cnmes
  */
 Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
+Route::get('checklist-cnmes/cc/status','API\ChecklistCnmeController@status');
 
 
 /*

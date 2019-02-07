@@ -21,6 +21,23 @@ class Etapa extends Model
         ,'data_fim','data_inicio_prevista','data_fim_prevista'
     ];
 
+    public static function status(){
+        return [
+            Etapa::STATUS_ABERTA,
+            Etapa::STATUS_EXECUCAO,
+            Etapa::STATUS_CONCLUIDA,
+            Etapa::STATUS_CANCELADA,
+        ];
+    }
+
+    public static function tipos(){
+        return [
+            Etapa::TIPO_ENVIO,
+            Etapa::TIPO_INSTALACAO,
+            Etapa::TIPO_ATIVACAO
+        ];
+    }
+
     public function usuario(){
         return $this->belongsTo(User::class);
     }

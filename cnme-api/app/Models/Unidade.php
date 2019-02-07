@@ -19,6 +19,9 @@ class Unidade extends Model
         'id','nome','classe', 'email','email_institucional','descricao', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
     ];
 
+    public function projetoCnme(){
+        return $this->hasOne(ProjetoCnme::class);
+    }
 
     public function tipoUnidade(){
         return $this->belongsTo(TipoUnidade::class);

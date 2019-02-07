@@ -15,6 +15,11 @@ use App\Models\ProjetoCnme;
 
 class ChecklistCnmeController extends Controller
 {
+
+    public function status(){
+        return ChecklistCnme::status();
+    }
+
     public function index(){
         return ChecklistCnme::collection(ChecklistCnme::paginate(25));
     }

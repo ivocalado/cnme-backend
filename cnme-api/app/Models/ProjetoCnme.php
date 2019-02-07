@@ -44,6 +44,16 @@ class ProjetoCnme extends Model
         return $this->hasMany(EquipamentoProjeto::class);
     }
 
+    public static function status(){
+        return [
+            ProjetoCnme::STATUS_PLANEJAMENTO, 
+            ProjetoCnme::STATUS_ENVIO, 
+            ProjetoCnme::STATUS_INSTALACAO, 
+            ProjetoCnme::STATUS_ATIVACAO, 
+            ProjetoCnme::STATUS_FINALIZADO, 
+            ProjetoCnme::STATUS_CANCELADO];
+    }
+
     public $rules = [
         'numero'    =>  'required|unique:projeto_cnmes|max:20',
         'status'    =>  'required',

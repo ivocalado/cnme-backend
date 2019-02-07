@@ -11,6 +11,10 @@ class ChecklistCnme extends Model
     public const STATUS_AVALIANDO = 'AVALIANDO';
     public const STATUS_OK = 'OK';
     public const STATUS_PENDENTE = 'PENDENTE';
+
+    public static function status(){
+        return [ChecklistCnme::STATUS_ABERTO, ChecklistCnme::STATUS_AVALIANDO, ChecklistCnme::STATUS_OK, ChecklistCnme::STATUS_PENDENTE];
+    }
     
     protected $fillable = ['descricao','requisitos','avaliacao','status','projeto_cnme_id'];
 

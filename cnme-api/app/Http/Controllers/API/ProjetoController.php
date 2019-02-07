@@ -13,10 +13,19 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Equipamento;
 use App\Models\EquipamentoProjeto;
 use App\Models\Kit;
+use App\Models\Etapa;
+use App\Models\Tarefa;
 
 class ProjetoController extends Controller
 {
     
+
+    protected $q;
+
+    public function status(){
+        return ProjetoCnme::status();
+    }
+
     public function index()
     {
         return ProjetoResource::collection(ProjetoCnme::paginate(25));   
@@ -279,5 +288,43 @@ class ProjetoController extends Controller
             return response()->json(
                 array('message' => "Referência equipamento/projeto não encontrada") , 422);
         }
+    }
+
+    public function search(Request $request){
+        $list = ProjetoCnme::query();
+        if($request->has('status')){
+            $list = $list->orWhere('status',$request->status);
+        }
+
+        if($request->has('q')){
+            $this->q = $request->q; 
+
+            $list = $list->orWhere('descricao','ilike','%'.$request->q.'%');
+
+
+
+            $list =  $list->orWhereHas('unidade', function ($query) {
+                $query->orWhere('nome', 'ilike', '%'.$this->q.'%');
+            });
+        }
+
+        if($request->has('atrasadas')){
+
+            $list = $list->orWhereHas('etapas', function ($query) {
+                $query->where('status',Etapa::STATUS_EXECUCAO)
+                        ->whereNull('data_fim')
+                        ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
+            });
+
+            $list = $list->orWhereHas('etapas.tarefas', function ($query) {
+                
+                $query->where('status', Tarefa::STATUS_EXECUCAO)
+                    ->whereNull('data_fim')
+                    ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
+                    
+            });
+        }
+
+        return ProjetoResource::collection($list->paginate(25));
     }
 }

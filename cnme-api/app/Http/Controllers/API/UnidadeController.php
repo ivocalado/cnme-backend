@@ -17,11 +17,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UnidadeController extends Controller
 {
+
+    /**
+     * Retornar polos sem projeto
+     */
+    public function polosNovos(){
+        return UnidadeResource::collection(Unidade::doesnthave('projetoCnme')->where('classe', Unidade::CLASSE_POLO)->paginate(25));
+    }
+
     public function index()
     {
         return UnidadeResource::collection(Unidade::paginate(25));
     }
-
     
     public function store(Request $request)
     {

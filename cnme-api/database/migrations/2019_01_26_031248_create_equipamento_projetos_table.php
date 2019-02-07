@@ -25,7 +25,7 @@ class CreateEquipamentoProjetosTable extends Migration
             $table->string('observacao')->nullable();
             $table->string('detalhes',255)->nullable();
 
-            $table->string('status',20);
+            $table->string('status',20)->nullable();
 
             $table->timestamps();
         });

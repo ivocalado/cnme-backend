@@ -16,15 +16,20 @@ use App\Http\Resources\EquipamentoProjetoResource;
 
 class EtapaController extends Controller
 {
+
+    public function status(){
+        return Etapa::status();
+    }
+
+    public function tipos(){
+        return Etapa::tipos();
+    }
     
     public function index()
     {
-
-        return EtapaResource::collection(Etapa::paginate(25));
-        
+        return EtapaResource::collection(Etapa::paginate(25));  
     }
 
-   
     public function store(Request $request)
     {
         $etapa = new Etapa();
