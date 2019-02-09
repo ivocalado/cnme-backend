@@ -18,6 +18,7 @@ class EquipamentoResource extends JsonResource
             'id' => $this->id,
             'nome' => $this->nome,
             'descricao' => $this->descricao,
+            'fornecedor' => $this->fornecedor,
             'requisitos' => $this->requisitos,
             'tipo_equipamento' => $this->tipoEquipamento
         ];
