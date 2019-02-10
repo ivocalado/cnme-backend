@@ -16,8 +16,8 @@ class ProjetoCnme extends Model
     public const STATUS_CANCELADO = 'CANCELADO';
 
     protected $fillable = [
-        'id','numero', 'status','descricao','unidade_id','usuario_id','solicitacao_cnme_id','data_criacao'
-        ,'data_finalizacao_prevista'
+        'id','numero', 'status','descricao','unidade_id','usuario_id','solicitacao_cnme_id',
+        'data_inicio_previsto','data_fim_previsto','data_inicio','data_fim'
     ];
 
     public static function status(){
@@ -61,6 +61,12 @@ class ProjetoCnme extends Model
         'usuario_id' => 'required|integer',
         'unidade_id' => 'required|integer',
         'solicitacao_cnme_id' => 'nullable|integer',
+        'data_inicio_previsto' => 'required|date',
+        'data_fim_previsto' => 'required|date',
+        'data_inicio' => 'nullable|date',
+        'data_fim' => 'nullable|date',
+        
+
        
     ];
 
