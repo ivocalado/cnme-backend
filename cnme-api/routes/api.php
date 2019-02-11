@@ -113,6 +113,7 @@ Route::get('equipamentos/e/pesquisar','API\EquipamentoController@search');
  * DELETE   /api/kits/{kitId}/remove-equipamento/{equipamentoId}        * Remove um equipamento específico
  */
 Route::apiResource('kits', 'API\KitController');
+Route::get('kits/{kitId}/diffKit/equipamentos','API\KitController@diffKit');
 Route::post('kits/{kitId}/add-equipamento/{equipamentoId}', 'API\KitController@addEquipamento');
 Route::post('kits/{kitId}/add-equipamentos', 'API\KitController@addEquipamentoList');
 Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitController@removeEquipamento');
@@ -136,6 +137,8 @@ Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitControl
 
 Route::apiResource('projeto-cnme', 'API\ProjetoController');
 Route::get('projeto-cnme/p/status','API\ProjetoController@status');
+
+Route::post('projeto-cnme/criar','API\ProjetoController@store');
 Route::post('projeto-cnme/{projetoId}/add-equipamento/{equipamentoId}','API\ProjetoController@addEquipamento');
 Route::post('projeto-cnme/{projetoId}/add-equipamentos','API\ProjetoController@addEquipamentoList');
 Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId}','API\ProjetoController@removeEquipamento');

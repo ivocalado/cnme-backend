@@ -34,9 +34,10 @@ class ProjetoController extends Controller
    
     public function store(Request $request)
     {
-        DB::beginTransaction();
 
         try {
+            DB::beginTransaction();
+
             $projeto = $request->has('id') ? ProjetoCnme::find($request->id) : new ProjetoCnme();
             $projetoData = $request->all();
     
@@ -50,6 +51,7 @@ class ProjetoController extends Controller
             }
     
             $projeto->fill($projetoData);
+            $projeto->status = ProjetoCnme::STATUS_CRIADO;
             $projeto->save();
             DB::commit();
 
@@ -80,9 +82,9 @@ class ProjetoController extends Controller
    
     public function update(Request $request, $id)
     {
-        DB::beginTransaction();
-
+       
         try {
+            DB::beginTransaction();
             $projeto = ProjetoCnme::find($id);
             $projetoData = $request->all();
     
@@ -107,9 +109,8 @@ class ProjetoController extends Controller
     
     public function destroy($id)
     {
-        DB::beginTransaction();
-
         try {
+            DB::beginTransaction();
             $projeto = ProjetoCnme::find($id);
 
             if(isset($projeto->solicitacao_cnme_id)){
@@ -122,8 +123,6 @@ class ProjetoController extends Controller
             DB::commit();
 
             return response(null,204);
-
-
         }catch(\Exception $e){
             DB::rollback();
 
@@ -138,9 +137,17 @@ class ProjetoController extends Controller
     public function addKit(Request $request, $projetoId, $kitId){
         
         try{
+
+
+            DB::beginTransaction();
             $kit = Kit::find($kitId);
             $equipamentos = $kit->equipamentos;
             $projeto = ProjetoCnme::find($projetoId);
+
+            if(!isset($projeto) || !isset($kit)){
+                return response()->json(
+                    array('message' => "Referências inválidas.") , 422);
+            }
 
             if(isset($projeto->kit)){
                 return response()->json(
@@ -151,14 +158,18 @@ class ProjetoController extends Controller
                 $equipamentoProjeto = new EquipamentoProjeto();
                 $equipamentoProjeto->equipamento()->associate($q);
                 $equipamentoProjeto->projetoCnme()->associate($projeto);
-                $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PROJETO;
+                $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PLANEJADO;
 
                 $equipamentoProjeto->save();
             }
 
             $projeto->kit()->associate($kit);
+            if($projeto->status === ProjetoCnme::STATUS_CRIADO)
+                $projeto->status = ProjetoCnme::STATUS_PLANEJAMENTO;
+
             $projeto->save();
-            
+            DB::commit();
+
             return new ProjetoResource($projeto);
         }catch(\Exception $e){
             DB::rollback();
@@ -218,11 +229,16 @@ class ProjetoController extends Controller
             $equipamentoProjeto = new EquipamentoProjeto();
             $equipamentoProjeto->equipamento()->associate($equipamento);
             $equipamentoProjeto->projetoCnme()->associate($projeto);
-            $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PROJETO;
+            $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PLANEJADO;
             $equipamentoProjeto->observacao = $request->observacao;
             $equipamentoProjeto->detalhes = $request->detalhes;
     
             $equipamentoProjeto->save();
+
+            if($projeto->status === ProjetoCnme::STATUS_CRIADO)
+                $projeto->status = ProjetoCnme::STATUS_PLANEJAMENTO;
+            
+            $projeto->save();
 
             return new ProjetoResource($projeto);
         }else{
@@ -254,10 +270,15 @@ class ProjetoController extends Controller
                 $equipamentoProjeto = new EquipamentoProjeto();
                 $equipamentoProjeto->equipamento()->associate($equipamento);
                 $equipamentoProjeto->projetoCnme()->associate($projeto);
-                $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PROJETO;
+                $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PLANEJADO;
                
         
                 $equipamentoProjeto->save();
+
+                if($projeto->status === ProjetoCnme::STATUS_CRIADO)
+                    $projeto->status = ProjetoCnme::STATUS_PLANEJAMENTO;
+                
+                $projeto->save();
             }
 
             DB::commit();

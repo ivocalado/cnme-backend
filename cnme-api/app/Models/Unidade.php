@@ -16,7 +16,7 @@ class Unidade extends Model
     public const CLASSE_EMPRESA = 'empresa';
 
     protected $fillable = [
-        'id','nome','classe', 'email','email_institucional','descricao', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
+        'id','nome', 'email','email_institucional','descricao', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
     ];
 
     public function projetoCnme(){

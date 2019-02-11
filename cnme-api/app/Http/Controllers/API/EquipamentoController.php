@@ -9,6 +9,7 @@ use App\Models\Equipamento;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\Kit;
 
 class EquipamentoController extends Controller
 {
@@ -141,7 +142,6 @@ class EquipamentoController extends Controller
         }
 
         return EquipamentoResource::collection($list->orderBy('nome')->paginate(25));
-
-
     }
+
 }

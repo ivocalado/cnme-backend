@@ -21,13 +21,12 @@ class ProjetoResource extends JsonResource
             'descricao' => $this->descricao,
             'unidade' => $this->unidade,
             'usuario' => new UserResource($this->usuario),
-            //'solicitacao_cnme' => isset($this->solicitacaoCnme)?$this->solicitacaoCnme->id:null,
             'kit_id' => isset($this->kit)?$this->kit->id:null,
             'equipamentos_projeto' =>   $this->equipamentoProjetos,
             'data_inicio' => (string)$this->data_inicio,
             'data_fim' => (string)$this->data_fim,
-            'data_inicio_prevista' => (string)$this->data_inicio_prevista,
-            'data_fim_realizada' => (string)$this->data_fim_realizada,
+            'data_inicio_previsto' => (string)$this->data_inicio_previsto,
+            'data_fim_previsto' => (string)$this->data_fim_previsto,
         ];
     }
 }

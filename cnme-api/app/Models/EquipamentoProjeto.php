@@ -7,11 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class EquipamentoProjeto extends Model
 {
 
-    public const STATUS_DISPONIVEL = "DISPONIVEL";
-    public const STATUS_PROJETO = "PROJETO";
+    public const STATUS_PLANEJADO = "PLANEJADO";
+    public const STATUS_ENVIADO = "ENVIADO";
+    public const STATUS_ENTREGUE = "ENTREGUE";
+    public const STATUS_INSTALADO = "INSTALADO";
+    public const STATUS_ATIVADO = "ATIVADO";
 
     protected $fillable = ['detalhes','observacao','status','equipamento_id','projeto_cnme_id'];
 
+
+    public static function status(){
+        return [
+            EquipamentoProjeto::STATUS_PLANEJADO,
+            EquipamentoProjeto::STATUS_ENVIADO,
+            EquipamentoProjeto::STATUS_ENTREGUE,
+            EquipamentoProjeto::STATUS_INSTALADO,
+            EquipamentoProjeto::STATUS_ATIVADO
+        ];
+    }
 
     public function equipamento(){
         return $this->belongsTo(Equipamento::class); 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Illuminate\Validation\Rule;
 
 class ProjetoCnme extends Model
 {
@@ -11,6 +12,7 @@ class ProjetoCnme extends Model
     public const STATUS_CRIADO = 'CRIADO';/**Projeto criado mas sem o planejamento das entregas */
     public const STATUS_PLANEJAMENTO = 'PLANEJAMENTO';/**Projeto iniciado em planejamento mas equipamentos não foram enviados */
     public const STATUS_ENVIADO = 'ENVIADO';//Planejamento realizado e todos os equipamentos enviados;
+    public const STATUS_ENTREGUE = 'ENTREGUE';//Equipamentos entregues;
     public const STATUS_INSTALADO = 'INSTALADO';//Produto entregue e instalado
     public const STATUS_FINALIZADO = 'FINALIZADO';//Instalado e ativado para operação
     public const STATUS_CANCELADO = 'CANCELADO';
@@ -25,6 +27,7 @@ class ProjetoCnme extends Model
             ProjetoCnme::STATUS_CRIADO, 
             ProjetoCnme::STATUS_PLANEJAMENTO, 
             ProjetoCnme::STATUS_ENVIADO, 
+            ProjetoCnme::STATUS_ENTREGUE, 
             ProjetoCnme::STATUS_INSTALADO, 
             ProjetoCnme::STATUS_FINALIZADO, 
             ProjetoCnme::STATUS_CANCELADO];
@@ -56,7 +59,6 @@ class ProjetoCnme extends Model
 
     public $rules = [
         'numero'    =>  'required|unique:projeto_cnmes|max:20',
-        'status'    =>  'required',
         'descricao' =>  'required',
         'usuario_id' => 'required|integer',
         'unidade_id' => 'required|integer',
@@ -64,10 +66,7 @@ class ProjetoCnme extends Model
         'data_inicio_previsto' => 'required|date',
         'data_fim_previsto' => 'required|date',
         'data_inicio' => 'nullable|date',
-        'data_fim' => 'nullable|date',
-        
-
-       
+        'data_fim' => 'nullable|date',       
     ];
 
     public $messages = [

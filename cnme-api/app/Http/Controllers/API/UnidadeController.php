@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use App\Models\TipoUnidade;
 
 class UnidadeController extends Controller
 {
@@ -65,6 +66,9 @@ class UnidadeController extends Controller
                     $unidade->localidade()->associate($localidade);
                 }
             }
+
+            $tipoUnidade = TipoUnidade::find($request->tipo_unidade_id);
+            $unidade->classe = $tipoUnidade->classe;
     
             $unidade->fill($unidadeData);
             $unidade->save();

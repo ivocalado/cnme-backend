@@ -167,4 +167,16 @@ class KitController extends Controller
                 array('message' => 'Equipamento não está inserido no kit') , 422);
         }
     }
+
+    public function diffKit(Request $request, $kitId){
+        $kit = Kit::with('equipamentos')->find($kitId);
+
+       
+        $equipamentosIds  = $kit->equipamentos->pluck('id');
+
+        return response()->json(
+            Equipamento::whereNotIn('id',$equipamentosIds)->paginate(25)
+        );
+
+    }
 }
