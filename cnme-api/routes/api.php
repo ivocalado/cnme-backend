@@ -144,6 +144,8 @@ Route::post('projeto-cnme/{projetoId}/add-equipamentos','API\ProjetoController@a
 Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId}','API\ProjetoController@removeEquipamento');
 Route::post('projeto-cnme/{projetoId}/add-kit/{kitId}','API\ProjetoController@addKit');
 Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoController@removeKit');
+
+Route::get('projeto-cnme/{projetoId}/equipamentos/status/{status}', 'API\ProjetoController@equipamentosPorStatus');
 Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
 Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
 
@@ -152,9 +154,14 @@ Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
 
 
 Route::apiResource('etapas', 'API\EtapaController');
+
+Route::post('projeto-cnme/{projetoId}/etapas/envio/','API\EtapaController@envio');
+Route::post('projeto-cnme/{projetoId}/etapas/instalacao/','API\EtapaController@instalacao');
+Route::post('projeto-cnme/{projetoId}/etapas/ativacao/','API\EtapaController@ativacao');
+
 Route::get('etapas/e/status','API\EtapaController@status');
 Route::get('etapas/e/tipos','API\EtapaController@tipos');
-Route::post('etapas/{etapaId}/add-tarefa','API\EtapaController@addTarefa')
+Route::post('etapas/{etapaId}/add-tarefa-envio','API\EtapaController@addTarefaEnvio')
     ->name('etapa-addTarefa');
 Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa')
     ->name('etapa-removeTarefa');
@@ -167,14 +174,14 @@ Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos')
 
 
 /**
- * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-kit                                        * Adiciona na tarefa todos os equipamentos do projeto naquela tarefa
+ * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamentos-all                                        * Adiciona na tarefa todos os equipamentos do projeto naquela tarefa
  * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}         * Adiciona na tarefa um equipamento que já esteja associado ao projeto
  * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento-ids                            * Sincroniza na tarefa os equipamentos enviados como parâmetro ids. Ex.:  [1,3,4]  
  * DELETE   /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamento/{equipamentoProjetoId}      * Remove da tarefa um equipamento relacionado ao projeto
  * DELETE   /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos                            * Remove todos os equipamentos da tarefa
  */
 
-Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-kit','API\TarefaController@addKitAll');
+Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamentos-all','API\TarefaController@addEquipamentosAll');
 Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}','API\TarefaController@addEquipamentoProjeto');
 Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento-ids','API\TarefaController@syncEquipamentosProjeto');
 

@@ -15,6 +15,7 @@ use App\Models\EquipamentoProjeto;
 use App\Models\Kit;
 use App\Models\Etapa;
 use App\Models\Tarefa;
+use App\Http\Resources\EquipamentoProjetoResource;
 
 class ProjetoController extends Controller
 {
@@ -310,6 +311,27 @@ class ProjetoController extends Controller
                 array('message' => "Referência equipamento/projeto não encontrada") , 422);
         }
     }
+
+    public function equipamentosPorStatus(Request $request, $projetoId, $status){
+        
+        $status =  strtoupper($status);
+
+        $arrayStatus =  EquipamentoProjeto::status();
+
+        if(!in_array($status, $arrayStatus)){
+            return response()->json(
+                array('message' => "Consulta por status desconhecido. Status:(".implode("|",$arrayStatus).")") , 422);
+        }
+
+        $lista = EquipamentoProjeto::where([
+            ['projeto_cnme_id', $projetoId],
+            ['status', $status]
+        ])->get();
+
+        return EquipamentoProjetoResource::collection($lista);  
+        
+    }
+
 
     public function search(Request $request){
         $list = ProjetoCnme::query();

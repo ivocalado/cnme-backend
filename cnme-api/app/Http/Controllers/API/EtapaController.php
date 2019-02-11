@@ -56,6 +56,43 @@ class EtapaController extends Controller
         return new EtapaResource($etapa);
     }
 
+    public function envio(Request $request, $projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        if(!isset($projeto)){
+            return response()->json(
+                array('message' => 'Projeto não encontrado.') , 422);
+        }
+
+        if($projeto->equipamentoProjetos->isEmpty()){
+            return response()->json(
+                array('message' => 'Projeto não possui equipamentos planejados para envio. Adicione-os antes de planejar o envio.') , 422);
+        }
+
+        $etapa = new Etapa();
+        $etapaData = $request->all();
+        $etapaData["status"] = Etapa::STATUS_ABERTA;
+        $etapaData["tipo"] = Etapa::TIPO_ENVIO;
+        $etapaData["projeto_cnme_id"] = $projeto->id;
+
+        $validator = Validator::make($etapaData, $etapa->rules, $etapa->messages);
+
+        if ($validator->fails()) {
+            return response()->json(
+                array(
+                "messages" => $validator->errors()
+                ), 422); 
+        }
+
+        $etapa->fill($etapaData);
+
+        
+        $etapa->save();
+        
+        return new EtapaResource($etapa);
+
+    }
+
     
     public function show($id)
     {
@@ -109,13 +146,15 @@ class EtapaController extends Controller
         
     }
 
-    public function addTarefa(Request $request, $id){
+    public function addTarefaEnvio(Request $request, $etapaId){
         DB::beginTransaction();
 
-
         try{
-            $etapa = Etapa::find($id);
+            $etapa = Etapa::find($etapaId);
+
+            $projeto = $etapa->projetoCnme;
             $tarefaData = $request->all();
+            $tarefaData["status"] = Tarefa::STATUS_ABERTA;
 
             $tarefa = new Tarefa();
             $validator = Validator::make($tarefaData, $tarefa->rules, $tarefa->messages);
@@ -155,7 +194,7 @@ class EtapaController extends Controller
 
         if(!isset($etapa)){
             return response()->json(
-                array('message' => 'A tarefa não existe.') , 500);
+                array('message' => 'A tarefa não existe.') , 422);
         }
 
         return response()->json(
@@ -168,14 +207,14 @@ class EtapaController extends Controller
 
         if(!isset($etapa)){
             return response()->json(
-                array('message' => 'A etapa não existe.') , 404);
+                array('message' => 'A etapa não existe.') , 422);
         }
 
         $tarefa = Tarefa::find($idTarefa);
 
         if(!isset($tarefa)){
             return response()->json(
-                array('message' => 'A tarefa não existe.') , 500);
+                array('message' => 'A tarefa não existe.') , 422);
         }else{
             $tarefa->delete();
             return response(null, 204);
@@ -188,14 +227,14 @@ class EtapaController extends Controller
 
         if(!isset($etapa)){
             return response()->json(
-                array('message' => 'A etapa não existe.') , 404);
+                array('message' => 'A etapa não existe.') , 422);
         }
 
         $tarefa = Tarefa::find($idTarefa);
 
         if(!isset($tarefa)){
             return response()->json(
-                array('message' => 'A tarefa não existe.') , 404);
+                array('message' => 'A tarefa não existe.') , 422);
         }
 
         $tarefaData = $request->all();
@@ -216,7 +255,7 @@ class EtapaController extends Controller
 
         if(!isset($etapa)){
             return response()->json(
-                array('message' => 'A etapa não existe.') , 404);
+                array('message' => 'A etapa não existe.') , 422);
         }
 
         return EquipamentoProjetoResource::collection($etapa->equipamentos());

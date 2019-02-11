@@ -17,13 +17,21 @@ class EquipamentoProjeto extends Model
 
 
     public static function status(){
-        return [
-            EquipamentoProjeto::STATUS_PLANEJADO,
+        
+        return array( 
+            EquipamentoProjeto::STATUS_PLANEJADO, 
             EquipamentoProjeto::STATUS_ENVIADO,
             EquipamentoProjeto::STATUS_ENTREGUE,
             EquipamentoProjeto::STATUS_INSTALADO,
             EquipamentoProjeto::STATUS_ATIVADO
-        ];
+        );
+        // return [
+        //     EquipamentoProjeto::STATUS_PLANEJADO,
+        //     EquipamentoProjeto::STATUS_ENVIADO,
+        //     EquipamentoProjeto::STATUS_ENTREGUE,
+        //     EquipamentoProjeto::STATUS_INSTALADO,
+        //     EquipamentoProjeto::STATUS_ATIVADO
+        // ];
     }
 
     public function equipamento(){

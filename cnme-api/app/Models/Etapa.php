@@ -8,7 +8,7 @@ use App\User;
 class Etapa extends Model
 {
     public const STATUS_ABERTA = 'ABERTA';
-    public const STATUS_EXECUCAO = 'EXECUCAO';
+    public const STATUS_ANDAMENTO = 'ANDAMENTO';
     public const STATUS_CONCLUIDA = 'CONCLUIDA';
     public const STATUS_CANCELADA = 'CANCELADA';
 
@@ -24,7 +24,7 @@ class Etapa extends Model
     public static function status(){
         return [
             Etapa::STATUS_ABERTA,
-            Etapa::STATUS_EXECUCAO,
+            Etapa::STATUS_ANDAMENTO,
             Etapa::STATUS_CONCLUIDA,
             Etapa::STATUS_CANCELADA,
         ];

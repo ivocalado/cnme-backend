@@ -13,7 +13,7 @@ class Tarefa extends Model
     public const STATUS_CANCELADA = 'CANCELADA';
 
     protected $fillable = [
-        'nome','descricao','status','data_inicio_prevista','data_fim_prevista','data_inicio',
+        'nome','descricao','numero','status','link_externo','data_inicio_prevista','data_fim_prevista','data_inicio',
         'data_fim','etapa_id','usuario_id','responsavel_id','unidade_responsavel_id'
     ];
 
@@ -44,7 +44,7 @@ class Tarefa extends Model
         'usuario_id' => 'required|integer',
         'etapa_id' => 'required|integer',
         'responsavel_id' => 'integer',
-        'unidade_responsavel_id' => 'integer',
+        'unidade_responsavel_id' => 'integer|required',
         'data_inicio' => 'nullable|date',
         'data_fim' => 'nullable|date',
         'data_inicio_prevista' => 'required|date',

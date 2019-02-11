@@ -10,11 +10,12 @@ use App\Models\Tarefa;
 use Illuminate\Support\Facades\Log;
 use App\Models\EquipamentoProjeto;
 use App\Http\Resources\TarefaResource;
+use App\Http\Resources\EquipamentoProjetoResource;
 
 class TarefaController extends Controller
 {
    
-    public function addKitAll(Request $request, $projetoId, $tarefaId)
+    public function addEquipamentosAll(Request $request, $projetoId, $tarefaId)
     {
 
         try{
