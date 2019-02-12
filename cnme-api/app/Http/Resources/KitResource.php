@@ -16,6 +16,7 @@ class KitResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'nome' => $this->nome,
             'descricao' => $this->descricao,
             'usuario' =>  $this->usuario,
             'equipamentos' => $this->equipamentos
