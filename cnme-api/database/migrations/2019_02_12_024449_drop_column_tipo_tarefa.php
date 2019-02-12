@@ -14,8 +14,8 @@ class DropColumnTipoTarefa extends Migration
     public function up()
     {
         Schema::table('tarefas', function($table){
-          
-            $table->dropColumn('tipo');
+            if(Schema::hasColumn('tarefas', 'tipo'))
+                $table->dropColumn('tipo');
     
         });
     }

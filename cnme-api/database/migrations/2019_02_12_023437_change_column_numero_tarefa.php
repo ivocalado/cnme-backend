@@ -16,7 +16,11 @@ class ChangeColumnNumeroTarefa extends Migration
         // 
         Schema::table('tarefas', function($table){
           
-            $table->string('numero', 30)->nullable()->change();
+            if(Schema::hasColumn('tarefas', 'numero'))
+                $table->string('numero', 30)->nullable()->change();
+            else
+                $table->string('numero', 30)->nullable();
+            
             
         });
     }
