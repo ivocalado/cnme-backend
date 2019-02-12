@@ -785,7 +785,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"1\",\n\t\"unidade_responsavel_id\": \"10\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\",\n\t\"equipamentos_projeto_id\": [27,28,29,30,31]\n}"
+							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"1\",\n\t\"unidade_responsavel_id\": \"10\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\",\n\t\"equipamentos_projeto_ids\": [27,28,29,30,31]\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio",
@@ -1501,7 +1501,7 @@
 					"name": "Tipo Equipamento",
 					"item": [
 						{
-							"name": "POST/api/tipoequipamentos",
+							"name": "GET/api/tipoequipamentos",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1935,7 +1935,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ids\": [2,3,4,5,6,7]\n}"
+							"raw": "{\n\t\"ids\": [1,2,3,4]\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
@@ -2052,6 +2052,37 @@
 								"3",
 								"add-kit",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/kits/1/remove-equipamentos",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [2,3]\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/1/remove-equipamentos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1",
+								"remove-equipamentos"
 							]
 						}
 					},

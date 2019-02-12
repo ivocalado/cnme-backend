@@ -117,6 +117,7 @@ Route::get('kits/{kitId}/diffKit/equipamentos','API\KitController@diffKit');
 Route::post('kits/{kitId}/add-equipamento/{equipamentoId}', 'API\KitController@addEquipamento');
 Route::post('kits/{kitId}/add-equipamentos', 'API\KitController@addEquipamentoList');
 Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitController@removeEquipamento');
+Route::delete('kits/{kitId}/remove-equipamentos', 'API\KitController@removeEquipamentoList');
 
 
 

@@ -168,6 +168,33 @@ class KitController extends Controller
         }
     }
 
+    public function removeEquipamentoList(Request $request, $kitId){
+
+
+        $kit = Kit::find($kitId);
+        if(!isset($kit)){
+            return response()->json(
+                array('message' => 'Kit não encontrado.') , 422);
+        }
+
+        if(isset($request['ids'])){
+            $equipamentoIds = $request['ids'];
+            $kit->equipamentos()->detach($equipamentoIds);
+
+            $kit->save();
+        }else{
+            return response()->json(
+                array('message' => 'Defina os equipamentos a serem removidos.') , 422);
+        }
+
+        return new KitResource($kit);
+        
+
+
+        
+        
+    }
+
     public function diffKit(Request $request, $kitId){
         $kit = Kit::with('equipamentos')->find($kitId);
 
