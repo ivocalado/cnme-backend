@@ -161,16 +161,13 @@ Route::post('projeto-cnme/{projetoId}/etapas/ativacao/','API\EtapaController@ati
 
 Route::get('etapas/e/status','API\EtapaController@status');
 Route::get('etapas/e/tipos','API\EtapaController@tipos');
-Route::post('etapas/{etapaId}/add-tarefa-envio','API\EtapaController@addTarefaEnvio')
-    ->name('etapa-addTarefa');
-Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa')
-    ->name('etapa-removeTarefa');
-Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@updateTarefa')
-    ->name('etapa-updateTarefa');
-Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas')
-    ->name('etapa-tarefas');
-Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos')
-    ->name('etapa-equipamentos');
+
+Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-envio','API\EtapaController@addTarefaEnvio');
+
+Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa');
+Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@updateTarefa');
+Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas');
+Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos');
 
 
 /**

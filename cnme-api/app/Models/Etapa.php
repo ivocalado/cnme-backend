@@ -16,9 +16,12 @@ class Etapa extends Model
     public const TIPO_INSTALACAO = 'INSTALACAO';
     public const TIPO_ATIVACAO = 'ATIVACAO';
 
+
+    public const DESC_ETAPA_ENVIO = 'Etapa de envio dos equipamentos';
+
     protected $fillable = [
-       'status','descricao','tipo','usuario_id','projeto_cnme_id','data_inicio'
-        ,'data_fim','data_inicio_prevista','data_fim_prevista'
+       'status','descricao','tipo','usuario_id','projeto_cnme_id'
+       //'data_inicio','data_fim','data_inicio_prevista','data_fim_prevista'
     ];
 
     public static function status(){
@@ -69,11 +72,7 @@ class Etapa extends Model
         'status'    =>  'required',
         'tipo' =>  'required',
         'usuario_id' => 'required|integer',
-        'projeto_cnme_id' => 'required|integer',
-        'data_inicio' => 'nullable|date',
-        'data_fim' => 'nullable|date',
-        'data_inicio_prevista' => 'required|date',
-        'data_fim_prevista' => 'required|date',
+        'projeto_cnme_id' => 'required|integer'
        
     ];
 

@@ -19,14 +19,8 @@ class EtapaResource extends JsonResource
             'descricao' => $this->descricao,
             'status'    => $this->status,
             'tipo'      => $this->tipo,
-            //'usuario'          => new UserResource($this->usuario),
             'usuario'          => $this->usuario,
-            //'projeto'          => new ProjetoResource($this->projetoCnme),
             'projeto'          => $this->projetoCnme,
-            'data_inicio_prevista' => (string)$this->data_inicio_prevista,
-            'data_fim_prevista' => (string)$this->data_fim_prevista,
-            'data_inicio' => (string)$this->data_inicio,
-            'data_fim' => (string)$this->data_fim,
             'tarefas' => $this->tarefas
 
         ];

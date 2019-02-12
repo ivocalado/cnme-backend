@@ -22,7 +22,7 @@ class ProjetoResource extends JsonResource
             'unidade' => $this->unidade,
             'usuario' => new UserResource($this->usuario),
             'kit_id' => isset($this->kit)?$this->kit->id:null,
-            'equipamentos_projeto' =>   $this->equipamentoProjetos,
+            'equipamentos_projeto' =>  EquipamentoProjetoResource::collection($this->equipamentoProjetos),
             'data_inicio' => (string)$this->data_inicio,
             'data_fim' => (string)$this->data_fim,
             'data_inicio_previsto' => (string)$this->data_inicio_previsto,

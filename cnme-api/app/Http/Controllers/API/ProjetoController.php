@@ -357,11 +357,12 @@ class ProjetoController extends Controller
 
     public function atrasados(){
         $list = ProjetoCnme::query();
-        $list = $list->orWhereHas('etapas', function ($query) {
-            $query->where('status',Etapa::STATUS_EXECUCAO)
-                    ->whereNull('data_fim')
-                    ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
-        });
+
+        // $list = $list->orWhereHas('etapas', function ($query) {
+        //     $query->where('status',Etapa::STATUS_EXECUCAO)
+        //             ->whereNull('data_fim')
+        //             ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
+        // });
 
         $list = $list->orWhereHas('etapas.tarefas', function ($query) {
             

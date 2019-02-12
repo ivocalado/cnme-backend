@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Tarefa;
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\EquipamentoProjetoResource;
+use App\Models\EquipamentoProjeto;
+use App\Http\Resources\TarefaResource;
 
 class EtapaController extends Controller
 {
@@ -56,44 +58,6 @@ class EtapaController extends Controller
         return new EtapaResource($etapa);
     }
 
-    public function envio(Request $request, $projetoId){
-        $projeto = ProjetoCnme::find($projetoId);
-
-        if(!isset($projeto)){
-            return response()->json(
-                array('message' => 'Projeto não encontrado.') , 422);
-        }
-
-        if($projeto->equipamentoProjetos->isEmpty()){
-            return response()->json(
-                array('message' => 'Projeto não possui equipamentos planejados para envio. Adicione-os antes de planejar o envio.') , 422);
-        }
-
-        $etapa = new Etapa();
-        $etapaData = $request->all();
-        $etapaData["status"] = Etapa::STATUS_ABERTA;
-        $etapaData["tipo"] = Etapa::TIPO_ENVIO;
-        $etapaData["projeto_cnme_id"] = $projeto->id;
-
-        $validator = Validator::make($etapaData, $etapa->rules, $etapa->messages);
-
-        if ($validator->fails()) {
-            return response()->json(
-                array(
-                "messages" => $validator->errors()
-                ), 422); 
-        }
-
-        $etapa->fill($etapaData);
-
-        
-        $etapa->save();
-        
-        return new EtapaResource($etapa);
-
-    }
-
-    
     public function show($id)
     {
         $etapa = Etapa::find($id);
@@ -146,15 +110,33 @@ class EtapaController extends Controller
         
     }
 
-    public function addTarefaEnvio(Request $request, $etapaId){
+    public function addTarefaEnvio(Request $request, $projetoId){
         DB::beginTransaction();
 
         try{
-            $etapa = Etapa::find($etapaId);
-
-            $projeto = $etapa->projetoCnme;
+            
+            $projeto = ProjetoCnme::find($projetoId);
+            
+            if(isset($request['etapa_id'])){
+                $etapa = Etapa::find($request['etapa_id']);
+            }else{
+                $etapa = new Etapa();
+                $etapa->projetoCnme()->associate($projeto);
+                $etapa->usuario()->associate($projeto->usuario);
+                $etapa->status = Etapa::STATUS_ABERTA;
+                $etapa->tipo = Etapa::TIPO_ENVIO;
+                $etapa->descricao = Etapa::DESC_ETAPA_ENVIO;
+    
+                $etapa->save();
+            }
+            
             $tarefaData = $request->all();
+            
+            if(!isset($tarefaData['nome']))
+                $tarefaData["nome"] = Tarefa::DESC_TAREFA_ENVIO;
+
             $tarefaData["status"] = Tarefa::STATUS_ABERTA;
+            $tarefaData["etapa_id"] = $etapa->id;
 
             $tarefa = new Tarefa();
             $validator = Validator::make($tarefaData, $tarefa->rules, $tarefa->messages);
@@ -169,14 +151,16 @@ class EtapaController extends Controller
             $tarefa->fill($tarefaData);
 
             $etapa->tarefas()->save($tarefa);
+
+            $equipamentosProjetoIds = $request["equipamentos_projeto_id"];
+
             
+            $tarefa->equipamentosProjetos()->attach($equipamentosProjetoIds);
+            $tarefa->save();
+
             DB::commit();
 
-            return response()->json(
-                array(
-                    "data" => $tarefa
-                )
-            );
+            return new TarefaResource($tarefa);
         }catch(\Exception $e){
             DB::rollback();
 

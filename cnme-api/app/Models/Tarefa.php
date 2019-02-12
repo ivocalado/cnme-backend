@@ -12,6 +12,8 @@ class Tarefa extends Model
     public const STATUS_CONCLUIDA = 'CONCLUIDA';
     public const STATUS_CANCELADA = 'CANCELADA';
 
+    public const DESC_TAREFA_ENVIO = "Envio dos equipamentos";
+
     protected $fillable = [
         'nome','descricao','numero','status','link_externo','data_inicio_prevista','data_fim_prevista','data_inicio',
         'data_fim','etapa_id','usuario_id','responsavel_id','unidade_responsavel_id'
@@ -39,6 +41,8 @@ class Tarefa extends Model
 
     public $rules = [
         'nome'    =>  'required|max:255',
+        'numero' => 'max:30',
+        'link_externo' => 'max:255',
         'status'    =>  'required:max:50',
         'usuario_id' => 'required|integer',
         'etapa_id' => 'required|integer',
