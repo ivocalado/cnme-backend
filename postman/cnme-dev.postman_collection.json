@@ -2006,6 +2006,56 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/3/remove-kit/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"3",
+								"remove-kit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/projeto-cnme/1/add-kit/1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/3/add-kit/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"3",
+								"add-kit",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -2694,56 +2744,6 @@
 						"3",
 						"remove-equipamento",
 						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/3/remove-kit/1",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"projeto-cnme",
-						"3",
-						"remove-kit",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST/api/projeto-cnme/1/add-kit/1",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/3/add-kit/1",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"projeto-cnme",
-						"3",
-						"add-kit",
-						"1"
 					]
 				}
 			},
