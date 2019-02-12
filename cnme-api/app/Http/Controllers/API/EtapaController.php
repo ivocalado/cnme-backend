@@ -116,6 +116,16 @@ class EtapaController extends Controller
         try{
             
             $projeto = ProjetoCnme::find($projetoId);
+
+            if(!isset($projeto)){
+                return response()->json(
+                    array('message' => 'O projeto não existe.') , 422);
+            }
+
+            if(!isset($request["equipamentos_projeto_ids"])){
+                return response()->json(
+                    array('message' => 'Defina os equipamentos do projeto que serão adicionados.') , 422);
+            }
             
             if(isset($request['etapa_id'])){
                 $etapa = Etapa::find($request['etapa_id']);
@@ -152,7 +162,7 @@ class EtapaController extends Controller
 
             $etapa->tarefas()->save($tarefa);
 
-            $equipamentosProjetoIds = $request["equipamentos_projeto_id"];
+            $equipamentosProjetoIds = $request["equipamentos_projeto_ids"];
 
             
             $tarefa->equipamentosProjetos()->attach($equipamentosProjetoIds);
