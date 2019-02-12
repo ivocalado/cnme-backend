@@ -14,7 +14,7 @@ class Kit extends Model
     
 
     protected $fillable = [
-        'nome','descricao','versao','status','usuario_id','data_inicio','data_fim'
+        'nome','descricao','usuario_id'
      ];
 
      public function usuario(){
@@ -29,12 +29,8 @@ class Kit extends Model
     public $rules = [
         'nome'    =>  'required|max:255',
         'descricao'    =>  'nullable|max:255',
-        'status'    =>  'required:max:100',
-        'versao'    =>  'nullable:max:100',
-
-        'usuario_id' => 'required|integer',
-        'data_inicio' => 'required|date',
-        'data_fim' => 'nullable|date'
+        'usuario_id' => 'required|integer'
+       
        
        
     ];

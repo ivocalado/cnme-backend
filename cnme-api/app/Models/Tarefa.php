@@ -40,7 +40,6 @@ class Tarefa extends Model
     public $rules = [
         'nome'    =>  'required|max:255',
         'status'    =>  'required:max:50',
-        'tipo'    =>  'required:max:50',
         'usuario_id' => 'required|integer',
         'etapa_id' => 'required|integer',
         'responsavel_id' => 'integer',

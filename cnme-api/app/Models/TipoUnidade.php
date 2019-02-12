@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoUnidade extends Model
 {
+    
     protected $fillable = [
         'nome', 'descricao','classe'
     ];
@@ -22,7 +23,7 @@ class TipoUnidade extends Model
     public $rules = [
         'nome'    =>  'required|unique:tipo_unidades|max:100',
         'descricao'    =>  'nullable|max:255',
-        'classe'    =>  'nullable|max:20'
+        'classe'    =>  'required|max:20'
     
     ];
 

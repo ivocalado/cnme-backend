@@ -31,7 +31,12 @@ class TipoUnidadeController extends Controller
                 array(
                 "messages" => $validator->errors()
                 ), 422); 
-       }
+        }
+
+        if(!in_array($tipoUnidadeData['classe'], Unidade::classes())){
+            return response()->json(
+                array('message' => 'Classe ('.$tipoUnidadeData['classe'].') não correspondente. Classes('.implode('|', Unidade::classes()).')') , 422);
+        }
 
         $tipoUnidade->fill($tipoUnidadeData);
         $tipoUnidade->save();
@@ -69,6 +74,11 @@ class TipoUnidadeController extends Controller
         }
 
         $tipoUnidadeData = $request->all();
+
+        if(isset($tipoUnidadeData['classe']) && !in_array($tipoUnidadeData['classe'], Unidade::classes())){
+            return response()->json(
+                array('message' => 'Classe ('.$tipoUnidadeData['classe'].') não correspondente. Classes('.implode('|', Unidade::classes()).')') , 422);
+        }
 
         $tipoUnidade->fill($tipoUnidadeData);
         $tipoUnidade->save();

@@ -15,8 +15,18 @@ class Unidade extends Model
     public const CLASSE_POLO = 'polo';
     public const CLASSE_EMPRESA = 'empresa';
 
+    public static function classes(){
+        return [
+            Unidade::CLASSE_ADMIN,
+            Unidade::CLASSE_MEC,
+            Unidade::CLASSE_TVESCOLA,
+            Unidade::CLASSE_POLO,
+            Unidade::CLASSE_EMPRESA,
+        ];
+    }
+
     protected $fillable = [
-        'id','nome', 'email','email_institucional','descricao', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
+        'id','nome', 'email','email_institucional', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
     ];
 
     public function projetoCnme(){
@@ -68,7 +78,7 @@ class Unidade extends Model
         'classe'            =>  'nullable|max:20',
         'diretor'   => 'nullable',
         'telefone'   => 'nullable',
-        'url'   => 'nullable|active_url|max:255',
+        'url'   => 'nullable|url|max:255',
         'tipo_unidade_id' => 'required|integer'
         //'responsavel_id' => 'required|integer'
        

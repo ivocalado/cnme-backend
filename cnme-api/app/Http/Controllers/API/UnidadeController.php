@@ -251,13 +251,13 @@ class UnidadeController extends Controller
         $localidade = Localidade::find($unidade->localidade_id);
         $localidadeData = $request->all();
 
-        $validator = Validator::make($localidadeData, $localidade->rules, $localidade->messages);
-        if ($validator->fails()) {
-            return response()->json(
-                array(
-                "messages" => $validator->errors()
-                ), 422); 
-       }
+    //     $validator = Validator::make($localidadeData, $localidade->rules, $localidade->messages);
+    //     if ($validator->fails()) {
+    //         return response()->json(
+    //             array(
+    //             "messages" => $validator->errors()
+    //             ), 422); 
+    //    }
 
         $localidade->fill($localidadeData);
         $localidade->save();
