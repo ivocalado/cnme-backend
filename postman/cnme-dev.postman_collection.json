@@ -1903,7 +1903,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ids\": [2,3,4,5,6,7]\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/kits/3/add-equipamento/7",
