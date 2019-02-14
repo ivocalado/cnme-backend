@@ -9,15 +9,14 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\KitResource;
 use App\Models\Equipamento;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\EquipamentoResource;
 
 class KitController extends Controller
 {
    
     public function index()
     {
-        return response()->json(
-            Kit::paginate(25)
-        );
+        return KitResource::collection(Kit::paginate(25));
     }
 
     
@@ -38,11 +37,7 @@ class KitController extends Controller
         $kit->fill($kitData);
         $kit->save();
         
-        return response()->json(
-            array(
-                "data" => $kit
-            )
-        );
+        return new KitResource($kit);
     }
 
     
@@ -71,11 +66,7 @@ class KitController extends Controller
         $kit->fill($kitData);
         $kit->save();
 
-        return response()->json(
-            array(
-                "data" => $kit
-            )
-        );
+        return new KitResource($kit);
     }
 
     
@@ -202,7 +193,7 @@ class KitController extends Controller
         $equipamentosIds  = $kit->equipamentos->pluck('id');
 
         return response()->json(
-            Equipamento::whereNotIn('id',$equipamentosIds)->paginate(25)
+             EquipamentoResource::collection(Equipamento::whereNotIn('id',$equipamentosIds)->get())
         );
 
     }

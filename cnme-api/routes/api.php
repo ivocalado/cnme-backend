@@ -111,6 +111,7 @@ Route::get('equipamentos/e/pesquisar','API\EquipamentoController@search');
  * POST     /api/kits/{kitId}/add-equipamento/{equipamentoId}           * Adiciona um equimamento específico ao kit
  * POST     /api/kits/{kitId}/add-equipamentos                          * Adiciona uma lista de equimamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
  * DELETE   /api/kits/{kitId}/remove-equipamento/{equipamentoId}        * Remove um equipamento específico
+ * DELETE   /api/kits/{kitId}/remove-equipamentos        * Remove uma lista de equipamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
  */
 Route::apiResource('kits', 'API\KitController');
 Route::get('kits/{kitId}/diffKit/equipamentos','API\KitController@diffKit');
@@ -133,7 +134,8 @@ Route::delete('kits/{kitId}/remove-equipamentos', 'API\KitController@removeEquip
  *                                                                                                  q(descricao do projeto, nome da unidade), 
  *                                                                                                  status("PLANEJAMENTO",ENVIO,INSTALACAO,ATIVACAO,
  *                                                                                                          FINALIZADO,CANCELADO)
- *                                                                                                  atrasados
+ *                                                                                                  
+ *  GET              /api/projeto-cnme/p/atrasados                                               * Pesquisar por atrasados
  */
 
 Route::apiResource('projeto-cnme', 'API\ProjetoController');

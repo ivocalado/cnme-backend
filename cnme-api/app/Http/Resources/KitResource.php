@@ -19,7 +19,7 @@ class KitResource extends JsonResource
             'nome' => $this->nome,
             'descricao' => $this->descricao,
             'usuario' =>  $this->usuario,
-            'equipamentos' => $this->equipamentos
+            'equipamentos' => EquipamentoResource::collection($this->equipamentos)
         ];
     }
 }
