@@ -336,18 +336,32 @@ class ProjetoController extends Controller
     public function search(Request $request){
         $list = ProjetoCnme::query();
         if($request->has('status')){
-            $list = $list->orWhere('status',$request->status);
+
+            $status =  strtoupper($request->status);
+
+            $arrayStatus =  ProjetoCnme::status();
+
+            if(!in_array($status, $arrayStatus)){
+                return response()->json(
+                    array('message' => "Consulta por status desconhecido. Status:(".implode("|",$arrayStatus).")") , 422);
+            }
+
+
+            $list = $list->where('status',$status);
+
+
         }
 
         if($request->has('q')){
             $this->q = $request->q; 
 
-            $list = $list->orWhere('descricao','ilike','%'.$request->q.'%');
-
-            $list =  $list->orWhereHas('unidade', function ($query) {
-                $query->orWhere('nome', 'ilike', '%'.$this->q.'%');
-                $query->orWhere('codigo_inep', $this->q);
+            $list->where('descricao','ilike','%'.$request->q.'%')
+            ->orWhereHas('unidade', function ($query) {
+                $query->where('nome', 'ilike', '%'.$this->q.'%')
+                        ->orWhere('codigo_inep', $this->q);
             });
+
+           
 
            
         }
@@ -357,12 +371,6 @@ class ProjetoController extends Controller
 
     public function atrasados(){
         $list = ProjetoCnme::query();
-
-        // $list = $list->orWhereHas('etapas', function ($query) {
-        //     $query->where('status',Etapa::STATUS_EXECUCAO)
-        //             ->whereNull('data_fim')
-        //             ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
-        // });
 
         $list = $list->orWhereHas('etapas.tarefas', function ($query) {
             

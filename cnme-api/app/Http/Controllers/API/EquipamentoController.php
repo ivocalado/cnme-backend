@@ -127,6 +127,7 @@ class EquipamentoController extends Controller
 
     public function search(Request $request){
         $list = Equipamento::query();
+        $list->with('tipoEquipamento');
         if($request->has('q')){       
             $list->orWhere("nome", 'ILIKE', '%'.$request->q.'%');
         }
