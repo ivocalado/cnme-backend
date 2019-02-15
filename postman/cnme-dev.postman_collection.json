@@ -2181,6 +2181,38 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "GET/api/usuarios/u/nao-confirmados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/nao-confirmados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"nao-confirmados"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -2308,6 +2340,30 @@
 								"api",
 								"usuarios",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/usuarios/u/tipos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/u/tipos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"u",
+								"tipos"
 							]
 						}
 					},
@@ -3373,6 +3429,41 @@
 						"projeto-cnme",
 						"p",
 						"atrasados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET/api/projeto-cnme/p/pesquisar?status=CRIADO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status=CRIACAO",
+					"host": [
+						"{{HOSTNAME}}"
+					],
+					"path": [
+						"api",
+						"projeto-cnme",
+						"p",
+						"pesquisar"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "CRIACAO"
+						},
+						{
+							"key": "",
+							"value": "Bahia",
+							"disabled": true
+						}
 					]
 				}
 			},
