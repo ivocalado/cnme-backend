@@ -80,12 +80,16 @@ Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
 
 /** USUÁRIOS
  * API      /api/usuarios
+ * API      /api/usuarios/u/status
+ * API      /api/usuarios/u/nao-confirmados
  * GET      /usuarios/u/pesquisar                                      * Pesquisa por nome, cpf e email com o parâmetro q
  * GET      usuarios/check-email-disponivel/{email}                    * Verifica se o email está disponível
  * GET      usuarios/check-cpf-disponivel/{cpf}                        * Verifica se o cpf está disponível
  */
 
 Route::apiResource('usuarios', 'API\UsuarioController');
+Route::get('usuarios/u/tipos','API\UsuarioController@tipos');
+Route::get('usuarios/u/nao-confirmados','API\UsuarioController@searchNaoConfirmados');
 Route::get('usuarios/u/pesquisar','API\UsuarioController@search');
 Route::get('usuarios/check-email-disponivel/{email}','API\UsuarioController@checkEmail');
 Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf');

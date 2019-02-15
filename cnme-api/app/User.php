@@ -14,7 +14,7 @@ class User extends Authenticatable
     public const TIPO_GESTOR = 'gestor';
     public const TIPO_COLABORADOR = 'colaborador';
     public const TIPO_ADMINISTRADOR = 'administrador';
-    public const TIPO_TERCEIRO = 'terceiro';
+    public const TIPO_EXTERNO = 'externo';
 
     use Notifiable;
 
@@ -35,6 +35,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function tipos(){
+        return [
+            User::TIPO_ADMINISTRADOR,
+            User::TIPO_GESTOR,
+            User::TIPO_COLABORADOR,
+            User::TIPO_EXTERNO,
+        ];
+    }
 
     public function unidade(){
         return $this->belongsTo(Unidade::class);

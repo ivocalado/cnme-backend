@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Log;
 class UsuarioController extends Controller
 {
     
+    public function tipos(){
+        return User::tipos();
+    }
+
     public function index()
     {
         return UserResource::collection(User::paginate(25));
@@ -26,7 +30,6 @@ class UsuarioController extends Controller
         try {
                 
             $usuario = $request->has('id') ? User::findOrFail($request->id) : new User();
-
             $usuarioData = $request->all();
 
             $validator = Validator::make($usuarioData, $usuario->rules, $usuario->messages);
@@ -36,6 +39,13 @@ class UsuarioController extends Controller
                     array(
                     "messages" => $validator->errors()
                     ), 422); 
+            }
+
+            $arrayTipos =  User::tipos();
+
+            if(!in_array($request['tipo'], $arrayTipos)){
+                return response()->json(
+                    array('message' => "Tipo desconhecido. Tipos:(".implode("|",$arrayTipos).")") , 422);
             }
 
 
@@ -163,7 +173,13 @@ class UsuarioController extends Controller
         }
 
         return UserResource::collection($list->orderBy('name')->paginate(25));
-
     }
+
+    public function searchNaoConfirmados(Request $request){
+        $list = User::query();
+        $list->whereNull('email_verified_at');
+        return UserResource::collection($list->orderBy('created_at')->paginate(25));
+    }
+
 
 }
