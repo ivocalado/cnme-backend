@@ -9,6 +9,8 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\ProjetoCnme;
+use App\Models\Tarefa;
 
 class UsuarioController extends Controller
 {
@@ -95,6 +97,13 @@ class UsuarioController extends Controller
                     array('message' => 'Usuário não encontrado.') , 404);
             }
 
+            $arrayTipos =  User::tipos();
+
+            if(!in_array($request['tipo'], $arrayTipos)){
+                return response()->json(
+                    array('message' => "Tipo desconhecido. Tipos:(".implode("|",$arrayTipos).")") , 422);
+            }
+
             $usuarioData = $request->all();
 
             $usuario->fill($usuarioData);
@@ -121,9 +130,17 @@ class UsuarioController extends Controller
 
         try {
 
-            $usuario = User::find($id);
+            $usuario = User::findOrFail($id);
 
-            if($usuario->tipo === User::TIPO_GESTOR){
+            if($usuario->isAdministrador())
+            return response()->json(
+                array('message' => 'O usuário é adminstrador. Não pode ser excluído.'), 422);
+
+            if($usuario->id === $usuario->unidade->responsavel->id){
+                return response()->json(
+                    array('message' => 'O usuário é gestor da unidade '.$usuario->unidade->nome.'. Defina um novo responsável antes da remoção.' ), 422);
+
+            }elseif($usuario->tipo === User::TIPO_GESTOR){
                 $countGestoresUnidade =  DB::table('users')->where([
                     ['unidade_id',$usuario->unidade_id],
                     ['tipo', User::TIPO_GESTOR]
@@ -134,7 +151,16 @@ class UsuarioController extends Controller
                         array('message' => 'A unidade '.$usuario->unidade->nome.' possui apenas esse usuário como gestor. Indique um novo responsável pela unidade.'), 422);
             }
 
+            $result = Tarefa::where('responsavel_id', $usuario->id)->whereIn('status',[Tarefa::STATUS_ABERTA,Tarefa::STATUS_EXECUCAO])->get();
+
+            if($result->count()){
+                return response()->json(
+                    array('message' => 'O usuário possui tarefas em aberto ou em execução sob sua responsabilidade'), 422);
+            
+            }
             if(isset($usuario)){
+                $usuario->ativo = false;
+                $usuario->name = $usuario->name." (DELETADO)";
                 $usuario->delete();
                 DB::commit();
                 return response(null,204);

@@ -26,7 +26,8 @@ class UserResource extends JsonResource
             'tipo' => $this->tipo,
             'unidade' => new UnidadeResource($this->unidade),
             'created_at' => (string) $this->created_at,
-            'updated_at' => (string) $this->updated_at
+            'updated_at' => (string) $this->updated_at,
+            'deleted_at' => (string) $this->deleted_at
 
         ];
     }

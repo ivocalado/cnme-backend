@@ -140,6 +140,15 @@ class UnidadeController extends Controller
             //         ), 422); 
             // }
 
+            if($request->has('responsavel_id')){
+                $novoReponsavel = User::findOrFail($request['responsavel_id']);
+                if(!$novoReponsavel->isGestor()){
+                    $novoReponsavel->tipo = User::TIPO_GESTOR;
+                    $novoReponsavel->save();
+                }
+
+            }
+
             $unidade->fill($unidadeData);
             $unidade->save();
             DB::commit();

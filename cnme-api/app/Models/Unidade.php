@@ -69,8 +69,6 @@ class Unidade extends Model
         return $this->isMec() || $this->isTvEscola();
     }
 
-
-
     public $rules = [
         'nome'    =>  'required|unique:unidades|max:255',
         'email'    =>  'required|unique:unidades|email|max:255',

@@ -7,10 +7,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Unidade;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
 
+    use SoftDeletes;
+    
     public const TIPO_GESTOR = 'gestor';
     public const TIPO_COLABORADOR = 'colaborador';
     public const TIPO_ADMINISTRADOR = 'administrador';
@@ -43,6 +46,22 @@ class User extends Authenticatable
             User::TIPO_COLABORADOR,
             User::TIPO_EXTERNO,
         ];
+    }
+
+    public function isAdministrador(){
+        return $this->tipo === User::TIPO_ADMINISTRADOR;
+    }
+
+    public function isGestor(){
+        return $this->tipo === User::TIPO_GESTOR;
+    }
+
+    public function isColaborador(){
+        return $this->tipo === User::TIPO_COLABORADOR;
+    }
+
+    public function isExterno(){
+        return $this->tipo === User::TIPO_EXTERNO;
     }
 
     public function unidade(){
