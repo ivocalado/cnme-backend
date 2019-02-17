@@ -15,6 +15,16 @@ class EquipamentoController extends Controller
 {
 
     protected $q;
+
+    public function removidos()
+    {
+        return EquipamentoResource::collection(Equipamento::onlyTrashed()->paginate(25));
+    }
+
+    public function all()
+    {
+        return EquipamentoResource::collection(Equipamento::withTrashed()->paginate(25));
+    }
    
     public function index()
     {

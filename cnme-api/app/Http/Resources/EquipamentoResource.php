@@ -20,6 +20,7 @@ class EquipamentoResource extends JsonResource
             'descricao' => $this->descricao,
             'fornecedor' => $this->fornecedor,
             'requisitos' => $this->requisitos,
+            'removido'  =>  $this->deleted_at !== null,
             'tipo_equipamento' => new TipoEquipamentoResource($this->tipoEquipamento)
         ];
     }

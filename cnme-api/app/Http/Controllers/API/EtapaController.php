@@ -78,6 +78,27 @@ class EtapaController extends Controller
                 array('message' => 'Etapa não encontrada.') , 404);
         }
 
+        if($request->has('status')){
+            $status = $request['status'];
+            $arrayStatus =  Etapa::status();
+
+            if(!in_array($status, $arrayStatus)){
+                return response()->json(
+                    array('message' => "Status desconhecido. Status:(".implode("|",$arrayStatus).")") , 422);
+            }
+        }
+
+        if($request->has('tipo')){
+            $tipo = $request['tipo'];
+            $arrayTipos =  Etapa::tipos();
+
+            if(!in_array($tipo, $arrayTipos)){
+                return response()->json(
+                    array('message' => "Tipo desconhecido. Status:(".implode("|",$arrayTipos).")") , 422);
+            }
+        }
+        
+
         $etapaData = $request->all();
 
         $etapa->fill($etapaData);
@@ -122,10 +143,34 @@ class EtapaController extends Controller
                     array('message' => 'O projeto não existe.') , 422);
             }
 
+            $disponiveisId = DB::select(
+                "select ep.id from equipamento_projetos ep
+                    where ep.id not in (
+                    select tep.equipamento_projeto_id from tarefa_equipamento_projeto tep
+                        inner join tarefas t on t.id = tep.tarefa_id
+                        inner join equipamento_projetos ep1 on ep1.id = tep.equipamento_projeto_id 
+                        inner join etapas e on e.id = t.etapa_id
+                        where e.tipo = 'ENVIO'
+                ) and ep.projeto_cnme_id = ?", [$projetoId]);
+            
+            $disponiveisId = array_column($disponiveisId,'id');
+            if(empty($disponiveisId)){
+                return response()->json(
+                    array('message' => 'Não há equipamentos disponíveis para planejamento de entrega. ') , 422);
+            }
+
             if(!isset($request["equipamentos_projeto_ids"])){
                 return response()->json(
                     array('message' => 'Defina os equipamentos do projeto que serão adicionados.') , 422);
             }
+
+            /**Verifica se todos os Ids enviados estão disponíveis*/
+            $diffCount = count(array_diff($request["equipamentos_projeto_ids"], $disponiveisId));
+            if($diffCount>0){
+                return response()->json(
+                    array('message' => 'Verifique se todos os equipamentos enviados estão disponíveis no projeto') , 422);
+            }
+
             
             if(isset($request['etapa_id'])){
                 $etapa = Etapa::find($request['etapa_id']);
@@ -191,9 +236,8 @@ class EtapaController extends Controller
                 array('message' => 'A tarefa não existe.') , 422);
         }
 
-        return response()->json(
-            Tarefa::where('etapa_id', $etapa->id)->get()
-        );
+        return TarefaResource::collection(Tarefa::where('etapa_id', $etapa->id)->get());
+        
     }
 
     public function removeTarefa(Request $request, $idEtapa, $idTarefa){

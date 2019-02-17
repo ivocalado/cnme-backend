@@ -11,10 +11,39 @@ use Illuminate\Support\Facades\Log;
 use App\Models\EquipamentoProjeto;
 use App\Http\Resources\TarefaResource;
 use App\Http\Resources\EquipamentoProjetoResource;
+use App\Http\Resources\EquipamentoResource;
 
 class TarefaController extends Controller
 {
    
+    public function equipamentosDisponiveisEnvio(Request $request, $projetoId){
+
+        $projeto = ProjetoCnme::find($projetoId);
+
+        if(!isset($projeto)){
+            return response()->json(
+                array('message' => "Projeto não encontrado.") , 422);
+        }
+
+        $result = DB::select(
+            "select ep.id from equipamento_projetos ep
+                where ep.id not in (
+                select tep.equipamento_projeto_id from tarefa_equipamento_projeto tep
+                    inner join tarefas t on t.id = tep.tarefa_id
+                    inner join equipamento_projetos ep1 on ep1.id = tep.equipamento_projeto_id 
+                    inner join etapas e on e.id = t.etapa_id
+                    where e.tipo = 'ENVIO'
+            ) and ep.projeto_cnme_id = ?", [$projetoId]);
+        $disponiveisId = array_column($result,'id');
+        
+        //dd($disponiveisId);
+        $ePs = EquipamentoProjeto::whereIn('id', $disponiveisId)->get();
+        //dd($ePs);
+        return EquipamentoProjetoResource::collection($ePs);
+
+    
+    }
+
     public function addEquipamentosAll(Request $request, $projetoId, $tarefaId)
     {
 

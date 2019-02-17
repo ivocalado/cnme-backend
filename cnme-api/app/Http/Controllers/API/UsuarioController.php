@@ -19,9 +19,19 @@ class UsuarioController extends Controller
         return User::tipos();
     }
 
+    public function removidos()
+    {
+        return UserResource::collection(User::onlyTrashed()->paginate(25));
+    }
+
+    public function all()
+    {
+        return UserResource::collection(User::withTrashed()->paginate(25));
+    }
+
     public function index()
     {
-        return UserResource::collection(User::paginate(25));
+        return UserResource::collection(User::withTrashed()->paginate(25));
     }
     
     public function store(Request $request)

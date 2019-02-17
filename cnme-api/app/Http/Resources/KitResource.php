@@ -19,6 +19,7 @@ class KitResource extends JsonResource
             'nome' => $this->nome,
             'descricao' => $this->descricao,
             'usuario' =>  $this->usuario,
+            'removido'  =>  $this->deleted_at !== null,
             'equipamentos' => EquipamentoResource::collection($this->equipamentos)
         ];
     }

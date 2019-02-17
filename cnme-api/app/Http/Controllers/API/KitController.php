@@ -13,6 +13,17 @@ use App\Http\Resources\EquipamentoResource;
 
 class KitController extends Controller
 {
+
+    public function removidos()
+    {
+        return KitResource::collection(Kit::onlyTrashed()->paginate(25));
+    }
+
+    public function all()
+    {
+        return KitResource::collection(Kit::withTrashed()->paginate(25));
+    }
+   
    
     public function index()
     {

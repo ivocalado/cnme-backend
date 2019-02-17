@@ -43,7 +43,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * GET      /api/unidades/u/tvescola/
  * GET      /api/unidades/u/gestoras/
  * GET      /api/unidades/u/polos/
- * * GET    /api/unidades/u/polos/novos               * Polos sem projeto iniciado
+ * GET    /api/unidades/u/polos/novos               * Polos sem projeto iniciado
  * GET      /api/unidades/u/empresas/
  */
 
@@ -82,9 +82,11 @@ Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
  * API      /api/usuarios
  * API      /api/usuarios/u/status
  * API      /api/usuarios/u/nao-confirmados
- * GET      /usuarios/u/pesquisar                                      * Pesquisa por nome, cpf e email com o parâmetro q
- * GET      usuarios/check-email-disponivel/{email}                    * Verifica se o email está disponível
- * GET      usuarios/check-cpf-disponivel/{cpf}                        * Verifica se o cpf está disponível
+ * GET      /api/usuarios/u/pesquisar                                      * Pesquisa por nome, cpf e email com o parâmetro q
+ * GET      /api/usuarios/check-email-disponivel/{email}                    * Verifica se o email está disponível
+ * GET      /api/usuarios/check-cpf-disponivel/{cpf}                        * Verifica se o cpf está disponível
+ * GET      /api/usuarios/u/all                          * Todos, inclusive os removidos
+ * GET      /api/usuarios/u/removidos                    * Somente os removidos
  */
 
 Route::apiResource('usuarios', 'API\UsuarioController');
@@ -93,6 +95,8 @@ Route::get('usuarios/u/nao-confirmados','API\UsuarioController@searchNaoConfirma
 Route::get('usuarios/u/pesquisar','API\UsuarioController@search');
 Route::get('usuarios/check-email-disponivel/{email}','API\UsuarioController@checkEmail');
 Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf');
+Route::get('usuarios/u/all','API\UsuarioController@all');
+Route::get('usuarios/u/removidos','API\UsuarioController@removidos');
 
 
 /**Funcionalidade removida do escopo do projeto */
@@ -103,19 +107,28 @@ Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf
 /** EQUIPAMENTOS E TIPOS
  * API      /api/tipoequipamentos
  * API      /api/equipamentos
- * API      /api/equipamentos/e/pesquisar                               * Pesquisa por nome do equipamento com q, e/ou tipo do equipamento por tipo(string)
+ * GET      /api/equipamentos/e/pesquisar                    * Pesquisa por nome do equipamento com q, e/ou tipo do equipamento por tipo(string)
+ * GET      /api/equipamentos/e/all                          * Todos, inclusive os removidos
+ * GET      /api/equipamentos/e/removidos                    * Somente os removidos
  */
 Route::apiResource('tipoequipamentos', 'API\TipoEquipamentoController');
 Route::apiResource('equipamentos', 'API\EquipamentoController');
 Route::get('equipamentos/e/pesquisar','API\EquipamentoController@search');
+Route::get('equipamentos/e/all','API\EquipamentoController@all');
+Route::get('equipamentos/e/removidos','API\EquipamentoController@removidos');
+
 
 /**
  * 
  * API      /api/kits
+ * GET      kits/{kitId}/diffKit/equipamentos                           *
  * POST     /api/kits/{kitId}/add-equipamento/{equipamentoId}           * Adiciona um equimamento específico ao kit
  * POST     /api/kits/{kitId}/add-equipamentos                          * Adiciona uma lista de equimamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
  * DELETE   /api/kits/{kitId}/remove-equipamento/{equipamentoId}        * Remove um equipamento específico
  * DELETE   /api/kits/{kitId}/remove-equipamentos        * Remove uma lista de equipamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
+ * GET      /api/kits/k/all                          * Todos, inclusive os removidos
+ * GET      /api/kits/k/removidos                    * Somente os removidos
+ * 
  */
 Route::apiResource('kits', 'API\KitController');
 Route::get('kits/{kitId}/diffKit/equipamentos','API\KitController@diffKit');
@@ -123,6 +136,8 @@ Route::post('kits/{kitId}/add-equipamento/{equipamentoId}', 'API\KitController@a
 Route::post('kits/{kitId}/add-equipamentos', 'API\KitController@addEquipamentoList');
 Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitController@removeEquipamento');
 Route::delete('kits/{kitId}/remove-equipamentos', 'API\KitController@removeEquipamentoList');
+Route::get('kits/k/all','API\KitController@all');
+Route::get('kits/k/removidos','API\KitController@removidos');
 
 
 
@@ -143,6 +158,7 @@ Route::delete('kits/{kitId}/remove-equipamentos', 'API\KitController@removeEquip
  */
 
 Route::apiResource('projeto-cnme', 'API\ProjetoController');
+Route::get('projeto-cnme/{id}/etapas','API\ProjetoController@etapas');
 Route::get('projeto-cnme/p/status','API\ProjetoController@status');
 
 Route::post('projeto-cnme/criar','API\ProjetoController@store');
@@ -192,7 +208,7 @@ Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento
 Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamento/{equipamentoProjetoId}','API\TarefaController@removeEquipamentoProjeto');
 Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos','API\TarefaController@clearEquipamentoProjeto');
 
-
+Route::get('tarefas/projeto-cnme/{projetoId}/equipamentos-disponiveis-envio','API\TarefaController@equipamentosDisponiveisEnvio');
 /**
  * API      /api/checklist-cnmes
  */

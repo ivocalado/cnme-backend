@@ -16,6 +16,7 @@ use App\Models\Kit;
 use App\Models\Etapa;
 use App\Models\Tarefa;
 use App\Http\Resources\EquipamentoProjetoResource;
+use App\Http\Resources\EtapaResource;
 
 class ProjetoController extends Controller
 {
@@ -78,6 +79,12 @@ class ProjetoController extends Controller
         }
 
         return new ProjetoResource($projeto);
+    }
+
+    public function etapas(Request $request, $projetoId){
+        $etapas = Etapa::where('projeto_cnme_id', $projetoId)->get();
+
+        return EtapaResource::collection($etapas);
     }
 
    
@@ -321,6 +328,12 @@ class ProjetoController extends Controller
         if(!in_array($status, $arrayStatus)){
             return response()->json(
                 array('message' => "Consulta por status desconhecido. Status:(".implode("|",$arrayStatus).")") , 422);
+        }
+
+        $projeto = ProjetoCnme::find($projetoId);
+        if(!isset($projeto)){
+            return response()->json(
+                array('message' => "Referência de projeto inválida.") , 422);
         }
 
         $lista = EquipamentoProjeto::where([
