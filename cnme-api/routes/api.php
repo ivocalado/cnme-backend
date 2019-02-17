@@ -90,6 +90,8 @@ Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
  */
 
 Route::apiResource('usuarios', 'API\UsuarioController');
+Route::post('usuarios/convidar','API\UsuarioController@store');
+Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
 Route::get('usuarios/u/tipos','API\UsuarioController@tipos');
 Route::get('usuarios/u/nao-confirmados','API\UsuarioController@searchNaoConfirmados');
 Route::get('usuarios/u/pesquisar','API\UsuarioController@search');

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\ProjetoCnme;
 use App\Models\Tarefa;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -43,6 +44,7 @@ class UsuarioController extends Controller
                 
             $usuario = $request->has('id') ? User::findOrFail($request->id) : new User();
             $usuarioData = $request->all();
+            $usuarioData['password'] = Hash::make('123456');
 
             $validator = Validator::make($usuarioData, $usuario->rules, $usuario->messages);
 
@@ -60,6 +62,7 @@ class UsuarioController extends Controller
                     array('message' => "Tipo desconhecido. Tipos:(".implode("|",$arrayTipos).")") , 422);
             }
 
+            $usuario->remember_token = bin2hex(random_bytes(20)); 
 
             $usuario->fill($usuarioData);
             $usuario->save();
@@ -79,6 +82,30 @@ class UsuarioController extends Controller
         }
     }
 
+    public function confirmar(Request $request){
+
+        $token = $request->query('token');
+       
+        if( $token ){
+            $usarioConfirmado = User::where('remember_token', $token)->first();
+           
+            if(isset($usarioConfirmado) && $usarioConfirmado->email_verified_at == null){
+                
+                if($usarioConfirmado->email === $request->email){
+                    $usarioConfirmado->fill($request->all());
+                    $usarioConfirmado->password = Hash::make($usarioConfirmado->password);
+
+                    $usarioConfirmado->email_verified_at = date('Y-m-d H:i:s');
+                    $usarioConfirmado->save();
+
+                    return new UserResource($usarioConfirmado);
+                }
+            }  
+        }
+        return response()->json(
+            array('message' => 'Requisição inválida.') , 422);
+        
+    }
    
     public function show($id)
     {
