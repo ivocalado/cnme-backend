@@ -15,7 +15,7 @@ class AddNumeroTarefa extends Migration
     {
         Schema::table('tarefas', function($table)
         {
-            $table->string('link_externo', 255)->nullable();
+            $table->string('link_externo', 400)->nullable();
         });
     }
 

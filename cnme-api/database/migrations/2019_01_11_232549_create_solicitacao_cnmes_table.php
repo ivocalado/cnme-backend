@@ -21,10 +21,10 @@ class CreateSolicitacaoCnmesTable extends Migration
             $table->string('status',50);
 
             $table->integer('usuario_id')->unsigned()->nullable();
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('set null');
 
-            $table->integer('unidade_id')->unsigned();
-            $table->foreign('unidade_id')->references('id')->on('unidades');
+            $table->integer('unidade_id')->unsigned()->nullable();
+            $table->foreign('unidade_id')->references('id')->on('unidades')->onDelete('set null');
 
             $table->timestamp('data_solicitacao')->default(DB::raw('CURRENT_TIMESTAMP'));
             

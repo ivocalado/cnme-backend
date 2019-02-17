@@ -16,6 +16,7 @@ class CreateEquipamentosTable extends Migration
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

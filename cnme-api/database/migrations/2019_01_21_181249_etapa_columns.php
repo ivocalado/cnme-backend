@@ -27,10 +27,10 @@ class EtapaColumns extends Migration
             $table->date('data_fim')->nullable();
 
             $table->integer('projeto_cnme_id')->unsigned();
-            $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes');
+            $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes')->onDelete('cascade');;
 
             $table->integer('usuario_id')->unsigned()->nullable();
-            $table->foreign('usuario_id')->references('id')->on('users');      
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('set null');      
            
         });
     }

@@ -20,7 +20,7 @@ class CreateEquipamentoProjetosTable extends Migration
             $table->foreign('equipamento_id')->references('id')->on('equipamentos');
 
             $table->integer('projeto_cnme_id')->unsigned();
-            $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes');
+            $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes')->onDelete('cascade');;
 
             $table->string('observacao')->nullable();
             $table->string('detalhes',255)->nullable();

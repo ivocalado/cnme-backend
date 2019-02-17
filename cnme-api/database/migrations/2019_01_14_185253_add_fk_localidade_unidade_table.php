@@ -15,7 +15,7 @@ class AddFkLocalidadeUnidadeTable extends Migration
     {
         Schema::table('unidades', function($table) {
             $table->integer('localidade_id')->unsigned()->nullable();
-            $table->foreign('localidade_id')->references('id')->on('localidades');
+            $table->foreign('localidade_id')->references('id')->on('localidades')->onDelete('set null');
 
 
             $table->integer('tipo_unidade_id')->unsigned();

@@ -20,13 +20,13 @@ class CreateProjetoCnmesTable extends Migration
 
             $table->mediumText('descricao');
             $table->integer('unidade_id')->unsigned();
-            $table->foreign('unidade_id')->references('id')->on('unidades');
+            $table->foreign('unidade_id')->references('id')->on('unidades')->onDelete('cascade');;
 
             $table->integer('usuario_id')->unsigned()->nullable();
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('set null');
 
             $table->integer('solicitacao_cnme_id')->unsigned()->nullable();
-            $table->foreign('solicitacao_cnme_id')->references('id')->on('solicitacao_cnmes');
+            $table->foreign('solicitacao_cnme_id')->references('id')->on('solicitacao_cnmes')->onDelete('set null');
 
             $table->date('data_criacao')->nullable();
             $table->date('data_implantacao_prevista')->nullable();

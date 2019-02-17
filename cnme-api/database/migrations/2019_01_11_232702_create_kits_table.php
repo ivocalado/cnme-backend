@@ -16,6 +16,7 @@ class CreateKitsTable extends Migration
         Schema::create('kits', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

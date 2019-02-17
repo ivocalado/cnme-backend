@@ -19,8 +19,8 @@ class KitColumns extends Migration
             $table->date('data_inicio');
             $table->date('data_fim')->nullable();
 
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->integer('usuario_id')->unsigned()->nullable();
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('set null');
         });
 
     }

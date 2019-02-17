@@ -26,7 +26,7 @@ class TarefaColumns extends Migration
             $table->date('data_fim')->nullable();
 
             $table->integer('etapa_id')->unsigned();
-            $table->foreign('etapa_id')->references('id')->on('etapas');
+            $table->foreign('etapa_id')->references('id')->on('etapas')->onDelete('cascade');;
 
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('users');
@@ -35,7 +35,7 @@ class TarefaColumns extends Migration
             $table->foreign('responsavel_id')->references('id')->on('users');
 
             $table->integer('unidade_responsavel_id')->unsigned()->nullable();
-            $table->foreign('unidade_responsavel_id')->references('id')->on('unidades');
+            $table->foreign('unidade_responsavel_id')->references('id')->on('unidades')->onDelete('cascade');;
 
         });
 

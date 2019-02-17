@@ -15,7 +15,7 @@ class AddFkUnidadeUsersTable extends Migration
     {
         Schema::table('users', function($table) {
             $table->integer('unidade_id')->unsigned();
-            $table->foreign('unidade_id')->references('id')->on('unidades');
+            $table->foreign('unidade_id')->references('id')->on('unidades')->onDelete('cascade');;
 
            
         });

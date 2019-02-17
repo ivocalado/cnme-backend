@@ -19,8 +19,8 @@ class ChecklistColumns extends Migration
             $table->string('descricao', 255);
             $table->boolean('ativo')->default(true);
 
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users'); 
+            $table->integer('usuario_id')->nullable()->unsigned();
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('set null'); 
 
         });
 
