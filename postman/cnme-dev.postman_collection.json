@@ -3049,6 +3049,74 @@
 					"_postman_isSubFolder": true
 				},
 				{
+					"name": "Convidar",
+					"item": [
+						{
+							"name": "POST/api/usuarios/convidar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"José Pinheiro\",\n\t\"email\": \"josepinheiro@mec.gov.br\",\n\t\"cpf\": \"122.131.312-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"gestor\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"convidar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/usuarios/confirmar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"José Pinheiro3333\",\n\t\"email\": \"josepinheiro3333@mec.gov.br\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"1234567\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token=82d3212b2d5caad9ae32",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"confirmar"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "82d3212b2d5caad9ae32"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "POST/api/usuarios",
 					"request": {
 						"method": "POST",
