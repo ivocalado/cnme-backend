@@ -300,8 +300,32 @@ class ProjetoController extends Controller
             return response()->json(
                 array('message' => $e->getMessage()) , 500);
         }
-       
+    }
 
+    public function removeEquipamentoList(Request $request, $projetoId){
+        try{
+            DB::beginTransaction();
+            $projeto = ProjetoCnme::find($projetoId);
+
+            if(!isset($projeto)){
+                return response()->json(
+                    array('message' => "Referência do projeto não encontrada.") , 422);
+            }
+            $ids = $request->ids;
+
+            EquipamentoProjeto::
+                where('projeto_cnme_id',$projetoId)
+                ->whereIn('id', $ids)->delete();
+            DB::commit(); 
+
+        }catch(\Exception $e){
+            DB::rollback();
+
+            Log::error('ProjetoController::addKit - '.$e->getMessage());
+
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+        }
     }
 
     public function removeEquipamento(Request $request,$projetoId, $equipamentoId){

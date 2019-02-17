@@ -953,6 +953,71 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "post/api/projeto-cnme/1/add-equipamentos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/2/add-equipamento/6",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"2",
+								"add-equipamento",
+								"6"
+							]
+						},
+						"description": "Adiciona equipamentos em lote ao projetoId\nO parâmetro é enviado em forma de array, com o parâmetro ids"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/projeto-cnme/1/remove-equipamentos",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [5,6]\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/remove-equipamentos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"1",
+								"remove-equipamentos"
+							]
+						},
+						"description": "Remove equipamentos em lote ao projetoId\nO parâmetro é enviado em forma de array, com o parâmetro ids"
+					},
+					"response": []
 				}
 			]
 		},

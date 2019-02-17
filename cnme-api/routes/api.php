@@ -164,6 +164,7 @@ Route::get('projeto-cnme/p/status','API\ProjetoController@status');
 Route::post('projeto-cnme/criar','API\ProjetoController@store');
 Route::post('projeto-cnme/{projetoId}/add-equipamento/{equipamentoId}','API\ProjetoController@addEquipamento');
 Route::post('projeto-cnme/{projetoId}/add-equipamentos','API\ProjetoController@addEquipamentoList');
+Route::delete('projeto-cnme/{projetoId}/remove-equipamentos','API\ProjetoController@removeEquipamentoList');
 Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId}','API\ProjetoController@removeEquipamento');
 Route::post('projeto-cnme/{projetoId}/add-kit/{kitId}','API\ProjetoController@addKit');
 Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoController@removeKit');
