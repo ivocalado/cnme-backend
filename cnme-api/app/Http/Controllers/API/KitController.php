@@ -103,6 +103,31 @@ class KitController extends Controller
         }
     }
 
+    public function forceDelete($id){
+        try {
+            DB::beginTransaction();
+
+            $kit = Kit::withTrashed()->find($id);
+
+            if(isset($kit)){
+                $kit->forceDelete();
+
+                DB::commit();
+                return response(null,204);
+            }else {
+                return response()->json(
+                    array('message' => "kit não encontrado.") , 422);
+            }
+            
+        }catch(\Exception $e){
+            DB::rollback();
+
+            return response()->json(
+                array('message' => "kit não pode ser removido. O kit está envolvido nos processos de implatanção.") , 422);
+
+        }
+    }
+
     public function addEquipamento(Request $request, $kitId, $equipamentoId){
 
 
@@ -189,18 +214,15 @@ class KitController extends Controller
                 array('message' => 'Defina os equipamentos a serem removidos.') , 422);
         }
 
-        return new KitResource($kit);
-        
-
-
-        
-        
+        return new KitResource($kit);     
     }
 
+    /**
+     * Retorna equipamentos que não fazem parte de um dado kit
+     */
     public function diffKit(Request $request, $kitId){
         $kit = Kit::with('equipamentos')->find($kitId);
 
-       
         $equipamentosIds  = $kit->equipamentos->pluck('id');
 
         return response()->json(

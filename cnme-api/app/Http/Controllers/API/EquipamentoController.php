@@ -135,6 +135,31 @@ class EquipamentoController extends Controller
         }
     }
 
+    public function forceDelete($id){
+        try {
+            DB::beginTransaction();
+
+            $equipamento = Equipamento::withTrashed()->find($id);
+
+            if(isset($equipamento)){
+                $equipamento->forceDelete();
+
+                DB::commit();
+                return response(null,204);
+            }else {
+                return response()->json(
+                    array('message' => "Equipamento não encontrado.") , 422);
+            }
+            
+        }catch(\Exception $e){
+            DB::rollback();
+
+            return response()->json(
+                array('message' => "Equipamento não pode ser removido. O equipamento está envolvido nos processos de implatanção.") , 422);
+
+        }
+    }
+
     public function search(Request $request){
         $list = Equipamento::query();
         $list->with('tipoEquipamento');

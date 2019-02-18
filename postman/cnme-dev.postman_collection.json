@@ -2470,7 +2470,7 @@
 							"response": []
 						},
 						{
-							"name": "DELETE/api/equipamentos/9",
+							"name": "DELETE/api/equipamentos/6",
 							"request": {
 								"method": "DELETE",
 								"header": [
@@ -2540,6 +2540,35 @@
 										"equipamentos",
 										"e",
 										"removidos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE/api/equipamentos/6/force-delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/6/force-delete",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"6",
+										"force-delete"
 									]
 								}
 							},
@@ -2741,6 +2770,37 @@
 					"response": []
 				},
 				{
+					"name": "DELETE/api/kits/1/force-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/1/force-delete",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1",
+								"force-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
 					"request": {
 						"method": "DELETE",
@@ -2868,6 +2928,37 @@
 							]
 						},
 						"description": "Retorna somente os removidos."
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/kits/2/force-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/2/force-delete",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"2",
+								"force-delete"
+							]
+						}
 					},
 					"response": []
 				}
@@ -3263,6 +3354,30 @@
 								"usuarios",
 								"u",
 								"tipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/usuarios/5/force-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/5/force-delete",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"5",
+								"force-delete"
 							]
 						}
 					},

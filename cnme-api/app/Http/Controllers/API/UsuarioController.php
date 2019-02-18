@@ -13,6 +13,7 @@ use App\Models\ProjetoCnme;
 use App\Models\Tarefa;
 use Illuminate\Support\Facades\Hash;
 
+
 class UsuarioController extends Controller
 {
     
@@ -213,6 +214,31 @@ class UsuarioController extends Controller
 
             return response()->json(
                 array('message' => $e->getMessage()) , 500);
+
+        }
+    }
+
+    public function forceDelete($id){
+        try {
+            DB::beginTransaction();
+
+            $user = User::withTrashed()->find($id);
+
+            if(isset($user)){
+                $user->forceDelete();
+
+                DB::commit();
+                return response(null,204);
+            }else {
+                return response()->json(
+                    array('message' => "Usuário não encontrado.") , 422);
+            }
+            
+        }catch(\Exception $e){
+            DB::rollback();
+
+            return response()->json(
+                array('message' => "Usuário não pode ser removido. O usuário está envolvido nos processos de implatanção.") , 422);
 
         }
     }

@@ -49,9 +49,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('localidades/estados', 'API\LocalidadeController@estados');
 Route::get('localidades/estados/{uf}/municipios', 'API\LocalidadeController@municipios');
-
 Route::apiResource('tipounidades', 'API\TipoUnidadeController');
-
 Route::apiResource('unidades', 'API\UnidadeController');
 Route::post('unidades/{unidadeId}/add-localidade','API\UnidadeController@addLocalidade')
         ->name('unidade-addLocalidade');
@@ -60,19 +58,14 @@ Route::put('unidades/{unidadeId}/update-localidade','API\UnidadeController@updat
 Route::get('unidades/{unidadeId}/usuarios','API\UnidadeController@usuarios')
     ->name('unidade-usuarios');
 Route::get('unidades/u/pesquisar','API\UnidadeController@search');
-
 Route::get('unidades/check-email-disponivel/{email}','API\UnidadeController@checkEmail');
 Route::get('unidades/check-inep-disponivel/{inep}','API\UnidadeController@checkInep');
-
 Route::get('unidades/u/mec/','API\UnidadeController@mec');
 Route::get('unidades/u/tvescola/','API\UnidadeController@tvescola');
 Route::get('unidades/u/gestoras/','API\UnidadeController@gestoras');
 Route::get('unidades/u/polos/','API\UnidadeController@polos');
 Route::get('unidades/u/empresas/','API\UnidadeController@empresas');
-
 Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
-
-
 
 /**
  * ################################################################################################################
@@ -82,11 +75,12 @@ Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
  * API      /api/usuarios
  * API      /api/usuarios/u/status
  * API      /api/usuarios/u/nao-confirmados
- * GET      /api/usuarios/u/pesquisar                                      * Pesquisa por nome, cpf e email com o parâmetro q
- * GET      /api/usuarios/check-email-disponivel/{email}                    * Verifica se o email está disponível
- * GET      /api/usuarios/check-cpf-disponivel/{cpf}                        * Verifica se o cpf está disponível
- * GET      /api/usuarios/u/all                          * Todos, inclusive os removidos
- * GET      /api/usuarios/u/removidos                    * Somente os removidos
+ * GET      /api/usuarios/u/pesquisar                                   * Pesquisa por nome, cpf e email com o parâmetro q
+ * GET      /api/usuarios/check-email-disponivel/{email}                * Verifica se o email está disponível
+ * GET      /api/usuarios/check-cpf-disponivel/{cpf}                    * Verifica se o cpf está disponível
+ * GET      /api/usuarios/u/all                                         * Todos, inclusive os removidos
+ * GET      /api/usuarios/u/removidos                                   * Somente os removidos
+ * DELETE   /api/usuarios/{id}/force-delete                         * Tenta remover de forma forçada
  */
 
 Route::apiResource('usuarios', 'API\UsuarioController');
@@ -99,6 +93,7 @@ Route::get('usuarios/check-email-disponivel/{email}','API\UsuarioController@chec
 Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf');
 Route::get('usuarios/u/all','API\UsuarioController@all');
 Route::get('usuarios/u/removidos','API\UsuarioController@removidos');
+Route::delete('usuarios/{id}/force-delete','API\UsuarioController@forceDelete');
 
 
 /**Funcionalidade removida do escopo do projeto */
@@ -112,12 +107,14 @@ Route::get('usuarios/u/removidos','API\UsuarioController@removidos');
  * GET      /api/equipamentos/e/pesquisar                    * Pesquisa por nome do equipamento com q, e/ou tipo do equipamento por tipo(string)
  * GET      /api/equipamentos/e/all                          * Todos, inclusive os removidos
  * GET      /api/equipamentos/e/removidos                    * Somente os removidos
+ * DELETE   /api/equipamentos/{id}/force-delete              * Tenta remover de forma forçada
  */
 Route::apiResource('tipoequipamentos', 'API\TipoEquipamentoController');
 Route::apiResource('equipamentos', 'API\EquipamentoController');
 Route::get('equipamentos/e/pesquisar','API\EquipamentoController@search');
 Route::get('equipamentos/e/all','API\EquipamentoController@all');
 Route::get('equipamentos/e/removidos','API\EquipamentoController@removidos');
+Route::delete('equipamentos/{id}/force-delete','API\EquipamentoController@forceDelete');
 
 
 /**
@@ -127,10 +124,10 @@ Route::get('equipamentos/e/removidos','API\EquipamentoController@removidos');
  * POST     /api/kits/{kitId}/add-equipamento/{equipamentoId}           * Adiciona um equimamento específico ao kit
  * POST     /api/kits/{kitId}/add-equipamentos                          * Adiciona uma lista de equimamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
  * DELETE   /api/kits/{kitId}/remove-equipamento/{equipamentoId}        * Remove um equipamento específico
- * DELETE   /api/kits/{kitId}/remove-equipamentos        * Remove uma lista de equipamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
- * GET      /api/kits/k/all                          * Todos, inclusive os removidos
- * GET      /api/kits/k/removidos                    * Somente os removidos
- * 
+ * DELETE   /api/kits/{kitId}/remove-equipamentos                       * Remove uma lista de equipamentos enviada no body no campo ids. Ex.: [2,3,4,5,6,7]
+ * GET      /api/kits/k/all                                             * Todos, inclusive os removidos
+ * GET      /api/kits/k/removidos                                       * Somente os removidos
+ * DELETE   /api/kits/{id}/force-delete                                 * Tenta remover de forma forçada
  */
 Route::apiResource('kits', 'API\KitController');
 Route::get('kits/{kitId}/diffKit/equipamentos','API\KitController@diffKit');
@@ -140,7 +137,7 @@ Route::delete('kits/{kitId}/remove-equipamento/{equipamentoId}', 'API\KitControl
 Route::delete('kits/{kitId}/remove-equipamentos', 'API\KitController@removeEquipamentoList');
 Route::get('kits/k/all','API\KitController@all');
 Route::get('kits/k/removidos','API\KitController@removidos');
-
+Route::delete('kits/{id}/force-delete','API\KitController@forceDelete');
 
 
 /**
