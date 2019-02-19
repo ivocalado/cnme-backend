@@ -634,6 +634,33 @@
 			"name": "UC1 - Criar projeto",
 			"item": [
 				{
+					"name": "POST/api/unidades - POLO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"codigo_inep\": \"11112121\",\n\"nome\": \"Unidade CEPA 11\",\n\"telefone\": \"(82)31231-111\",\n\"email_institucional\": \"CEPA11@educacao.al.gov.br\",\n\"diretor\":\"João da Silva CEPA11\",\n\"email\": \"CEPA11@educacao.al.gov.br\",\n\"url\":\"http://CEPA11.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Rua José de Almeida\",\n\t\"numero\": \"sn\",\n\t\"bairro\": \"Feitosa\",\n\t\"cep\": \"11987-123\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n }\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "{{HOSTNAME}}/api/unidades/u/polos/novos",
 					"request": {
 						"method": "GET",
@@ -653,33 +680,6 @@
 								"u",
 								"polos",
 								"novos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/unidades",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"codigo_inep\": \"12345231\",\n\"descricao\": \"Unidade.....\",\n\"nome\": \"Colégio Monteiro Lobato\",\n\"diretor\": \"\",\n\"telefone\": \"(012) 23421-1231\",\n\"email\": \"monteirolobato@educacao.al.gov.br\",\n\"email_institucional\": \"monteirolobato@educacao.al.gov.br\",\n\"url\":\"http://monteirolobato.com.br\",\n\"tipo_unidade_id\" : \"3\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades"
 							]
 						}
 					},
@@ -713,65 +713,12 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/unidades/6/add-localidade",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"logradouro\": \"Rua São Benedito\",\n\t\"numero\": \"sn\",\n\t\"bairro\": \"Pinheiro\",\n\t\"cep\": \"57055-334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n\t\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades/6/add-localidade",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades",
-								"6",
-								"add-localidade"
-							]
-						}
+					"name": "GET/api/projeto-cnme",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
 					},
-					"response": []
-				},
-				{
-					"name": "CREATE /api/unidades com Localidade",
 					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"codigo_inep\": \"99998881\",\n\"descricao\": \"Unidade.....\",\n\"nome\": \"Centro Educacional Cristo Redentor\",\n\"diretor\": \"\",\n\"telefone\": \"(012) 3421-1231\",\n\"email\": \"cecr@educacao.al.gov.br\",\n\"email_institucional\": \"cecr@educacao.al.gov.br\",\n\"url\":\"http://globo.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Av. Salo Branco\",\n\t\"numero\": \"3243\",\n\t\"bairro\": \"São Cristovão\",\n\t\"cep\": \"57044-234\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"90\"\n }\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CREATE/api/projeto-cnme",
-					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -805,16 +752,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-kit/1",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/add-kit/3",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"1",
+								"6",
 								"add-kit",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -846,6 +793,39 @@
 							]
 						},
 						"description": "Retorna todos os equipamentos que não estão nesse kit"
+					},
+					"response": []
+				},
+				{
+					"name": "post/api/projeto-cnme/1/add-equipamentos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/2/add-equipamento/6",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"2",
+								"add-equipamento",
+								"6"
+							]
+						},
+						"description": "Adiciona equipamentos em lote ao projetoId\nO parâmetro é enviado em forma de array, com o parâmetro ids"
 					},
 					"response": []
 				},
@@ -951,39 +931,6 @@
 								"1"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "post/api/projeto-cnme/1/add-equipamentos",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/2/add-equipamento/6",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"2",
-								"add-equipamento",
-								"6"
-							]
-						},
-						"description": "Adiciona equipamentos em lote ao projetoId\nO parâmetro é enviado em forma de array, com o parâmetro ids"
 					},
 					"response": []
 				},
@@ -1354,10 +1301,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\",\n\t\"equipamentos_projeto_ids\": [1,2]\n}"
+							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-envio",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -1365,7 +1312,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"1",
+								"6",
 								"add-tarefa-envio"
 							]
 						},
@@ -1515,6 +1462,84 @@
 								"tarefas",
 								"3",
 								"add-equipamento-ids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/projeto-cnme/6/etapas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"6",
+								"etapas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/etapas/projeto-cnme/3/tarefa/5/enviar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/tarefa/7/enviar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"6",
+								"tarefa",
+								"7",
+								"enviar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/etapas/projeto-cnme/3/tarefas/5/entregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/tarefa/7/entregar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"6",
+								"tarefa",
+								"7",
+								"entregar"
 							]
 						}
 					},
@@ -1937,33 +1962,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\"nome\": \"Max Jato Logistica\",\n\"email_institucional\": \"contato@maxjato.com.br\",\n\"email\": \"josemaria@maxjato.com.br\",\n\"telefone\": \"(011)99291-1221\",\n\"url\":\"https://www.maxjato.com.br/\",\n\"tipo_unidade_id\" : \"4\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST/api/unidades - POLO",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"codigo_inep\": \"98765630\",\n\"nome\": \"Unidade Colégio Palmares\",\n\"telefone\": \"(82)31231-2312\",\n\"email_institucional\": \"pinheiro@educacao.al.gov.br\",\n\"diretor\":\"João da Silva\",\n\"email\": \"joaosilva@educacao.al.gov.br\",\n\"url\":\"http://google.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Rua José de Almeida\",\n\t\"numero\": \"sn\",\n\t\"bairro\": \"Feitosa\",\n\t\"cep\": \"11987-123\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n }\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/unidades",

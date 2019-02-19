@@ -189,7 +189,7 @@ class UsuarioController extends Controller
                         array('message' => 'A unidade '.$usuario->unidade->nome.' possui apenas esse usuário como gestor. Indique um novo responsável pela unidade.'), 422);
             }
 
-            $result = Tarefa::where('responsavel_id', $usuario->id)->whereIn('status',[Tarefa::STATUS_ABERTA,Tarefa::STATUS_EXECUCAO])->get();
+            $result = Tarefa::where('responsavel_id', $usuario->id)->whereIn('status',[Tarefa::STATUS_ABERTA,Tarefa::STATUS_ANDAMENTO])->get();
 
             if($result->count()){
                 return response()->json(

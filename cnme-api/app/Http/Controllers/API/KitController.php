@@ -223,11 +223,17 @@ class KitController extends Controller
     public function diffKit(Request $request, $kitId){
         $kit = Kit::with('equipamentos')->find($kitId);
 
-        $equipamentosIds  = $kit->equipamentos->pluck('id');
+        if(isset($kit)){
+            $equipamentosIds  = $kit->equipamentos->pluck('id');
 
-        return response()->json(
-             EquipamentoResource::collection(Equipamento::whereNotIn('id',$equipamentosIds)->get())
-        );
+            return response()->json(
+                 EquipamentoResource::collection(Equipamento::whereNotIn('id',$equipamentosIds)->get())
+            );
+        }else {
+            return response()->json(
+                array('message' => 'Kit não encontrado.') , 422);
+        }
+       
 
     }
 }

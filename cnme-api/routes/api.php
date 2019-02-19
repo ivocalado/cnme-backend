@@ -152,7 +152,7 @@ Route::delete('kits/{id}/force-delete','API\KitController@forceDelete');
  *                                                                                                  q(descricao do projeto, nome da unidade), 
  *                                                                                                  status("PLANEJAMENTO",ENVIO,INSTALACAO,ATIVACAO,
  *                                                                                                          FINALIZADO,CANCELADO)
- *                                                                                                  
+                                                                                                
  *  GET              /api/projeto-cnme/p/atrasados                                               * Pesquisar por atrasados
  */
 
@@ -178,18 +178,17 @@ Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
 
 Route::apiResource('etapas', 'API\EtapaController');
 
-Route::post('projeto-cnme/{projetoId}/etapas/envio/','API\EtapaController@envio');
-Route::post('projeto-cnme/{projetoId}/etapas/instalacao/','API\EtapaController@instalacao');
-Route::post('projeto-cnme/{projetoId}/etapas/ativacao/','API\EtapaController@ativacao');
-
 Route::get('etapas/e/status','API\EtapaController@status');
 Route::get('etapas/e/tipos','API\EtapaController@tipos');
 
-Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-envio','API\EtapaController@addTarefaEnvio');
+Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-envio','API\EnviarController@addTarefaEnvio');
+Route::post('etapas/projeto-cnme/{projetoId}/tarefa/{tarefaId}/enviar','API\EnviarController@enviar');
+Route::post('etapas/projeto-cnme/{projetoId}/enviar-all','API\EnviarController@enviarAll');
+Route::post('etapas/projeto-cnme/{projetoId}/tarefa/{tarefaId}/entregar','API\EnviarController@entregar');
 
 Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa');
 Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@updateTarefa');
-Route::get('etapas/{etapaId}/tarefas','API\EtapaController@tarefas');
+
 Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos');
 
 

@@ -149,18 +149,19 @@ class ProjetoController extends Controller
 
             DB::beginTransaction();
             $kit = Kit::find($kitId);
-            $equipamentos = $kit->equipamentos;
             $projeto = ProjetoCnme::find($projetoId);
 
             if(!isset($projeto) || !isset($kit)){
                 return response()->json(
-                    array('message' => "Referências inválidas.") , 422);
+                    array('message' => "Kit/Projeto com referências inválidas utilizadas.") , 422);
             }
 
             if(isset($projeto->kit)){
                 return response()->json(
                     array('message' => "Já existe um kit associado. Remova o anterior antes de associar um novo.") , 422);
             }
+
+            $equipamentos = $kit->equipamentos;
 
             foreach($equipamentos as $q){
                 $equipamentoProjeto = new EquipamentoProjeto();
@@ -411,7 +412,7 @@ class ProjetoController extends Controller
 
         $list = $list->orWhereHas('etapas.tarefas', function ($query) {
             
-            $query->where('status', Tarefa::STATUS_EXECUCAO)
+            $query->where('status', Tarefa::STATUS_ANDAMENTO)
                 ->whereNull('data_fim')
                 ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
 
