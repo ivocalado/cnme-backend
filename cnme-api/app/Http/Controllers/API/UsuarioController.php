@@ -38,7 +38,6 @@ class UsuarioController extends Controller
     
     public function store(Request $request)
     {
-
         DB::beginTransaction();
 
         try {
@@ -79,7 +78,6 @@ class UsuarioController extends Controller
 
             return response()->json(
                 array('message' => $e->getMessage()) , 500);
-
         }
     }
 
@@ -104,8 +102,7 @@ class UsuarioController extends Controller
             }  
         }
         return response()->json(
-            array('message' => 'Requisição inválida.') , 422);
-        
+            array('message' => 'Requisição inválida.') , 422); 
     }
    
     public function show($id)
@@ -116,7 +113,6 @@ class UsuarioController extends Controller
             return response()->json(
                 array('message' => 'Usuário não encontrado.') , 404);
         }
-
         return new UserResource($usuario);
     }
 
@@ -240,6 +236,17 @@ class UsuarioController extends Controller
             return response()->json(
                 array('message' => "Usuário não pode ser removido. O usuário está envolvido nos processos de implatanção.") , 422);
 
+        }
+    }
+
+    public function restore($id){
+        $user = User::withTrashed()->find($id);
+        if($user){
+            $user->restore();
+            return new UserResource($user);
+        }else {
+            response()->json(
+                array('message' => "Usuário não encontrado.") , 404);
         }
     }
 

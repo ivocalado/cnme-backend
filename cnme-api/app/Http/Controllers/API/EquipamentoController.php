@@ -160,6 +160,19 @@ class EquipamentoController extends Controller
         }
     }
 
+    public function restore($id){
+       
+        $equipamento = Equipamento::withTrashed()->find($id);
+
+        if($equipamento){
+            $equipamento->restore();
+            return new EquipamentoResource($equipamento);
+        }else {
+            response()->json(
+                array('message' => "Equipamento não encontrado.") , 404);
+        }
+    }
+
     public function search(Request $request){
         $list = Equipamento::query();
         $list->with('tipoEquipamento');

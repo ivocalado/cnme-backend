@@ -80,7 +80,8 @@ Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
  * GET      /api/usuarios/check-cpf-disponivel/{cpf}                    * Verifica se o cpf está disponível
  * GET      /api/usuarios/u/all                                         * Todos, inclusive os removidos
  * GET      /api/usuarios/u/removidos                                   * Somente os removidos
- * DELETE   /api/usuarios/{id}/force-delete                         * Tenta remover de forma forçada
+ * DELETE   /api/usuarios/{id}/force-delete                             * Tenta remover de forma forçada
+ * GET      /api/usuarios/{id}/restaurar                                * Restaurar
  */
 
 Route::apiResource('usuarios', 'API\UsuarioController');
@@ -94,6 +95,7 @@ Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf
 Route::get('usuarios/u/all','API\UsuarioController@all');
 Route::get('usuarios/u/removidos','API\UsuarioController@removidos');
 Route::delete('usuarios/{id}/force-delete','API\UsuarioController@forceDelete');
+Route::get('usuarios/{id}/restaurar','API\UsuarioController@restore');
 
 
 /**Funcionalidade removida do escopo do projeto */
@@ -115,6 +117,7 @@ Route::get('equipamentos/e/pesquisar','API\EquipamentoController@search');
 Route::get('equipamentos/e/all','API\EquipamentoController@all');
 Route::get('equipamentos/e/removidos','API\EquipamentoController@removidos');
 Route::delete('equipamentos/{id}/force-delete','API\EquipamentoController@forceDelete');
+Route::get('equipamentos/{id}/restaurar','API\EquipamentoController@restore');
 
 
 /**
@@ -128,6 +131,7 @@ Route::delete('equipamentos/{id}/force-delete','API\EquipamentoController@forceD
  * GET      /api/kits/k/all                                             * Todos, inclusive os removidos
  * GET      /api/kits/k/removidos                                       * Somente os removidos
  * DELETE   /api/kits/{id}/force-delete                                 * Tenta remover de forma forçada
+ * GET      /api/kits/{id}/restaurar                                       * Restaurar equipamentos
  */
 Route::apiResource('kits', 'API\KitController');
 Route::get('kits/{kitId}/diffKit/equipamentos','API\KitController@diffKit');
@@ -138,6 +142,7 @@ Route::delete('kits/{kitId}/remove-equipamentos', 'API\KitController@removeEquip
 Route::get('kits/k/all','API\KitController@all');
 Route::get('kits/k/removidos','API\KitController@removidos');
 Route::delete('kits/{id}/force-delete','API\KitController@forceDelete');
+Route::get('kits/{id}/restaurar','API\KitController@restore');
 
 
 /**

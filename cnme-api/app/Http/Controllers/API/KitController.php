@@ -128,6 +128,19 @@ class KitController extends Controller
         }
     }
 
+    public function restore($id){
+       
+        $kit = Kit::withTrashed()->find($id);
+
+        if($kit){
+            $kit->restore();
+            return new KitResource($kit);
+        }else {
+            response()->json(
+                array('message' => "Kit não encontrado.") , 404);
+        }
+    }
+
     public function addEquipamento(Request $request, $kitId, $equipamentoId){
 
 

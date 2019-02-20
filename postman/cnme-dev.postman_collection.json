@@ -1321,6 +1321,39 @@
 					"response": []
 				},
 				{
+					"name": "POST /api/etapas/projeto-cnme/6/add-tarefa-envio etapa_id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"etapa_id\":\"8\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\",\n\t\"equipamentos_projeto_ids\": [23]\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"6",
+								"add-tarefa-envio"
+							]
+						},
+						"description": "Cria a etapa de envio e a tarefa da entrega.\n* unidade_responsavel_id\t\t\t\tempresa responsável pela entrega\n* equipamentos_projeto_ids\t\t\t\tids dos equimento_projetos"
+					},
+					"response": []
+				},
+				{
 					"name": "DELETE/api/tarefas/projeto-cnme/1/tarefas/3/remove-equipamento/4",
 					"request": {
 						"method": "DELETE",
@@ -2571,6 +2604,34 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "GET/api/equipamentos/5/restaurar",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/5",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"5"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -2959,6 +3020,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET/api/kits/4/restaurar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/4/restaurar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"4",
+								"restaurar"
+							]
+						},
+						"description": "Restaura kit;\nCaso não encotre, erro 404.\nCaso restaura ou equipamento nunca tenho sido removido, retorna o equipamento."
+					},
+					"response": []
 				}
 			]
 		},
@@ -3152,7 +3248,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"name\":\"José Pinheiro\",\n\t\"email\": \"josepinheiro@mec.gov.br\",\n\t\"cpf\": \"122.131.312-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"gestor\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+									"raw": "{\n\t\"name\":\"Priscila\",\n\t\"email\": \"Priscila@mec.gov.br\",\n\t\"cpf\": \"122.121.23-27\",\n\t\"unidade_id\": \"10\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
 								},
 								"url": {
 									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
@@ -3378,6 +3474,39 @@
 								"force-delete"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/usuarios/30/restaurar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/30/restaurar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"30",
+								"restaurar"
+							]
+						},
+						"description": "Restaurar um usuário removido.\nCaso não exista usuário, retorna uma mensagem com código 404.\nCaso o usuário não seja um usuário removido anteriormente, a chamada ainda assim retorna o usuário."
 					},
 					"response": []
 				}
