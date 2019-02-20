@@ -33,12 +33,20 @@ class Etapa extends Model
         ];
     }
 
+    public static function checkStatus($status){
+        return in_array($status, Etapa::status());
+    }
+
     public static function tipos(){
         return [
             Etapa::TIPO_ENVIO,
             Etapa::TIPO_INSTALACAO,
             Etapa::TIPO_ATIVACAO
         ];
+    }
+
+    public static function checkTipo($tipo){
+        return in_array(strtoupper($tipo), Etapa::tipos());
     }
 
     public function usuario(){

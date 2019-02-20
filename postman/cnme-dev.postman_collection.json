@@ -1308,6 +1308,32 @@
 								"description": "Retorna a etapa de envio do projeto.\nCaso não encontre o projeto ou a etapa... erro 404"
 							},
 							"response": []
+						},
+						{
+							"name": "GET/api/projeto-cnme/{PROJETO_ID}/etapas/{TIPO}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapas/envio9",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"projeto-cnme",
+										"6",
+										"etapas",
+										"envio9"
+									]
+								},
+								"description": "Consulta etapas de um projeto por status.\nENVIO|INSTALACAO|ATIVACAO"
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true

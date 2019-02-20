@@ -57,6 +57,7 @@ class ProjetoCnme extends Model
         return $this->hasMany(EquipamentoProjeto::class);
     }
 
+
     public function getEtapaEnvio(){
         $etapa =  Etapa::where([
             ['projeto_cnme_id', $this->id],
@@ -64,6 +65,14 @@ class ProjetoCnme extends Model
             ])->first();
         
         return $etapa;
+    }
+
+    public function getEtapasPorTipo($tipo){
+        $etapas =  Etapa::where([
+            ['projeto_cnme_id', $this->id],
+            ['tipo', strtoupper($tipo)]
+            ])->get();
+        return $etapas;
     }
 
     public $rules = [

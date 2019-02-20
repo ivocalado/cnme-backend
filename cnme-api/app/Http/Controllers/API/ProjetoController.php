@@ -423,9 +423,7 @@ class ProjetoController extends Controller
     }
 
     public function getEtapaEnvio($projetoId){
-        
         $projeto = ProjetoCnme::find($projetoId);
-
         if($projeto){
             $etapaEnvio = $projeto->getEtapaEnvio();
             if($etapaEnvio){
@@ -433,6 +431,29 @@ class ProjetoController extends Controller
             }else{
                 return response()->json(
                     array('message' => 'Não há etapa de envio nesse projeto.') , 404);
+            }
+        }else{
+            return response()->json(
+                array('message' => 'Projeto não encontrado.') , 404);
+        }        
+    }
+
+    public function getEtapaPorTipo($projetoId, $tipo){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        if(!Etapa::checkTipo($tipo)){
+            return response()->json(
+                array('message' => "Tipo desconhecido. Tipos:(".implode("|",Etapa::tipos()).")") , 422);
+        }
+        
+        if($projeto){
+            $etapas = $projeto->getEtapasPorTipo($tipo);
+            
+            if($etapas){
+                return EtapaResource::collection($etapas);
+            }else{
+                return response()->json(
+                    array('message' => 'Não há etapas nesse projeto.') , 404);
             }
         }else{
             return response()->json(

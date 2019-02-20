@@ -177,6 +177,7 @@ Route::get('projeto-cnme/{projetoId}/equipamentos/status/{status}', 'API\Projeto
 Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
 Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
 Route::get('projeto-cnme/{projetoId}/etapa-envio','API\ProjetoController@getEtapaEnvio');
+Route::get('projeto-cnme/{projetoId}/etapas/{tipo}','API\ProjetoController@getEtapaPorTipo');
 
 
 
