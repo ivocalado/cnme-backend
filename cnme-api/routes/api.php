@@ -60,7 +60,8 @@ Route::get('unidades/{unidadeId}/usuarios','API\UnidadeController@usuarios')
 Route::get('unidades/u/pesquisar','API\UnidadeController@search');
 Route::get('unidades/check-email-disponivel/{email}','API\UnidadeController@checkEmail');
 Route::get('unidades/check-inep-disponivel/{inep}','API\UnidadeController@checkInep');
-Route::get('unidades/u/mec/','API\UnidadeController@mec');
+Route::get('unidades/u/mec','API\UnidadeController@mec');
+Route::get('unidades/u/admin','API\UnidadeController@admin');
 Route::get('unidades/u/tvescola/','API\UnidadeController@tvescola');
 Route::get('unidades/u/gestoras/','API\UnidadeController@gestoras');
 Route::get('unidades/u/polos/','API\UnidadeController@polos');

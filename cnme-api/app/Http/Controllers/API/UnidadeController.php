@@ -294,6 +294,10 @@ class UnidadeController extends Controller
 
     }
 
+    public function admin(Request $request){
+        $unidade = Unidade::where('classe', Unidade::CLASSE_ADMIN)->first();
+        return new UnidadeResource($unidade);
+    }
 
     public function mec(Request $request){
         $unidade = Unidade::where('classe', Unidade::CLASSE_MEC)->first();
