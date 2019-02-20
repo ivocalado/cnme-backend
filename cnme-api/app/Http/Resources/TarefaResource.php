@@ -29,7 +29,9 @@ class TarefaResource extends JsonResource
             'etapa_id' =>  $this->etapa->id,
             'responsavel' => $this->responsavel,
             'unidade_responsavel' => $this->unidadeResponsavel,
-            'equipamentos_projeto' => EquipamentoProjetoResource::collection($this->equipamentosProjetos)
+            'equipamentos_projeto' => EquipamentoProjetoResource::collection($this->equipamentosProjetos),
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at
 
         ];
     }

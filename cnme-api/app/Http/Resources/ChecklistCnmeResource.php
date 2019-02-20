@@ -21,7 +21,9 @@ class ChecklistCnmeResource extends JsonResource
             'status'    => $this->status,
             'requisitos_html' => $this->requisitos,
             'requisitos_array' => $this->requisitosList(),
-            'projeto_cnme' => $this->projetoCnme
+            'projeto_cnme' => $this->projetoCnme,
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at
             //'itens_checklist' => ItemChecklistCnmeResource::collection($this->itemChecklistCnmes)
             
         ];

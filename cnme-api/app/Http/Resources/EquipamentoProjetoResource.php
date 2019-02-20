@@ -20,7 +20,9 @@ class EquipamentoProjetoResource extends JsonResource
             'observacao'    => $this->observacao,
             'status'        => $this->status,
             'projeto'       => $this->projetoCnme->id,
-            'equipamento'   => new EquipamentoResource($this->equipamento)
+            'equipamento'   => new EquipamentoResource($this->equipamento),
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at
         ];
     }
 }

@@ -27,6 +27,8 @@ class ProjetoResource extends JsonResource
             'data_fim' => (string)$this->data_fim,
             'data_inicio_previsto' => (string)$this->data_inicio_previsto,
             'data_fim_previsto' => (string)$this->data_fim_previsto,
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at
         ];
     }
 }

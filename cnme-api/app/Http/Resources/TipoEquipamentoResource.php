@@ -18,6 +18,8 @@ class TipoEquipamentoResource extends JsonResource
             'id' => $this->id,
             'nome' => $this->nome,
             'descricao' => $this->descricao,
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at
         ];
     }
 }

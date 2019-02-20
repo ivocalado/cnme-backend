@@ -21,7 +21,10 @@ class EquipamentoResource extends JsonResource
             'fornecedor' => $this->fornecedor,
             'requisitos' => $this->requisitos,
             'removido'  =>  $this->deleted_at !== null,
-            'tipo_equipamento' => new TipoEquipamentoResource($this->tipoEquipamento)
+            'tipo_equipamento' => new TipoEquipamentoResource($this->tipoEquipamento),
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at,
+            'deleted_at' => (string) $this->deleted_at
         ];
     }
 }

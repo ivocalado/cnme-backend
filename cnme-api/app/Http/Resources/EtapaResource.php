@@ -20,7 +20,9 @@ class EtapaResource extends JsonResource
             'status'    => $this->status,
             'tipo'      => $this->tipo,
             'usuario'          => $this->usuario,
-            'tarefas' => TarefaResource::collection($this->tarefas)
+            'tarefas' => TarefaResource::collection($this->tarefas),
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at
 
         ];
     }

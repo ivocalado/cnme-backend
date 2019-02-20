@@ -20,7 +20,10 @@ class KitResource extends JsonResource
             'descricao' => $this->descricao,
             'usuario' =>  $this->usuario,
             'removido'  =>  $this->deleted_at !== null,
-            'equipamentos' => EquipamentoResource::collection($this->equipamentos)
+            'equipamentos' => EquipamentoResource::collection($this->equipamentos),
+            'created_at' => (string)$this->created_at,
+            'updated_at' => (string)$this->updated_at,
+            'deleted_at' => (string) $this->deleted_at
         ];
     }
 }
