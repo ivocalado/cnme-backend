@@ -176,6 +176,7 @@ Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoControll
 Route::get('projeto-cnme/{projetoId}/equipamentos/status/{status}', 'API\ProjetoController@equipamentosPorStatus');
 Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
 Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
+Route::get('projeto-cnme/{projetoId}/etapa-envio','API\ProjetoController@getEtapaEnvio');
 
 
 
@@ -195,6 +196,7 @@ Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@r
 Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@updateTarefa');
 
 Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos');
+
 
 
 /**

@@ -17,6 +17,7 @@ use App\Http\Resources\TarefaResource;
 
 class EnviarController extends Controller
 {
+
     public function addTarefaEnvio(Request $request, $projetoId){
         DB::beginTransaction();
 
@@ -65,8 +66,9 @@ class EnviarController extends Controller
             }
 
             
-            if(isset($request['etapa_id'])){
-                $etapa = Etapa::find($request['etapa_id']);
+            if(isset($request['etapa_id']) || $request['etapa_id'] !== null){
+                $etapa = $projeto->getEtapaEnvio();
+
             }else{
                 $etapa = new Etapa();
                 $etapa->projetoCnme()->associate($projeto);

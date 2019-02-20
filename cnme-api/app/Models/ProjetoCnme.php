@@ -57,6 +57,15 @@ class ProjetoCnme extends Model
         return $this->hasMany(EquipamentoProjeto::class);
     }
 
+    public function getEtapaEnvio(){
+        $etapa =  Etapa::where([
+            ['projeto_cnme_id', $this->id],
+            ['tipo', Etapa::TIPO_ENVIO]
+            ])->first();
+        
+        return $etapa;
+    }
+
     public $rules = [
         'numero'    =>  'required|unique:projeto_cnmes|max:20',
         'descricao' =>  'required',

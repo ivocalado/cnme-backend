@@ -1283,6 +1283,31 @@
 								"description": "Retorna todos os equipamentos disponíveis ainda para envio. Esses não estão associados a uma tarefa de envio."
 							},
 							"response": []
+						},
+						{
+							"name": "GET/api/projeto-cnme/6/etapa-envio",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-envio",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"projeto-cnme",
+										"6",
+										"etapa-envio"
+									]
+								},
+								"description": "Retorna a etapa de envio do projeto.\nCaso não encontre o projeto ou a etapa... erro 404"
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true

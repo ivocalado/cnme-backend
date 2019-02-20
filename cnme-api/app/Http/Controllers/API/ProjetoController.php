@@ -421,4 +421,22 @@ class ProjetoController extends Controller
 
         return ProjetoResource::collection($list->paginate(25));
     }
+
+    public function getEtapaEnvio($projetoId){
+        
+        $projeto = ProjetoCnme::find($projetoId);
+
+        if($projeto){
+            $etapaEnvio = $projeto->getEtapaEnvio();
+            if($etapaEnvio){
+                return new EtapaResource($etapaEnvio);
+            }else{
+                return response()->json(
+                    array('message' => 'Não há etapa de envio nesse projeto.') , 404);
+            }
+        }else{
+            return response()->json(
+                array('message' => 'Projeto não encontrado.') , 404);
+        }        
+    }
 }
