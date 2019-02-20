@@ -1975,6 +1975,31 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/unidades/u/admin",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/admin",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"admin"
+									]
+								},
+								"description": "retorna a unidade de administração\n"
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -3299,7 +3324,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"name\":\"Priscila\",\n\t\"email\": \"Priscila@mec.gov.br\",\n\t\"cpf\": \"122.121.23-27\",\n\t\"unidade_id\": \"10\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
 								},
 								"url": {
 									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
