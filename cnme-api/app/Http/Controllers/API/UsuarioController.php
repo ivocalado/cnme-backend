@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\ProjetoCnme;
 use App\Models\Tarefa;
 use Illuminate\Support\Facades\Hash;
+use App\Services\MailSender;
 
 
 class UsuarioController extends Controller
@@ -67,7 +68,10 @@ class UsuarioController extends Controller
             $usuario->fill($usuarioData);
             $usuario->save();
 
+            MailSender::convite($usuario);
             DB::commit();
+
+            
             
             return new UserResource($usuario);
             
