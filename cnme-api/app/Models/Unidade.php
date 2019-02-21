@@ -79,7 +79,7 @@ class Unidade extends Model
         'telefone'   => 'nullable',
         'url'   => 'nullable|url|max:255',
         'tipo_unidade_id' => 'required|integer|exists:tipo_unidades,id',
-        'responsavel_id' => 'required|integer|exists:users,id'
+        'responsavel_id' => 'integer|exists:users,id'
        
     ];
 

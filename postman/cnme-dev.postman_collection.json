@@ -645,7 +645,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"codigo_inep\": \"11112121\",\n\"nome\": \"Unidade CEPA 11\",\n\"telefone\": \"(82)31231-111\",\n\"email_institucional\": \"CEPA11@educacao.al.gov.br\",\n\"diretor\":\"João da Silva CEPA11\",\n\"email\": \"CEPA11@educacao.al.gov.br\",\n\"url\":\"http://CEPA11.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Rua José de Almeida\",\n\t\"numero\": \"sn\",\n\t\"bairro\": \"Feitosa\",\n\t\"cep\": \"11987-123\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n }\n}"
+							"raw": "{\n\"codigo_inep\": \"11112129\",\n\"nome\": \"Unidade CEPA 12\",\n\"telefone\": \"(82)31231-112\",\n\"email_institucional\": \"CEPA12@educacao.al.gov.br\",\n\"diretor\":\"João da Silva CEPA12\",\n\"email\": \"CEPA12@educacao.al.gov.br\",\n\"url\":\"http://CEPA12.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Rua José de Almeida\",\n\t\"numero\": \"sn\",\n\t\"bairro\": \"Feitosa\",\n\t\"cep\": \"11987-123\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n }\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/unidades",
@@ -3314,6 +3314,34 @@
 					"item": [
 						{
 							"name": "POST/api/usuarios/convidar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"convidar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/usuarios/?/enviar-convite",
 							"request": {
 								"method": "POST",
 								"header": [

@@ -65,11 +65,9 @@ class EnviarController extends Controller
                     array('message' => 'Verifique se todos os equipamentos enviados estão disponíveis no projeto') , 422);
             }
 
-            
-            if(isset($request['etapa_id']) || $request['etapa_id'] !== null){
-                $etapa = $projeto->getEtapaEnvio();
+            $etapa = $projeto->getEtapaEnvio();
 
-            }else{
+            if($etapa === null){
                 $etapa = new Etapa();
                 $etapa->projetoCnme()->associate($projeto);
                 $etapa->usuario()->associate($projeto->usuario);
