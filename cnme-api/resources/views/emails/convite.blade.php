@@ -7,7 +7,7 @@ Você foi adicionado(a) ao portal de gestão dos CNME. Seu usuário está associ
 <br/>
 Faça seu primeiro acesso com seu email({{$email}}) e confirme os dados no link abaixo
 <p>
-    <a href="{{$APP_URL}}/confirmar?token={{$token}}">Clique aqui </a>
+    <a href="{{$APP_URL}}/usuarios/confirmar?token={{$token}}">Clique aqui </a>
 </p>
 
 <p>
@@ -18,6 +18,6 @@ Ou copie o link abaixo na barra de endereço <br/>
 Atenciosamente<br/>
 --<br/>
 CNME - Centro Nacional de Mídias da Educação
-Ministério da Educação<br/>
+MEC - Ministério da Educação<br/>
 NEES - UFAL
 </p>

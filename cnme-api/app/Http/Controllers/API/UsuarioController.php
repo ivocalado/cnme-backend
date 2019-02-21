@@ -63,12 +63,10 @@ class UsuarioController extends Controller
                     array('message' => "Tipo desconhecido. Tipos:(".implode("|",$arrayTipos).")") , 422);
             }
 
-            $usuario->remember_token = bin2hex(random_bytes(20)); 
-
             $usuario->fill($usuarioData);
             $usuario->save();
 
-            MailSender::convite($usuario);
+           
             DB::commit();
 
             
@@ -85,6 +83,26 @@ class UsuarioController extends Controller
         }
     }
 
+    public function enviarConvite(Request $request, $usuarioId){
+
+        try {
+            
+            $usuario = User::find($usuarioId);
+            $usuario->remember_token = bin2hex(random_bytes(20));
+            MailSender::convite($usuario);
+            $usuario->save();
+
+        }catch(\Exception $e){
+            Log::error('UsuarioController::enviarConvite - '.$e->getMessage());
+
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+        }
+        
+
+        return new UserResource($usuario);
+    }
+
     public function confirmar(Request $request){
 
         $token = $request->query('token');
@@ -92,7 +110,7 @@ class UsuarioController extends Controller
         if( $token ){
             $usarioConfirmado = User::where('remember_token', $token)->first();
            
-            if(isset($usarioConfirmado) && $usarioConfirmado->email_verified_at == null){
+            if(isset($usarioConfirmado)){
                 
                 if($usarioConfirmado->email === $request->email){
                     $usarioConfirmado->fill($request->all());
@@ -102,11 +120,19 @@ class UsuarioController extends Controller
                     $usarioConfirmado->save();
 
                     return new UserResource($usarioConfirmado);
+                }else{//end if email
+                    return response()->json(
+                        array('message' => 'Email do usuário não confere com o cadastrado.') , 422); 
                 }
+            }else{//end if find usuario
+                return response()->json(
+                    array('message' => 'Usuário não encontrado') , 422); 
             }  
+        }else{//end if token
+            return response()->json(
+                array('message' => 'Requisição inválida. Token não foi enviado') , 422); 
         }
-        return response()->json(
-            array('message' => 'Requisição inválida.') , 422); 
+        
     }
    
     public function show($id)
