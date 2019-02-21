@@ -78,8 +78,8 @@ class ProjetoCnme extends Model
     public $rules = [
         'numero'    =>  'required|unique:projeto_cnmes|max:20',
         'descricao' =>  'required',
-        'usuario_id' => 'required|integer',
-        'unidade_id' => 'required|integer',
+        'usuario_id' => 'required|integer|exists:users,id',
+        'unidade_id' => 'required|integer|exists:unidades,id',
         'solicitacao_cnme_id' => 'nullable|integer',
         'data_inicio_previsto' => 'required|date',
         'data_fim_previsto' => 'required|date',
@@ -90,6 +90,8 @@ class ProjetoCnme extends Model
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
         'integer' => 'O campo :attribute deve ser um inteiro',
-        'date' => 'O campo :attribute é um campo no formato de data'
+        'date' => 'O campo :attribute é um campo no formato de data',
+        'usuario_id.exists' => 'Usuário(usuario_id) não encontrado',
+        'unidade_id.exists' => 'Unidade(unidade_id) não encontrada'
     ];
 }

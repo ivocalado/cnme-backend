@@ -23,13 +23,14 @@ class Equipamento extends Model
     public $rules = [
         'nome'    =>  'required|unique:equipamentos|max:255',
         'descricao'    =>  'required|max:255',
-        'tipo_equipamento_id'   => 'integer|required'
+        'tipo_equipamento_id'   => 'integer|required|exists:tipo_equipamentos,id'
 
        
     ];
 
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
-        'max'   => 'O campo :attribute é deve ter no máximo :max caracteteres'
+        'max'   => 'O campo :attribute é deve ter no máximo :max caracteteres',
+        'tipo_equipamento_id.exists' => 'Tipo de Equipamento(tipo_equipamento_id) não encontrado',
     ];
 }

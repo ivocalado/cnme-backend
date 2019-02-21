@@ -25,13 +25,7 @@ class EquipamentoProjeto extends Model
             EquipamentoProjeto::STATUS_INSTALADO,
             EquipamentoProjeto::STATUS_ATIVADO
         );
-        // return [
-        //     EquipamentoProjeto::STATUS_PLANEJADO,
-        //     EquipamentoProjeto::STATUS_ENVIADO,
-        //     EquipamentoProjeto::STATUS_ENTREGUE,
-        //     EquipamentoProjeto::STATUS_INSTALADO,
-        //     EquipamentoProjeto::STATUS_ATIVADO
-        // ];
+       
     }
 
     public function equipamento(){
@@ -49,14 +43,16 @@ class EquipamentoProjeto extends Model
     public $rules = [
         'observacao' =>  'nullable|max:20',
         'status' =>  'required|max:20',
-        'equipamento_id' =>  'required|integer',
-        'projeto_cnme_id' =>  'required|integer',
+        'equipamento_id' =>  'required|integer|exists:equipamentos,id',
+        'projeto_cnme_id' =>  'required|integer|exists:projeto_cnmes,id'
     
     ];
 
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
         'max' => 'No campo :attribute, o valor :input deve possuir no máximo :max caracteres',
-        'unique' => 'Já existe um registro com :attribute igual a :input' 
+        'unique' => 'Já existe um registro com :attribute igual a :input',
+        'equipamento_id.exists' => 'Equipamento(equipamento_id) não encontrado',
+        'projeto_cnme_id.exists' => 'Projeto CNME(projeto_cnme_id) não encontrado'
     ];
 }

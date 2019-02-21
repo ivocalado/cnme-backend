@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
+use TijsVerkoyen\CssToInlineStyles\Css\Rule\Rule;
 
 class Unidade extends Model
 {
@@ -70,15 +71,15 @@ class Unidade extends Model
     }
 
     public $rules = [
-        'nome'    =>  'required|unique:unidades|max:255',
+        'nome'    =>  'required|max:255',
         'email'    =>  'required|unique:unidades|email|max:255',
         'codigo_inep'       =>  'nullable|unique:unidades|size:8',
         'classe'            =>  'nullable|max:20',
         'diretor'   => 'nullable',
         'telefone'   => 'nullable',
         'url'   => 'nullable|url|max:255',
-        'tipo_unidade_id' => 'required|integer'
-        //'responsavel_id' => 'required|integer'
+        'tipo_unidade_id' => 'required|integer|exists:tipo_unidades,id',
+        'responsavel_id' => 'required|integer|exists:users,id'
        
     ];
 
@@ -91,7 +92,9 @@ class Unidade extends Model
         'active_url' => 'O campo :attribute deve possuir um endereço(url) válido',
         'codigo_inep.size' => 'O código INEP deve possuir :size caracteres',
         'tipo_unidade_id'  => 'Um tipo de unidade deve ser determinado',
-        'responsavel_id'   => 'Um responsável da unidade deve ser determinado'
+        'responsavel_id'   => 'Um responsável da unidade deve ser determinado',
+        'responsavel_id.exists' => 'Responsável(responsavel_id) não encontrado',
+        'tipo_unidade_id.exists' => 'Tipo de unidade(tipo_unidade_id) não encontrada'
         
     ];
 }

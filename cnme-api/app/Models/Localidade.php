@@ -24,8 +24,8 @@ class Localidade extends Model
         'bairro'       =>  '|required|max:100',
         'cep'   => 'required|min:8|max:9',
         'complemento'   => 'nullable',
-        'estado_id'   => 'required|integer',
-        'municipio_id' => 'required|integer',
+        'estado_id'   => 'required|integer|exists:estados,id',
+        'municipio_id' => 'required|integer|exists:municipios,id',
        
     ];
 
@@ -33,6 +33,8 @@ class Localidade extends Model
         'required' => 'O campo :attribute é obrigatório',
         'max' => 'No campo :attribute, o valor :input deve possuir no máximo :max caracteres',
         'between' => 'O :attribute deve possuir entre :min e :max caracteres',
-        'min' => 'No campo :attribute, o valor atual é :input, porém deve possuir no mínimo :min caracteres'
+        'min' => 'No campo :attribute, o valor atual é :input, porém deve possuir no mínimo :min caracteres',
+        'estado_id.exists' => 'Estado(estado_id) não encontrado',
+        'municipio_id.exists' => 'Município(municipio_id) não encontrado'
     ];
 }

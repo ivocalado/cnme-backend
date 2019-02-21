@@ -79,14 +79,16 @@ class Etapa extends Model
         'descricao'    =>  'required|max:255',
         'status'    =>  'required',
         'tipo' =>  'required',
-        'usuario_id' => 'required|integer',
-        'projeto_cnme_id' => 'required|integer'
+        'usuario_id' => 'required|integer|exists:users,id',
+        'projeto_cnme_id' => 'required|integer|exists:projeto_cnmes,id'
        
     ];
 
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
         'integer' => 'O campo :attribute deve ser um inteiro',
-        'date' => 'O campo :attribute é um campo no formato de data'
+        'date' => 'O campo :attribute é um campo no formato de data',
+        'projeto_cnme_id.exists' => 'Projeto CNME(projeto_cnme_id) não encontrado',
+        'usuario_id.exists' => 'Usuário(usuario_id) não encontrado'
     ];
 }

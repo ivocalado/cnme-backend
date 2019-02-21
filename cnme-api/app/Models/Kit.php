@@ -31,7 +31,7 @@ class Kit extends Model
     public $rules = [
         'nome'    =>  'required|max:255',
         'descricao'    =>  'nullable|max:255',
-        'usuario_id' => 'required|integer'
+        'usuario_id' => 'required|integer|exists:users,id'
        
        
        
@@ -40,6 +40,7 @@ class Kit extends Model
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
         'integer' => 'O campo :attribute deve ser um inteiro',
-        'date' => 'O campo :attribute é um campo no formato de data'
+        'date' => 'O campo :attribute é um campo no formato de data',
+        'usuario_id.exists' => 'Usuário(usuario_id) não encontrado'
     ];
 }

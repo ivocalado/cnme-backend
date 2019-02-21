@@ -43,7 +43,7 @@ class UsuarioController extends Controller
 
         try {
                 
-            $usuario = $request->has('id') ? User::findOrFail($request->id) : new User();
+            $usuario = new User();
             $usuarioData = $request->all();
             $usuarioData['password'] = Hash::make('123456');
 

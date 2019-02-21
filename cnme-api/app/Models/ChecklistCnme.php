@@ -46,13 +46,14 @@ class ChecklistCnme extends Model
     public $rules = [
         'descricao' =>  'required',
         'status' =>  'required|max:20',
-        'projeto_cnme_id' =>  'required|integer',
+        'projeto_cnme_id' =>  'required|integer|exists:projeto_cnmes,id',
     
     ];
 
     public $messages = [
         'required' => 'O campo :attribute é obrigatório',
         'max' => 'No campo :attribute, o valor :input deve possuir no máximo :max caracteres',
-        'unique' => 'Já existe um registro com :attribute igual a :input' 
+        'unique' => 'Já existe um registro com :attribute igual a :input',
+        'projeto_cnme_id.exists' => 'Projeto CNME(projeto_cnme_id) não encontrado'
     ];
 }

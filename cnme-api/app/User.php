@@ -74,7 +74,7 @@ class User extends Authenticatable
         'password'      =>  'required',
         'cpf'           =>  'required|unique:users',
         'telefone'      =>  'nullable|max:50',
-        'unidade_id'    =>  'required|integer',
+        'unidade_id'    =>  'required|integer|exists:unidades,id',
         'tipo'          =>  'required|max:20'
 
        
@@ -85,6 +85,7 @@ class User extends Authenticatable
         'required' => 'O campo :attribute é obrigatório',
         'email' => 'Esse campo deve possuir um email válido',
         'unique' => 'Já existe um registro com :attribute igual a :input',
-        'max'   => 'O campo :attribute deve ter até :max caracteres'
+        'max'   => 'O campo :attribute deve ter até :max caracteres',
+        'unidade_id.exists' => 'Unidade(unidade_id) não encontrada',
     ];
 }
