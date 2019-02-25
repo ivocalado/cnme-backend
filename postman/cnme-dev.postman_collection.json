@@ -1977,7 +1977,7 @@
 							"response": []
 						},
 						{
-							"name": "{{HOSTNAME}}/api/unidades/u/admin",
+							"name": "{{HOSTNAME}}/api/login",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -3383,7 +3383,7 @@
 									"raw": "{\n\t\"name\":\"José Pinheiro3333\",\n\t\"email\": \"josepinheiro3333@mec.gov.br\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"1234567\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token=82d3212b2d5caad9ae32",
+									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=82d3212b2d5caad9ae32",
 									"host": [
 										"{{HOSTNAME}}"
 									],
@@ -3394,7 +3394,7 @@
 									],
 									"query": [
 										{
-											"key": "token",
+											"key": "token1",
 											"value": "82d3212b2d5caad9ae32"
 										}
 									]
@@ -3611,6 +3611,191 @@
 							]
 						},
 						"description": "Restaurar um usuário removido.\nCaso não exista usuário, retorna uma mensagem com código 404.\nCaso o usuário não seja um usuário removido anteriormente, a chamada ainda assim retorna o usuário."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JWT",
+			"item": [
+				{
+					"name": "{{HOSTNAME}}/api/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "thiago.araujo.so@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/login",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/refresh-token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEwMTA5MSwiZXhwIjoxNTUxMTA0NjkxLCJuYmYiOjE1NTExMDEwOTEsImp0aSI6InFydnZCbk1HZTFJZjJvQzkiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.poiphnZR8Dqlrbzv3fKiipxPnM-ayK26oEodg40H4Q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NDU4MywiZXhwIjoxNTUxMDk4MTgzLCJuYmYiOjE1NTEwOTQ1ODMsImp0aSI6Im9vMVBJVGVUOGpNUTFGWnYiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Xj7m26ZBRKIBltumbeIGXCkKfJl-2MMdSOtAYge5dcY",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/refresh-token",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"refresh-token"
+							]
+						},
+						"description": "Atualiza o token com um novo"
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NjQ5NCwiZXhwIjoxNTUxMTAwMDk0LCJuYmYiOjE1NTEwOTY0OTQsImp0aSI6IlBQMTJrMVk0dnB0WW9JRVIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OnBCWOyCZA7JqXkcgByGT4aR12J8bx8k_1bd4tUZwwQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NDU4MywiZXhwIjoxNTUxMDk4MTgzLCJuYmYiOjE1NTEwOTQ1ODMsImp0aSI6Im9vMVBJVGVUOGpNUTFGWnYiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Xj7m26ZBRKIBltumbeIGXCkKfJl-2MMdSOtAYge5dcY",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/logout",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/localidades/estados - TESTE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEwMTA5MSwiZXhwIjoxNTUxMTA0NjkxLCJuYmYiOjE1NTExMDEwOTEsImp0aSI6InFydnZCbk1HZTFJZjJvQzkiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.poiphnZR8Dqlrbzv3fKiipxPnM-ayK26oEodg40H4Q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/localidades/estados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"localidades",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/localidades/estados/AL/municipios TESTE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NjQ5NCwiZXhwIjoxNTUxMTAwMDk0LCJuYmYiOjE1NTEwOTY0OTQsImp0aSI6IlBQMTJrMVk0dnB0WW9JRVIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OnBCWOyCZA7JqXkcgByGT4aR12J8bx8k_1bd4tUZwwQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/localidades/estados/AL/municipios",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"localidades",
+								"estados",
+								"AL",
+								"municipios"
+							]
+						}
 					},
 					"response": []
 				}

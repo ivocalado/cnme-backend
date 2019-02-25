@@ -17,7 +17,7 @@ class AuthController extends Controller
         }
         return response()->json([
             'token' => $token,
-            'expires' => auth('api')->factory()->getTTL() * 600,
+            'expires' => auth('api')->factory()->getTTL() * 60,
         ]);
     }
 
@@ -30,4 +30,16 @@ class AuthController extends Controller
         JWTAuth::invalidate($token);
         return response()->json(['message' => 'logout realizado com sucesso']);
     }
+
+    public function refresh()
+    {
+        $token = auth('api')->refresh();
+
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
+    }
+
 }

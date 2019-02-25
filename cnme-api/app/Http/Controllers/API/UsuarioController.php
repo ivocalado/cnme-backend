@@ -105,7 +105,7 @@ class UsuarioController extends Controller
 
     public function confirmar(Request $request){
 
-        $token = $request->query('token');
+        $token = $request->query('token1');
        
         if( $token ){
             $usarioConfirmado = User::where('remember_token', $token)->first();
