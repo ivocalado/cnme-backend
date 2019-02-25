@@ -24,7 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'API\AuthController@login');
 
 
-Route::middleware('jwt.auth')->group(function(){
+//Route::middleware('jwt.auth')->group(function(){
     Route::get('logout', 'API\AuthController@logout');
     Route::get('refresh-token', 'API\AuthController@refresh');
     
@@ -237,7 +237,7 @@ Route::middleware('jwt.auth')->group(function(){
      */
     Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
     Route::get('checklist-cnmes/cc/status','API\ChecklistCnmeController@status');
-});
+//});
 
 
 
