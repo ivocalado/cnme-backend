@@ -19,6 +19,8 @@ class Tarefa extends Model
     public const TIPO_ATIVACAO = 'ATIVACAO';
 
     public const DESC_TAREFA_ENVIO = "Envio dos equipamentos";
+    public const DESC_TAREFA_INSTALACAO = "Instalação dos equipamentos";
+    public const DESC_TAREFA_ATIVACAO = "Ativaçãos dos equipamentos";
 
     protected $fillable = [
         'nome','descricao','numero','status','link_externo','data_inicio_prevista','data_fim_prevista','data_inicio',

@@ -1334,6 +1334,98 @@
 								"description": "Consulta etapas de um projeto por status.\nENVIO|INSTALACAO|ATIVACAO"
 							},
 							"response": []
+						},
+						{
+							"name": "POST/api/projeto-cnme/6/etapas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapas",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"projeto-cnme",
+										"6",
+										"etapas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-instalacao",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMTM4MywiZXhwIjoxNTUxMTI0OTgzLCJuYmYiOjE1NTExMjEzODMsImp0aSI6ImRVVzIxU0NLOWFnRmlPck8iLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.jiEXHCrJuJDZ9n3RB3WdDVFNWUXc-tlvAxHdxqtjO5k",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-instalacao",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"projeto-cnme",
+										"6",
+										"etapa-instalacao"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-ativacao",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMTM4MywiZXhwIjoxNTUxMTI0OTgzLCJuYmYiOjE1NTExMjEzODMsImp0aSI6ImRVVzIxU0NLOWFnRmlPck8iLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.jiEXHCrJuJDZ9n3RB3WdDVFNWUXc-tlvAxHdxqtjO5k",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-ativacao",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"projeto-cnme",
+										"6",
+										"etapa-ativacao"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -1552,30 +1644,6 @@
 					"response": []
 				},
 				{
-					"name": "POST/api/projeto-cnme/6/etapas",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapas",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"6",
-								"etapas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "POST/api/etapas/projeto-cnme/3/tarefa/5/enviar",
 					"request": {
 						"method": "POST",
@@ -1603,16 +1671,33 @@
 					"response": []
 				},
 				{
-					"name": "POST/api/etapas/projeto-cnme/3/tarefas/5/entregar",
+					"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMDkxMywiZXhwIjoxNTUxMTI0NTEzLCJuYmYiOjE1NTExMjA5MTMsImp0aSI6IklycWc0N2ZCeHhtc0VHUWoiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OK9_RWsdOrz-QMhUuXVG1rlDF47Ys_u9_7wkcNTlvow",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/tarefa/7/entregar",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -1621,9 +1706,124 @@
 								"etapas",
 								"projeto-cnme",
 								"6",
-								"tarefa",
-								"7",
-								"entregar"
+								"add-tarefa-instalacao"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"etapas",
+										"projeto-cnme",
+										"6",
+										"add-tarefa-instalacao"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Feb 2019 15:54:58 -0300"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Feb 2019 18:54:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Token não foi enviado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-ativacao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMDkxMywiZXhwIjoxNTUxMTI0NTEzLCJuYmYiOjE1NTExMjA5MTMsImp0aSI6IklycWc0N2ZCeHhtc0VHUWoiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OK9_RWsdOrz-QMhUuXVG1rlDF47Ys_u9_7wkcNTlvow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-ativacao",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"6",
+								"add-tarefa-ativacao"
 							]
 						}
 					},
@@ -1977,7 +2177,7 @@
 							"response": []
 						},
 						{
-							"name": "{{HOSTNAME}}/api/login",
+							"name": "{{HOSTNAME}}/api/unidades/u/admin",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -3794,6 +3994,38 @@
 								"estados",
 								"AL",
 								"municipios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UC99 - Execução",
+			"item": [
+				{
+					"name": "POST/api/etapas/projeto-cnme/3/tarefas/5/entregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/tarefa/7/entregar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"6",
+								"tarefa",
+								"7",
+								"entregar"
 							]
 						}
 					},

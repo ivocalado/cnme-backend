@@ -18,6 +18,8 @@ class Etapa extends Model
 
 
     public const DESC_ETAPA_ENVIO = 'Etapa de envio dos equipamentos';
+    public const DESC_ETAPA_INSTALACAO = 'Etapa de instalação dos equipamentos';
+    public const DESC_ETAPA_ATIVACAO = 'Etapa de ativação dos equipamentos';
 
     protected $fillable = [
        'status','descricao','tipo','usuario_id','projeto_cnme_id'
@@ -75,6 +77,20 @@ class Etapa extends Model
         return  $equipamentosProjetos;
     }
 
+
+    public function firstOrCreateTarefa(){
+        $tarefa =  Tarefa::where([
+            ['etapa_id', $this->id],
+            ])->first();
+        if($tarefa)
+            return $tarefa;
+        else {
+            $tarefa = new Tarefa();
+            $tarefa->status = Tarefa::STATUS_ABERTA;
+            $tarefa->etapa()->associate($this);
+            return $tarefa;
+        }
+    }
     public $rules = [
         'descricao'    =>  'required|max:255',
         'status'    =>  'required',

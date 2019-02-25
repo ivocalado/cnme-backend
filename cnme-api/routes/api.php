@@ -188,6 +188,8 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
     Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
     Route::get('projeto-cnme/{projetoId}/etapa-envio','API\ProjetoController@getEtapaEnvio');
+    Route::get('projeto-cnme/{projetoId}/etapa-instalacao','API\ProjetoController@getEtapaInstalacao');
+    Route::get('projeto-cnme/{projetoId}/etapa-ativacao','API\ProjetoController@getEtapaAtivacao');
     Route::get('projeto-cnme/{projetoId}/etapas/{tipo}','API\ProjetoController@getEtapaPorTipo');
 
 
@@ -209,6 +211,9 @@ Route::middleware('jwt.auth')->group(function(){
     Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@updateTarefa');
 
     Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos');
+
+    Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-instalacao','API\InstalacaoController@addTarefaInstalacao');
+    Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-ativacao','API\AtivacaoController@addTarefAtivacao');
 
     /**
      * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamentos-all                                        * Adiciona na tarefa todos os equipamentos do projeto naquela tarefa

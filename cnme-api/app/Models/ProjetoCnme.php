@@ -67,12 +67,41 @@ class ProjetoCnme extends Model
         return $etapa;
     }
 
+    public function firstOrCreateEtapa($TIPO_ETAPA){
+        $etapa =  Etapa::where([
+            ['projeto_cnme_id', $this->id],
+            ['tipo', $TIPO_ETAPA]
+            ])->first();
+        if($etapa)
+            return $etapa;
+        else {
+            $etapa = new Etapa();
+            $etapa->projetoCnme()->associate($this);
+            $etapa->usuario()->associate($this->usuario);
+            $etapa->status = Etapa::STATUS_ABERTA;
+            $etapa->tipo = $TIPO_ETAPA;
+            $etapa->descricao = 'Etapa de '.$TIPO_ETAPA.' dos equipamentos';
+
+            $etapa->save();
+
+            return $etapa;
+        }
+    }
+
     public function getEtapasPorTipo($tipo){
         $etapas =  Etapa::where([
             ['projeto_cnme_id', $this->id],
             ['tipo', strtoupper($tipo)]
             ])->get();
         return $etapas;
+    }
+
+    public function getEtapaPorTipo($tipo){
+        $etapa =  Etapa::where([
+            ['projeto_cnme_id', $this->id],
+            ['tipo', strtoupper($tipo)]
+            ])->first();
+        return $etapa;
     }
 
     public $rules = [

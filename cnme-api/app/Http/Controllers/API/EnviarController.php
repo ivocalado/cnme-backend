@@ -98,8 +98,6 @@ class EnviarController extends Controller
 
             $tarefa->fill($tarefaData);
             $etapa->tarefas()->save($tarefa);
-
-
             
             $tarefa->equipamentosProjetos()->attach($equipamentosProjetoIds);
             $tarefa->save();
@@ -192,7 +190,7 @@ class EnviarController extends Controller
 
             $entregasAndamento = $etapa->tarefas->contains('status',Tarefa::STATUS_ANDAMENTO);
 
-            if(!$entregasAndamento){
+            if($entregasAndamento->isEmpty()){
                 $etapa->status = Etapa::STATUS_CONCLUIDA;
                 $etapa->save();
 

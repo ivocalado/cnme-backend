@@ -281,7 +281,6 @@ class ProjetoController extends Controller
                 $equipamentoProjeto->projetoCnme()->associate($projeto);
                 $equipamentoProjeto->status = EquipamentoProjeto::STATUS_PLANEJADO;
                
-        
                 $equipamentoProjeto->save();
 
                 if($projeto->status === ProjetoCnme::STATUS_CRIADO)
@@ -370,7 +369,6 @@ class ProjetoController extends Controller
         
     }
 
-
     public function search(Request $request){
         $list = ProjetoCnme::query();
         if($request->has('status')){
@@ -384,9 +382,7 @@ class ProjetoController extends Controller
                     array('message' => "Consulta por status desconhecido. Status:(".implode("|",$arrayStatus).")") , 422);
             }
 
-
             $list = $list->where('status',$status);
-
 
         }
 
@@ -397,11 +393,7 @@ class ProjetoController extends Controller
             ->orWhereHas('unidade', function ($query) {
                 $query->where('nome', 'ilike', '%'.$this->q.'%')
                         ->orWhere('codigo_inep', $this->q);
-            });
-
-           
-
-           
+            });  
         }
 
         return ProjetoResource::collection($list->paginate(25));
@@ -437,6 +429,40 @@ class ProjetoController extends Controller
                 array('message' => 'Projeto não encontrado.') , 404);
         }        
     }
+
+    public function getEtapaAtivacao($projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+        if($projeto){
+            $etapaAtivacao = $projeto->getEtapaPorTipo(Etapa::TIPO_ATIVACAO);
+            if($etapaAtivacao){
+                return new EtapaResource($etapaAtivacao);
+            }else{
+                return response()->json(
+                    array('message' => 'Não há etapa de ativação nesse projeto.') , 404);
+            }
+        }else{
+            return response()->json(
+                array('message' => 'Projeto não encontrado.') , 404);
+        }        
+    }
+
+    public function getEtapaInstalacao($projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+        if($projeto){
+            $etapa = $projeto->getEtapaPorTipo(Etapa::TIPO_INSTALACAO);
+            if($etapa){
+                return new EtapaResource($etapa);
+            }else{
+                return response()->json(
+                    array('message' => 'Não há etapa de instalação nesse projeto.') , 404);
+            }
+        }else{
+            return response()->json(
+                array('message' => 'Projeto não encontrado.') , 404);
+        }        
+    }
+
+
 
     public function getEtapaPorTipo($projetoId, $tipo){
         $projeto = ProjetoCnme::find($projetoId);
