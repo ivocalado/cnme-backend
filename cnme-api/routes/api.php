@@ -21,6 +21,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('login', 'API\AuthController@login');
+
+
+Route::middleware('jwt.auth')->group(function(){
+    Route::get('localidades/estados', 'API\LocalidadeController@estados');
+    Route::get('localidades/estados/{uf}/municipios', 'API\LocalidadeController@municipios');
+    Route::get('logout', 'API\AuthController@logout');
+});
+
+
+
 /**
  * ###############################################################################################################
  */
@@ -47,8 +58,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * GET      /api/unidades/u/empresas/
  */
 
-Route::get('localidades/estados', 'API\LocalidadeController@estados');
-Route::get('localidades/estados/{uf}/municipios', 'API\LocalidadeController@municipios');
+//Route::get('localidades/estados', 'API\LocalidadeController@estados');
+//Route::get('localidades/estados/{uf}/municipios', 'API\LocalidadeController@municipios');
 Route::apiResource('tipounidades', 'API\TipoUnidadeController');
 Route::apiResource('unidades', 'API\UnidadeController');
 Route::post('unidades/{unidadeId}/add-localidade','API\UnidadeController@addLocalidade')
