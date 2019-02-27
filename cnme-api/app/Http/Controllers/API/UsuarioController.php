@@ -301,6 +301,12 @@ class UsuarioController extends Controller
         return UserResource::collection($list->orderBy('name')->paginate(25));
     }
 
+    public function findByEmail(Request $request){
+        $user = User::where('email', $request['email'])->first();
+
+        return new UserResource($user);
+    }
+
     public function searchNaoConfirmados(Request $request){
         $list = User::query();
         $list->whereNull('email_verified_at');

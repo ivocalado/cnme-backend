@@ -377,6 +377,191 @@
 			]
 		},
 		{
+			"name": "JWT",
+			"item": [
+				{
+					"name": "{{HOSTNAME}}/api/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "thiago.araujo.so@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/login",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/refresh-token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEwMTA5MSwiZXhwIjoxNTUxMTA0NjkxLCJuYmYiOjE1NTExMDEwOTEsImp0aSI6InFydnZCbk1HZTFJZjJvQzkiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.poiphnZR8Dqlrbzv3fKiipxPnM-ayK26oEodg40H4Q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NDU4MywiZXhwIjoxNTUxMDk4MTgzLCJuYmYiOjE1NTEwOTQ1ODMsImp0aSI6Im9vMVBJVGVUOGpNUTFGWnYiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Xj7m26ZBRKIBltumbeIGXCkKfJl-2MMdSOtAYge5dcY",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/refresh-token",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"refresh-token"
+							]
+						},
+						"description": "Atualiza o token com um novo"
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NjQ5NCwiZXhwIjoxNTUxMTAwMDk0LCJuYmYiOjE1NTEwOTY0OTQsImp0aSI6IlBQMTJrMVk0dnB0WW9JRVIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OnBCWOyCZA7JqXkcgByGT4aR12J8bx8k_1bd4tUZwwQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NDU4MywiZXhwIjoxNTUxMDk4MTgzLCJuYmYiOjE1NTEwOTQ1ODMsImp0aSI6Im9vMVBJVGVUOGpNUTFGWnYiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Xj7m26ZBRKIBltumbeIGXCkKfJl-2MMdSOtAYge5dcY",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/logout",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/localidades/estados - TESTE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/localidades/estados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"localidades",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/localidades/estados/AL/municipios TESTE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NjQ5NCwiZXhwIjoxNTUxMTAwMDk0LCJuYmYiOjE1NTEwOTY0OTQsImp0aSI6IlBQMTJrMVk0dnB0WW9JRVIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OnBCWOyCZA7JqXkcgByGT4aR12J8bx8k_1bd4tUZwwQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/localidades/estados/AL/municipios",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"localidades",
+								"estados",
+								"AL",
+								"municipios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "UC0 - Gerenciar",
 			"item": [
 				{
@@ -605,7 +790,628 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/2/etapas",
+					"name": "GET/api/projeto-cnme/2/etapas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTI4MzUwMywiZXhwIjoxNTUxMjg3MTAzLCJuYmYiOjE1NTEyODM1MDMsImp0aSI6IjlIZzlwblZ4OEUwbTQ3cTUiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Wm9x3Pm9LN3fEy398Lsza-q-PBcYA1u_PFRLMsppzLM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"6",
+								"etapas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/projeto-cnme/6/tarefas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTI3NDI4OSwiZXhwIjoxNTUxMjc3ODg5LCJuYmYiOjE1NTEyNzQyODksImp0aSI6ImVPVGNtQUlVTzc3aHhDRXQiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.yDtdgtVNomXStzULJ9QYiTeMEXkU8emxp-k-0MYIy1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/tarefas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"6",
+								"tarefas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/projeto-cnme/1/tarefas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"1",
+								"etapas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UC102 - Gerenciar Equipamentos e Kits",
+			"item": [
+				{
+					"name": "Tipo Equipamento",
+					"item": [
+						{
+							"name": "GET/api/tipoequipamentos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTI4NjA1MywiZXhwIjoxNTUxMjg5NjUzLCJuYmYiOjE1NTEyODYwNTMsImp0aSI6InpacW1PTGRKZmt6RTRJYkgiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.dNKBQLM0f3zzdAeX6R_p_NKgemXfgmFxI1QLf8_Je3I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tipoequipamentos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipoequipamentos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/tipoequipamentos/1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Computador\",\n\t\"descricao\": \"Monitor, Gabinete, Teclado e Mouse\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tipoequipamentos/1",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipoequipamentos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/tipoequipamentos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Tablet 10\",\n\t\"descricao\": \"Tablet Educacional\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tipoequipamentos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipoequipamentos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT/api/tipoequipamentos/8",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Tablet 10 Educacional FNDE\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tipoequipamentos/8",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipoequipamentos",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE/api/tipoequipamentos/8",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tipoequipamentos/8",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipoequipamentos",
+										"8"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Equipamento",
+					"item": [
+						{
+							"name": "PESQUISA/api/equipamentos/u/pesquisar?q=som",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/e/pesquisar?tipo=TV&q=HD",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"e",
+										"pesquisar"
+									],
+									"query": [
+										{
+											"key": "tipo",
+											"value": "TV"
+										},
+										{
+											"key": "q",
+											"value": "HD"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/equipamentos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n    \"nome\": \"Monitor 23 AOC\",\n    \"descricao\": \"Monitor 23 polegadas widescreen\",\n    \"fornecedor\": \"Digital Magazine\",\n    \"requisitos\": \"Bivolt\",\n    \"tipo_equipamento_id\":1\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/equipamentos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT/api/equipamentos",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n            \"nome\": \"Monitor 17' AOC v2\"\n         \n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/8",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE/api/equipamentos/6",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/6",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/equipamentos/e/all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/e/all",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"e",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/equipamentos/e/removidos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/e/removidos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"e",
+										"removidos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE/api/equipamentos/6/force-delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/6/force-delete",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"6",
+										"force-delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/equipamentos/5/restaurar",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/equipamentos/5",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"equipamentos",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "POST/api/kits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Kit 1000x\",\n\t\"descricao\": \"Kit 1000x\",\n\t\"usuario_id\":\"1\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/kits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/kits/1",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -614,17 +1420,372 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/2/etapas",
+							"raw": "{{HOSTNAME}}/api/kits/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/kits/1/add-equipamento/7",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/3/add-equipamento/7",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"3",
+								"add-equipamento",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [1,2,3,4,5,6]\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1",
+								"add-equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/kits/1/remove-equipamento/7",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [2,3,4,5,6,7]\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/1/remove-equipamento/7",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1",
+								"remove-equipamento",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/kits/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/2",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/kits/1/force-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/1/force-delete",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1",
+								"force-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/3/remove-kit/1",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"2",
-								"etapas"
+								"3",
+								"remove-kit",
+								"1"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/projeto-cnme/1/add-kit/1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/3/add-kit/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"3",
+								"add-kit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/kits/1/remove-equipamentos",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [2,3]\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/1/remove-equipamentos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1",
+								"remove-equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/kits/k/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/k/all",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"k",
+								"all"
+							]
+						},
+						"description": "Retorna todos os kits. Inclusive os removidos."
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/kits/k/removidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/k/removidos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"k",
+								"removidos"
+							]
+						},
+						"description": "Retorna somente os removidos."
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/kits/2/force-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/2/force-delete",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"2",
+								"force-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/kits/4/restaurar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/4/restaurar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"4",
+								"restaurar"
+							]
+						},
+						"description": "Restaura kit;\nCaso não encotre, erro 404.\nCaso restaura ou equipamento nunca tenho sido removido, retorna o equipamento."
 					},
 					"response": []
 				}
@@ -636,6 +1797,16 @@
 				{
 					"name": "POST/api/unidades - POLO",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -688,6 +1859,16 @@
 				{
 					"name": "CREATE/api/projeto-cnme",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -697,7 +1878,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\":\"24331-217\",\n\t\"descricao\": \"Projeto Alagoas - Escola Palmares\",\n\t\"usuario_id\": \"5\",\n\t\"unidade_id\": \"5\",\n\t\"data_inicio_previsto\": \"2019-04-30\",\n\t\"data_fim_previsto\": \"2019-05-25\"\n\t\n}"
+							"raw": "{\n\t\"numero\":\"24331-217\",\n\t\"descricao\": \"Projeto Alagoas - Escola Palmares\",\n\t\"usuario_id\": \"5\",\n\t\"unidade_id\": \"5\",\n\t\"data_inicio_previsto\": \"2019-02-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/projeto-cnme",
@@ -718,6 +1899,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -743,8 +1934,18 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/5/add-kit/1",
+					"name": "POST/api/projeto-cnme/5/add-kit/1",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -752,16 +1953,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/add-kit/3",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-kit/1",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"6",
+								"1",
 								"add-kit",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -1029,6 +2230,16 @@
 						{
 							"name": "DELETE/api/etapa",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"body": {
@@ -1036,14 +2247,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/etapas/4",
+									"raw": "{{HOSTNAME}}/api/etapas/5",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"etapas",
-										"4"
+										"5"
 									]
 								}
 							},
@@ -1287,6 +2498,16 @@
 						{
 							"name": "GET/api/projeto-cnme/6/etapa-envio",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -1294,14 +2515,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-envio",
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapa-envio",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"projeto-cnme",
-										"6",
+										"1",
 										"etapa-envio"
 									]
 								},
@@ -1336,8 +2557,18 @@
 							"response": []
 						},
 						{
-							"name": "POST/api/projeto-cnme/6/etapas",
+							"name": "GET/api/projeto-cnme/6/etapas",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -1345,15 +2576,49 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapas",
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapas",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"projeto-cnme",
-										"6",
+										"1",
 										"etapas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/projeto-cnme/1/tarefas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/1/tarefas",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"projeto-cnme",
+										"1",
+										"tarefas"
 									]
 								}
 							},
@@ -1433,6 +2698,16 @@
 				{
 					"name": "POST /api/etapas/projeto-cnme/6/add-tarefa-envio 1",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -1444,10 +2719,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-01\",\n\t\"data_fim_prevista\": \"2019-05-04\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-envio",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -1455,7 +2730,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"6",
+								"1",
 								"add-tarefa-envio"
 							]
 						},
@@ -2166,6 +3441,16 @@
 						{
 							"name": "GET/api/unidades/u/empresas",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -2343,6 +3628,39 @@
 					"_postman_isSubFolder": true
 				},
 				{
+					"name": "GET/api/unidades",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/unidades",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "{{HOSTNAME}}/api/unidades - EMPRESA",
 					"request": {
 						"method": "POST",
@@ -2455,29 +3773,6 @@
 					"response": []
 				},
 				{
-					"name": "GET/api/unidades",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{HOSTNAME}}/api/unidades",
-							"protocol": "http",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "GET/api/unidades/10/usuarios",
 					"request": {
 						"method": "GET",
@@ -2565,854 +3860,6 @@
 								}
 							]
 						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "UC102 - Gerenciar Equipamentos e Kits",
-			"item": [
-				{
-					"name": "Tipo Equipamento",
-					"item": [
-						{
-							"name": "GET/api/tipoequipamentos",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/tipoequipamentos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipoequipamentos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/tipoequipamentos/1",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"nome\": \"Computador\",\n\t\"descricao\": \"Monitor, Gabinete, Teclado e Mouse\"\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/tipoequipamentos/1",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipoequipamentos",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "POST/api/tipoequipamentos",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"nome\": \"Tablet 10\",\n\t\"descricao\": \"Tablet Educacional\"\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/tipoequipamentos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipoequipamentos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "PUT/api/tipoequipamentos/8",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"nome\": \"Tablet 10 Educacional FNDE\"\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/tipoequipamentos/8",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipoequipamentos",
-										"8"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "DELETE/api/tipoequipamentos/8",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/tipoequipamentos/8",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipoequipamentos",
-										"8"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Equipamento",
-					"item": [
-						{
-							"name": "PESQUISA/api/equipamentos/u/pesquisar?q=som",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/e/pesquisar?tipo=TV&q=HD",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos",
-										"e",
-										"pesquisar"
-									],
-									"query": [
-										{
-											"key": "tipo",
-											"value": "TV"
-										},
-										{
-											"key": "q",
-											"value": "HD"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "POST/api/equipamentos",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": " {\n    \"nome\": \"Monitor 23 AOC\",\n    \"descricao\": \"Monitor 23 polegadas widescreen\",\n    \"fornecedor\": \"Digital Magazine\",\n    \"requisitos\": \"Bivolt\",\n    \"tipo_equipamento_id\":1\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/equipamentos",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "PUT/api/equipamentos",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": " {\n            \"nome\": \"Monitor 17' AOC v2\"\n         \n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/8",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos",
-										"8"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "DELETE/api/equipamentos/6",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/6",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos",
-										"6"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/equipamentos/e/all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/e/all",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos",
-										"e",
-										"all"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/equipamentos/e/removidos",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/e/removidos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos",
-										"e",
-										"removidos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "DELETE/api/equipamentos/6/force-delete",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/6/force-delete",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos",
-										"6",
-										"force-delete"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/equipamentos/5/restaurar",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/5",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"equipamentos",
-										"5"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "POST/api/kits",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"nome\": \"Kit 200x\",\n\t\"descricao\": \"Kit 200x\",\n\t\"usuario_id\":\"1\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/kits",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/kits/1",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/1",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST/api/kits/1/add-equipamento/7",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/3/add-equipamento/7",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"3",
-								"add-equipamento",
-								"7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"ids\": [1,2,3,4]\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"1",
-								"add-equipamentos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE/api/kits/1/remove-equipamento/7",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"ids\": [2,3,4,5,6,7]\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/1/remove-equipamento/7",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"1",
-								"remove-equipamento",
-								"7"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE/api/kits/2",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/2",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE/api/kits/1/force-delete",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/1/force-delete",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"1",
-								"force-delete"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/3/remove-kit/1",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"3",
-								"remove-kit",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST/api/projeto-cnme/1/add-kit/1",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/3/add-kit/1",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"3",
-								"add-kit",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE/api/kits/1/remove-equipamentos",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"ids\": [2,3]\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/1/remove-equipamentos",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"1",
-								"remove-equipamentos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/kits/k/all",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/k/all",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"k",
-								"all"
-							]
-						},
-						"description": "Retorna todos os kits. Inclusive os removidos."
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/kits/k/removidos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/k/removidos",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"k",
-								"removidos"
-							]
-						},
-						"description": "Retorna somente os removidos."
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/kits/2/force-delete",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/2/force-delete",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"2",
-								"force-delete"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/kits/4/restaurar",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/4/restaurar",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"kits",
-								"4",
-								"restaurar"
-							]
-						},
-						"description": "Restaura kit;\nCaso não encotre, erro 404.\nCaso restaura ou equipamento nunca tenho sido removido, retorna o equipamento."
 					},
 					"response": []
 				}
@@ -3585,6 +4032,53 @@
 										"usuarios",
 										"u",
 										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/usuarios/login/email",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "thiago.oliveira@ifal.edu.br",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/login/email",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"login",
+										"email"
 									]
 								}
 							},
@@ -3895,191 +4389,6 @@
 							]
 						},
 						"description": "Restaurar um usuário removido.\nCaso não exista usuário, retorna uma mensagem com código 404.\nCaso o usuário não seja um usuário removido anteriormente, a chamada ainda assim retorna o usuário."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "JWT",
-			"item": [
-				{
-					"name": "{{HOSTNAME}}/api/login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "thiago.araujo.so@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/login",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/refresh-token",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEwMTA5MSwiZXhwIjoxNTUxMTA0NjkxLCJuYmYiOjE1NTExMDEwOTEsImp0aSI6InFydnZCbk1HZTFJZjJvQzkiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.poiphnZR8Dqlrbzv3fKiipxPnM-ayK26oEodg40H4Q0",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NDU4MywiZXhwIjoxNTUxMDk4MTgzLCJuYmYiOjE1NTEwOTQ1ODMsImp0aSI6Im9vMVBJVGVUOGpNUTFGWnYiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Xj7m26ZBRKIBltumbeIGXCkKfJl-2MMdSOtAYge5dcY",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/refresh-token",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"refresh-token"
-							]
-						},
-						"description": "Atualiza o token com um novo"
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/logout",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NjQ5NCwiZXhwIjoxNTUxMTAwMDk0LCJuYmYiOjE1NTEwOTY0OTQsImp0aSI6IlBQMTJrMVk0dnB0WW9JRVIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OnBCWOyCZA7JqXkcgByGT4aR12J8bx8k_1bd4tUZwwQ",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NDU4MywiZXhwIjoxNTUxMDk4MTgzLCJuYmYiOjE1NTEwOTQ1ODMsImp0aSI6Im9vMVBJVGVUOGpNUTFGWnYiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Xj7m26ZBRKIBltumbeIGXCkKfJl-2MMdSOtAYge5dcY",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/logout",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"logout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/localidades/estados - TESTE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEwMTA5MSwiZXhwIjoxNTUxMTA0NjkxLCJuYmYiOjE1NTExMDEwOTEsImp0aSI6InFydnZCbk1HZTFJZjJvQzkiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.poiphnZR8Dqlrbzv3fKiipxPnM-ayK26oEodg40H4Q0",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/localidades/estados",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"localidades",
-								"estados"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/localidades/estados/AL/municipios TESTE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTA5NjQ5NCwiZXhwIjoxNTUxMTAwMDk0LCJuYmYiOjE1NTEwOTY0OTQsImp0aSI6IlBQMTJrMVk0dnB0WW9JRVIiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OnBCWOyCZA7JqXkcgByGT4aR12J8bx8k_1bd4tUZwwQ",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/localidades/estados/AL/municipios",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"localidades",
-								"estados",
-								"AL",
-								"municipios"
-							]
-						}
 					},
 					"response": []
 				}

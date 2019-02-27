@@ -108,6 +108,8 @@ Route::middleware('jwt.auth')->group(function(){
     Route::delete('usuarios/{id}/force-delete','API\UsuarioController@forceDelete');
     Route::get('usuarios/{id}/restaurar','API\UsuarioController@restore');
 
+    Route::post('usuarios/login/email','API\UsuarioController@findByEmail');
+
 
     /**################################################################################################################ */
 
