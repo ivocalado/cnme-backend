@@ -17,6 +17,8 @@ class TarefaResource extends JsonResource
         return [
             'id' => $this->id,
             'nome' => $this->nome,
+            'etapa_id' =>  $this->etapa->id,
+            'etapa_tipo' => $this->etapa->tipo,  
             'numero' => $this->numero,
             'descricao' => $this->descricao,
             'status' => $this->status,
@@ -26,7 +28,6 @@ class TarefaResource extends JsonResource
             'data_inicio' => (string)$this->data_inicio,
             'data_fim'  => (string)$this->data_fim,
             'usuario'   => $this->usuario,
-            'etapa_id' =>  $this->etapa->id,
             'responsavel' => $this->responsavel,
             'unidade_responsavel' => $this->unidadeResponsavel,
             'equipamentos_projeto' => EquipamentoProjetoResource::collection($this->equipamentosProjetos),

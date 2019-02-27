@@ -12,6 +12,7 @@ use App\Models\Etapa;
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\EtapaResource;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\TarefaResource;
 
 class InstalacaoController extends Controller
 {
@@ -60,5 +61,52 @@ class InstalacaoController extends Controller
                 array('message' => $e->getMessage()) , 500);
 
         }
+    }
+
+    public function updateTarefaInstalacao(Request $request, $projetoId){
+        DB::beginTransaction();
+
+        try{
+            $projeto = ProjetoCnme::find($projetoId);
+
+            if(!isset($projeto)){
+                return response()->json(
+                    array('message' => 'O projeto não existe.') , 422);
+            }
+            $etapaInstalacao =  Etapa::where([
+                ['projeto_cnme_id', $projeto->id],
+                ['tipo', Etapa::TIPO_INSTALACAO]
+                ])->first();
+            
+            if(!isset($etapaInstalacao)){
+                return response()->json(
+                    array('message' => 'Não existe etapa de Instalação.') , 422);
+            }
+
+            $tarefa =  Tarefa::where([
+                ['etapa_id', $etapaInstalacao->id],
+                ])->first();
+            
+            if(!isset($tarefa)){
+                return response()->json(
+                    array('message' => 'Não existe a tarefa de Instalação.') , 422);
+            }
+
+            $tarefaData = $request->all();
+            $tarefa->fill($tarefaData);
+    
+            $tarefa->save();
+
+            return new TarefaResource($tarefa);
+        }catch(\Exception $e){
+            DB::rollback();
+    
+            Log::error('InstalacaoController::updateTarefaAtivacao - message: '. $e->getMessage());
+    
+            return response()->json(
+                    array('message' => $e->getMessage()) , 500);
+    
+            }
+
     }
 }

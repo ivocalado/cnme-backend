@@ -215,6 +215,9 @@ Route::post('login', 'API\AuthController@login');
     Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-instalacao','API\InstalacaoController@addTarefaInstalacao');
     Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-ativacao','API\AtivacaoController@addTarefAtivacao');
 
+    Route::put('etapas/projeto-cnme/{projetoId}/update-tarefa-instalacao','API\InstalacaoController@updateTarefaInstalacao');
+    Route::put('etapas/projeto-cnme/{projetoId}/update-tarefa-ativacao','API\AtivacaoController@updateTarefaAtivacao');
+
     /**
      * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamentos-all                                        * Adiciona na tarefa todos os equipamentos do projeto naquela tarefa
      * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}         * Adiciona na tarefa um equipamento que já esteja associado ao projeto

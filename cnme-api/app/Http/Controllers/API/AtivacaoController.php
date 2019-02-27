@@ -13,6 +13,7 @@ use App\Models\Etapa;
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\EtapaResource;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\TarefaResource;
 
 
 class AtivacaoController extends Controller
@@ -63,4 +64,52 @@ class AtivacaoController extends Controller
 
         }
     }
+
+    public function updateTarefaAtivacao(Request $request, $projetoId){
+        DB::beginTransaction();
+
+        try{
+            $projeto = ProjetoCnme::find($projetoId);
+
+            if(!isset($projeto)){
+                return response()->json(
+                    array('message' => 'O projeto não existe.') , 422);
+            }
+            $etapa =  Etapa::where([
+                ['projeto_cnme_id', $projeto->id],
+                ['tipo', Etapa::TIPO_ATIVACAO]
+                ])->first();
+            
+            if(!isset($etapa)){
+                return response()->json(
+                    array('message' => 'Não existe etapa de ativação.') , 422);
+            }
+
+            $tarefa =  Tarefa::where([
+                ['etapa_id', $etapa->id],
+                ])->first();
+            
+            if(!isset($tarefa)){
+                return response()->json(
+                    array('message' => 'Não existe a tarefa de ativação.') , 422);
+            }
+
+            $tarefaData = $request->all();
+            $tarefa->fill($tarefaData);
+    
+            $tarefa->save();
+
+            return new TarefaResource($tarefa);
+        }catch(\Exception $e){
+            DB::rollback();
+    
+            Log::error('AtivacaoController::updateTarefaAtivacao - message: '. $e->getMessage());
+    
+            return response()->json(
+                    array('message' => $e->getMessage()) , 500);
+    
+            }
+
+    }
+
 }
