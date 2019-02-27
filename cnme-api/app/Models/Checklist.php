@@ -7,7 +7,7 @@ use App\User;
 
 class Checklist extends Model
 {
-    protected $fillable = ['versao', 'descricao','usuario_id','ativo'];
+    protected $fillable = ['versao', 'descricao','usuario_id'];
 
     protected $table = "checklists";
 
@@ -22,8 +22,7 @@ class Checklist extends Model
     public $rules = [
         'versao'    =>  'required|unique:checklists|max:100',
         'descricao'    =>  'required|max:255',
-        'usuario_id'  => 'integer|required',
-        'ativo' => 'required'
+        'usuario_id'  => 'integer|required'
     
     ];
 

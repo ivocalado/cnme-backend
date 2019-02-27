@@ -80,7 +80,7 @@ class Handler extends ExceptionHandler
                  return response()->json(['error' => 'TOKEN_BLACKLISTED'],401);
            }
            if ($exception->getMessage() === 'Token not provided') {
-               return response()->json(['error' => 'Token não foi enviado']);
+               return response()->json(['error' => 'Token não foi enviado'],401);
            }
         }
         

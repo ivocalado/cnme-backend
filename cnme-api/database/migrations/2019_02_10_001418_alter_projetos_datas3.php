@@ -19,8 +19,8 @@ class AlterProjetosDatas3 extends Migration
                 $table->dropColumn('data_finalizacao_prevista');
             }
             
-            $table->string('data_inicio_previsto', 255)->nullable(false)->change();
-            $table->string('data_fim_previsto', 255)->nullable(false)->change();
+            $table->date('data_inicio_previsto', 255)->nullable(false)->change();
+            $table->date('data_fim_previsto', 255)->nullable(false)->change();
         });
     }
 

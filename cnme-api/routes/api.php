@@ -24,7 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'API\AuthController@login');
 
 
-//Route::middleware('jwt.auth')->group(function(){
+Route::middleware('jwt.auth')->group(function(){
     Route::get('logout', 'API\AuthController@logout');
     Route::get('refresh-token', 'API\AuthController@refresh');
     
@@ -174,6 +174,7 @@ Route::post('login', 'API\AuthController@login');
 
     Route::apiResource('projeto-cnme', 'API\ProjetoController');
     Route::get('projeto-cnme/{id}/etapas','API\ProjetoController@etapas');
+    Route::get('projeto-cnme/{id}/tarefas','API\ProjetoController@tarefas');
     Route::get('projeto-cnme/p/status','API\ProjetoController@status');
 
     Route::post('projeto-cnme/criar','API\ProjetoController@store');
@@ -190,7 +191,7 @@ Route::post('login', 'API\AuthController@login');
     Route::get('projeto-cnme/{projetoId}/etapa-envio','API\ProjetoController@getEtapaEnvio');
     Route::get('projeto-cnme/{projetoId}/etapa-instalacao','API\ProjetoController@getEtapaInstalacao');
     Route::get('projeto-cnme/{projetoId}/etapa-ativacao','API\ProjetoController@getEtapaAtivacao');
-    Route::get('projeto-cnme/{projetoId}/etapas/{tipo}','API\ProjetoController@getEtapaPorTipo');
+    Route::get('projeto-cnme/{projetoId}/etapas/{tipo}','API\ProjetoController@getEtapasPorTipo');
 
 
     
@@ -240,7 +241,7 @@ Route::post('login', 'API\AuthController@login');
      */
     Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
     Route::get('checklist-cnmes/cc/status','API\ChecklistCnmeController@status');
-//});
+});
 
 
 

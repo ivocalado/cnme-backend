@@ -77,6 +77,14 @@ class Etapa extends Model
         return  $equipamentosProjetos;
     }
 
+    public function getFirstTarefa(){
+        $tarefa =  Tarefa::where([
+            ['etapa_id', $this->id],
+            ])->first();
+       
+        return $tarefa;
+    }
+
 
     public function firstOrCreateTarefa(){
         $tarefa =  Tarefa::where([

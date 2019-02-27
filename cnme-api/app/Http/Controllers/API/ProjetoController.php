@@ -17,6 +17,7 @@ use App\Models\Etapa;
 use App\Models\Tarefa;
 use App\Http\Resources\EquipamentoProjetoResource;
 use App\Http\Resources\EtapaResource;
+use App\Http\Resources\TarefaResource;
 
 class ProjetoController extends Controller
 {
@@ -82,15 +83,14 @@ class ProjetoController extends Controller
     }
 
     public function etapas(Request $request, $projetoId){
-        $etapas = Etapa::where('projeto_cnme_id', $projetoId)->get();
+        $projeto = ProjetoCnme::find($projetoId);
 
-        return EtapaResource::collection($etapas);
+        return EtapaResource::collection($projeto->etapas);
     }
 
    
     public function update(Request $request, $id)
     {
-       
         try {
             DB::beginTransaction();
             $projeto = ProjetoCnme::find($id);
@@ -140,6 +140,19 @@ class ProjetoController extends Controller
                 array('message' => $e->getMessage()) , 500);
 
         }
+    }
+
+    public function tarefas(Request $request, $projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        if(!isset($projeto)){
+            return response()->json(
+                array('message' => "Projeto não encontrado.") , 422);
+        }
+
+        return TarefaResource::collection($projeto->tarefas);
+
+
     }
 
     public function addKit(Request $request, $projetoId, $kitId){
@@ -433,7 +446,7 @@ class ProjetoController extends Controller
     public function getEtapaAtivacao($projetoId){
         $projeto = ProjetoCnme::find($projetoId);
         if($projeto){
-            $etapaAtivacao = $projeto->getEtapaPorTipo(Etapa::TIPO_ATIVACAO);
+            $etapaAtivacao = $projeto->getEtapaAtivacao();
             if($etapaAtivacao){
                 return new EtapaResource($etapaAtivacao);
             }else{
@@ -449,7 +462,7 @@ class ProjetoController extends Controller
     public function getEtapaInstalacao($projetoId){
         $projeto = ProjetoCnme::find($projetoId);
         if($projeto){
-            $etapa = $projeto->getEtapaPorTipo(Etapa::TIPO_INSTALACAO);
+            $etapa = $projeto->getEtapaInstalacao();
             if($etapa){
                 return new EtapaResource($etapa);
             }else{
@@ -464,7 +477,7 @@ class ProjetoController extends Controller
 
 
 
-    public function getEtapaPorTipo($projetoId, $tipo){
+    public function getEtapasPorTipo($projetoId, $tipo){
         $projeto = ProjetoCnme::find($projetoId);
 
         if(!Etapa::checkTipo($tipo)){

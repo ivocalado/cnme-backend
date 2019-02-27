@@ -90,17 +90,31 @@ class EnviarController extends Controller
             $validator = Validator::make($tarefaData, $tarefa->rules, $tarefa->messages);
 
             if ($validator->fails()) {
+                DB::rollback();
                 return response()->json(
                     array(
                     "messages" => $validator->errors()
                     ), 422); 
             }
 
+
+
             $tarefa->fill($tarefaData);
             $etapa->tarefas()->save($tarefa);
             
             $tarefa->equipamentosProjetos()->attach($equipamentosProjetoIds);
             $tarefa->save();
+
+            $errorsDatas = $projeto->validarDatasPrevistas();
+
+           
+            if(!empty($errorsDatas)){
+                DB::rollback();
+                return response()->json(
+                    array(
+                    "messages" => $errorsDatas
+                    ), 422); 
+            }
 
             DB::commit();
 

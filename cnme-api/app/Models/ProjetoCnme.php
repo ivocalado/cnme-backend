@@ -53,15 +53,90 @@ class ProjetoCnme extends Model
         return $this->hasMany(Etapa::class);
     }
 
+    public function tarefas(){
+        return $this->hasManyThrough(Tarefa::class, Etapa::class);
+    }
+
     public function equipamentoProjetos(){
         return $this->hasMany(EquipamentoProjeto::class);
     }
+
+    public function validarDatasPrevistas(){
+        $errors = array();
+        $dataInicioProjetoPrevisto = $this->data_inicio_previsto;
+        $dataFimProjetoPrevisto = $this->data_fim_previsto;
+
+        $tarefasEnvio = $this->getEtapaEnvio() ? $this->getEtapaEnvio()->tarefas:[];
+        if( $tarefasEnvio->isNotEmpty()){
+            $dataInicioEnvio = $tarefasEnvio->min('data_inicio_prevista');
+            $dataFimEnvio = $tarefasEnvio->max('data_fim_prevista');
+
+            if($dataInicioProjetoPrevisto >= $dataInicioEnvio){
+                $errors['datas_envio_inicio'] = "A data prevista para o início do envio dos equipamentos deve ser maior que a data de início de planejamento do projeto de implantação.";
+            }
+
+            if($dataFimProjetoPrevisto < $dataFimEnvio){
+                $errors['datas_envio_fim'] = "A data prevista para conclusão do envio dos equipamentos deve ser anterior a data planejada para o fim do processo de implantação";
+            }
+        }
+
+        $tarefasInstalacao = $this->getEtapaInstalacao() ? $this->getEtapaInstalacao()->tarefas:[];
+        if( $tarefasInstalacao && $tarefasInstalacao->isNotEmpty()){
+            $dataInicioInstalacao = $tarefasInstalacao->min('data_inicio_prevista');
+            $dataFimInstalacao = $tarefasInstalacao->max('data_fim_prevista');
+
+            if($dataInicioInstalacao < $dataFimEnvio){
+                $errors['data_instalacao_inicio'] = "A data inicial do prazo previsto para a instalação deve ser posterior a data de final prevista para entrega dos equipamentos.";
+            }
+
+            if($dataFimInstalacao > $dataFimProjetoPrevisto){
+                $errors['data_instalacao_fim'] = "A data final do prazo previsto para a instalação deve ser anterior a data de final planejada para o fim do processo de implantação";
+            }
+
+        }
+
+        $tarefasAtivacao = $this->getEtapaAtivacao() ? $this->getEtapaAtivacao()->tarefas:[];
+        if( $tarefasAtivacao && $tarefasAtivacao->isNotEmpty()){
+            $dataInicioAtivacao = $tarefasAtivacao->min('data_inicio_prevista');
+            $dataFimAtivacao = $tarefasAtivacao->max('data_fim_prevista');
+
+            if($dataInicioAtivacao < $dataFimInstalacao){
+                $errors['data_ativacao_inicio'] = "A data inicial do prazo previsto para a ativação deve ser posterior a data de final prevista para instalação dos equipamentos.";
+            }
+
+            if($dataFimAtivacao > $dataFimProjetoPrevisto){
+                $errors['data_ativacao_fim'] = "A data final do prazo previsto para a ativação deve ser anterior a data de final planejada para o fim do processo de implantação";
+            }
+
+        }
+
+        return $errors;
+    }
+    
 
 
     public function getEtapaEnvio(){
         $etapa =  Etapa::where([
             ['projeto_cnme_id', $this->id],
             ['tipo', Etapa::TIPO_ENVIO]
+            ])->first();
+        
+        return $etapa;
+    }
+
+    public function getEtapaInstalacao(){
+        $etapa =  Etapa::where([
+            ['projeto_cnme_id', $this->id],
+            ['tipo', Etapa::TIPO_INSTALACAO]
+            ])->first();
+        
+        return $etapa;
+    }
+
+    public function getEtapaAtivacao(){
+        $etapa =  Etapa::where([
+            ['projeto_cnme_id', $this->id],
+            ['tipo', Etapa::TIPO_ATIVACAO]
             ])->first();
         
         return $etapa;
@@ -96,24 +171,16 @@ class ProjetoCnme extends Model
         return $etapas;
     }
 
-    public function getEtapaPorTipo($tipo){
-        $etapa =  Etapa::where([
-            ['projeto_cnme_id', $this->id],
-            ['tipo', strtoupper($tipo)]
-            ])->first();
-        return $etapa;
-    }
-
     public $rules = [
         'numero'    =>  'required|unique:projeto_cnmes|max:20',
         'descricao' =>  'required',
         'usuario_id' => 'required|integer|exists:users,id',
         'unidade_id' => 'required|integer|exists:unidades,id',
         'solicitacao_cnme_id' => 'nullable|integer',
-        'data_inicio_previsto' => 'required|date',
-        'data_fim_previsto' => 'required|date',
-        'data_inicio' => 'nullable|date',
-        'data_fim' => 'nullable|date',       
+        'data_inicio_previsto' => 'required|date|before_or_equal:data_fim_previsto',
+        'data_fim_previsto' => 'required|date|after_or_equal:data_inicio_previsto',
+        'data_inicio' => 'nullable|date|before_or_equal:data_fim',
+        'data_fim' => 'nullable|date|after_or_equal:data_inicio',       
     ];
 
     public $messages = [

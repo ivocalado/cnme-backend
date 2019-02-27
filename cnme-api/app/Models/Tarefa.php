@@ -52,14 +52,14 @@ class Tarefa extends Model
         'numero' => 'max:30',
         'link_externo' => 'max:255',
         'status'    =>  'required:max:50',
-        'usuario_id' => 'required|integer',
-        'etapa_id' => 'required|integer',
-        'responsavel_id' => 'integer',
-        'unidade_responsavel_id' => 'integer|required',
-        'data_inicio' => 'nullable|date',
-        'data_fim' => 'nullable|date',
-        'data_inicio_prevista' => 'required|date',
-        'data_fim_prevista' => 'required|date',
+        'usuario_id' => 'required|integer|exists:users,id',
+        'etapa_id' => 'required|integer|exists:etapas,id',
+        'responsavel_id' => 'integer|exists:users,id',
+        'unidade_responsavel_id' => 'integer|required|exists:unidades,id',
+        'data_inicio' => 'nullable|date|before_or_equal:data_fim',
+        'data_fim' => 'nullable|date|after_or_equal:data_inicio',
+        'data_inicio_prevista' => 'required|date|before_or_equal:data_fim_prevista',
+        'data_fim_prevista' => 'required|date|after_or_equal:data_inicio_prevista',
        
     ];
 
