@@ -1788,7 +1788,7 @@
 					]
 				},
 				{
-					"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-ativacao",
+					"name": "POST/api/etapas/projeto-cnme/6/add-tarefa-ativacao",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1824,6 +1824,90 @@
 								"projeto-cnme",
 								"6",
 								"add-tarefa-ativacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT/api/etapas/projeto-cnme/6/update-tarefa-instalacao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMDkxMywiZXhwIjoxNTUxMTI0NTEzLCJuYmYiOjE1NTExMjA5MTMsImp0aSI6IklycWc0N2ZCeHhtc0VHUWoiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OK9_RWsdOrz-QMhUuXVG1rlDF47Ys_u9_7wkcNTlvow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/update-tarefa-instalacao",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"6",
+								"update-tarefa-instalacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT/api/etapas/projeto-cnme/6/update-tarefa-ativacao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMDkxMywiZXhwIjoxNTUxMTI0NTEzLCJuYmYiOjE1NTExMjA5MTMsImp0aSI6IklycWc0N2ZCeHhtc0VHUWoiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OK9_RWsdOrz-QMhUuXVG1rlDF47Ys_u9_7wkcNTlvow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-26\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/update-tarefa-ativacao",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"6",
+								"update-tarefa-ativacao"
 							]
 						}
 					},
