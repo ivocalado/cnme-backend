@@ -49,6 +49,17 @@ class AtivacaoController extends Controller
             $tarefaInstalacao->fill($tarefaData);
             $etapaInstalacao->tarefas()->save($tarefaInstalacao);
 
+            $errorsDatas = $projeto->validarDatasPrevistas();
+
+           
+            if(!empty($errorsDatas)){
+                DB::rollback();
+                return response()->json(
+                    array(
+                    "messages" => $errorsDatas
+                    ), 422); 
+            }
+
             DB::commit();
 
             $etapa = Etapa::find($tarefaInstalacao->etapa_id);
@@ -99,6 +110,18 @@ class AtivacaoController extends Controller
     
             $tarefa->save();
 
+            $errorsDatas = $projeto->validarDatasPrevistas();
+
+           
+            if(!empty($errorsDatas)){
+                DB::rollback();
+                return response()->json(
+                    array(
+                    "messages" => $errorsDatas
+                    ), 422); 
+            }
+
+            DB::commit();
             return new TarefaResource($tarefa);
         }catch(\Exception $e){
             DB::rollback();

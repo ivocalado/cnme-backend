@@ -19,6 +19,7 @@ class EnviarController extends Controller
 {
 
     public function addTarefaEnvio(Request $request, $projetoId){
+
         DB::beginTransaction();
 
         try{
@@ -225,6 +226,9 @@ class EnviarController extends Controller
 
         }
     }
+    /**
+     * Faz o envio de todas as tarefas
+     */
 
     public function enviarAll(Request $request, $projetoId){
         DB::beginTransaction();
@@ -245,6 +249,7 @@ class EnviarController extends Controller
                 
                 foreach($tarefasEnvio as $t){
                     $t->status= Tarefa::STATUS_ANDAMENTO;
+                    $t->data_inicio = date("Y-m-d");
                     $t->save();
                     $t->equipamentosProjetos->each(function ($eP, $key) {
                         $eP->status = EquipamentoProjeto::STATUS_ENVIADO;

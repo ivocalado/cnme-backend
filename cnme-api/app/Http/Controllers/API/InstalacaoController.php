@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Resources\EtapaResource;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\TarefaResource;
+use App\Http\Resources\ProjetoResource;
 
 class InstalacaoController extends Controller
 {
@@ -46,6 +47,16 @@ class InstalacaoController extends Controller
 
             $tarefaInstalacao->fill($tarefaData);
             $etapaInstalacao->tarefas()->save($tarefaInstalacao);
+
+            $errorsDatas = $projeto->validarDatasPrevistas();
+           
+            if(!empty($errorsDatas)){
+                DB::rollback();
+                return response()->json(
+                    array(
+                    "messages" => $errorsDatas
+                    ), 422); 
+            }
 
             DB::commit();
 
@@ -97,6 +108,21 @@ class InstalacaoController extends Controller
     
             $tarefa->save();
 
+            //return EtapaResource::collection($projeto->etapas);
+
+            $errorsDatas = $projeto->validarDatasPrevistas();
+
+            
+           
+            if(!empty($errorsDatas)){
+                DB::rollback();
+                return response()->json(
+                    array(
+                    "messages" => $errorsDatas
+                    ), 422); 
+            }
+
+            DB::commit();
             return new TarefaResource($tarefa);
         }catch(\Exception $e){
             DB::rollback();

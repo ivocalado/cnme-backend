@@ -66,46 +66,67 @@ class ProjetoCnme extends Model
         $dataInicioProjetoPrevisto = $this->data_inicio_previsto;
         $dataFimProjetoPrevisto = $this->data_fim_previsto;
 
-        $tarefasEnvio = $this->getEtapaEnvio() ? $this->getEtapaEnvio()->tarefas:[];
-        if( $tarefasEnvio->isNotEmpty()){
+
+       
+
+        $etapaEnvio = $this->getEtapaEnvio();
+        $tarefasEnvio =  $etapaEnvio ?  $etapaEnvio->tarefas:[];
+
+       
+        if( $tarefasEnvio && $tarefasEnvio->isNotEmpty()){
             $dataInicioEnvio = $tarefasEnvio->min('data_inicio_prevista');
             $dataFimEnvio = $tarefasEnvio->max('data_fim_prevista');
 
-            if($dataInicioProjetoPrevisto >= $dataInicioEnvio){
-                $errors['datas_envio_inicio'] = "A data prevista para o início do envio dos equipamentos deve ser maior que a data de início de planejamento do projeto de implantação.";
+            if($dataInicioEnvio > $dataFimEnvio){
+                $errors['data_envio'] = "A data inicial do prazo previsto para a envio($dataInicioEnvio) deve ser anterior a data de final($dataFimEnvio).";
+            }
+
+            if($dataInicioProjetoPrevisto > $dataInicioEnvio){
+                $errors['datas_envio_inicio'] = "A data prevista para o início do envio dos equipamentos($dataInicioEnvio) deve ser maior que a data de início de planejamento do projeto de implantação($dataInicioProjetoPrevisto).";
             }
 
             if($dataFimProjetoPrevisto < $dataFimEnvio){
-                $errors['datas_envio_fim'] = "A data prevista para conclusão do envio dos equipamentos deve ser anterior a data planejada para o fim do processo de implantação";
+                $errors['datas_envio_fim'] = "A data prevista para conclusão do envio dos equipamentos($dataFimEnvio) deve ser anterior a data planejada para o fim do processo de implantação($dataFimProjetoPrevisto).";
             }
         }
 
-        $tarefasInstalacao = $this->getEtapaInstalacao() ? $this->getEtapaInstalacao()->tarefas:[];
+        $etapaInstalacao = $this->getEtapaInstalacao();
+        $tarefasInstalacao = $etapaInstalacao ? $etapaInstalacao->tarefas:[];
+        
         if( $tarefasInstalacao && $tarefasInstalacao->isNotEmpty()){
             $dataInicioInstalacao = $tarefasInstalacao->min('data_inicio_prevista');
             $dataFimInstalacao = $tarefasInstalacao->max('data_fim_prevista');
 
-            if($dataInicioInstalacao < $dataFimEnvio){
-                $errors['data_instalacao_inicio'] = "A data inicial do prazo previsto para a instalação deve ser posterior a data de final prevista para entrega dos equipamentos.";
+            if($dataInicioInstalacao > $dataFimInstalacao){
+                $errors['data_instalacao'] = "A data inicial do prazo previsto para a instalação($dataInicioInstalacao) deve ser anterior a data de final($dataFimInstalacao).";
             }
 
+            if($dataInicioInstalacao < $dataFimEnvio){
+                $errors['data_instalacao_inicio'] = "A data inicial do prazo previsto para a instalação($dataInicioInstalacao) deve ser posterior a data de final prevista para entrega dos equipamentos($dataFimEnvio).";
+            }
+            
             if($dataFimInstalacao > $dataFimProjetoPrevisto){
-                $errors['data_instalacao_fim'] = "A data final do prazo previsto para a instalação deve ser anterior a data de final planejada para o fim do processo de implantação";
+                $errors['data_instalacao_fim'] = "A data final do prazo previsto para a instalação($dataFimInstalacao) deve ser anterior a data de final planejada para o fim do processo de implantação($dataFimProjetoPrevisto).";
             }
 
         }
 
-        $tarefasAtivacao = $this->getEtapaAtivacao() ? $this->getEtapaAtivacao()->tarefas:[];
+        $etapaAtivacao = $this->getEtapaAtivacao();
+        $tarefasAtivacao = $etapaAtivacao ? $etapaAtivacao->tarefas:[];
         if( $tarefasAtivacao && $tarefasAtivacao->isNotEmpty()){
             $dataInicioAtivacao = $tarefasAtivacao->min('data_inicio_prevista');
             $dataFimAtivacao = $tarefasAtivacao->max('data_fim_prevista');
 
+            if($dataInicioAtivacao > $dataFimAtivacao){
+                $errors['data_ativacao'] = "A data inicial do prazo previsto para a ativação($dataInicioAtivacao) deve ser anterior a data de final($dataFimAtivacao).";
+            }
+
             if($dataInicioAtivacao < $dataFimInstalacao){
-                $errors['data_ativacao_inicio'] = "A data inicial do prazo previsto para a ativação deve ser posterior a data de final prevista para instalação dos equipamentos.";
+                $errors['data_ativacao_inicio'] = "A data inicial do prazo previsto para a ativação($dataInicioAtivacao) deve ser posterior a data de final prevista para instalação dos equipamentos($dataFimInstalacao).";
             }
 
             if($dataFimAtivacao > $dataFimProjetoPrevisto){
-                $errors['data_ativacao_fim'] = "A data final do prazo previsto para a ativação deve ser anterior a data de final planejada para o fim do processo de implantação";
+                $errors['data_ativacao_fim'] = "A data final do prazo previsto para a ativação($dataFimAtivacao) deve ser anterior a data de final planejada para o fim do processo de implantação($dataFimProjetoPrevisto).";
             }
 
         }
