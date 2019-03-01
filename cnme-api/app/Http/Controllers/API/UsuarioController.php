@@ -307,7 +307,13 @@ class UsuarioController extends Controller
         return new UserResource($user);
     }
 
-    public function searchNaoConfirmados(Request $request){
+    public function getUsuariosNaoConfirmados(Request $request){
+        $list = User::query();
+        $list->whereNull('email_verified_at');
+        return UserResource::collection($list->orderBy('created_at')->paginate(25));
+    }
+
+    public function getGestoresNaoConfirmados(Request $request){
         $list = User::query();
         $list->whereNull('email_verified_at');
         return UserResource::collection($list->orderBy('created_at')->paginate(25));

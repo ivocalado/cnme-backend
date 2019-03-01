@@ -99,7 +99,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::post('usuarios/{id}/enviar-convite','API\UsuarioController@enviarConvite');
     Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
     Route::get('usuarios/u/tipos','API\UsuarioController@tipos');
-    Route::get('usuarios/u/nao-confirmados','API\UsuarioController@searchNaoConfirmados');
+    Route::get('usuarios/u/nao-confirmados','API\UsuarioController@getUsuariosNaoConfirmados');
     Route::get('usuarios/u/pesquisar','API\UsuarioController@search');
     Route::get('usuarios/check-email-disponivel/{email}','API\UsuarioController@checkEmail');
     Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf');
@@ -243,7 +243,26 @@ Route::middleware('jwt.auth')->group(function(){
      */
     Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
     Route::get('checklist-cnmes/cc/status','API\ChecklistCnmeController@status');
+
+
+
+
+    /**
+     * #############################################################################
+     * Dashboards
+     * 
+     */
+
+    Route::get('dashboard/projetos/total','API\DashboardController@countProjetos');
+    Route::get('dashboard/projetos/status','API\DashboardController@countPorStatus');
+    Route::get('dashboard/projetos/estados','API\DashboardController@countPorEstado');
+    Route::get('dashboard/projetos/estados/all','API\DashboardController@countPorEstadoAll');
+    Route::get('dashboard/projetos/atrasados/total','API\DashboardController@countAtrasados');
+    Route::get('dashboard/usuarios/gestores/nao-confirmados/total','API\DashboardController@countGestoresNaoConfirmados');
+    Route::get('dashboard/projetos/estado/status','API\DashboardController@countStatusEstados');
 });
+
+
 
 
 

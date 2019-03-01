@@ -24,6 +24,7 @@ class ProjetoController extends Controller
     
 
     protected $q;
+    protected $uf;
 
     public function status(){
         return ProjetoCnme::status();
@@ -407,6 +408,18 @@ class ProjetoController extends Controller
                 $query->where('nome', 'ilike', '%'.$this->q.'%')
                         ->orWhere('codigo_inep', $this->q);
             });  
+        }
+
+        if($request->has('uf')){
+            $this->uf = $request->uf;
+            $list->whereHas('unidade', function($query1){
+                $query1->whereHas('localidade',function ($query2) {
+                    $query2->whereHas('estado', function ($query3){
+                        $query3->where('sigla','=',$this->uf);
+                    });
+                });
+            });
+
         }
 
         return ProjetoResource::collection($list->paginate(25));

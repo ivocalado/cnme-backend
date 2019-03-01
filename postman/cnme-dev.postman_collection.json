@@ -562,11 +562,281 @@
 			]
 		},
 		{
+			"name": "Dahsboard",
+			"item": [
+				{
+					"name": "GET/api/dashboard/projetos/total",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total?uf=AL",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"total"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "AL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/dashboard/projetos/status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/status",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/estados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/estados/all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados/all",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"estados",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"estado",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/atrasados/total",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/atrasados/total",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"atrasados",
+								"total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/nao-confirmados/total",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/nao-confirmados/total?uf=AL",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"usuarios",
+								"gestores",
+								"nao-confirmados",
+								"total"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "AL"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "UC0 - Gerenciar",
 			"item": [
 				{
 					"name": "GET/api/projeto-cnme/p/status",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -589,8 +859,18 @@
 					"response": []
 				},
 				{
-					"name": "GET/api/projeto-cnme/p/pesquisar?atrasadas=true",
+					"name": "GET/api/projeto-cnme/p/pesquisar?q=NOME_UNIDADE__OU_INEP_OU_DESCRICAO",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -598,7 +878,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?atrasadas=true",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?q=transportador",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -620,33 +900,9 @@
 									"disabled": true
 								},
 								{
-									"key": "atrasadas",
-									"value": "true"
+									"key": "q",
+									"value": "transportador"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/projeto-cnme/p/atrasados",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/atrasados",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"p",
-								"atrasados"
 							]
 						}
 					},
@@ -688,177 +944,7 @@
 					"response": []
 				},
 				{
-					"name": "GET/api/checklist-cnmes/cc/status",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/checklist-cnmes/cc/status",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"checklist-cnmes",
-								"cc",
-								"status"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/projeto-cnme",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PUT/api/projeto-cnme/2",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"numero\": \"99999-23\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/2",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE/api/projeto-cnme/2",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/2",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/projeto-cnme/2/etapas",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTI4MzUwMywiZXhwIjoxNTUxMjg3MTAzLCJuYmYiOjE1NTEyODM1MDMsImp0aSI6IjlIZzlwblZ4OEUwbTQ3cTUiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.Wm9x3Pm9LN3fEy398Lsza-q-PBcYA1u_PFRLMsppzLM",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapas",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"6",
-								"etapas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/projeto-cnme/6/tarefas",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTI3NDI4OSwiZXhwIjoxNTUxMjc3ODg5LCJuYmYiOjE1NTEyNzQyODksImp0aSI6ImVPVGNtQUlVTzc3aHhDRXQiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.yDtdgtVNomXStzULJ9QYiTeMEXkU8emxp-k-0MYIy1w",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/6/tarefas",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"6",
-								"tarefas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/projeto-cnme/1/tarefas",
+					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=SIGLA",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -877,15 +963,99 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapas",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=SP",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"1",
-								"etapas"
+								"p",
+								"pesquisar"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "SP"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=AL&status=PLANEJAMENTO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=AL&status=PLANEJAMENTO",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"pesquisar"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "AL"
+								},
+								{
+									"key": "status",
+									"value": "PLANEJAMENTO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/projeto-cnme/p/atrasados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/atrasados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"atrasados"
 							]
 						}
 					},
@@ -1878,7 +2048,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\":\"24331-217\",\n\t\"descricao\": \"Projeto Alagoas - Escola Palmares\",\n\t\"usuario_id\": \"5\",\n\t\"unidade_id\": \"5\",\n\t\"data_inicio_previsto\": \"2019-02-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
+							"raw": "{\n\t\"numero\":\"24331-217\",\n\t\"descricao\": \"Projeto Alagoas - Escola Palmares\",\n\t\"usuario_id\": \"4\",\n\t\"unidade_id\": \"4\",\n\t\"data_inicio_previsto\": \"2019-02-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/projeto-cnme",
@@ -2065,6 +2235,16 @@
 				{
 					"name": "GET/api/projeto-cnme/5",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -2072,14 +2252,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/5",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/6",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"5"
+								"6"
 							]
 						}
 					},
@@ -2953,7 +3133,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMDkxMywiZXhwIjoxNTUxMTI0NTEzLCJuYmYiOjE1NTExMjA5MTMsImp0aSI6IklycWc0N2ZCeHhtc0VHUWoiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OK9_RWsdOrz-QMhUuXVG1rlDF47Ys_u9_7wkcNTlvow",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -2969,10 +3149,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+							"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"4\",\n\t\"unidade_responsavel_id\": \"4\",\n\t\"data_inicio_prevista\": \"2019-03-01\",\n\t\"data_fim_prevista\": \"2019-03-30\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-instalacao",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -2980,7 +3160,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"6",
+								"1",
 								"add-tarefa-instalacao"
 							]
 						}
@@ -3112,7 +3292,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMDkxMywiZXhwIjoxNTUxMTI0NTEzLCJuYmYiOjE1NTExMjA5MTMsImp0aSI6IklycWc0N2ZCeHhtc0VHUWoiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OK9_RWsdOrz-QMhUuXVG1rlDF47Ys_u9_7wkcNTlvow",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -3128,10 +3308,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+							"raw": "{\n\t\"data_fim_prevista\": \"2019-01-01\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/update-tarefa-instalacao",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/update-tarefa-instalacao",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -3139,7 +3319,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"6",
+								"1",
 								"update-tarefa-instalacao"
 							]
 						}
@@ -4396,390 +4576,228 @@
 		},
 		{
 			"name": "UC99 - Execução",
+			"item": []
+		},
+		{
+			"name": "UC-06 - Checklist",
 			"item": [
 				{
-					"name": "POST/api/etapas/projeto-cnme/3/tarefas/5/entregar",
+					"name": "POST/api/checklist-cnmes",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\n\t\"descricao\": \"NOVO. Já inclui os itens\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"projeto_cnme_id\" : \"3\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/tarefa/7/entregar",
+							"raw": "{{HOSTNAME}}/api/checklist-cnmes",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
-								"etapas",
-								"projeto-cnme",
-								"6",
-								"tarefa",
-								"7",
-								"entregar"
+								"checklist-cnmes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT/api/checklist-cnmes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"descricao\": \"Atenção aos itens de checklist. Avaliar a temperatura da sala.\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/checklist-cnmes/8",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"checklist-cnmes",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/checklist-cnmes/2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/checklist-cnmes/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"checklist-cnmes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/checklist-cnmes/3",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/checklist-cnmes/2",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"checklist-cnmes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/checklist-cnmes/1/add-itemchecklist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"\",\n\t\"status\":\"PENDENTE\",\n\t\"checklist_cnme_id\": \"1\",\n\t\"item_checklist_id\": \"11\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/checklist-cnmes/1/add-itemchecklist",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"checklist-cnmes",
+								"1",
+								"add-itemchecklist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/checklist-cnmes/1/remove-itemchecklist",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"\",\n\t\"status\":\"PENDENTE\",\n\t\"checklist_cnme_id\": \"1\",\n\t\"item_checklist_id\": \"11\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/checklist-cnmes/1/remove-itemchecklist/2",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"checklist-cnmes",
+								"1",
+								"remove-itemchecklist",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/checklist-cnmes/all",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"descricao\": \"Avaliarção do ambiente e equipamentos. NOVOOooOOOo\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"checklist_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/checklist-cnmes/2/clear-add-items-all",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"checklist-cnmes",
+								"2",
+								"clear-add-items-all"
 							]
 						}
 					},
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "GET/api/etapas/1/equipamentos",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/etapas/1/equipamentos",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"etapas",
-						"1",
-						"equipamentos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST/api/projeto-cnme/1/add-equipamento/1",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"status\":\"DISPONIVEL\",\n\t\"observacao\":\"Abc....2\",\n\t\"detalhes\": \"zzzzzZZZZZZZZZZZZZZZZZZZzzzzzzzzzzzzz\"\n}"
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/3/add-equipamento/7",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"projeto-cnme",
-						"3",
-						"add-equipamento",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST/api/projeto-cnme/1/add-equipamentos",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"ids\": [2]\n}"
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-equipamentos",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"projeto-cnme",
-						"1",
-						"add-equipamentos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE/api/projeto-cnme/1/remove-equipamento/2",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/projeto-cnme/3/remove-equipamento/7",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"projeto-cnme",
-						"3",
-						"remove-equipamento",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{HOSTNAME}}/api/equipamentos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/equipamentos",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"equipamentos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST/api/checklist-cnmes",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\n\t\"descricao\": \"NOVO. Já inclui os itens\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"projeto_cnme_id\" : \"3\"\n}"
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"checklist-cnmes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PUT/api/checklist-cnmes",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\n\t\"descricao\": \"Atenção aos itens de checklist. Avaliar a temperatura da sala.\"\n}"
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes/8",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"checklist-cnmes",
-						"8"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET/api/checklist-cnmes/2",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes/1",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"checklist-cnmes",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE/api/checklist-cnmes/3",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes/2",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"checklist-cnmes",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST/api/checklist-cnmes/1/add-itemchecklist",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"descricao\":\"\",\n\t\"status\":\"PENDENTE\",\n\t\"checklist_cnme_id\": \"1\",\n\t\"item_checklist_id\": \"11\"\n}"
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes/1/add-itemchecklist",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"checklist-cnmes",
-						"1",
-						"add-itemchecklist"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE/api/checklist-cnmes/1/remove-itemchecklist",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"descricao\":\"\",\n\t\"status\":\"PENDENTE\",\n\t\"checklist_cnme_id\": \"1\",\n\t\"item_checklist_id\": \"11\"\n}"
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes/1/remove-itemchecklist/2",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"checklist-cnmes",
-						"1",
-						"remove-itemchecklist",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{HOSTNAME}}/api/checklist-cnmes/all",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\n\t\"descricao\": \"Avaliarção do ambiente e equipamentos. NOVOOooOOOo\",\n\t\"status\": \"AVALIAÇÃO\",\n\t\"checklist_id\": \"1\",\n\t\"projeto_cnme_id\" : \"1\"\n}"
-				},
-				"url": {
-					"raw": "{{HOSTNAME}}/api/checklist-cnmes/2/clear-add-items-all",
-					"host": [
-						"{{HOSTNAME}}"
-					],
-					"path": [
-						"api",
-						"checklist-cnmes",
-						"2",
-						"clear-add-items-all"
-					]
-				}
-			},
-			"response": []
 		}
 	]
 }
