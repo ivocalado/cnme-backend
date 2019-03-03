@@ -149,9 +149,19 @@ class EnviarController extends Controller
                 $projeto->status = ProjetoCnme::STATUS_ENVIADO;
                 $projeto->save();
             }
-            
+
+            if($request->has('descricao'))
+                $tarefaEnvio->descricao = $request['descricao'];
+
             $tarefaEnvio->status = Tarefa::STATUS_ANDAMENTO;
-            $tarefaEnvio->data_inicio = date("Y-m-d");
+            if($request->has('link_externo'))
+                $tarefaEnvio->link_externo = $request['link_externo'];
+
+            if($request->has('numero'))
+                $tarefaEnvio->numero = $request['numero'];
+            
+            $tarefaEnvio->data_inicio = ($request->has('data_inicio')) ? $request['data_inicio']: date("Y-m-d");
+
             $tarefaEnvio->save();
 
             $tarefaEnvio->etapa->status = Etapa::STATUS_ANDAMENTO;
@@ -192,7 +202,15 @@ class EnviarController extends Controller
                     "Projeto/Tarefa não correspondentes a ação de entrega." , 422);
             }
 
-            $tarefaEnvio->data_fim = date("Y-m-d");
+            if($request->has('descricao'))
+                $tarefaEnvio->descricao = $request['descricao'];
+            if($request->has('link_externo'))
+                $tarefaEnvio->link_externo = $request['link_externo'];
+            if($request->has('numero'))
+                $tarefaEnvio->numero = $request['numero'];
+            
+            $tarefaEnvio->data_fim = ($request->has('data_fim')) ? $request['data_fim']: date("Y-m-d");
+            
             $tarefaEnvio->status = Tarefa::STATUS_CONCLUIDA;
             $tarefaEnvio->save();
 
@@ -203,9 +221,9 @@ class EnviarController extends Controller
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
 
-            $entregasAndamento = $etapa->tarefas->contains('status',Tarefa::STATUS_ANDAMENTO);
+            $temEntregasAndamento = $etapa->tarefas->contains('status',Tarefa::STATUS_ANDAMENTO);
 
-            if($entregasAndamento->isEmpty()){
+            if(!$temEntregasAndamento){
                 $etapa->status = Etapa::STATUS_CONCLUIDA;
                 $etapa->save();
 

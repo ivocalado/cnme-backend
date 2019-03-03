@@ -10,6 +10,7 @@ use App\Models\Tarefa;
 use App\User;
 use App\Models\Estado;
 use App\Models\Unidade;
+use App\Models\Etapa;
 
 class DashboardController extends Controller
 {
@@ -112,8 +113,10 @@ class DashboardController extends Controller
             $query->where('estados.sigla', '=', strtoupper($request['uf']));
         }
 
-
+        $query->whereNotNull('data_inicio');
+        $query->whereNull('data_fim');
         $query->where('tarefas.status','=',Tarefa::STATUS_ANDAMENTO)
+        
         ->whereNull('tarefas.data_fim')
         ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
 
@@ -125,6 +128,19 @@ class DashboardController extends Controller
         $query = $this->queryAtrasados($request);
 
         return response()->json($query->count());
+    }
+
+    public function countAtrasadosPorEtapa(Request $request){
+        $query = $this->queryAtrasados($request);
+
+        if(Etapa::checkTipo($request->etapa)){
+            $query->where('etapas.tipo','=',  strtoupper($request->etapa));
+            return response()->json($query->get());
+        }else
+            return response()->json(
+            array('message' => "Tipo desconhecido. Tipos:(".implode("|",Etapa::tipos()).")") , 422);
+
+       
     }
 
     public function countGestoresNaoConfirmados(Request $request){
@@ -146,23 +162,26 @@ class DashboardController extends Controller
     }
 
     public function countStatusEstados(Request $request){
-        $result = DB::select("SELECT estado, uf, 
+        $result = DB::select("SELECT estado, uf, sum(total) as total,
         sum(total_criado) as total_criado,
         sum(total_planejamento) as total_planejamento,
         sum(total_enviado) as total_enviado,
         sum(total_entregue) as total_entregue,
         sum(total_instalado) as total_instalado,
-        sum(total_finalizado) as total_finalizado
+        sum(total_finalizado) as total_finalizado,
+        sum(total_cancelado) as total_cancelado
         FROM
             (SELECT 
             estado, 
             uf,
+            CASE WHEN status IS not null THEN SUM(total) ELSE 0 END total,
             CASE WHEN status = 'CRIADO' THEN SUM(total) ELSE 0 END total_criado,
             CASE WHEN status = 'PLANEJAMENTO' THEN SUM(total) ELSE 0 END total_planejamento,
             CASE WHEN status = 'ENVIADO' THEN SUM(total) ELSE 0 END total_enviado,
             CASE WHEN status = 'ENTREGUE' THEN SUM(total) ELSE 0 END total_entregue,
             CASE WHEN status = 'INSTALADO' THEN SUM(total) ELSE 0 END total_instalado,
-            CASE WHEN status = 'FINALIZADO' THEN SUM(total) ELSE 0 END total_finalizado
+            CASE WHEN status = 'FINALIZADO' THEN SUM(total) ELSE 0 END total_finalizado,
+            CASE WHEN status = 'CANCELADO' THEN SUM(total) ELSE 0 END total_cancelado
             FROM
              (select e.nome estado, e.sigla as uf, p.status,count(*) as total from estados e
                 left join localidades l on l.estado_id = e.id

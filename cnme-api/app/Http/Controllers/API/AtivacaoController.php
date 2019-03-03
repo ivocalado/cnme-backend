@@ -28,6 +28,19 @@ class AtivacaoController extends Controller
                 return response()->json(
                     array('message' => 'O projeto não existe.') , 422);
             }
+
+            $etapaEnvio = $projeto->getEtapaEnvio();
+            if(!isset($etapaEnvio)){
+                return response()->json(
+                    array('message' => 'O projeto não definiu a etapa de ENVIO. Antes de planejar a ativação, planeje o ENVIO e INSTALAÇÃO.') , 422);
+            }
+
+
+            $etapaInstalacao = $projeto->getEtapaInstalacao();
+            if(!isset($etapaInstalacao)){
+                return response()->json(
+                    array('message' => 'O projeto não definiu a etapa de INSTALAÇÃO. Antes de planejar a ativação, planeje a INSTALAÇÃO.') , 422);
+            }
             
             $etapaInstalacao = $projeto->firstOrCreateEtapa(Etapa::TIPO_ATIVACAO);
             $tarefaInstalacao = $etapaInstalacao->firstOrCreateTarefa();
@@ -133,6 +146,54 @@ class AtivacaoController extends Controller
     
             }
 
+    }
+
+    public function ativar(Request $request, $projetoId){
+        DB::beginTransaction();
+        try{
+            $projeto = ProjetoCnme::find($projetoId);
+            if($projeto->status !== ProjetoCnme::STATUS_INSTALADO && $projeto->status !== ProjetoCnme::STATUS_FINALIZADO){
+                return response()->json(
+                    array('message' => 'Não não concluiu a etapa de instalação.') , 422);
+            }
+
+            $etapaAtivacao = $projeto->getEtapaAtivacao();
+            $tarefaAtivacao = $etapaAtivacao->getFirstTarefa();
+
+            if($request->has('link_externo'))
+                $tarefaAtivacao->link_externo = $request['link_externo'];
+
+            if($request->has('numero'))
+                $tarefaAtivacao->numero = $request['numero'];
+
+            if($request->has('descricao'))
+                $tarefaAtivacao->descricao = $request['descricao'];
+
+            if($request->has('data_inicio') || !isset($tarefaAtivacao->data_inicio))
+                $tarefaAtivacao->data_inicio = ($request->has('data_inicio')) ? $request['data_inicio']: date("Y-m-d");
+
+            $tarefaAtivacao->data_fim = ($request->has('data_fim')) ? $request['data_fim']: date("Y-m-d");
+            $tarefaAtivacao->status = Tarefa::STATUS_CONCLUIDA;
+            $tarefaAtivacao->save();
+
+            $tarefaAtivacao->status = Etapa::STATUS_CONCLUIDA;
+            $tarefaAtivacao->save();
+
+            $projeto->status = ProjetoCnme::STATUS_FINALIZADO;
+            $projeto->save();
+
+            DB::commit();
+
+            return new EtapaResource($etapaAtivacao);
+        }catch(\Exception $e){
+            DB::rollback();
+
+            Log::error('AtivacaoController::ativar - message: '. $e->getMessage());
+
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+
+        }
     }
 
 }

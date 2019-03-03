@@ -27,7 +27,14 @@ class InstalacaoController extends Controller
                 return response()->json(
                     array('message' => 'O projeto não existe.') , 422);
             }
-            
+
+            $etapaEnvio = $projeto->getEtapaEnvio();
+            if(!isset($etapaEnvio)){
+                return response()->json(
+                    array('message' => 'O projeto não definiu a etapa de ENVIO. Antes de planejar a ativação, planeje o ENVIO.') , 422);
+            }
+
+
             $etapaInstalacao = $projeto->firstOrCreateEtapa(Etapa::TIPO_INSTALACAO);
             $tarefaInstalacao = $etapaInstalacao->firstOrCreateTarefa();
 
@@ -134,5 +141,56 @@ class InstalacaoController extends Controller
     
             }
 
+    }
+
+    public function instalar(Request $request, $projetoId){
+        DB::beginTransaction();
+        try{
+            $projeto = ProjetoCnme::find($projetoId);
+            if($projeto->status !== ProjetoCnme::STATUS_ENTREGUE && $projeto->status !== ProjetoCnme::STATUS_INSTALADO){
+                return response()->json(
+                    array('message' => 'Não não concluiu a etapa de envio de equipamentos.') , 422);
+            }
+
+            $etapaInstalacao = $projeto->getEtapaInstalacao();
+            $tarefaInstalacao = $etapaInstalacao->getFirstTarefa();
+
+            if($request->has('link_externo'))
+                $tarefaInstalacao->link_externo = $request['link_externo'];
+
+            if($request->has('numero'))
+                $tarefaInstalacao->numero = $request['numero'];
+
+            if($request->has('descricao'))
+                $tarefaInstalacao->descricao = $request['descricao'];
+
+            if(!isset($tarefaInstalacao->data_inicio) || $request->has('data_inicio'))
+                $tarefaInstalacao->data_inicio = ($request->has('data_inicio')) ? $request['data_inicio']: date("Y-m-d");
+
+            $tarefaInstalacao->data_fim = ($request->has('data_fim')) ? $request['data_fim']: date("Y-m-d");
+
+
+
+            $tarefaInstalacao->status = Tarefa::STATUS_CONCLUIDA;
+            $tarefaInstalacao->save();
+
+            $etapaInstalacao->status = Etapa::STATUS_CONCLUIDA;
+            $etapaInstalacao->save();
+
+            $projeto->status = ProjetoCnme::STATUS_INSTALADO;
+            $projeto->save();
+
+            DB::commit();
+
+            return new EtapaResource($etapaInstalacao);
+        }catch(\Exception $e){
+            DB::rollback();
+
+            Log::error('InstalacaoController::instalar - message: '. $e->getMessage());
+
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+
+        }
     }
 }

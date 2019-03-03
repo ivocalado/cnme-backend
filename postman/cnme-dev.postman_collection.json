@@ -639,7 +639,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/estados",
+					"name": "GET/api/dashboard/projetos/estados",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -673,7 +673,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/estados/all",
+					"name": "GET/api/dashboard/projetos/estados/all",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -708,7 +708,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
+					"name": "GET/api/dashboard/projetos/estado/status",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -743,7 +743,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/atrasados/total",
+					"name": "GET/api/dashboard/projetos/atrasados/total",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -778,7 +778,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/nao-confirmados/total",
+					"name": "GET/api/dashboard/usuarios/gestores/nao-confirmados/total",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -814,6 +814,150 @@
 									"key": "uf",
 									"value": "AL"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/dashboard/projetos/envio/atrasados/total",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/atrasados/total",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"envio",
+								"atrasados",
+								"total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/dashboard/projetos/ativacao/atrasados/total",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/atrasados/total",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"envio",
+								"atrasados",
+								"total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/dashboard/projetos/ativacao/atrasados/total",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/ativacao/atrasados/total",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"ativacao",
+								"atrasados",
+								"total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/dashboard/projetos/instalacao/atrasados/total",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/atrasados/total",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"instalacao",
+								"atrasados",
+								"total"
 							]
 						}
 					},
@@ -963,7 +1107,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=SP",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=PE",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -976,7 +1120,7 @@
 							"query": [
 								{
 									"key": "uf",
-									"value": "SP"
+									"value": "PE"
 								}
 							]
 						}
@@ -1028,7 +1172,7 @@
 					"response": []
 				},
 				{
-					"name": "GET/api/projeto-cnme/p/atrasados",
+					"name": "GET/api/projeto-cnme/p/atrasados?uf=AL",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1047,7 +1191,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/atrasados",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/atrasados?uf=AL&etapa=ENVIO",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -1056,6 +1200,16 @@
 								"projeto-cnme",
 								"p",
 								"atrasados"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "AL"
+								},
+								{
+									"key": "etapa",
+									"value": "ENVIO"
+								}
 							]
 						}
 					},
@@ -2004,6 +2158,16 @@
 				{
 					"name": "{{HOSTNAME}}/api/unidades/u/polos/novos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -2048,7 +2212,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\":\"24331-217\",\n\t\"descricao\": \"Projeto Alagoas - Escola Palmares\",\n\t\"usuario_id\": \"4\",\n\t\"unidade_id\": \"4\",\n\t\"data_inicio_previsto\": \"2019-02-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
+							"raw": "{\n\t\"numero\":\"000006\",\n\t\"descricao\": \"Projeto CEPA06\",\n\t\"usuario_id\": \"6\",\n\t\"unidade_id\": \"6\",\n\t\"data_inicio_previsto\": \"2019-02-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/projeto-cnme",
@@ -2676,41 +2840,6 @@
 							"response": []
 						},
 						{
-							"name": "GET/api/projeto-cnme/6/etapa-envio",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapa-envio",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"projeto-cnme",
-										"1",
-										"etapa-envio"
-									]
-								},
-								"description": "Retorna a etapa de envio do projeto.\nCaso não encontre o projeto ou a etapa... erro 404"
-							},
-							"response": []
-						},
-						{
 							"name": "GET/api/projeto-cnme/{PROJETO_ID}/etapas/{TIPO}",
 							"request": {
 								"method": "GET",
@@ -2756,15 +2885,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapas",
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/3",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"projeto-cnme",
-										"1",
-										"etapas"
+										"3"
 									]
 								}
 							},
@@ -2805,7 +2933,42 @@
 							"response": []
 						},
 						{
-							"name": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-instalacao",
+							"name": "GET/api/projeto-cnme/6/etapa-envio",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapa-envio",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"projeto-cnme",
+										"1",
+										"etapa-envio"
+									]
+								},
+								"description": "Retorna a etapa de envio do projeto.\nCaso não encontre o projeto ou a etapa... erro 404"
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/projeto-cnme/6/etapa-instalacao",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -2858,9 +3021,9 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/projeto-cnme/6/etapa-ativacao",
+									"raw": "GET/api/projeto-cnme/6/etapa-ativacao",
 									"host": [
-										"{{HOSTNAME}}"
+										"GET"
 									],
 									"path": [
 										"api",
@@ -2899,10 +3062,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-01\",\n\t\"data_fim_prevista\": \"2019-05-04\"\n}"
+							"raw": "{\n\t\"numero\" : \"TRENV001\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"4\",\n\t\"data_inicio_prevista\": \"2019-02-01\",\n\t\"data_fim_prevista\": \"2019-02-28\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-envio",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/3/add-tarefa-envio",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -2910,7 +3073,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"1",
+								"3",
 								"add-tarefa-envio"
 							]
 						},
@@ -3099,34 +3262,7 @@
 					"response": []
 				},
 				{
-					"name": "POST/api/etapas/projeto-cnme/3/tarefa/5/enviar",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/tarefa/7/enviar",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"etapas",
-								"projeto-cnme",
-								"6",
-								"tarefa",
-								"7",
-								"enviar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
+					"name": "GET/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -3149,10 +3285,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"4\",\n\t\"unidade_responsavel_id\": \"4\",\n\t\"data_inicio_prevista\": \"2019-03-01\",\n\t\"data_fim_prevista\": \"2019-03-30\"\n}"
+							"raw": "{\n\t\"numero\" : \"INST003\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"4\",\n\t\"data_inicio_prevista\": \"2019-03-01\",\n\t\"data_fim_prevista\": \"2019-03-30\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-instalacao",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/3/add-tarefa-instalacao",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -3160,7 +3296,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"1",
+								"3",
 								"add-tarefa-instalacao"
 							]
 						}
@@ -3250,7 +3386,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU1MTEyMDkxMywiZXhwIjoxNTUxMTI0NTEzLCJuYmYiOjE1NTExMjA5MTMsImp0aSI6IklycWc0N2ZCeHhtc0VHUWoiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.OK9_RWsdOrz-QMhUuXVG1rlDF47Ys_u9_7wkcNTlvow",
+									"value": "{{TOKEN}}",
 									"type": "string"
 								}
 							]
@@ -3266,10 +3402,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+							"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"4\",\n\t\"data_inicio_prevista\": \"2019-04-01\",\n\t\"data_fim_prevista\": \"2019-04-30\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-ativacao",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/3/add-tarefa-ativacao",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -3277,7 +3413,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"6",
+								"3",
 								"add-tarefa-ativacao"
 							]
 						}
@@ -4576,7 +4712,175 @@
 		},
 		{
 			"name": "UC99 - Execução",
-			"item": []
+			"item": [
+				{
+					"name": "POST/api/etapas/projeto-cnme/2/tarefa/19/enviar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"data_inicio\":\"2019-02-20\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/2/tarefa/19/enviar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"2",
+								"tarefa",
+								"19",
+								"enviar"
+							]
+						},
+						"description": "descricao e data_inicio podem ser enviados.\nNao são obrigatórios"
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/etapas/projeto-cnme/2/tarefa/19/entregar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"data_fim\":\"2019-02-28\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/3/tarefa/20/entregar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"3",
+								"tarefa",
+								"20",
+								"entregar"
+							]
+						},
+						"description": "Campos opcionais\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"data_fim\":\"2019-02-20\""
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/etapas/projeto-cnme/2/instalar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/2/instalar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"2",
+								"instalar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/etapas/projeto-cnme/2/ativar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\":\"OPICIONAL\",\n\t\"link_externo\": \"www.opcional.com.br\",\n\t\"descricao\": \"Opcional... opcional\",\n\t\"data_inicio\":\"2019-05-01\",\n\t\"data_fim\":\"2019-06-02\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/2/ativar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"2",
+								"ativar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "UC-06 - Checklist",

@@ -180,12 +180,12 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('projeto-cnme/p/status','API\ProjetoController@status');
 
     Route::post('projeto-cnme/criar','API\ProjetoController@store');
-    Route::post('projeto-cnme/{projetoId}/add-equipamento/{equipamentoId}','API\ProjetoController@addEquipamento');
-    Route::post('projeto-cnme/{projetoId}/add-equipamentos','API\ProjetoController@addEquipamentoList');
-    Route::delete('projeto-cnme/{projetoId}/remove-equipamentos','API\ProjetoController@removeEquipamentoList');
-    Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId}','API\ProjetoController@removeEquipamento');
-    Route::post('projeto-cnme/{projetoId}/add-kit/{kitId}','API\ProjetoController@addKit');
-    Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\ProjetoController@removeKit');
+    Route::post('projeto-cnme/{projetoId}/add-equipamento/{equipamentoId}','API\PlanejamentoController@addEquipamento');
+    Route::post('projeto-cnme/{projetoId}/add-equipamentos','API\PlanejamentoController@addEquipamentoList');
+    Route::delete('projeto-cnme/{projetoId}/remove-equipamentos','API\PlanejamentoController@removeEquipamentoList');
+    Route::delete('projeto-cnme/{projetoId}/remove-equipamento/{equipamentoProjetoId}','API\PlanejamentoController@removeEquipamento');
+    Route::post('projeto-cnme/{projetoId}/add-kit/{kitId}','API\PlanejamentoController@addKit');
+    Route::delete('projeto-cnme/{projetoId}/remove-kit/{kitId}','API\PlanejamentoController@removeKit');
 
     Route::get('projeto-cnme/{projetoId}/equipamentos/status/{status}', 'API\ProjetoController@equipamentosPorStatus');
     Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
@@ -220,6 +220,9 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::put('etapas/projeto-cnme/{projetoId}/update-tarefa-instalacao','API\InstalacaoController@updateTarefaInstalacao');
     Route::put('etapas/projeto-cnme/{projetoId}/update-tarefa-ativacao','API\AtivacaoController@updateTarefaAtivacao');
+
+    Route::post('etapas/projeto-cnme/{projetoId}/instalar','API\InstalacaoController@instalar');
+    Route::post('etapas/projeto-cnme/{projetoId}/ativar','API\AtivacaoController@ativar');
 
     /**
      * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamentos-all                                        * Adiciona na tarefa todos os equipamentos do projeto naquela tarefa
@@ -258,6 +261,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('dashboard/projetos/estados','API\DashboardController@countPorEstado');
     Route::get('dashboard/projetos/estados/all','API\DashboardController@countPorEstadoAll');
     Route::get('dashboard/projetos/atrasados/total','API\DashboardController@countAtrasados');
+    Route::get('dashboard/projetos/{etapa}/atrasados/total','API\DashboardController@countAtrasadosPorEtapa');
     Route::get('dashboard/usuarios/gestores/nao-confirmados/total','API\DashboardController@countGestoresNaoConfirmados');
     Route::get('dashboard/projetos/estado/status','API\DashboardController@countStatusEstados');
 });
