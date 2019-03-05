@@ -26,6 +26,7 @@ class ProjetoController extends Controller
     protected $q;
     protected $uf;
     protected $etapa;
+    protected $unidadeResponsavelId;
 
     public function status(){
         return ProjetoCnme::status();
@@ -247,11 +248,16 @@ class ProjetoController extends Controller
                 $query1->where('tipo','=', strtoupper($this->etapa));
             });
         }
+        if($request->has('responsavel_id'))
+            $this->unidadeResponsavelId = $request->responsavel_id;
 
         $list = $list->whereHas('etapas.tarefas', function ($query) {
             $query->where('status', Tarefa::STATUS_ANDAMENTO)
                 ->whereNull('data_fim')
                 ->where('data_fim_prevista','<=',\DB::raw('NOW()'));
+
+            if(isset($this->unidadeResponsavelId))
+                $query->where('unidade_responsavel_id','=',$this->unidadeResponsavelId);
         });
 
 

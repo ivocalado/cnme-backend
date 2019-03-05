@@ -147,6 +147,7 @@ class EnviarController extends Controller
             
             if($projeto->status === ProjetoCnme::STATUS_PLANEJAMENTO){
                 $projeto->status = ProjetoCnme::STATUS_ENVIADO;
+                $projeto->data_inicio = date("Y-m-d");
                 $projeto->save();
             }
 
@@ -253,6 +254,7 @@ class EnviarController extends Controller
         try{
             $projeto = ProjetoCnme::findOrFail($projetoId);
             $projeto->status = ProjetoCnme::STATUS_ENVIADO;
+            $projeto->data_inicio = date("Y-m-d");
             $projeto->save();
 
             $etapasEnvio = $projeto->etapas->filter(function ($e, $key) {

@@ -634,7 +634,8 @@
 								"projetos",
 								"status"
 							]
-						}
+						},
+						"description": "[\n    {\n        \"status_count\": 1,\n        \"status\": \"PLANEJAMENTO\"\n    },\n    {\n        \"status_count\": 1,\n        \"status\": \"ENTREGUE\"\n    },\n    {\n        \"status_count\": 1,\n        \"status\": \"FINALIZADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"CRIADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"ENVIADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"INSTALADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"CANCELADO\"\n    }\n]"
 					},
 					"response": []
 				},
@@ -668,7 +669,8 @@
 								"projetos",
 								"estados"
 							]
-						}
+						},
+						"description": "[\n    {\n        \"estado_count\": 3,\n        \"nome\": \"Alagoas\"\n    }\n]"
 					},
 					"response": []
 				},
@@ -738,9 +740,78 @@
 								"estado",
 								"status"
 							]
-						}
+						},
+						"description": "[\n    {\n        \"estado\": \"Acre\",\n        \"uf\": \"AC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"1\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"1\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"1\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amazonas\",\n        \"uf\": \"AM\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amapá\",\n        \"uf\": \"AP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Bahia\",\n        \"uf\": \"BA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Ceará\",\n        \"uf\": \"CE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Distrito Federal\",\n        \"uf\": \"DF\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Espírito Santo\",\n        \"uf\": \"ES\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Goiás\",\n        \"uf\": \"GO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Maranhão\",\n        \"uf\": \"MA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Minas Gerais\",\n        \"uf\": \"MG\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso do Sul\",\n        \"uf\": \"MS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso\",\n        \"uf\": \"MT\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pará\",\n        \"uf\": \"PA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraíba\",\n        \"uf\": \"PB\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pernambuco\",\n        \"uf\": \"PE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Piauí\",\n        \"uf\": \"PI\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraná\",\n        \"uf\": \"PR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Norte\",\n        \"uf\": \"RN\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rondônia\",\n        \"uf\": \"RO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Roraima\",\n        \"uf\": \"RR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Sul\",\n        \"uf\": \"RS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Santa Catarina\",\n        \"uf\": \"SC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Sergipe\",\n        \"uf\": \"SE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"São Paulo\",\n        \"uf\": \"SP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Tocantins\",\n        \"uf\": \"TO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    }\n]"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "GET/api/dashboard/projetos/estado/status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"estado",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Mar 2019 16:02:11 -0300"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Mar 2019 19:02:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"estado\": \"Acre\",\n        \"uf\": \"AC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"1\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"1\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"1\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amazonas\",\n        \"uf\": \"AM\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amapá\",\n        \"uf\": \"AP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Bahia\",\n        \"uf\": \"BA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Ceará\",\n        \"uf\": \"CE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Distrito Federal\",\n        \"uf\": \"DF\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Espírito Santo\",\n        \"uf\": \"ES\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Goiás\",\n        \"uf\": \"GO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Maranhão\",\n        \"uf\": \"MA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Minas Gerais\",\n        \"uf\": \"MG\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso do Sul\",\n        \"uf\": \"MS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso\",\n        \"uf\": \"MT\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pará\",\n        \"uf\": \"PA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraíba\",\n        \"uf\": \"PB\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pernambuco\",\n        \"uf\": \"PE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Piauí\",\n        \"uf\": \"PI\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraná\",\n        \"uf\": \"PR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Norte\",\n        \"uf\": \"RN\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rondônia\",\n        \"uf\": \"RO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Roraima\",\n        \"uf\": \"RR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Sul\",\n        \"uf\": \"RS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Santa Catarina\",\n        \"uf\": \"SC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Sergipe\",\n        \"uf\": \"SE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"São Paulo\",\n        \"uf\": \"SP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Tocantins\",\n        \"uf\": \"TO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "GET/api/dashboard/projetos/atrasados/total",
@@ -875,7 +946,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/atrasados/total",
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/ativacao/atrasados/total",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -883,7 +954,7 @@
 								"api",
 								"dashboard",
 								"projetos",
-								"envio",
+								"ativacao",
 								"atrasados",
 								"total"
 							]
@@ -962,11 +1033,157 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas/4/estados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas/4/estados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"envio",
+								"empresas",
+								"4",
+								"estados"
+							]
+						},
+						"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas/4/estados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas/4/estados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"instalacao",
+								"empresas",
+								"4",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"envio",
+								"empresas"
+							]
+						},
+						"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"instalacao",
+								"empresas"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "UC0 - Gerenciar",
+			"name": "UC01 - Consultar Projetos",
 			"item": [
 				{
 					"name": "GET/api/projeto-cnme/p/status",
@@ -1088,7 +1305,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=SIGLA",
+					"name": "GET/api/projeto-cnme/p/pesquisar?uf=SIGLA",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1107,47 +1324,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=PE",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"p",
-								"pesquisar"
-							],
-							"query": [
-								{
-									"key": "uf",
-									"value": "PE"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=AL&status=PLANEJAMENTO",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=AL&status=PLANEJAMENTO",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?uf=AL",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -1161,7 +1338,43 @@
 								{
 									"key": "uf",
 									"value": "AL"
-								},
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/projeto-cnme/p/pesquisar?status=PLANEJAMENTO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status=PLANEJAMENTO",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"pesquisar"
+							],
+							"query": [
 								{
 									"key": "status",
 									"value": "PLANEJAMENTO"
@@ -1172,7 +1385,7 @@
 					"response": []
 				},
 				{
-					"name": "GET/api/projeto-cnme/p/atrasados?uf=AL",
+					"name": "GET/api/projeto-cnme/p/atrasados?uf=AL&etapa=ENVIO",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1209,6 +1422,990 @@
 								{
 									"key": "etapa",
 									"value": "ENVIO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/p/atrasados?responsavel_id=4",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/atrasados?responsavel_id=4",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"atrasados"
+							],
+							"query": [
+								{
+									"key": "responsavel_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UC02 - Consultar Empresas",
+			"item": [
+				{
+					"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"tarefas",
+								"empresas",
+								"4",
+								"tarefas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?etapa=envio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?etapa=envio",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"tarefas",
+								"empresas",
+								"4",
+								"tarefas"
+							],
+							"query": [
+								{
+									"key": "etapa",
+									"value": "envio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"tarefas",
+								"empresas",
+								"4",
+								"tarefas"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "andamento"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tarefas",
+										"empresas",
+										"4",
+										"tarefas"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "andamento"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Mar 2019 21:40:31 -0300"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Mar 2019 00:40:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 13,\n            \"nome\": \"Envio dos equipamentos\",\n            \"etapa_id\": 14,\n            \"etapa_tipo\": \"ENVIO\",\n            \"numero\": \"MT34234212\",\n            \"descricao\": null,\n            \"status\": \"ANDAMENTO\",\n            \"link_externo\": null,\n            \"data_inicio_prevista\": \"2019-02-01\",\n            \"data_fim_prevista\": \"2019-02-28\",\n            \"data_inicio\": \"2019-02-03\",\n            \"data_fim\": \"\",\n            \"usuario\": {\n                \"id\": 4,\n                \"name\": \"Admin\",\n                \"email\": \"admin@cnme.gov.br\",\n                \"email_verified_at\": null,\n                \"telefone\": null,\n                \"cpf\": null,\n                \"funcao\": null,\n                \"tipo\": \"administrador\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"unidade_id\": 3,\n                \"deleted_at\": null\n            },\n            \"responsavel\": null,\n            \"unidade_responsavel\": {\n                \"id\": 4,\n                \"codigo_inep\": null,\n                \"nome\": \"Transportador Golaço Log\",\n                \"email\": \"transportadora@golaco.com.br\",\n                \"url\": \"https://www.transportadoragolaco.gov.br/\",\n                \"diretor\": \"Contato Golaço\",\n                \"telefone\": \"(0300 11324234)\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"localidade_id\": 3,\n                \"tipo_unidade_id\": 4,\n                \"responsavel_id\": 1,\n                \"classe\": \"empresa\",\n                \"descricao\": \"Transportadora autorizada pela portaria A3E322DS\",\n                \"email_institucional\": \"faleconosco@transportadora.com.br\",\n                \"admin\": false\n            },\n            \"equipamentos_projeto\": [\n                {\n                    \"id\": 1,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 1,\n                        \"nome\": \"TV Beta 100x\",\n                        \"descricao\": \"Aparelho de televisão 100x\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Mesa de apoio ou suporte para TV 40 / 15kg\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 1,\n                            \"nome\": \"TV\",\n                            \"descricao\": \"Aparelho de televisão\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 2,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 2,\n                        \"nome\": \"Microfone Alpha 100x\",\n                        \"descricao\": \"Microfone\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Espaço livre de respingos de água\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 2,\n                            \"nome\": \"Microfone\",\n                            \"descricao\": \"Aparelho de capitação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 3,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 3,\n                        \"nome\": \"Câmera 4.0 100x\",\n                        \"descricao\": \"Câmera 4.0 4000MHz\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Bom nível de Iluminação\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 3,\n                            \"nome\": \"Câmera\",\n                            \"descricao\": \"Aparelho de capitação de vídeo\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 4,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 4,\n                        \"nome\": \"Box Sound 2 1000w\",\n                        \"descricao\": \"Box Sound 2.0 1000W\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Recomanda para espaço de no máximo 80m²\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 4,\n                            \"nome\": \"Caixa de Som\",\n                            \"descricao\": \"Aparelho de ampliação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 5,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 5,\n                        \"nome\": \"Antena Digital HD Over\",\n                        \"descricao\": \"Antena Digital HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Posicionada em um ponto alto\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 5,\n                            \"nome\": \"Antena\",\n                            \"descricao\": \"Aparelho de para capitação de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 6,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 6,\n                        \"nome\": \"Decodificador Digital Box HD Over\",\n                        \"descricao\": \"Decodificador Digital Box HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Ligação com a TV, antena e caixa de som\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 6,\n                            \"nome\": \"Receptor\",\n                            \"descricao\": \"Receptor decodificador de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                }\n            ],\n            \"created_at\": \"2019-02-28 00:38:20\",\n            \"updated_at\": \"2019-02-28 00:38:20\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?etapa=envio",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tarefas",
+										"empresas",
+										"4",
+										"tarefas"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "andamento"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Mar 2019 21:40:31 -0300"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 Mar 2019 00:40:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 13,\n            \"nome\": \"Envio dos equipamentos\",\n            \"etapa_id\": 14,\n            \"etapa_tipo\": \"ENVIO\",\n            \"numero\": \"MT34234212\",\n            \"descricao\": null,\n            \"status\": \"ANDAMENTO\",\n            \"link_externo\": null,\n            \"data_inicio_prevista\": \"2019-02-01\",\n            \"data_fim_prevista\": \"2019-02-28\",\n            \"data_inicio\": \"2019-02-03\",\n            \"data_fim\": \"\",\n            \"usuario\": {\n                \"id\": 4,\n                \"name\": \"Admin\",\n                \"email\": \"admin@cnme.gov.br\",\n                \"email_verified_at\": null,\n                \"telefone\": null,\n                \"cpf\": null,\n                \"funcao\": null,\n                \"tipo\": \"administrador\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"unidade_id\": 3,\n                \"deleted_at\": null\n            },\n            \"responsavel\": null,\n            \"unidade_responsavel\": {\n                \"id\": 4,\n                \"codigo_inep\": null,\n                \"nome\": \"Transportador Golaço Log\",\n                \"email\": \"transportadora@golaco.com.br\",\n                \"url\": \"https://www.transportadoragolaco.gov.br/\",\n                \"diretor\": \"Contato Golaço\",\n                \"telefone\": \"(0300 11324234)\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"localidade_id\": 3,\n                \"tipo_unidade_id\": 4,\n                \"responsavel_id\": 1,\n                \"classe\": \"empresa\",\n                \"descricao\": \"Transportadora autorizada pela portaria A3E322DS\",\n                \"email_institucional\": \"faleconosco@transportadora.com.br\",\n                \"admin\": false\n            },\n            \"equipamentos_projeto\": [\n                {\n                    \"id\": 1,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 1,\n                        \"nome\": \"TV Beta 100x\",\n                        \"descricao\": \"Aparelho de televisão 100x\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Mesa de apoio ou suporte para TV 40 / 15kg\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 1,\n                            \"nome\": \"TV\",\n                            \"descricao\": \"Aparelho de televisão\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 2,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 2,\n                        \"nome\": \"Microfone Alpha 100x\",\n                        \"descricao\": \"Microfone\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Espaço livre de respingos de água\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 2,\n                            \"nome\": \"Microfone\",\n                            \"descricao\": \"Aparelho de capitação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 3,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 3,\n                        \"nome\": \"Câmera 4.0 100x\",\n                        \"descricao\": \"Câmera 4.0 4000MHz\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Bom nível de Iluminação\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 3,\n                            \"nome\": \"Câmera\",\n                            \"descricao\": \"Aparelho de capitação de vídeo\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 4,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 4,\n                        \"nome\": \"Box Sound 2 1000w\",\n                        \"descricao\": \"Box Sound 2.0 1000W\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Recomanda para espaço de no máximo 80m²\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 4,\n                            \"nome\": \"Caixa de Som\",\n                            \"descricao\": \"Aparelho de ampliação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 5,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 5,\n                        \"nome\": \"Antena Digital HD Over\",\n                        \"descricao\": \"Antena Digital HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Posicionada em um ponto alto\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 5,\n                            \"nome\": \"Antena\",\n                            \"descricao\": \"Aparelho de para capitação de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 6,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 6,\n                        \"nome\": \"Decodificador Digital Box HD Over\",\n                        \"descricao\": \"Decodificador Digital Box HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Ligação com a TV, antena e caixa de som\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 6,\n                            \"nome\": \"Receptor\",\n                            \"descricao\": \"Receptor decodificador de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                }\n            ],\n            \"created_at\": \"2019-02-28 00:38:20\",\n            \"updated_at\": \"2019-02-28 00:38:20\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "UC101 - Gerenciar Unidades",
+			"item": [
+				{
+					"name": "TipoUnidade",
+					"item": [
+						{
+							"name": "GET/api/tipounidades",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{HOSTNAME}}/api/tipounidades",
+									"protocol": "http",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipounidades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/tipounidades/1",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{{HOSTNAME}}/api/tipounidades/1",
+									"protocol": "http",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipounidades",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/tipounidades",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \n        \"nome\": \"Transportadora\",\n        \"descricao\": \"Empresas que realizam o transporte dos equipamentos\",\n        \"classe\": \"empresa\"\n}"
+								},
+								"url": {
+									"raw": "http://{{HOSTNAME}}/api/tipounidades",
+									"protocol": "http",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipounidades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PUT/api/tipounidades/6",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \n\n    \"descricao\": \"Empresas destinadas ao transporte dos equipamentos\"\n       \n}"
+								},
+								"url": {
+									"raw": "http://{{HOSTNAME}}/api/tipounidades/6",
+									"protocol": "http",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tipounidades",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"1\",\n\t\"etapa_id\": \"3\",\n\t\"unidade_responsavel_id\": \"10\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\",\n\t\"equipamentos_projeto_id\": [27,28,29,30,31]\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"etapas",
+										"projeto-cnme",
+										"6",
+										"add-tarefa-envio"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Consultas",
+					"item": [
+						{
+							"name": "GET/api/unidades/u/mec",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/mec",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"mec"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/unidades/u/tvescola",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/tvescola",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"tvescola"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/unidades/u/gestoras",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/gestoras",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"gestoras"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/unidades/u/polos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/polos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"polos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/unidades/u/empresas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/empresas",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"empresas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/unidades/u/polos/novos - SEM PROJETO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/polos/novos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"polos",
+										"novos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/unidades/check-email-disponivel/pinheiro@educacao.al.gov.br",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/check-email-disponivel/pinheiro@educacao.al.gov.br",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"check-email-disponivel",
+										"pinheiro@educacao.al.gov.br"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/unidades/check-inep-disponivel/pinheiro@educacao.al.gov.br",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/check-inep-disponivel/88888888",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"check-inep-disponivel",
+										"88888888"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/unidades/u/admin",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/admin",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"admin"
+									]
+								},
+								"description": "retorna a unidade de administração\n"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Utils",
+					"item": [
+						{
+							"name": "GET/api/localidades/estados/AL/municipios",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/localidades/estados/AL/municipios",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"localidades",
+										"estados",
+										"AL",
+										"municipios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/localidades/estados",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/localidades/estados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"localidades",
+										"estados"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET/api/unidades",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/unidades",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/unidades - EMPRESA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"nome\": \"Max Jato Logistica\",\n\"email_institucional\": \"contato@maxjato.com.br\",\n\"email\": \"josemaria@maxjato.com.br\",\n\"telefone\": \"(011)99291-1221\",\n\"url\":\"https://www.maxjato.com.br/\",\n\"tipo_unidade_id\" : \"4\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/unidades - POLO2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"codigo_inep\": \"99998881\",\n\"descricao\": \"Unidade.....\",\n\"nome\": \"Centro Educacional Cristo Redentor\",\n\"diretor\": \"\",\n\"telefone\": \"(012) 3421-1231\",\n\"email\": \"cecr@educacao.al.gov.br\",\n\"email_institucional\": \"cecr@educacao.al.gov.br\",\n\"url\":\"http://globo.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Av. Salo Branco\",\n\t\"numero\": \"3243\",\n\t\"bairro\": \"São Cristovão\",\n\t\"cep\": \"57044-234\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"90\"\n }\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT/api/unidades/11/update-localidade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \"logradouro\": \"Travessa Galvão Almeida\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades/11/update-localidade",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades",
+								"11",
+								"update-localidade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD POST/api/unidades/11/add-localidade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"unidade_id\": \"11\",\n\t\"logradouro\": \"Josefa de Miranda\",\n\t\"numero\": \"100\",\n\t\"bairro\": \"Barro Duro\",\n\t\"cep\": \"57034334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades/11/add-localidade",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades",
+								"11",
+								"add-localidade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/unidades/10/usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades/10/usuarios",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades",
+								"10",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/unidades/8",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/unidades/11",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PESQUISAR/api/unidades/u/pesquisar?q=escola",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades/u/pesquisar?q=escola",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades",
+								"u",
+								"pesquisar"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "escola"
 								}
 							]
 						}
@@ -2110,6 +3307,703 @@
 							]
 						},
 						"description": "Restaura kit;\nCaso não encotre, erro 404.\nCaso restaura ou equipamento nunca tenho sido removido, retorna o equipamento."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UC103 - Gerenciar Users",
+			"item": [
+				{
+					"name": "Consultas",
+					"item": [
+						{
+							"name": "PESQUISAR/api/usuarios/u/pesquisar?q=pinheiro@educacao.al.gov.br",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/pesquisar?q=pinheiro@educacao.al.gov.br",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"pesquisar"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "pinheiro@educacao.al.gov.br"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/usuarios/u/pesquisar?q=Administrador",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/pesquisar?q=Administrador",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"pesquisar"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Administrador"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/usuarios/u/pesquisar?q=99.999.999/9999-99",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/pesquisar?q=99.999.999/9999-99",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"pesquisar"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "99.999.999/9999-99"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/usuarios/check-email-disponivel/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/check-email-disponivel/joao@gmail.com",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"check-email-disponivel",
+										"joao@gmail.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/usuarios/check-cpf-disponivel/000.123.312-23",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/check-cpf-disponivel/000.123.312-22",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"check-cpf-disponivel",
+										"000.123.312-22"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/usuarios/u/removidos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/removidos",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"removidos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/usuarios/u/all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/all",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/usuarios/login/email",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "thiago.oliveira@ifal.edu.br",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/login/email",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"login",
+										"email"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/usuarios/u/gestores-nao-confirmados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/gestores-nao-confirmados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"gestores-nao-confirmados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/usuarios/u/nao-confirmados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/nao-confirmados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"nao-confirmados"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Convidar",
+					"item": [
+						{
+							"name": "POST/api/usuarios/convidar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"convidar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/usuarios/?/enviar-convite",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"convidar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST/api/usuarios/confirmar",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"José Pinheiro3333\",\n\t\"email\": \"josepinheiro3333@mec.gov.br\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"1234567\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=82d3212b2d5caad9ae32",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"confirmar"
+									],
+									"query": [
+										{
+											"key": "token1",
+											"value": "82d3212b2d5caad9ae32"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "POST/api/usuarios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Administrador Pinheiro\",\n\t\"email\": \"pinheiro@mec.gov.br\",\n\t\"password\": \"$2y$10$TrooWD7Z8zYNIcMiEqZUlOwtech0WJqdLU0VHX2346Y40qUDvlcHm\",\n\t\"cpf\": \"000.123.312-27\",\n\t\"unidade_id\": \"1\",\n\t\"tipo\": \"administrador\"\n\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/usuarios/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT/api/usuarios/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Thiago Araújo Silva de Oliveira\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/usuarios/2",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/2",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/usuarios/u/tipos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/u/tipos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"u",
+								"tipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/usuarios/5/force-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/5/force-delete",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"5",
+								"force-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/usuarios/30/restaurar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/30/restaurar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"30",
+								"restaurar"
+							]
+						},
+						"description": "Restaurar um usuário removido.\nCaso não exista usuário, retorna uma mensagem com código 404.\nCaso o usuário não seja um usuário removido anteriormente, a chamada ainda assim retorna o usuário."
 					},
 					"response": []
 				}
@@ -3501,1210 +5395,6 @@
 								"update-tarefa-ativacao"
 							]
 						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "UC101 - Gerenciar Unidades",
-			"item": [
-				{
-					"name": "TipoUnidade",
-					"item": [
-						{
-							"name": "GET/api/tipounidades",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://{{HOSTNAME}}/api/tipounidades",
-									"protocol": "http",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipounidades"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/tipounidades/1",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "http://{{HOSTNAME}}/api/tipounidades/1",
-									"protocol": "http",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipounidades",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "POST/api/tipounidades",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n        \n        \"nome\": \"Transportadora\",\n        \"descricao\": \"Empresas que realizam o transporte dos equipamentos\",\n        \"classe\": \"empresa\"\n}"
-								},
-								"url": {
-									"raw": "http://{{HOSTNAME}}/api/tipounidades",
-									"protocol": "http",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipounidades"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "PUT/api/tipounidades/6",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n        \n\n    \"descricao\": \"Empresas destinadas ao transporte dos equipamentos\"\n       \n}"
-								},
-								"url": {
-									"raw": "http://{{HOSTNAME}}/api/tipounidades/6",
-									"protocol": "http",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"tipounidades",
-										"6"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio 1",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"numero\" : \"MT34234212\",\n\t\"usuario_id\":\"1\",\n\t\"etapa_id\": \"3\",\n\t\"unidade_responsavel_id\": \"10\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\",\n\t\"equipamentos_projeto_id\": [27,28,29,30,31]\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-envio",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"etapas",
-										"projeto-cnme",
-										"6",
-										"add-tarefa-envio"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Consultas",
-					"item": [
-						{
-							"name": "GET/api/unidades/u/mec",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/u/mec",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"u",
-										"mec"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/unidades/u/tvescola",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/u/tvescola",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"u",
-										"tvescola"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/unidades/u/gestoras",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/u/gestoras",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"u",
-										"gestoras"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/unidades/u/polos",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/u/polos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"u",
-										"polos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/unidades/u/empresas",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/u/empresas",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"u",
-										"empresas"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/unidades/u/polos/novos - SEM PROJETO",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/u/polos/novos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"u",
-										"polos",
-										"novos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/unidades/check-email-disponivel/pinheiro@educacao.al.gov.br",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/check-email-disponivel/pinheiro@educacao.al.gov.br",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"check-email-disponivel",
-										"pinheiro@educacao.al.gov.br"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/unidades/check-inep-disponivel/pinheiro@educacao.al.gov.br",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/check-inep-disponivel/88888888",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"check-inep-disponivel",
-										"88888888"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "{{HOSTNAME}}/api/unidades/u/admin",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/unidades/u/admin",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"unidades",
-										"u",
-										"admin"
-									]
-								},
-								"description": "retorna a unidade de administração\n"
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Utils",
-					"item": [
-						{
-							"name": "GET/api/localidades/estados/AL/municipios",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/localidades/estados/AL/municipios",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"localidades",
-										"estados",
-										"AL",
-										"municipios"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/localidades/estados",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/localidades/estados",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"localidades",
-										"estados"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "GET/api/unidades",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{HOSTNAME}}/api/unidades",
-							"protocol": "http",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/unidades - EMPRESA",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"nome\": \"Max Jato Logistica\",\n\"email_institucional\": \"contato@maxjato.com.br\",\n\"email\": \"josemaria@maxjato.com.br\",\n\"telefone\": \"(011)99291-1221\",\n\"url\":\"https://www.maxjato.com.br/\",\n\"tipo_unidade_id\" : \"4\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST/api/unidades - POLO2",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\"codigo_inep\": \"99998881\",\n\"descricao\": \"Unidade.....\",\n\"nome\": \"Centro Educacional Cristo Redentor\",\n\"diretor\": \"\",\n\"telefone\": \"(012) 3421-1231\",\n\"email\": \"cecr@educacao.al.gov.br\",\n\"email_institucional\": \"cecr@educacao.al.gov.br\",\n\"url\":\"http://globo.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Av. Salo Branco\",\n\t\"numero\": \"3243\",\n\t\"bairro\": \"São Cristovão\",\n\t\"cep\": \"57044-234\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"90\"\n }\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PUT/api/unidades/11/update-localidade",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t \"logradouro\": \"Travessa Galvão Almeida\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades/11/update-localidade",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades",
-								"11",
-								"update-localidade"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ADD POST/api/unidades/11/add-localidade",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"unidade_id\": \"11\",\n\t\"logradouro\": \"Josefa de Miranda\",\n\t\"numero\": \"100\",\n\t\"bairro\": \"Barro Duro\",\n\t\"cep\": \"57034334\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"89\"\n\t\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades/11/add-localidade",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades",
-								"11",
-								"add-localidade"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/unidades/10/usuarios",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades/10/usuarios",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades",
-								"10",
-								"usuarios"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE/api/unidades/8",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://{{HOSTNAME}}/api/unidades/11",
-							"protocol": "http",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades",
-								"11"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PESQUISAR/api/unidades/u/pesquisar?q=escola",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades/u/pesquisar?q=escola",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"unidades",
-								"u",
-								"pesquisar"
-							],
-							"query": [
-								{
-									"key": "q",
-									"value": "escola"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "UC103 - Gerenciar Users",
-			"item": [
-				{
-					"name": "Consultas",
-					"item": [
-						{
-							"name": "PESQUISAR/api/usuarios/u/pesquisar?q=pinheiro@educacao.al.gov.br",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/u/pesquisar?q=pinheiro@educacao.al.gov.br",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"u",
-										"pesquisar"
-									],
-									"query": [
-										{
-											"key": "q",
-											"value": "pinheiro@educacao.al.gov.br"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/usuarios/check-email-disponivel/",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/check-email-disponivel/joao@gmail.com",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"check-email-disponivel",
-										"joao@gmail.com"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "POST/api/usuarios/check-cpf-disponivel/000.123.312-23",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/check-cpf-disponivel/000.123.312-22",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"check-cpf-disponivel",
-										"000.123.312-22"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/usuarios/u/nao-confirmados",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/u/nao-confirmados",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"u",
-										"nao-confirmados"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/usuarios/u/removidos",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/u/removidos",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"u",
-										"removidos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "GET/api/usuarios/u/all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/u/all",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"u",
-										"all"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "{{HOSTNAME}}/api/usuarios/login/email",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "thiago.oliveira@ifal.edu.br",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/login/email",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"login",
-										"email"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "Convidar",
-					"item": [
-						{
-							"name": "POST/api/usuarios/convidar",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"convidar"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "POST/api/usuarios/?/enviar-convite",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"convidar"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "POST/api/usuarios/confirmar",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"name\":\"José Pinheiro3333\",\n\t\"email\": \"josepinheiro3333@mec.gov.br\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"1234567\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=82d3212b2d5caad9ae32",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"confirmar"
-									],
-									"query": [
-										{
-											"key": "token1",
-											"value": "82d3212b2d5caad9ae32"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "POST/api/usuarios",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\":\"Administrador Pinheiro\",\n\t\"email\": \"pinheiro@mec.gov.br\",\n\t\"password\": \"$2y$10$TrooWD7Z8zYNIcMiEqZUlOwtech0WJqdLU0VHX2346Y40qUDvlcHm\",\n\t\"cpf\": \"000.123.312-27\",\n\t\"unidade_id\": \"1\",\n\t\"tipo\": \"administrador\"\n\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/usuarios",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/usuarios/1",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/1",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PUT/api/usuarios/1",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Thiago Araújo Silva de Oliveira\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/1",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE/api/usuarios/2",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/2",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/usuarios/u/tipos",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/u/tipos",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios",
-								"u",
-								"tipos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/usuarios/5/force-delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/5/force-delete",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios",
-								"5",
-								"force-delete"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/usuarios/30/restaurar",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/30/restaurar",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"usuarios",
-								"30",
-								"restaurar"
-							]
-						},
-						"description": "Restaurar um usuário removido.\nCaso não exista usuário, retorna uma mensagem com código 404.\nCaso o usuário não seja um usuário removido anteriormente, a chamada ainda assim retorna o usuário."
 					},
 					"response": []
 				}

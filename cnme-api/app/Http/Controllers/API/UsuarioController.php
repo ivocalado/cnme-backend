@@ -13,6 +13,7 @@ use App\Models\ProjetoCnme;
 use App\Models\Tarefa;
 use Illuminate\Support\Facades\Hash;
 use App\Services\MailSender;
+use App\Models\Unidade;
 
 
 class UsuarioController extends Controller
@@ -310,11 +311,21 @@ class UsuarioController extends Controller
     public function getUsuariosNaoConfirmados(Request $request){
         $list = User::query();
         $list->whereNull('email_verified_at');
+        $list->whereHas('unidade', function($query1){
+            $query1->where('classe','=',Unidade::CLASSE_POLO);
+        });
         return UserResource::collection($list->orderBy('created_at')->paginate(25));
     }
 
     public function getGestoresNaoConfirmados(Request $request){
         $list = User::query();
+
+        $list->where('tipo','=',User::TIPO_GESTOR);
+        $list->whereHas('unidade', function($query1){
+            $query1->where('classe','=',Unidade::CLASSE_POLO);
+        });
+
+
         $list->whereNull('email_verified_at');
         return UserResource::collection($list->orderBy('created_at')->paginate(25));
     }

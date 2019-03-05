@@ -15,7 +15,28 @@ use App\Http\Resources\EquipamentoResource;
 
 class TarefaController extends Controller
 {
+
+    private $qTipoEtapa;
    
+    public function tarefasPorResponsavel(Request $request, $empresaId){
+        $query = Tarefa::where('unidade_responsavel_id',$empresaId);
+
+        if($request->has('etapa')){
+            $this->qTipoEtapa = $request->etapa;
+            $query->whereHas('etapa', function($query1){
+                $query1->where('tipo','=',strtoupper($this->qTipoEtapa));
+            });
+        }
+
+        if($request->has('status')){
+            $query->where('status','=', strtoupper($request->status));
+        }
+
+
+        return TarefaResource::collection( $query->get());
+
+    }
+
     public function equipamentosDisponiveisEnvio(Request $request, $projetoId){
 
         $projeto = ProjetoCnme::find($projetoId);

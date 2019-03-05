@@ -100,6 +100,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
     Route::get('usuarios/u/tipos','API\UsuarioController@tipos');
     Route::get('usuarios/u/nao-confirmados','API\UsuarioController@getUsuariosNaoConfirmados');
+    Route::get('usuarios/u/gestores-nao-confirmados','API\UsuarioController@getGestoresNaoConfirmados');
     Route::get('usuarios/u/pesquisar','API\UsuarioController@search');
     Route::get('usuarios/check-email-disponivel/{email}','API\UsuarioController@checkEmail');
     Route::get('usuarios/check-cpf-disponivel/{cpf}','API\UsuarioController@checkCpf');
@@ -240,6 +241,8 @@ Route::middleware('jwt.auth')->group(function(){
     Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos','API\TarefaController@clearEquipamentoProjeto');
 
     Route::get('tarefas/projeto-cnme/{projetoId}/equipamentos-disponiveis-envio','API\TarefaController@equipamentosDisponiveisEnvio');
+    
+    Route::get('tarefas/empresas/{empresaId}/tarefas','API\TarefaController@tarefasPorResponsavel');
     /**
     * ###################################################################################################### 
     * API      /api/checklist-cnmes
@@ -257,13 +260,15 @@ Route::middleware('jwt.auth')->group(function(){
      */
 
     Route::get('dashboard/projetos/total','API\DashboardController@countProjetos');
-    Route::get('dashboard/projetos/status','API\DashboardController@countPorStatus');
-    Route::get('dashboard/projetos/estados','API\DashboardController@countPorEstado');
-    Route::get('dashboard/projetos/estados/all','API\DashboardController@countPorEstadoAll');
+    Route::get('dashboard/projetos/status','API\DashboardController@queryPorStatus');
+    Route::get('dashboard/projetos/estados','API\DashboardController@queryPorEstado');
+    Route::get('dashboard/projetos/estados/all','API\DashboardController@queryPorEstadoAll');
     Route::get('dashboard/projetos/atrasados/total','API\DashboardController@countAtrasados');
     Route::get('dashboard/projetos/{etapa}/atrasados/total','API\DashboardController@countAtrasadosPorEtapa');
     Route::get('dashboard/usuarios/gestores/nao-confirmados/total','API\DashboardController@countGestoresNaoConfirmados');
-    Route::get('dashboard/projetos/estado/status','API\DashboardController@countStatusEstados');
+    Route::get('dashboard/projetos/estado/status','API\DashboardController@queryStatusEstados');
+    Route::get('dashboard/projetos/{etapa}/empresas','API\DashboardController@queryPrestadoras');
+    Route::get('dashboard/projetos/{etapa}/empresas/{empresaId}/estados','API\DashboardController@queryPrestadoraPorEstado');
 });
 
 
