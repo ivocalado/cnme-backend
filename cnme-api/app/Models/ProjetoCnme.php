@@ -66,9 +66,6 @@ class ProjetoCnme extends Model
         $dataInicioProjetoPrevisto = $this->data_inicio_previsto;
         $dataFimProjetoPrevisto = $this->data_fim_previsto;
 
-
-       
-
         $etapaEnvio = $this->getEtapaEnvio();
         $tarefasEnvio =  $etapaEnvio ?  $etapaEnvio->tarefas:[];
 

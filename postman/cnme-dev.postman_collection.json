@@ -1467,6 +1467,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "GET/api/projeto-cnme/empresa/4/projetos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/empresa/4/projetos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"empresa",
+								"4",
+								"projetos"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -3929,6 +3964,16 @@
 				{
 					"name": "GET/api/usuarios/u/tipos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {

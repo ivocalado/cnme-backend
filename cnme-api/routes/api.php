@@ -196,6 +196,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('projeto-cnme/{projetoId}/etapa-ativacao','API\ProjetoController@getEtapaAtivacao');
     Route::get('projeto-cnme/{projetoId}/etapas/{tipo}','API\ProjetoController@getEtapasPorTipo');
 
+    Route::get('projeto-cnme/empresa/{responsavelId}/projetos','API\ProjetoController@projetosPorResponsavel');
 
     
     /**

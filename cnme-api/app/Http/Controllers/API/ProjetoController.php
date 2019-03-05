@@ -336,4 +336,19 @@ class ProjetoController extends Controller
                 array('message' => 'Projeto não encontrado.') , 404);
         }        
     }
+
+    protected $empresaId;
+    public function projetosPorResponsavel(Request $request, $empresaId){
+        $list = ProjetoCnme::query();
+
+        $this->empresaId = $empresaId;
+        $list->whereHas('etapas', function($query1){
+            $query1->whereHas('tarefas',function ($query2) {
+                $query2->where('unidade_responsavel_id','=',$this->empresaId);
+            });
+        });
+
+        return ProjetoResource::collection( $list->get());
+    }
+
 }
