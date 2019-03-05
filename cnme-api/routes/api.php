@@ -270,6 +270,9 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('dashboard/projetos/estado/status','API\DashboardController@queryStatusEstados');
     Route::get('dashboard/projetos/{etapa}/empresas','API\DashboardController@queryPrestadoras');
     Route::get('dashboard/projetos/{etapa}/empresas/{empresaId}/estados','API\DashboardController@queryPrestadoraPorEstado');
+
+    Route::get('dashboard/projetos/{etapa}/prazos/estados','API\DashboardController@querPrazosTarefasPorEstado');
+    Route::get('dashboard/projetos/{etapa}/prazos/{uf}/municipios','API\DashboardController@querPrazosTarefasPorMunicipio');
 });
 
 

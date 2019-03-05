@@ -1179,6 +1179,79 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/status/estados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/prazos/estados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"envio",
+								"prazos",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/dashboard/projetos/{etapa}/prazos/{uf}/municipios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/prazos/al/municipios",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"envio",
+								"prazos",
+								"al",
+								"municipios"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1429,7 +1502,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/p/atrasados?responsavel_id=4",
+					"name": "GET/api/projeto-cnme/p/atrasados?responsavel_id=4",
 					"request": {
 						"auth": {
 							"type": "bearer",
