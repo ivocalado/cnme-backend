@@ -46,7 +46,7 @@ class UsuarioController extends Controller
                 
             $usuario = new User();
             $usuarioData = $request->all();
-            $usuarioData['password'] = Hash::make('aafw7eqwdqw');
+            $usuarioData['password'] = Hash::make('#*cnme2019');
 
             $validator = Validator::make($usuarioData, $usuario->rules, $usuario->messages);
 
@@ -59,7 +59,7 @@ class UsuarioController extends Controller
 
             $arrayTipos =  User::tipos();
 
-            if(!in_array($request['tipo'], $arrayTipos)){
+            if($request->has('tipo') && !in_array($request['tipo'], $arrayTipos)){
                 return response()->json(
                     array('message' => "Tipo desconhecido. Tipos:(".implode("|",$arrayTipos).")") , 422);
             }
@@ -118,7 +118,8 @@ class UsuarioController extends Controller
                     if($request->has('password'))
                         $usarioConfirmado->password = Hash::make($request['password']);
                     else
-                        return response()->json(array('message' => 'Nova senha é obrigatória.') , 422);
+                        return response()->json(
+                        array('message' => 'Email do usuário não confere com o cadastrado.') , 422);
 
 
                     $usarioConfirmado->email_verified_at = date('Y-m-d H:i:s');
