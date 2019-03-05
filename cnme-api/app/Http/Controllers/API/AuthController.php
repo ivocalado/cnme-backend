@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function login() {
         $credentials = request(['email', 'password']);
         if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Usuário não autorizado'], 401);
+            return response()->json(['error' => 'Login e/ou senha incorretos.'], 401);
         }
         return response()->json([
             'token' => $token,

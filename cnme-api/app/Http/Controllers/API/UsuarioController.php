@@ -46,7 +46,7 @@ class UsuarioController extends Controller
                 
             $usuario = new User();
             $usuarioData = $request->all();
-            $usuarioData['password'] = Hash::make('123456');
+            $usuarioData['password'] = Hash::make('aafw7eqwdqw');
 
             $validator = Validator::make($usuarioData, $usuario->rules, $usuario->messages);
 
@@ -115,7 +115,11 @@ class UsuarioController extends Controller
                 
                 if($usarioConfirmado->email === $request->email){
                     $usarioConfirmado->fill($request->all());
-                    $usarioConfirmado->password = Hash::make($usarioConfirmado->password);
+                    if($request->has('password'))
+                        $usarioConfirmado->password = Hash::make($request['password']);
+                    else
+                        return response()->json(array('message' => 'Nova senha é obrigatória.') , 422);
+
 
                     $usarioConfirmado->email_verified_at = date('Y-m-d H:i:s');
                     $usarioConfirmado->save();
@@ -172,6 +176,8 @@ class UsuarioController extends Controller
             $usuarioData = $request->all();
 
             $usuario->fill($usuarioData);
+            if($request->has('password'))
+                $usuario->password = Hash::make($request['password']);
             $usuario->save();
             DB::commit();
 
