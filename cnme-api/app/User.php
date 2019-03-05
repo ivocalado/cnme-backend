@@ -50,7 +50,7 @@ class User extends Authenticatable implements JWTSubject
 
     public static function tipos(){
         return [
-            User::TIPO_ADMINISTRADOR,
+            //User::TIPO_ADMINISTRADOR,
             User::TIPO_GESTOR,
             User::TIPO_COLABORADOR,
             User::TIPO_EXTERNO,
