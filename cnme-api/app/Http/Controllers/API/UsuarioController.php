@@ -164,7 +164,7 @@ class UsuarioController extends Controller
 
             $arrayTipos =  User::tipos();
 
-            if(!in_array($request['tipo'], $arrayTipos)){
+            if($request->has('tipo') && !in_array($request['tipo'], $arrayTipos)){
                 return response()->json(
                     array('message' => "Tipo desconhecido. Tipos:(".implode("|",$arrayTipos).")") , 422);
             }
