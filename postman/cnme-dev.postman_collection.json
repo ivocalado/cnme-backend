@@ -584,7 +584,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total?uf=AL",
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -593,12 +593,40 @@
 								"dashboard",
 								"projetos",
 								"total"
-							],
-							"query": [
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/dashboard/projetos/total?uf=AL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "uf",
-									"value": "AL"
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
 								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"projetos",
+								"total"
 							]
 						}
 					},
@@ -3844,6 +3872,16 @@
 						{
 							"name": "POST/api/usuarios/?/enviar-convite",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -3853,17 +3891,18 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
+									"raw": "{{HOSTNAME}}/api/usuarios/3/enviar-convite",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"usuarios",
-										"convidar"
+										"3",
+										"enviar-convite"
 									]
 								}
 							},
