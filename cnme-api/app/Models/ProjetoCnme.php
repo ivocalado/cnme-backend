@@ -9,12 +9,11 @@ use Illuminate\Validation\Rule;
 class ProjetoCnme extends Model
 {
 
-    public const STATUS_CRIADO = 'CRIADO';/**Projeto criado mas sem o planejamento das entregas */
     public const STATUS_PLANEJAMENTO = 'PLANEJAMENTO';/**Projeto iniciado em planejamento mas equipamentos não foram enviados */
     public const STATUS_ENVIADO = 'ENVIADO';//Planejamento realizado e todos os equipamentos enviados;
     public const STATUS_ENTREGUE = 'ENTREGUE';//Equipamentos entregues;
     public const STATUS_INSTALADO = 'INSTALADO';//Produto entregue e instalado
-    public const STATUS_FINALIZADO = 'FINALIZADO';//Instalado e ativado para operação
+    public const STATUS_ATIVADO = 'ATIVADO';//Instalado e ativado para operação
     public const STATUS_CANCELADO = 'CANCELADO';
 
     protected $fillable = [
@@ -24,12 +23,11 @@ class ProjetoCnme extends Model
 
     public static function status(){
         return [
-            ProjetoCnme::STATUS_CRIADO, 
             ProjetoCnme::STATUS_PLANEJAMENTO, 
             ProjetoCnme::STATUS_ENVIADO, 
             ProjetoCnme::STATUS_ENTREGUE, 
             ProjetoCnme::STATUS_INSTALADO, 
-            ProjetoCnme::STATUS_FINALIZADO, 
+            ProjetoCnme::STATUS_ATIVADO, 
             ProjetoCnme::STATUS_CANCELADO];
     }
 

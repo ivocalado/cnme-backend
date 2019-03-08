@@ -152,7 +152,7 @@ class AtivacaoController extends Controller
         DB::beginTransaction();
         try{
             $projeto = ProjetoCnme::find($projetoId);
-            if($projeto->status !== ProjetoCnme::STATUS_INSTALADO && $projeto->status !== ProjetoCnme::STATUS_FINALIZADO){
+            if($projeto->status !== ProjetoCnme::STATUS_INSTALADO && $projeto->status !== ProjetoCnme::STATUS_ATIVADO){
                 return response()->json(
                     array('message' => 'Não não concluiu a etapa de instalação.') , 422);
             }
@@ -179,7 +179,7 @@ class AtivacaoController extends Controller
             $tarefaAtivacao->status = Etapa::STATUS_CONCLUIDA;
             $tarefaAtivacao->save();
 
-            $projeto->status = ProjetoCnme::STATUS_FINALIZADO;
+            $projeto->status = ProjetoCnme::STATUS_ATIVADO;
             $projeto->save();
 
             DB::commit();

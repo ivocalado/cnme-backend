@@ -36,7 +36,7 @@ class PlanejamentoController extends Controller
     
             $equipamentoProjeto->save();
 
-            if($projeto->status === ProjetoCnme::STATUS_CRIADO)
+            if(!isset($projeto->status))
                 $projeto->status = ProjetoCnme::STATUS_PLANEJAMENTO;
             
             $projeto->save();
@@ -75,7 +75,7 @@ class PlanejamentoController extends Controller
                
                 $equipamentoProjeto->save();
 
-                if($projeto->status === ProjetoCnme::STATUS_CRIADO)
+                if(!isset($projeto->status))
                     $projeto->status = ProjetoCnme::STATUS_PLANEJAMENTO;
                 
                 $projeto->save();
@@ -166,7 +166,7 @@ class PlanejamentoController extends Controller
             }
 
             $projeto->kit()->associate($kit);
-            if($projeto->status === ProjetoCnme::STATUS_CRIADO)
+            if(!isset($projeto->status))
                 $projeto->status = ProjetoCnme::STATUS_PLANEJAMENTO;
 
             $projeto->save();

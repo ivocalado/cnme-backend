@@ -57,7 +57,7 @@ class ProjetoController extends Controller
             }
     
             $projeto->fill($projetoData);
-            $projeto->status = ProjetoCnme::STATUS_CRIADO;
+            $projeto->status = ProjetoCnme::STATUS_PLANEJAMENTO;
             $projeto->save();
             DB::commit();
 

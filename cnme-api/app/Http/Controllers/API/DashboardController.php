@@ -191,24 +191,22 @@ class DashboardController extends Controller
 
     public function queryStatusEstados(Request $request){
         $result = DB::select("SELECT estado, uf, sum(total) as total,
-        sum(total_criado) as total_criado,
         sum(total_planejamento) as total_planejamento,
         sum(total_enviado) as total_enviado,
         sum(total_entregue) as total_entregue,
         sum(total_instalado) as total_instalado,
-        sum(total_finalizado) as total_finalizado,
+        sum(total_ativado) as total_ativado,
         sum(total_cancelado) as total_cancelado
         FROM
             (SELECT 
             estado, 
             uf,
             CASE WHEN status IS not null THEN SUM(total) ELSE 0 END total,
-            CASE WHEN status = 'CRIADO' THEN SUM(total) ELSE 0 END total_criado,
             CASE WHEN status = 'PLANEJAMENTO' THEN SUM(total) ELSE 0 END total_planejamento,
             CASE WHEN status = 'ENVIADO' THEN SUM(total) ELSE 0 END total_enviado,
             CASE WHEN status = 'ENTREGUE' THEN SUM(total) ELSE 0 END total_entregue,
             CASE WHEN status = 'INSTALADO' THEN SUM(total) ELSE 0 END total_instalado,
-            CASE WHEN status = 'FINALIZADO' THEN SUM(total) ELSE 0 END total_finalizado,
+            CASE WHEN status = 'ATIVADO' THEN SUM(total) ELSE 0 END total_ativado,
             CASE WHEN status = 'CANCELADO' THEN SUM(total) ELSE 0 END total_cancelado
             FROM
              (select e.nome estado, e.sigla as uf, p.status,count(*) as total from estados e

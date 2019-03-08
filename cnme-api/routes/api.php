@@ -171,7 +171,7 @@ Route::middleware('jwt.auth')->group(function(){
      * GET              /api/projeto-cnme/p/pesquisar                                               * Pesquisar por 
      *                                                                                                  q(descricao do projeto, nome da unidade), 
      *                                                                                                  status("PLANEJAMENTO",ENVIO,INSTALACAO,ATIVACAO,
-     *                                                                                                          FINALIZADO,CANCELADO)
+     *                                                                                                          ATIVADO,CANCELADO)
                                                                                                     
     *  GET              /api/projeto-cnme/p/atrasados                                               * Pesquisar por atrasados
     */
