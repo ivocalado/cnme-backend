@@ -618,7 +618,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total",
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total?uf=AL",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -627,6 +627,12 @@
 								"dashboard",
 								"projetos",
 								"total"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "AL"
+								}
 							]
 						}
 					},
@@ -3841,34 +3847,6 @@
 				{
 					"name": "Convidar",
 					"item": [
-						{
-							"name": "POST/api/usuarios/convidar",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"name\":\"Felipe12\",\n\t\"email\": \"Felipe12@mec.gov.br\",\n\t\"cpf\": \"999.876.234-27\",\n\t\"unidade_id\": \"5\",\n\t\"tipo\": \"colaborador\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/convidar",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"usuarios",
-										"convidar"
-									]
-								}
-							},
-							"response": []
-						},
 						{
 							"name": "POST/api/usuarios/?/enviar-convite",
 							"request": {

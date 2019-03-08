@@ -119,7 +119,7 @@ class UsuarioController extends Controller
                         $usarioConfirmado->password = Hash::make($request['password']);
                     else
                         return response()->json(
-                        array('message' => 'Email do usuário não confere com o cadastrado.') , 422);
+                        array('message' => 'Informe a senha.') , 422);
 
 
                     $usarioConfirmado->email_verified_at = date('Y-m-d H:i:s');
