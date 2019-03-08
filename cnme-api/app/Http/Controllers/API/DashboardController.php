@@ -11,6 +11,7 @@ use App\User;
 use App\Models\Estado;
 use App\Models\Unidade;
 use App\Models\Etapa;
+use function GuzzleHttp\json_decode;
 
 class DashboardController extends Controller
 {
@@ -35,6 +36,8 @@ class DashboardController extends Controller
         return response()->json($query->count());
     }
 
+    protected $totalCount;
+    protected $debugTemp = "";
     public function queryPorStatus(Request $request){
         $query = DB::table('projeto_cnmes')
                      ->select(DB::raw('count(*) as status_count, status'));
@@ -50,8 +53,8 @@ class DashboardController extends Controller
         $query->groupBy('status');
         $result = $query->get();
 
-
         $statusList = ProjetoCnme::status();
+        $this->totalCount = DB::table('projeto_cnmes')->count();
 
         foreach($statusList as $status){
             if(!$result->contains('status',$status)){
@@ -60,13 +63,22 @@ class DashboardController extends Controller
                 $result->push($v);
             }
         }
+
+        $result = collect($result)->map(function($v){
+            $v =  (array)$v;
+            $v['status_percent'] = ($this->totalCount != 0) ? round(($v['status_count']/$this->totalCount),4)*100 : 0;
+            return $v;
+        })->toArray();      
+
         
+    
+
         return response()->json($result);
 
     }
 
     public function queryPorEstado(Request $request){
-        $projetosEstado = DB::table('projeto_cnmes')
+        $result = DB::table('projeto_cnmes')
         ->join('unidades', 'projeto_cnmes.unidade_id', '=', 'unidades.id')
         ->join('localidades', 'unidades.localidade_id','=','localidades.id')
         ->join('estados', 'localidades.estado_id', '=', 'estados.id')
@@ -74,7 +86,15 @@ class DashboardController extends Controller
         ->groupBy('estados.nome','estados.sigla')
         ->get();
 
-        return response()->json($projetosEstado);
+        $this->totalCount = DB::table('projeto_cnmes')->count();
+
+        $result = collect($result)->map(function($v){
+            $v =  (array)$v;
+            $v['estado_percent'] = ($this->totalCount != 0) ? round(($v['estado_count']/$this->totalCount),4)*100 : 0;
+            return $v;
+        })->toArray();    
+
+        return response()->json($result);
     }
 
     public function queryPorEstadoAll(Request $request){
@@ -97,7 +117,15 @@ class DashboardController extends Controller
             }
         }
 
-        return response()->json($projetosEstado);
+        $this->totalCount = DB::table('projeto_cnmes')->count();
+
+        $result = collect($projetosEstado)->map(function($v){
+            $v =  (array)$v;
+            $v['estado_percent'] = ($this->totalCount != 0) ? round(($v['estado_count']/$this->totalCount),4)*100 : 0;
+            return $v;
+        })->toArray();  
+
+        return response()->json($result);
     }
 
     private function queryAtrasados(Request $request){
@@ -193,6 +221,16 @@ class DashboardController extends Controller
         
         GROUP BY estado, uf
         ORDER BY uf");
+
+        $this->totalCount = DB::table('projeto_cnmes')->count();
+
+        $result = collect($result)->map(function($v){
+            $v =  (array)$v;
+            $v['percent'] = ($this->totalCount != 0) ? round(($v['total']/$this->totalCount),4)*100 : 0;
+            return $v;
+        })->toArray();  
+
+        
 
         return response()->json($result); 
     }

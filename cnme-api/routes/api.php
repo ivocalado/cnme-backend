@@ -95,7 +95,6 @@ Route::middleware('jwt.auth')->group(function(){
      */
 
     Route::apiResource('usuarios', 'API\UsuarioController');
-    Route::post('usuarios/convidar','API\UsuarioController@store');
     Route::post('usuarios/{id}/enviar-convite','API\UsuarioController@enviarConvite');
     Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
     Route::get('usuarios/u/tipos','API\UsuarioController@tipos');
