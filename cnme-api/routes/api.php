@@ -22,6 +22,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('login', 'API\AuthController@login');
+Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
+Route::get('usuarios/get', 'API\UsuarioController@getUserPorToken');
+
 
 
 Route::middleware('jwt.auth')->group(function(){
@@ -96,7 +99,6 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::apiResource('usuarios', 'API\UsuarioController');
     Route::post('usuarios/{id}/enviar-convite','API\UsuarioController@enviarConvite');
-    Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
     Route::get('usuarios/u/tipos','API\UsuarioController@tipos');
     Route::get('usuarios/u/nao-confirmados','API\UsuarioController@getUsuariosNaoConfirmados');
     Route::get('usuarios/u/gestores-nao-confirmados','API\UsuarioController@getGestoresNaoConfirmados');

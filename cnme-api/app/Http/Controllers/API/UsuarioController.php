@@ -337,5 +337,23 @@ class UsuarioController extends Controller
         return UserResource::collection($list->orderBy('created_at')->paginate(25));
     }
 
+    public function getUserPorToken(Request $request){
+        if($request->has('token1')){
+            $user = User::where('remember_token',$request->token1)->first();
+
+            if($user)
+                return new UserResource($user);
+            else 
+                return response()->json(array('message' => "Usuário não encontrado.") , 404);
+
+        }else{
+            return response()->json(
+                array('message' => "Token não informado.") , 422);
+        }
+
+
+        
+    }
+
 
 }

@@ -413,6 +413,35 @@
 					"response": []
 				},
 				{
+					"name": "GET/api/usuarios/get?token1=d6f183e7d7ccf061636c24b93d5bc56a6859d02b",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/get?token1=d6f183e7d7ccf061636c24b93d5bc56a6859d02b",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"get"
+							],
+							"query": [
+								{
+									"key": "token1",
+									"value": "d6f183e7d7ccf061636c24b93d5bc56a6859d02b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "{{HOSTNAME}}/api/refresh-token",
 					"request": {
 						"auth": {
