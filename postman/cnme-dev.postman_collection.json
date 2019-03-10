@@ -394,7 +394,7 @@
 								},
 								{
 									"key": "password",
-									"value": "123456",
+									"value": "1234567",
 									"type": "text"
 								}
 							]
@@ -594,10 +594,461 @@
 			"name": "Dahsboard",
 			"item": [
 				{
-					"name": "GET/api/dashboard/projetos/total",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "estados",
+					"item": [
+						{
+							"name": "GET/api/dashboard/projetos/estados/all",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados/all",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"estados",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/projetos/estados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"estados"
+									]
+								},
+								"description": "[\n    {\n        \"estado_count\": 3,\n        \"nome\": \"Alagoas\"\n    }\n]"
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/projetos/estado/status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"estado",
+										"status"
+									]
+								},
+								"description": "[\n    {\n        \"estado\": \"Acre\",\n        \"uf\": \"AC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"1\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"1\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"1\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amazonas\",\n        \"uf\": \"AM\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amapá\",\n        \"uf\": \"AP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Bahia\",\n        \"uf\": \"BA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Ceará\",\n        \"uf\": \"CE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Distrito Federal\",\n        \"uf\": \"DF\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Espírito Santo\",\n        \"uf\": \"ES\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Goiás\",\n        \"uf\": \"GO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Maranhão\",\n        \"uf\": \"MA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Minas Gerais\",\n        \"uf\": \"MG\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso do Sul\",\n        \"uf\": \"MS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso\",\n        \"uf\": \"MT\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pará\",\n        \"uf\": \"PA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraíba\",\n        \"uf\": \"PB\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pernambuco\",\n        \"uf\": \"PE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Piauí\",\n        \"uf\": \"PI\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraná\",\n        \"uf\": \"PR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Norte\",\n        \"uf\": \"RN\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rondônia\",\n        \"uf\": \"RO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Roraima\",\n        \"uf\": \"RR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Sul\",\n        \"uf\": \"RS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Santa Catarina\",\n        \"uf\": \"SC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Sergipe\",\n        \"uf\": \"SE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"São Paulo\",\n        \"uf\": \"SP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Tocantins\",\n        \"uf\": \"TO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    }\n]"
+							},
+							"response": [
+								{
+									"name": "GET/api/dashboard/projetos/estado/status",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"path": [
+												"api",
+												"dashboard",
+												"projetos",
+												"estado",
+												"status"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 04 Mar 2019 16:02:11 -0300"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 04 Mar 2019 19:02:11 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"estado\": \"Acre\",\n        \"uf\": \"AC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"1\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"1\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"1\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amazonas\",\n        \"uf\": \"AM\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amapá\",\n        \"uf\": \"AP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Bahia\",\n        \"uf\": \"BA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Ceará\",\n        \"uf\": \"CE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Distrito Federal\",\n        \"uf\": \"DF\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Espírito Santo\",\n        \"uf\": \"ES\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Goiás\",\n        \"uf\": \"GO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Maranhão\",\n        \"uf\": \"MA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Minas Gerais\",\n        \"uf\": \"MG\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso do Sul\",\n        \"uf\": \"MS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso\",\n        \"uf\": \"MT\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pará\",\n        \"uf\": \"PA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraíba\",\n        \"uf\": \"PB\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pernambuco\",\n        \"uf\": \"PE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Piauí\",\n        \"uf\": \"PI\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraná\",\n        \"uf\": \"PR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Norte\",\n        \"uf\": \"RN\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rondônia\",\n        \"uf\": \"RO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Roraima\",\n        \"uf\": \"RR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Sul\",\n        \"uf\": \"RS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Santa Catarina\",\n        \"uf\": \"SC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Sergipe\",\n        \"uf\": \"SE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"São Paulo\",\n        \"uf\": \"SP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Tocantins\",\n        \"uf\": \"TO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "GET/api/dashboard/projetos/envio/status/estados",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/prazos/estados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"envio",
+										"prazos",
+										"estados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/projetos/{etapa}/prazos/{uf}/municipios",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/prazos/al/municipios",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"envio",
+										"prazos",
+										"al",
+										"municipios"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "usuarios",
+					"item": [
+						{
+							"name": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/nao-confirmados/total",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/nao-confirmados/total?uf=AL",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"usuarios",
+										"gestores",
+										"nao-confirmados",
+										"total"
+									],
+									"query": [
+										{
+											"key": "uf",
+											"value": "AL"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/usuarios/gestores/nao-confirmados/total",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/nao-confirmados/total",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"usuarios",
+										"gestores",
+										"nao-confirmados",
+										"total"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "prestadores",
+					"item": [
+						{
+							"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas/4/estados",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas/4/estados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"envio",
+										"empresas",
+										"4",
+										"estados"
+									]
+								},
+								"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas/4/estados",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas/4/estados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"instalacao",
+										"empresas",
+										"4",
+										"estados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"envio",
+										"empresas"
+									]
+								},
+								"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET/api/dashboard/projetos/extrato",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -611,9 +1062,12 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total",
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/extrato",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -621,17 +1075,14 @@
 								"api",
 								"dashboard",
 								"projetos",
-								"total"
+								"extrato"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "GET/api/dashboard/projetos/total?uf=AL",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "GET/api/dashboard/projetos/etapas/extrato",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -645,9 +1096,12 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/total?uf=AL",
+							"raw": "{{HOSTNAME}}/api/dashboard/projetos/etapas/extrato",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -655,13 +1109,8 @@
 								"api",
 								"dashboard",
 								"projetos",
-								"total"
-							],
-							"query": [
-								{
-									"key": "uf",
-									"value": "AL"
-								}
+								"etapas",
+								"extrato"
 							]
 						}
 					},
@@ -699,620 +1148,6 @@
 							]
 						},
 						"description": "[\n    {\n        \"status_count\": 1,\n        \"status\": \"PLANEJAMENTO\"\n    },\n    {\n        \"status_count\": 1,\n        \"status\": \"ENTREGUE\"\n    },\n    {\n        \"status_count\": 1,\n        \"status\": \"FINALIZADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"CRIADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"ENVIADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"INSTALADO\"\n    },\n    {\n        \"status_count\": 0,\n        \"status\": \"CANCELADO\"\n    }\n]"
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/estados",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"estados"
-							]
-						},
-						"description": "[\n    {\n        \"estado_count\": 3,\n        \"nome\": \"Alagoas\"\n    }\n]"
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/estados/all",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados/all",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"estados",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/estado/status",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"estado",
-								"status"
-							]
-						},
-						"description": "[\n    {\n        \"estado\": \"Acre\",\n        \"uf\": \"AC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"1\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"1\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"1\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amazonas\",\n        \"uf\": \"AM\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amapá\",\n        \"uf\": \"AP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Bahia\",\n        \"uf\": \"BA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Ceará\",\n        \"uf\": \"CE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Distrito Federal\",\n        \"uf\": \"DF\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Espírito Santo\",\n        \"uf\": \"ES\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Goiás\",\n        \"uf\": \"GO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Maranhão\",\n        \"uf\": \"MA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Minas Gerais\",\n        \"uf\": \"MG\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso do Sul\",\n        \"uf\": \"MS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso\",\n        \"uf\": \"MT\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pará\",\n        \"uf\": \"PA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraíba\",\n        \"uf\": \"PB\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pernambuco\",\n        \"uf\": \"PE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Piauí\",\n        \"uf\": \"PI\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraná\",\n        \"uf\": \"PR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Norte\",\n        \"uf\": \"RN\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rondônia\",\n        \"uf\": \"RO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Roraima\",\n        \"uf\": \"RR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Sul\",\n        \"uf\": \"RS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Santa Catarina\",\n        \"uf\": \"SC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Sergipe\",\n        \"uf\": \"SE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"São Paulo\",\n        \"uf\": \"SP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Tocantins\",\n        \"uf\": \"TO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    }\n]"
-					},
-					"response": [
-						{
-							"name": "GET/api/dashboard/projetos/estado/status",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estado/status",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"dashboard",
-										"projetos",
-										"estado",
-										"status"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 04 Mar 2019 16:02:11 -0300"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 04 Mar 2019 19:02:11 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.2.15-0ubuntu0.18.04.1"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"estado\": \"Acre\",\n        \"uf\": \"AC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"1\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"1\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"1\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amazonas\",\n        \"uf\": \"AM\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Amapá\",\n        \"uf\": \"AP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Bahia\",\n        \"uf\": \"BA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Ceará\",\n        \"uf\": \"CE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Distrito Federal\",\n        \"uf\": \"DF\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Espírito Santo\",\n        \"uf\": \"ES\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Goiás\",\n        \"uf\": \"GO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Maranhão\",\n        \"uf\": \"MA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Minas Gerais\",\n        \"uf\": \"MG\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso do Sul\",\n        \"uf\": \"MS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Mato Grosso\",\n        \"uf\": \"MT\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pará\",\n        \"uf\": \"PA\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraíba\",\n        \"uf\": \"PB\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Pernambuco\",\n        \"uf\": \"PE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Piauí\",\n        \"uf\": \"PI\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Paraná\",\n        \"uf\": \"PR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Norte\",\n        \"uf\": \"RN\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rondônia\",\n        \"uf\": \"RO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Roraima\",\n        \"uf\": \"RR\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Rio Grande do Sul\",\n        \"uf\": \"RS\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Santa Catarina\",\n        \"uf\": \"SC\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Sergipe\",\n        \"uf\": \"SE\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"São Paulo\",\n        \"uf\": \"SP\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    },\n    {\n        \"estado\": \"Tocantins\",\n        \"uf\": \"TO\",\n        \"total\": \"0\",\n        \"total_criado\": \"0\",\n        \"total_planejamento\": \"0\",\n        \"total_enviado\": \"0\",\n        \"total_entregue\": \"0\",\n        \"total_instalado\": \"0\",\n        \"total_finalizado\": \"0\",\n        \"total_cancelado\": \"0\"\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "GET/api/dashboard/projetos/atrasados/total",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/atrasados/total",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"atrasados",
-								"total"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/usuarios/gestores/nao-confirmados/total",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/nao-confirmados/total?uf=AL",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"usuarios",
-								"gestores",
-								"nao-confirmados",
-								"total"
-							],
-							"query": [
-								{
-									"key": "uf",
-									"value": "AL"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/envio/atrasados/total",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/atrasados/total",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"envio",
-								"atrasados",
-								"total"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/ativacao/atrasados/total",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/ativacao/atrasados/total",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"ativacao",
-								"atrasados",
-								"total"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/ativacao/atrasados/total",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/ativacao/atrasados/total",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"ativacao",
-								"atrasados",
-								"total"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/instalacao/atrasados/total",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/atrasados/total",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"instalacao",
-								"atrasados",
-								"total"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas/4/estados",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas/4/estados",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"envio",
-								"empresas",
-								"4",
-								"estados"
-							]
-						},
-						"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"estado\": \"Alagoas\",\n        \"uf\": \"AL\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas/4/estados",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas/4/estados",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"instalacao",
-								"empresas",
-								"4",
-								"estados"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"envio",
-								"empresas"
-							]
-						},
-						"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"instalacao",
-								"empresas"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/status/estados",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/prazos/estados",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"envio",
-								"prazos",
-								"estados"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/dashboard/projetos/{etapa}/prazos/{uf}/municipios",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/dashboard/projetos/envio/prazos/al/municipios",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"dashboard",
-								"projetos",
-								"envio",
-								"prazos",
-								"al",
-								"municipios"
-							]
-						}
 					},
 					"response": []
 				}
@@ -3927,10 +3762,10 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"name\":\"José Pinheiro3333\",\n\t\"email\": \"josepinheiro3333@mec.gov.br\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"1234567\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+									"raw": "{\n\t\"name\":\"Thiagooo\",\n\t\"email\": \"thiago.araujo.so@gmail.com\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"1234567\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=82d3212b2d5caad9ae32",
+									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=d6f183e7d7ccf061636c24b93d5bc56a6859d02b",
 									"host": [
 										"{{HOSTNAME}}"
 									],
@@ -3942,7 +3777,7 @@
 									"query": [
 										{
 											"key": "token1",
-											"value": "82d3212b2d5caad9ae32"
+											"value": "d6f183e7d7ccf061636c24b93d5bc56a6859d02b"
 										}
 									]
 								}

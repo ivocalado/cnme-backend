@@ -266,6 +266,8 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('dashboard/projetos/estados','API\DashboardController@queryPorEstado');
     Route::get('dashboard/projetos/estados/all','API\DashboardController@queryPorEstadoAll');
     Route::get('dashboard/projetos/atrasados/total','API\DashboardController@countAtrasados');
+    Route::get('dashboard/projetos/extrato','API\DashboardController@queryExtrato');
+    Route::get('dashboard/projetos/etapas/extrato','API\DashboardController@queryProjetosEtapasExtrato');
     Route::get('dashboard/projetos/{etapa}/atrasados/total','API\DashboardController@countAtrasadosPorEtapa');
     Route::get('dashboard/usuarios/gestores/nao-confirmados/total','API\DashboardController@countGestoresNaoConfirmados');
     Route::get('dashboard/projetos/estado/status','API\DashboardController@queryStatusEstados');
