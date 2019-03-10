@@ -142,7 +142,7 @@ class EnviarController extends Controller
             if($tarefaEnvio->etapa->projeto_cnme_id !== $projeto->id ||
                 $tarefaEnvio->etapa->tipo !== Etapa::TIPO_ENVIO){
                 return response()->json(
-                    "Projeto/Tarefa não correspondentes a ação de envio." , 422);
+                    array('message' => "Projeto/Tarefa não correspondentes a ação de envio." , 422));
             }
             
             if($projeto->status === ProjetoCnme::STATUS_PLANEJAMENTO){
@@ -200,7 +200,7 @@ class EnviarController extends Controller
                 $tarefaEnvio->etapa->tipo !== Etapa::TIPO_ENVIO
                 || !isset($projeto) || !isset($tarefaEnvio)){
                 return response()->json(
-                    "Projeto/Tarefa não correspondentes a ação de entrega." , 422);
+                    array('message' => "Projeto/Tarefa não correspondentes a ação de entrega." , 422));
             }
 
             if($request->has('descricao'))

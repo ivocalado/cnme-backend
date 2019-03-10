@@ -82,21 +82,21 @@ class Handler extends ExceptionHandler
             $preException = $exception->getPrevious();
             if ($preException instanceof
                           \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
-                return response()->json(['error' => 'TOKEN_EXPIRED'],401);
+                return response()->json(['message' => 'TOKEN_EXPIRED'],401);
             } else if ($preException instanceof
                           \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
-                return response()->json(['error' => 'TOKEN_INVALID'], 401);
+                return response()->json(['message' => 'TOKEN_INVALID'], 401);
             } else if ($preException instanceof
                      \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) {
-                 return response()->json(['error' => 'TOKEN_BLACKLISTED'],401);
+                 return response()->json(['message' => 'TOKEN_BLACKLISTED'],401);
            }
            if ($exception->getMessage() === 'Token not provided') {
-               return response()->json(['error' => 'Token não foi enviado'],401);
+               return response()->json(['message' => 'Token não foi enviado'],401);
            }
         }
         
         return response()->json([
-                'error' => $exception->getMessage(),
+                'message' => $exception->getMessage(),
                 'file' => $exception->getFile().":".$exception->getLine()
             ],500);        
         

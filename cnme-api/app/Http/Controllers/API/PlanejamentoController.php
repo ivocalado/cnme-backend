@@ -204,7 +204,7 @@ class PlanejamentoController extends Controller
 
             if(!isset($kit) || !isset($projeto)){
                 return response()->json(
-                    array('message' => "Referẽncias de kit/projeto inconsistentes") , 500); 
+                    array('message' => "Referẽncias de kit/projeto inconsistentes") , 422); 
             }
 
             $projeto = ProjetoCnme::find($projetoId);
