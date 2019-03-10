@@ -394,7 +394,7 @@
 								},
 								{
 									"key": "password",
-									"value": "1234567",
+									"value": "123456",
 									"type": "text"
 								}
 							]
@@ -3762,7 +3762,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"name\":\"Thiagooo\",\n\t\"email\": \"thiago.araujo.so@gmail.com\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"1234567\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+									"raw": "{\n\t\"name\":\"Thiagooo\",\n\t\"email\": \"thiago.araujo.so@gmail.com\",\n\t\"cpf\": \"122.131.777-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"123456\",\n\t\"funcao\": \"Secretaria\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
 								},
 								"url": {
 									"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=d6f183e7d7ccf061636c24b93d5bc56a6859d02b",

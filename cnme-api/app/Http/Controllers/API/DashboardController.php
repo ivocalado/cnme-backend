@@ -19,33 +19,27 @@ use App\Services\PrestadorQueryComponent;
 
 class DashboardController extends Controller
 {
-
     public function countProjetos(Request $request){
-        $queryComponent = new QueryComponent();
+        try {
+            $queryComponent = new QueryComponent();
 
-        $total = $queryComponent->countProjetos($request->uf);
+            $total = $queryComponent->countProjetos($request->uf);
 
-        return response()->json($total);
+            return response()->json($total);
+        }catch(\Exception $e){
+            return response()->json(
+                array('message' => $e->getMessage()) , 500);
+        }
     }
 
     protected $totalCount;
     public function queryPorStatus(Request $request){
-        $query = DB::table('projeto_cnmes')
-                     ->select(DB::raw('count(*) as status_count, status'));
+        $queryComponent = new QueryComponent();
 
-        if($request->uf){
-            $query->join('unidades', 'projeto_cnmes.unidade_id', '=', 'unidades.id')
-            ->join('localidades', 'unidades.localidade_id','=','localidades.id')
-            ->join('estados', 'localidades.estado_id', '=', 'estados.id');
-
-            $query->where('estados.sigla', '=', strtoupper($request['uf']));
-        }
-
-        $query->groupBy('status');
-        $result = $query->get();
-
+        $result = $queryComponent->queryPorStatus($request->uf);
         $statusList = ProjetoCnme::status();
-        $this->totalCount = DB::table('projeto_cnmes')->count();
+
+        $this->totalCount =  $queryComponent->countProjetos($request->uf);
 
         foreach($statusList as $status){
             if(!$result->contains('status',$status)){
@@ -70,7 +64,8 @@ class DashboardController extends Controller
         $estadoComponent = new EstadoQueryComponent();
         $result = $estadoComponent->queryPorEstado();
 
-        $this->totalCount = DB::table('projeto_cnmes')->count();
+        $queryComponent = new QueryComponent();
+        $this->totalCount = $queryComponent->countProjetos($request->uf);
 
         $result = collect($result)->map(function($v){
             $v =  (array)$v;
@@ -96,7 +91,8 @@ class DashboardController extends Controller
             }
         }
 
-        $this->totalCount = DB::table('projeto_cnmes')->count();
+        $queryComponent = new QueryComponent();
+        $this->totalCount = $queryComponent->countProjetos($request->uf);
 
         $result = collect($projetosEstado)->map(function($v){
             $v =  (array)$v;
@@ -106,32 +102,7 @@ class DashboardController extends Controller
 
         return response()->json($result);
     }
-
-    private function countConcluidos(Request $request){
-        $query = DB::table('projeto_cnmes');
-        $query->where('status','=',ProjetoCnme::STATUS_ATIVADO);
-
-        return $query->count();
-
-    }
-
-    private function countAndamento(Request $request){
-        $query = DB::table('projeto_cnmes');
-        $query->whereIn('status', [
-                                    ProjetoCnme::STATUS_ENTREGUE, 
-                                    ProjetoCnme::STATUS_ENVIADO,
-                                    ProjetoCnme::STATUS_INSTALADO]);
-
-        return $query->count();
-    }
-
-    private function countPlanejamento(Request $request){
-        $query = DB::table('projeto_cnmes');
-        $query->where('status','=',ProjetoCnme::STATUS_PLANEJAMENTO);
-
-        return $query->count();
-    }
-
+    
     public function countAtrasados(Request $request){
         $queryComponent = new QueryComponent();
         $totalAtrasados = $queryComponent->countAtrasados($request->uf);
@@ -152,9 +123,9 @@ class DashboardController extends Controller
 
         $totalProjetos = $queryComponent->countProjetos($request->uf);
         $totalAtrasados = $queryComponent->countAtrasados($request->uf);
-        $totalPlanejamento = $this->countPlanejamento($request);
-        $totalAndamento = $this->countAndamento($request);
-        $totalConcluidos = $this->countConcluidos($request);
+        $totalPlanejamento = $queryComponent->countPlanejamento($request->uf);
+        $totalAndamento = $queryComponent->countAndamento($request->uf);
+        $totalConcluidos = $queryComponent->countConcluidos($request->uf);
 
         $result = []; 
         $result["total_projetos"] = $totalProjetos;
@@ -177,7 +148,6 @@ class DashboardController extends Controller
 
         return response()->json($total);
 
-       
     }
 
     public function countGestoresNaoConfirmados(Request $request){
@@ -236,8 +206,8 @@ class DashboardController extends Controller
             $this->newValue[$etapa."_total_concluida"] = $v["total_concluida"];
             $this->newValue[$etapa."_total_concluida_atrasada"] = $v["total_concluida_atrasada"];
 
-            $this->newValue[$etapa."_percent_andamento"] = $v["total_andamento"] != 0 ? 
-                                                        round(($v["total_atrasada"]/$v["total_andamento"])*100, 2):0;
+            $this->newValue[$etapa."_percent_andamento"] = //$v["total_andamento"] != 0 ? 
+                                                        round(($v["total_atrasada"]/$v["total_andamento"])*100, 2);//:0;
 
             return $v;
         })->toArray();  

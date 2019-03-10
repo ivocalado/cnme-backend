@@ -12,7 +12,7 @@ use App\Models\Etapa;
 
 class QueryComponent{
 
-    public function countProjetos($uf){
+    public function countProjetos($uf = null){
         $query = DB::table('projeto_cnmes');
 
         if($uf){
@@ -29,8 +29,34 @@ class QueryComponent{
 
         return $query->count();
     }
+
+    public function countPlanejamento($uf = null){
+        $query = DB::table('projeto_cnmes');
+        $query->where('status','=',ProjetoCnme::STATUS_PLANEJAMENTO);
+
+        return $query->count();
+    }
+
+    public function countConcluidos($uf = null){
+        $query = DB::table('projeto_cnmes');
+        $query->where('status','=',ProjetoCnme::STATUS_ATIVADO);
+
+        return $query->count();
+
+    }
+
+    public function countAndamento($uf = null){
+        $query = DB::table('projeto_cnmes');
+        $query->whereIn('status', [
+                                    ProjetoCnme::STATUS_ENTREGUE, 
+                                    ProjetoCnme::STATUS_ENVIADO,
+                                    ProjetoCnme::STATUS_INSTALADO]);
+
+        return $query->count();
+    }
+
     
-    public function queryProjetosEtapasExtrato(){
+    public function queryProjetosEtapasExtrato($uf = null){
         $result = DB::select("
         SELECT 
 	etapa,
@@ -76,7 +102,7 @@ class QueryComponent{
         return $result; 
     }
 
-    public function countAtrasados($uf, $etapa = ""){
+    public function countAtrasados($uf = null, $etapa = null){
         $query = DB::table('projeto_cnmes')
         ->join('etapas','etapas.projeto_cnme_id','projeto_cnmes.id' )
         ->join('tarefas','tarefas.etapa_id','etapas.id' );
@@ -102,5 +128,23 @@ class QueryComponent{
         }
 
         return $query->count();
+    }
+
+    public function queryPorStatus($uf = null){
+        $query = DB::table('projeto_cnmes')
+                     ->select(DB::raw('count(*) as status_count, status'));
+
+        if($uf){
+            $query->join('unidades', 'projeto_cnmes.unidade_id', '=', 'unidades.id')
+            ->join('localidades', 'unidades.localidade_id','=','localidades.id')
+            ->join('estados', 'localidades.estado_id', '=', 'estados.id');
+
+            $query->where('estados.sigla', '=', strtoupper($uf));
+        }
+
+        $query->groupBy('status');
+        $result = $query->get();
+
+        return $result;
     }
 }

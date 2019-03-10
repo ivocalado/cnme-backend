@@ -9,6 +9,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Support\Facades\Log;
+
 
 
 class Handler extends ExceptionHandler
@@ -40,7 +43,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        parent::report($exception);
+        //parent::report($exception);
     }
 
     /**
@@ -83,8 +86,16 @@ class Handler extends ExceptionHandler
                return response()->json(['error' => 'Token não foi enviado'],401);
            }
         }
+
+        Log::error('message: '.$exception->getMessage().
+                        "\nFile: ".$exception->getFile().":".$exception->getLine());
+        
+        return response()->json([
+                'error' => $exception->getMessage(),
+                'file' => $exception->getFile().":".$exception->getLine()
+            ],500);        
         
 
-        return parent::render($request, $exception);
+        //return parent::render($request, $exception);
     }
 }
