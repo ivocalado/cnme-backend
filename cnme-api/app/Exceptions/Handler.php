@@ -44,6 +44,14 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         //parent::report($exception);
+
+        Log::channel('single')->error('message: '.$exception->getMessage().
+                "\nFile: ".$exception->getFile().":".$exception->getLine());
+
+        Log::channel('daily')->info('message: '.$exception->getMessage().
+                "\nFile: ".$exception->getFile().":".$exception->getLine()."\n".
+                $exception->getTraceAsString()
+        );
     }
 
     /**
@@ -86,9 +94,6 @@ class Handler extends ExceptionHandler
                return response()->json(['error' => 'Token não foi enviado'],401);
            }
         }
-
-        Log::error('message: '.$exception->getMessage().
-                        "\nFile: ".$exception->getFile().":".$exception->getLine());
         
         return response()->json([
                 'error' => $exception->getMessage(),

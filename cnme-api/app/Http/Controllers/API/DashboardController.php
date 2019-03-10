@@ -206,8 +206,8 @@ class DashboardController extends Controller
             $this->newValue[$etapa."_total_concluida"] = $v["total_concluida"];
             $this->newValue[$etapa."_total_concluida_atrasada"] = $v["total_concluida_atrasada"];
 
-            $this->newValue[$etapa."_percent_andamento"] = //$v["total_andamento"] != 0 ? 
-                                                        round(($v["total_atrasada"]/$v["total_andamento"])*100, 2);//:0;
+            $this->newValue[$etapa."_percent_andamento"] = $v["total_andamento"] != 0 ? 
+                                                        round(($v["total_atrasada"]/$v["total_andamento"])*100, 2):0;
 
             return $v;
         })->toArray();  
