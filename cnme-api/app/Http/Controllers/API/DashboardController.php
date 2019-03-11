@@ -193,7 +193,7 @@ class DashboardController extends Controller
         return response()->json($result); 
     }
 
-    protected $newResult = array();
+    protected $newValue = array();
     public function queryProjetosEtapasExtrato(Request $request){
         $queryComponent = new QueryComponent();
         $result =  $queryComponent->queryProjetosEtapasExtrato();
