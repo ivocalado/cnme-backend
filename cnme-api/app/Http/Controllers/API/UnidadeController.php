@@ -77,8 +77,12 @@ class UnidadeController extends Controller
             /**create usuario gestor */
 
             $usuarioGestor = new User();
-            $usuarioGestor->name = 'Gestor '. $unidade->nome;
-            $usuarioGestor->email = $unidade->email;
+            $usuarioGestor->name = $request->has('responsavel')?
+                                                        $request->responsavel     
+                                                        :'Gestor '. $unidade->nome;
+            $usuarioGestor->email = $request->has('emailResponsavel')? 
+                                                        $request->emailResponsavel    
+                                                        :$unidade->email;
             $usuarioGestor->tipo = User::TIPO_GESTOR;
             $usuarioGestor->unidade()->associate($unidade);
             $passwordAleatorio = bin2hex(openssl_random_pseudo_bytes(4));
