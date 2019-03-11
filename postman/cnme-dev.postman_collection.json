@@ -1048,6 +1048,126 @@
 					"_postman_isSubFolder": true
 				},
 				{
+					"name": "tempo",
+					"item": [
+						{
+							"name": "GET/api/dashboard/projetos/mesesGRAFICO",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/meses",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"meses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/projetos/estados/mesesTABELA",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados/meses",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"estados",
+										"meses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/dashboard/projetos/estados/meses?regiao=centro-oeste&uf=DF",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados/meses?regiao=centro-oeste&uf=DF",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"estados",
+										"meses"
+									],
+									"query": [
+										{
+											"key": "regiao",
+											"value": "centro-oeste"
+										},
+										{
+											"key": "uf",
+											"value": "DF"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "GET/api/dashboard/projetos/extrato",
 					"request": {
 						"auth": {

@@ -276,6 +276,9 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::get('dashboard/projetos/{etapa}/prazos/estados','API\DashboardController@querPrazosTarefasPorEstado');
     Route::get('dashboard/projetos/{etapa}/prazos/{uf}/municipios','API\DashboardController@querPrazosTarefasPorMunicipio');
+
+    Route::get('dashboard/projetos/meses','API\DashboardController@queryProjeto12Meses');
+    Route::get('dashboard/projetos/estados/meses','API\DashboardController@queryProjetoEstadoAno');
 });
 
 

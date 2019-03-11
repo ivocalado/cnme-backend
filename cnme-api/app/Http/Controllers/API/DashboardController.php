@@ -16,6 +16,7 @@ use App\Services\QueryComponent;
 use App\Services\EstadoQueryComponent;
 use App\Services\UnidadeQueryComponent;
 use App\Services\PrestadorQueryComponent;
+use App\Services\TempoQueryComponent;
 
 class DashboardController extends Controller
 {
@@ -213,6 +214,22 @@ class DashboardController extends Controller
         })->toArray();  
 
         $result = ($this->newValue);
+
+        return response()->json($result); 
+    }
+
+    public function queryProjeto12Meses(){
+        $tempoComponent = new TempoQueryComponent();
+
+        $result = $tempoComponent->queryProjeto12Meses();
+
+        return response()->json($result); 
+    }
+
+    public function queryProjetoEstadoAno(Request $request){
+        $tempoComponent = new TempoQueryComponent();
+
+        $result = $tempoComponent->queryProjetoEstadoAno($request->ano, $request->uf, $request->regiao);
 
         return response()->json($result); 
     }
