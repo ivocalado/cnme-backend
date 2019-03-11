@@ -17,9 +17,9 @@ class Etapa extends Model
     public const TIPO_ATIVACAO = 'ATIVACAO';
 
 
-    public const DESC_ETAPA_ENVIO = 'Etapa de envio dos equipamentos';
-    public const DESC_ETAPA_INSTALACAO = 'Etapa de instalação dos equipamentos';
-    public const DESC_ETAPA_ATIVACAO = 'Etapa de ativação dos equipamentos';
+    public const DESC_ETAPA_ENVIO = 'Etapa de ENVIO dos equipamentos';
+    public const DESC_ETAPA_INSTALACAO = 'Etapa de INSTALAÇÃO dos equipamentos';
+    public const DESC_ETAPA_ATIVACAO = 'Etapa de ATIVAÇÃO dos equipamentos';
 
     protected $fillable = [
        'status','descricao','tipo','usuario_id','projeto_cnme_id'
