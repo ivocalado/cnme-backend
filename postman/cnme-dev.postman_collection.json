@@ -3060,6 +3060,16 @@
 				{
 					"name": "{{HOSTNAME}}/api/kits/1",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -5546,10 +5556,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"data_inicio\":\"2019-02-20\"\n}"
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/2/tarefa/19/enviar",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/tarefa/27/enviar",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -5557,9 +5567,9 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"2",
+								"4",
 								"tarefa",
-								"19",
+								"27",
 								"enviar"
 							]
 						},
@@ -5626,10 +5636,17 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-20\"\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/2/instalar",
@@ -5684,6 +5701,48 @@
 								"projeto-cnme",
 								"2",
 								"ativar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/etapas/projeto-cnme/4/enviar-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/enviar-all",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"enviar-all"
 							]
 						}
 					},
@@ -5905,6 +5964,722 @@
 								"checklist-cnmes",
 								"2",
 								"clear-add-items-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Testes 01 (Sequencia de chamadas)",
+			"item": [
+				{
+					"name": "Criar polo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"codigo_inep\": \"99698881\",\n\"descricao\": \"Unidade.....\",\n\"nome\": \"Polo do caso de teste\",\n\"diretor\": \"\",\n\"telefone\": \"(012) 3421-342342\",\n\"email\": \"poloteste@educacao.al.gov.br\",\n\"email_institucional\": \"poloteste@educacao.al.gov.br\",\n\"url\":\"http://poloteste.com\",\n\"tipo_unidade_id\" : \"3\",\n\"localidade\": {\n\t\"logradouro\": \"Av. Salo Branco\",\n\t\"numero\": \"3243\",\n\t\"bairro\": \"São Cristovão\",\n\t\"cep\": \"57044-234\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"90\"\n }\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enviar convite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/7/enviar-convite",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"7",
+								"enviar-convite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmar convite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Gestor Polo teste\",\n\t\"email\": \"poloteste@educacao.al.gov.br\",\n\t\"cpf\": \"444.222.111-30\",\n\t\"unidade_id\": \"7\",\n\t\"password\": \"123456\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=de384b51bf8dfe6efe1f029d17e01951fa35f233",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"confirmar"
+							],
+							"query": [
+								{
+									"key": "token1",
+									"value": "de384b51bf8dfe6efe1f029d17e01951fa35f233"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar projeto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\":\"000007\",\n\t\"descricao\": \"Projeto do Polo Teste\",\n\t\"usuario_id\": \"7\",\n\t\"unidade_id\": \"7\",\n\t\"data_inicio_previsto\": \"2019-03-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Kit ao projeto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/4/add-kit/1",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"4",
+								"add-kit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar empresa de Transporte",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"nome\": \"Max Jato Logistica\",\n\"email_institucional\": \"contato@maxjato.com.br\",\n\"email\": \"josemaria@maxjato.com.br\",\n\"telefone\": \"(011)99291-1221\",\n\"url\":\"https://www.maxjato.com.br/\",\n\"tipo_unidade_id\" : \"4\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Planejar envio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\" : \"TESTES004\",\n\t\"usuario_id\":\"7\",\n\t\"unidade_responsavel_id\": \"8\",\n\t\"data_inicio_prevista\": \"2019-03-01\",\n\t\"data_fim_prevista\": \"2019-03-15\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/add-tarefa-envio",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"add-tarefa-envio"
+							]
+						},
+						"description": "Cria a etapa de envio e a tarefa da entrega.\n* unidade_responsavel_id\t\t\t\tempresa responsável pela entrega\n* equipamentos_projeto_ids\t\t\t\tids dos equimento_projetos"
+					},
+					"response": []
+				},
+				{
+					"name": "Planejar instalacao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\" : \"INST003\",\n\t\"usuario_id\":\"7\",\n\t\"unidade_responsavel_id\": \"8\",\n\t\"data_inicio_prevista\": \"2019-03-20\",\n\t\"data_fim_prevista\": \"2019-03-30\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/add-tarefa-instalacao",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"add-tarefa-instalacao"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"numero\" : \"MT3423912\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-01-31\",\n\t\"data_fim_prevista\": \"2019-02-04\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/6/add-tarefa-instalacao",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"etapas",
+										"projeto-cnme",
+										"6",
+										"add-tarefa-instalacao"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Feb 2019 15:54:58 -0300"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Feb 2019 18:54:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Token não foi enviado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Planejar ativacao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\" : \"TESTEAT001\",\n\t\"usuario_id\":\"7\",\n\t\"unidade_responsavel_id\": \"7\",\n\t\"data_inicio_prevista\": \"2019-04-01\",\n\t\"data_fim_prevista\": \"2019-04-10\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/add-tarefa-ativacao",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"add-tarefa-ativacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Projeto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\":\"12345-999\",\n\t\"descricao\": \"Projeto CECR 2.1\",\n\t\"usuario_id\": \"1\",\n\t\"unidade_id\": \"9\",\n\t\"data_inicio_previsto\": \"2019-04-30\",\n\t\"data_fim_previsto\": \"2019-05-25\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/4",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Projetos com Etapas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/4/etapas",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"4",
+								"etapas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enviar - Por tarefa de envio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/tarefa/27/enviar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"tarefa",
+								"27",
+								"enviar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enviar Todos (OPCIONAL)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/enviar-all",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"enviar-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Entrega de um Envio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"Descrição anterior mais um novo texto acrescentado... por enquanto\",\n\t\"data_fim\":\"2019-02-28\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/tarefa/27/entregar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"tarefa",
+								"27",
+								"entregar"
+							]
+						},
+						"description": "Campos opcionais\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"data_fim\":\"2019-02-20\""
+					},
+					"response": []
+				},
+				{
+					"name": "Instalar Equipamentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-12\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/instalar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"instalar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar Equipamentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numero\":\"OPICIONAL\",\n\t\"link_externo\": \"www.opcional.com.br\",\n\t\"descricao\": \"Opcional... opcional\",\n\t\"data_inicio\":\"2019-05-01\",\n\t\"data_fim\":\"2019-06-02\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/ativar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"4",
+								"ativar"
 							]
 						}
 					},

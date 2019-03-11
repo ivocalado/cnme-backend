@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Resources\EtapaResource;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\TarefaResource;
+use App\Models\EquipamentoProjeto;
 
 
 class AtivacaoController extends Controller
@@ -169,18 +170,23 @@ class AtivacaoController extends Controller
             if($request->has('descricao'))
                 $tarefaAtivacao->descricao = $request['descricao'];
 
-            if($request->has('data_inicio') || !isset($tarefaAtivacao->data_inicio))
+            if(!isset($tarefaAtivacao->data_inicio))
                 $tarefaAtivacao->data_inicio = ($request->has('data_inicio')) ? $request['data_inicio']: date("Y-m-d");
 
             $tarefaAtivacao->data_fim = ($request->has('data_fim')) ? $request['data_fim']: date("Y-m-d");
             $tarefaAtivacao->status = Tarefa::STATUS_CONCLUIDA;
             $tarefaAtivacao->save();
 
-            $tarefaAtivacao->status = Etapa::STATUS_CONCLUIDA;
-            $tarefaAtivacao->save();
+            $etapaAtivacao->status = Etapa::STATUS_CONCLUIDA;
+            $etapaAtivacao->save();
 
             $projeto->status = ProjetoCnme::STATUS_ATIVADO;
             $projeto->save();
+
+            $projeto->equipamentoProjetos->each(function($eP, $value){
+                $eP->status = EquipamentoProjeto::STATUS_ATIVADO;
+                $eP->save();
+            });
 
             DB::commit();
 

@@ -14,6 +14,7 @@ use App\Http\Resources\EtapaResource;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\TarefaResource;
 use App\Http\Resources\ProjetoResource;
+use App\Models\EquipamentoProjeto;
 
 class InstalacaoController extends Controller
 {
@@ -91,19 +92,14 @@ class InstalacaoController extends Controller
                 return response()->json(
                     array('message' => 'O projeto não existe.') , 422);
             }
-            $etapaInstalacao =  Etapa::where([
-                ['projeto_cnme_id', $projeto->id],
-                ['tipo', Etapa::TIPO_INSTALACAO]
-                ])->first();
+            $etapaInstalacao =  $projeto->getEtapaInstalacao();
             
             if(!isset($etapaInstalacao)){
                 return response()->json(
                     array('message' => 'Não existe etapa de Instalação.') , 422);
             }
 
-            $tarefa =  Tarefa::where([
-                ['etapa_id', $etapaInstalacao->id],
-                ])->first();
+            $tarefa =  $etapaInstalacao->getFirstTarefa();
             
             if(!isset($tarefa)){
                 return response()->json(
@@ -115,12 +111,8 @@ class InstalacaoController extends Controller
     
             $tarefa->save();
 
-            //return EtapaResource::collection($projeto->etapas);
-
             $errorsDatas = $projeto->validarDatasPrevistas();
 
-            
-           
             if(!empty($errorsDatas)){
                 DB::rollback();
                 return response()->json(
@@ -153,7 +145,16 @@ class InstalacaoController extends Controller
             }
 
             $etapaInstalacao = $projeto->getEtapaInstalacao();
+            if(!isset($etapaInstalacao)){
+                return response()->json(
+                    array('message' => 'Não existe etapa de Instalação.') , 422);
+            }
+
             $tarefaInstalacao = $etapaInstalacao->getFirstTarefa();
+            if(!isset($tarefaInstalacao)){
+                return response()->json(
+                    array('message' => 'Não existe a tarefa de Instalação.') , 422);
+            }
 
             if($request->has('link_externo'))
                 $tarefaInstalacao->link_externo = $request['link_externo'];
@@ -164,11 +165,10 @@ class InstalacaoController extends Controller
             if($request->has('descricao'))
                 $tarefaInstalacao->descricao = $request['descricao'];
 
-            if(!isset($tarefaInstalacao->data_inicio) || $request->has('data_inicio'))
+            if(!isset($tarefaInstalacao->data_inicio))
                 $tarefaInstalacao->data_inicio = ($request->has('data_inicio')) ? $request['data_inicio']: date("Y-m-d");
 
             $tarefaInstalacao->data_fim = ($request->has('data_fim')) ? $request['data_fim']: date("Y-m-d");
-
 
 
             $tarefaInstalacao->status = Tarefa::STATUS_CONCLUIDA;
@@ -179,6 +179,11 @@ class InstalacaoController extends Controller
 
             $projeto->status = ProjetoCnme::STATUS_INSTALADO;
             $projeto->save();
+
+            $projeto->equipamentoProjetos->each(function($eP, $value){
+                $eP->status = EquipamentoProjeto::STATUS_INSTALADO;
+                $eP->save();
+            });
 
             DB::commit();
 
