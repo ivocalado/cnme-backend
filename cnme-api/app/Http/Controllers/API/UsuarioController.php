@@ -91,6 +91,7 @@ class UsuarioController extends Controller
             $usuario = User::find($usuarioId);
             $usuario->remember_token = bin2hex(random_bytes(20));
             MailSender::convite($usuario);
+            $usuario->convite_at = date('Y-m-d H:i:s');
             $usuario->save();
 
         }catch(\Exception $e){

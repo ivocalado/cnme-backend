@@ -30,7 +30,8 @@ class UserResource extends JsonResource
             'removido'  =>  $this->deleted_at !== null,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
-            'deleted_at' => (string) $this->deleted_at
+            'deleted_at' => (string) $this->deleted_at,
+            'convite_at' => (string) $this->convite_at
 
         ];
     }
