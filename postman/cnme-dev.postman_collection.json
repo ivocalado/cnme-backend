@@ -5975,6 +5975,86 @@
 			"name": "Testes 01 (Sequencia de chamadas)",
 			"item": [
 				{
+					"name": "Criar Kit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Kit 1000x\",\n\t\"descricao\": \"Kit 1000x\",\n\t\"usuario_id\":\"1\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add equipamento no kit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ids\": [1,2,3,4,5,6]\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits/1/add-equipamentos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits",
+								"1",
+								"add-equipamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Criar polo",
 					"request": {
 						"auth": {
@@ -6036,14 +6116,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/7/enviar-convite",
+							"raw": "{{HOSTNAME}}/api/usuarios/5/enviar-convite",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"usuarios",
-								"7",
+								"5",
 								"enviar-convite"
 							]
 						}
@@ -6062,10 +6142,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"Gestor Polo teste\",\n\t\"email\": \"poloteste@educacao.al.gov.br\",\n\t\"cpf\": \"444.222.111-30\",\n\t\"unidade_id\": \"7\",\n\t\"password\": \"123456\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
+							"raw": "{\n\t\"name\":\"Gestor Polo teste\",\n\t\"email\": \"poloteste@educacao.al.gov.br\",\n\t\"cpf\": \"444.222.111-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"123456\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=de384b51bf8dfe6efe1f029d17e01951fa35f233",
+							"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=4905b3e7a115c1fd4bcfe39d83ccb89288596eed",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6077,7 +6157,7 @@
 							"query": [
 								{
 									"key": "token1",
-									"value": "de384b51bf8dfe6efe1f029d17e01951fa35f233"
+									"value": "4905b3e7a115c1fd4bcfe39d83ccb89288596eed"
 								}
 							]
 						}
@@ -6106,7 +6186,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\":\"000007\",\n\t\"descricao\": \"Projeto do Polo Teste\",\n\t\"usuario_id\": \"7\",\n\t\"unidade_id\": \"7\",\n\t\"data_inicio_previsto\": \"2019-03-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
+							"raw": "{\n\t\"numero\":\"000005\",\n\t\"descricao\": \"Projeto do Polo Teste\",\n\t\"usuario_id\": \"5\",\n\t\"unidade_id\": \"5\",\n\t\"data_inicio_previsto\": \"2019-03-01\",\n\t\"data_fim_previsto\": \"2019-06-30\"\n\t\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/projeto-cnme",
@@ -6141,14 +6221,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/4/add-kit/1",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/add-kit/1",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"4",
+								"1",
 								"add-kit",
 								"1"
 							]
@@ -6157,7 +6237,7 @@
 					"response": []
 				},
 				{
-					"name": "Criar empresa de Transporte",
+					"name": "Criar empresa de transporte",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -6178,7 +6258,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"nome\": \"Max Jato Logistica\",\n\"email_institucional\": \"contato@maxjato.com.br\",\n\"email\": \"josemaria@maxjato.com.br\",\n\"telefone\": \"(011)99291-1221\",\n\"url\":\"https://www.maxjato.com.br/\",\n\"tipo_unidade_id\" : \"4\"\n}"
+							"raw": "{\n\"nome\": \"MaxMin2 Jato\",\n\"email_institucional\": \"contato2@MaxMin.com.br\",\n\"email\": \"josemaria2@MaxMin.com.br\",\n\"telefone\": \"(011)99291-1221\",\n\"url\":\"https://www.MaxMin2.com.br/\",\n\"responsavel\":\"Mariana\",\n\"tipo_unidade_id\" : \"4\",\n\"localidade\": {\n\t\"logradouro\": \"Av. Salo Branco\",\n\t\"numero\": \"3243\",\n\t\"bairro\": \"São Cristovão\",\n\t\"cep\": \"57044-234\",\n\t\"estado_id\": \"2\",\n\t\"municipio_id\": \"90\"\n }\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/unidades",
@@ -6217,10 +6297,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"TESTES004\",\n\t\"usuario_id\":\"7\",\n\t\"unidade_responsavel_id\": \"8\",\n\t\"data_inicio_prevista\": \"2019-03-01\",\n\t\"data_fim_prevista\": \"2019-03-15\"\n}"
+							"raw": "{\n\t\"numero\" : \"ENVIO001\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"6\",\n\t\"data_inicio_prevista\": \"2019-03-01\",\n\t\"data_fim_prevista\": \"2019-03-15\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/add-tarefa-envio",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-envio",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6228,7 +6308,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"add-tarefa-envio"
 							]
 						},
@@ -6260,10 +6340,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"INST003\",\n\t\"usuario_id\":\"7\",\n\t\"unidade_responsavel_id\": \"8\",\n\t\"data_inicio_prevista\": \"2019-03-20\",\n\t\"data_fim_prevista\": \"2019-03-30\"\n}"
+							"raw": "{\n\t\"numero\" : \"INST001\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"6\",\n\t\"data_inicio_prevista\": \"2019-03-20\",\n\t\"data_fim_prevista\": \"2019-03-30\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/add-tarefa-instalacao",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-instalacao",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6271,7 +6351,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"add-tarefa-instalacao"
 							]
 						}
@@ -6377,10 +6457,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\" : \"TESTEAT001\",\n\t\"usuario_id\":\"7\",\n\t\"unidade_responsavel_id\": \"7\",\n\t\"data_inicio_prevista\": \"2019-04-01\",\n\t\"data_fim_prevista\": \"2019-04-10\"\n}"
+							"raw": "{\n\t\"numero\" : \"ATIV001\",\n\t\"usuario_id\":\"5\",\n\t\"unidade_responsavel_id\": \"5\",\n\t\"data_inicio_prevista\": \"2019-04-01\",\n\t\"data_fim_prevista\": \"2019-04-10\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/add-tarefa-ativacao",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/add-tarefa-ativacao",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6388,7 +6468,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"add-tarefa-ativacao"
 							]
 						}
@@ -6494,10 +6574,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\"\n}"
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\",\n\t\"notificar\": \"true\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/tarefa/27/enviar",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/tarefa/1/enviar",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6505,9 +6585,9 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"tarefa",
-								"27",
+								"1",
 								"enviar"
 							]
 						}
@@ -6580,10 +6660,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Descrição anterior mais um novo texto acrescentado... por enquanto\",\n\t\"data_fim\":\"2019-02-28\"\n}"
+							"raw": "{\n\t\"descricao\":\"Descrição anterior mais um novo texto acrescentado... por enquanto\",\n\t\"data_fim\":\"2019-02-28\",\n\t\"notificar\":\"true\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/tarefa/27/entregar",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/tarefa/1/entregar",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6591,9 +6671,9 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"tarefa",
-								"27",
+								"1",
 								"entregar"
 							]
 						},
@@ -6625,10 +6705,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-12\"\n}"
+							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-12\",\n\t\"notificar\":true\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/instalar",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/instalar",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6636,7 +6716,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"instalar"
 							]
 						}
@@ -6667,10 +6747,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\":\"OPICIONAL\",\n\t\"link_externo\": \"www.opcional.com.br\",\n\t\"descricao\": \"Opcional... opcional\",\n\t\"data_inicio\":\"2019-05-01\",\n\t\"data_fim\":\"2019-06-02\"\n}"
+							"raw": "{\n\t\"numero\":\"OPICIONAL\",\n\t\"link_externo\": \"www.opcional.com.br\",\n\t\"descricao\": \"Opcional... opcional\",\n\t\"data_inicio\":\"2019-05-01\",\n\t\"data_fim\":\"2019-06-02\",\n\t\"notificar\":true\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/ativar",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/ativar",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6678,7 +6758,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"ativar"
 							]
 						}
