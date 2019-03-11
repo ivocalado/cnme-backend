@@ -14,7 +14,7 @@ class EstadosAddRegiao extends Migration
     public function up()
     {
         Schema::table('estados', function (Blueprint $table) {
-            $table->string('regiao',5)->nullable();
+            $table->string('regiao',20)->nullable();
         });
     }
 
