@@ -190,6 +190,9 @@ class AtivacaoController extends Controller
 
             DB::commit();
 
+            if($request->notificar)
+                $tarefaAtivacao->notificar();
+
             return new EtapaResource($etapaAtivacao);
         }catch(\Exception $e){
             DB::rollback();

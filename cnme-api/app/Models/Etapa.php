@@ -77,6 +77,13 @@ class Etapa extends Model
         return  $equipamentosProjetos;
     }
 
+    public function hasTarefasAbertasAndamento(){
+        $andamento =  $this->tarefas->contains('status',Tarefa::STATUS_ANDAMENTO);
+        $abertas = $this->tarefas->contains('status',Tarefa::STATUS_ABERTA);
+
+        return $andamento || $abertas;
+    }
+
     public function getFirstTarefa(){
         $tarefa =  Tarefa::where([
             ['etapa_id', $this->id],

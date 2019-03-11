@@ -177,6 +177,10 @@ class EnviarController extends Controller
             DB::commit();
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
+
+            if($request->notificar)
+                $tarefaEnvio->notificar();
+                
             return new EtapaResource($etapa);
 
         }catch(\Exception $e){
@@ -185,7 +189,7 @@ class EnviarController extends Controller
             Log::error('EnviarController::enviar - message: '. $e->getMessage());
 
             return response()->json(
-                array('message' => $e->getMessage()) , 500);
+                array('message' => $e->getMessage()." File: ".$e->getFile()."(". $e->getLine().")") , 500);
 
         }
     }
@@ -223,7 +227,7 @@ class EnviarController extends Controller
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
 
-            $temEntregasAndamento = $etapa->tarefas->contains('status',Tarefa::STATUS_ANDAMENTO);
+            $temEntregasAndamento = $etapa->hasTarefasAbertasAndamento();
 
             if(!$temEntregasAndamento){
                 $etapa->status = Etapa::STATUS_CONCLUIDA;
@@ -233,6 +237,9 @@ class EnviarController extends Controller
                 $projeto->save();
             }
             DB::commit();
+
+            if($request->notificar)
+                $tarefaEnvio->notificar();
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
             return new EtapaResource($etapa);

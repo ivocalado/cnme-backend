@@ -17,7 +17,7 @@ Ou copie o link abaixo na barra de endereço <br/>
 </p>
 Atenciosamente<br/>
 --<br/>
-CNME - Centro Nacional de Mídias da Educação
+CNME - Centro Nacional de Mídias da Educação<br/>
 MEC - Ministério da Educação<br/>
 NEES - UFAL
 </p>

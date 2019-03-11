@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Services\MailSender;
 
 class Tarefa extends Model
 {
@@ -46,6 +47,15 @@ class Tarefa extends Model
     public function equipamentosProjetos(){
         return $this->belongsToMany(EquipamentoProjeto::class,'tarefa_equipamento_projeto')->withTimestamps();
     }
+
+    public function notificar(){
+        $projeto = ProjetoCnme::find($this->etapa->projeto_cnme_id);
+        MailSender::notificar($projeto, $this);
+        $this->notificado_at = date('Y-m-d H:i:s');
+        $this->save();
+    }
+
+
 
     public $rules = [
         'nome'    =>  'required|max:255',

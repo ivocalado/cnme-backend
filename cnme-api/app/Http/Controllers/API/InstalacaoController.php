@@ -187,6 +187,9 @@ class InstalacaoController extends Controller
 
             DB::commit();
 
+            if($request->notificar)
+                $tarefaInstalacao->notificar();
+
             return new EtapaResource($etapaInstalacao);
         }catch(\Exception $e){
             DB::rollback();

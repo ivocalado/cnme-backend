@@ -4,6 +4,9 @@ use Illuminate\Database\Seeder;
 use App\Models\TipoUnidade;
 use App\Models\Unidade;
 use App\User;
+use App\Models\Localidade;
+use App\Models\Estado;
+use App\Models\Municipio;
 
 class UnidadeTerceirizadaSeeder extends Seeder
 {
@@ -27,6 +30,18 @@ class UnidadeTerceirizadaSeeder extends Seeder
             'telefone' => '(0300 11324234)',
             'tipo_unidade_id' => $tipoEmpresa->id
         ]);
+
+        $local = Localidade::create([
+            'logradouro' => 'Lugar nenhum', 
+            'numero' => 'sn',
+            'bairro' => 'Setor Planejado',
+            'cep' => '94933-541',
+            'estado_id' => Estado::where('sigla','DF')->first()->id,
+            'municipio_id' => Municipio::where('codigo_ibge','5300108')->first()->id
+        ]);
+
+        $empresa->localidade()->associate( $local );
+        $empresa->save();
 
         $gestorEmpresa = User::create([
             'name' => 'Administrador Golaço Log', 
