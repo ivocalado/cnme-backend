@@ -56,7 +56,6 @@ class EnviarController extends Controller
                     ['status',EquipamentoProjeto::STATUS_PLANEJADO]
                 ])->pluck('id')->toArray();
                     
-                //dd($equipamentosProjetoIds);
             }
 
             /**Verifica se todos os Ids enviados estão disponíveis*/
@@ -144,36 +143,10 @@ class EnviarController extends Controller
                 return response()->json(
                     array('message' => "Projeto/Tarefa não correspondentes a ação de envio." , 422));
             }
+
+            $tarefaEnvio->fill($request->all());
             
-            if($projeto->status === ProjetoCnme::STATUS_PLANEJAMENTO){
-                $projeto->status = ProjetoCnme::STATUS_ENVIADO;
-                $projeto->data_inicio = date("Y-m-d");
-                $projeto->save();
-            }
-
-            if($request->has('descricao'))
-                $tarefaEnvio->descricao = $request['descricao'];
-
-            $tarefaEnvio->status = Tarefa::STATUS_ANDAMENTO;
-            if($request->has('link_externo'))
-                $tarefaEnvio->link_externo = $request['link_externo'];
-
-            if($request->has('numero'))
-                $tarefaEnvio->numero = $request['numero'];
-            
-            $tarefaEnvio->data_inicio = ($request->has('data_inicio')) ? $request['data_inicio']: date("Y-m-d");
-
-            $tarefaEnvio->save();
-
-            $tarefaEnvio->etapa->status = Etapa::STATUS_ANDAMENTO;
-            $tarefaEnvio->etapa->save();
-
-            $tarefaEnvio->equipamentosProjetos->each(function ($eP, $key) {
-                $eP->status = EquipamentoProjeto::STATUS_ENVIADO;
-                $eP->save();
-            });
-
-            
+            $tarefaEnvio->enviar();
             DB::commit();
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
@@ -208,40 +181,16 @@ class EnviarController extends Controller
                     array('message' => "Projeto/Tarefa não correspondentes a ação de entrega."),422);
             }
 
-            if($request->has('descricao'))
-                $tarefaEnvio->descricao = $request['descricao'];
-            if($request->has('link_externo'))
-                $tarefaEnvio->link_externo = $request['link_externo'];
-            if($request->has('numero'))
-                $tarefaEnvio->numero = $request['numero'];
+            $tarefaEnvio->fill($request->all());
             
-            $tarefaEnvio->data_fim = ($request->has('data_fim')) ? $request['data_fim']: date("Y-m-d");
-            
-            $tarefaEnvio->status = Tarefa::STATUS_CONCLUIDA;
-            $tarefaEnvio->save();
-
-            $tarefaEnvio->equipamentosProjetos->each(function($eP, $value){
-                $eP->status = EquipamentoProjeto::STATUS_ENTREGUE;
-                $eP->save();
-            });
-
-            $etapa = Etapa::find($tarefaEnvio->etapa_id);
-
-            $temEntregasAndamento = $etapa->hasTarefasAbertasAndamento();
-
-            if(!$temEntregasAndamento){
-                $etapa->status = Etapa::STATUS_CONCLUIDA;
-                $etapa->save();
-
-                $projeto->status = ProjetoCnme::STATUS_ENTREGUE;
-                $projeto->save();
-            }
+            $tarefaEnvio->entregar();
             DB::commit();
 
             if($request->notificar)
                 $tarefaEnvio->notificar();
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
+
             return new EtapaResource($etapa);
         }catch(\Exception $e){
             DB::rollback();
@@ -261,34 +210,24 @@ class EnviarController extends Controller
         DB::beginTransaction();
         try{
             $projeto = ProjetoCnme::findOrFail($projetoId);
-            $projeto->status = ProjetoCnme::STATUS_ENVIADO;
-            $projeto->data_inicio = date("Y-m-d");
-            $projeto->save();
+            $etapaEnvio = $projeto->getEtapaEnvio();
 
-            $etapasEnvio = $projeto->etapas->filter(function ($e, $key) {
-                return $e->tipo === Etapa::TIPO_ENVIO;
-            });
-
-            foreach($etapasEnvio as $etapa){
-                $etapa->status = Etapa::STATUS_ANDAMENTO;
-                $etapa->save();
-
-                $tarefasEnvio = $etapa->tarefas;
-                
-                foreach($tarefasEnvio as $t){
-                    $t->status= Tarefa::STATUS_ANDAMENTO;
-                    $t->data_inicio = date("Y-m-d");
-                    $t->save();
-                    $t->equipamentosProjetos->each(function ($eP, $key) {
-                        $eP->status = EquipamentoProjeto::STATUS_ENVIADO;
-                        $eP->save();
-                    });
-                }     
+            if(!$etapaEnvio)
+                return response()->json(
+                    array('message' => "Envio não foi planejado." , 422));
+           
+            $tarefasEnvio = $etapaEnvio->tarefas;
+            
+            foreach($tarefasEnvio as $t){
+                $t->enviar();
+            }     
+           
+            if($request->notificar){
+                $tarefasEnvio->first()->notificar();
             }
-            $projeto->save();
+                
             DB::commit();
-
-            return EtapaResource::collection($etapasEnvio);
+            return new EtapaResource($etapaEnvio);
 
 
         }catch(\Exception $e){
@@ -297,7 +236,7 @@ class EnviarController extends Controller
             Log::error('EnviarController::enviarAll - message: '. $e->getMessage());
 
             return response()->json(
-                array('message' => $e->getMessage()) , 500);
+                array('message' => $e->getMessage()." File: ".$e->getFile()."(". $e->getLine().")") , 500);
 
         }
     }

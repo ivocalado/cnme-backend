@@ -55,6 +55,69 @@ class Tarefa extends Model
         $this->save();
     }
 
+    public function enviar(){
+        $this->status = Tarefa::STATUS_ANDAMENTO;
+
+        if(!isset($this->data_inicio))
+            $this->data_inicio = date("Y-m-d");
+
+        $etapa = $this->etapa;
+        $projeto = $etapa->projetoCnme;
+
+        if($projeto->status === ProjetoCnme::STATUS_PLANEJAMENTO){
+            $projeto->status = ProjetoCnme::STATUS_ENVIADO;
+            $projeto->data_inicio = date("Y-m-d");
+            $projeto->save();
+        }
+
+        $etapa->status = Etapa::STATUS_ANDAMENTO;
+        $etapa->save();
+
+        $this->equipamentosProjetos->each(function ($eP, $key) {
+            $eP->status = EquipamentoProjeto::STATUS_ENVIADO;
+            $eP->save();
+        });
+
+        $this->save();
+    }
+
+    public function entregar(){
+        $this->status = Tarefa::STATUS_CONCLUIDA;
+        if(!isset($this->data_fim))
+            $this->data_fim = date("Y-m-d");
+        
+        $this->equipamentosProjetos->each(function($eP, $value){
+            $eP->status = EquipamentoProjeto::STATUS_ENTREGUE;
+            $eP->save();
+        });
+
+        $etapa = $this->etapa;
+        $projeto = $etapa->projetoCnme;
+
+        $temEntregasAndamento = $etapa->hasTarefasAbertasAndamento();
+
+        if(!$temEntregasAndamento){
+            $etapa->status = Etapa::STATUS_CONCLUIDA;
+            $etapa->save();
+
+            $projeto->status = ProjetoCnme::STATUS_ENTREGUE;
+            $projeto->save();
+
+            $etapaInstalacao = $projeto->getEtapaInstalacao();
+            $etapaInstalacao->status = Etapa::STATUS_ANDAMENTO;
+            $etapaInstalacao->save();
+
+            $tarefaInstalacao = $etapaInstalacao->getFirstTarefa();
+            $tarefaInstalacao->status = Tarefa::STATUS_ANDAMENTO;
+            $tarefaInstalacao->data_inicio = $this->data_fim;
+
+            $tarefaInstalacao->save();
+
+        }
+
+        $this->save();
+    }
+
 
 
     public $rules = [
