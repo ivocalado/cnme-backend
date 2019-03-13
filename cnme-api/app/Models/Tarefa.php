@@ -74,8 +74,10 @@ class Tarefa extends Model
         $etapa->save();
 
         $this->equipamentosProjetos->each(function ($eP, $key) {
-            $eP->status = EquipamentoProjeto::STATUS_ENVIADO;
-            $eP->save();
+            if($eP->status === EquipamentoProjeto::STATUS_PLANEJADO){
+                $eP->status = EquipamentoProjeto::STATUS_ENVIADO;
+                $eP->save();
+            }      
         });
 
         $this->save();
@@ -83,13 +85,19 @@ class Tarefa extends Model
 
     public function entregar(){
         $this->status = Tarefa::STATUS_CONCLUIDA;
+
         if(!isset($this->data_fim))
             $this->data_fim = date("Y-m-d");
         
         $this->equipamentosProjetos->each(function($eP, $value){
-            $eP->status = EquipamentoProjeto::STATUS_ENTREGUE;
-            $eP->save();
+            if($eP->status === EquipamentoProjeto::STATUS_ENVIADO){
+                $eP->status = EquipamentoProjeto::STATUS_ENTREGUE;
+                $eP->save();
+            }
+            
         });
+
+        $this->save();
 
         $etapa = $this->etapa;
         $projeto = $etapa->projetoCnme;
@@ -110,15 +118,41 @@ class Tarefa extends Model
             $tarefaInstalacao = $etapaInstalacao->getFirstTarefa();
             $tarefaInstalacao->status = Tarefa::STATUS_ANDAMENTO;
             $tarefaInstalacao->data_inicio = $this->data_fim;
-
             $tarefaInstalacao->save();
 
         }
 
-        $this->save();
+        
     }
 
+    public function instalar(){
+       
+        if(!isset($this->data_inicio))
+            $this->data_inicio = date("Y-m-d");
 
+        if(!isset($this->data_fim))
+            $this->data_fim = date("Y-m-d");
+
+        $this->status = Tarefa::STATUS_CONCLUIDA;
+        $this->save();
+
+
+        $this->etapa->instalar();
+        
+    }
+
+    public function ativar(){
+        if(!isset($this->data_inicio))
+            $this->data_inicio = date("Y-m-d");
+
+        $this->data_fim = date("Y-m-d");
+
+        $this->status = Tarefa::STATUS_CONCLUIDA;
+        $this->save();
+
+
+        $this->etapa->ativar();
+    }
 
     public $rules = [
         'nome'    =>  'required|max:255',

@@ -149,41 +149,16 @@ class InstalacaoController extends Controller
                 return response()->json(
                     array('message' => 'Não existe etapa de Instalação.') , 422);
             }
-
+            
             $tarefaInstalacao = $etapaInstalacao->getFirstTarefa();
             if(!isset($tarefaInstalacao)){
                 return response()->json(
                     array('message' => 'Não existe a tarefa de Instalação.') , 422);
             }
 
-            if($request->has('link_externo'))
-                $tarefaInstalacao->link_externo = $request['link_externo'];
-
-            if($request->has('numero'))
-                $tarefaInstalacao->numero = $request['numero'];
-
-            if($request->has('descricao'))
-                $tarefaInstalacao->descricao = $request['descricao'];
-
-            if(!isset($tarefaInstalacao->data_inicio))
-                $tarefaInstalacao->data_inicio = ($request->has('data_inicio')) ? $request['data_inicio']: date("Y-m-d");
-
-            $tarefaInstalacao->data_fim = ($request->has('data_fim')) ? $request['data_fim']: date("Y-m-d");
-
-
-            $tarefaInstalacao->status = Tarefa::STATUS_CONCLUIDA;
-            $tarefaInstalacao->save();
-
-            $etapaInstalacao->status = Etapa::STATUS_CONCLUIDA;
-            $etapaInstalacao->save();
-
-            $projeto->status = ProjetoCnme::STATUS_INSTALADO;
-            $projeto->save();
-
-            $projeto->equipamentoProjetos->each(function($eP, $value){
-                $eP->status = EquipamentoProjeto::STATUS_INSTALADO;
-                $eP->save();
-            });
+            
+            $tarefaInstalacao->fill($request->all());
+            $tarefaInstalacao->instalar();
 
             DB::commit();
 

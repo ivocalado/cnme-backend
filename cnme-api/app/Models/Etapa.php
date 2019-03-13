@@ -64,6 +64,49 @@ class Etapa extends Model
         return $this->hasMany(Tarefa::class);
     }
 
+    public function instalar(){
+        $this->status = Etapa::STATUS_CONCLUIDA;
+        $this->save();
+
+        $this->projetoCnme->status = ProjetoCnme::STATUS_INSTALADO;
+        $this->projetoCnme->save();
+
+        
+        $etapaAtivacao = $this->projetoCnme->getEtapaAtivacao();
+        $etapaAtivacao->status = Etapa::STATUS_ANDAMENTO;
+        $etapaAtivacao->save();
+
+        $tarefaAtivacao = $etapaAtivacao->getFirstTarefa();
+        $tarefaAtivacao->status = Tarefa::STATUS_ANDAMENTO;
+        $tarefaAtivacao->data_inicio = $this->getFirstTarefa()->data_fim;
+        $tarefaAtivacao->save();
+
+        $this->projetoCnme->equipamentoProjetos->each(function($eP, $value){
+            if($eP->status === EquipamentoProjeto::STATUS_ENTREGUE){
+                $eP->status = EquipamentoProjeto::STATUS_INSTALADO;
+                $eP->save();
+            }  
+        });
+    }
+
+    public function ativar(){
+        $this->status = Etapa::STATUS_CONCLUIDA;
+        $this->save();
+
+        $tarefaAtivacao = $this->getFirstTarefa();
+
+        $this->projetoCnme->status = ProjetoCnme::STATUS_ATIVADO;
+        $this->projetoCnme->data_fim = $tarefaAtivacao->data_fim;
+        $this->projetoCnme->save();
+
+        $this->projetoCnme->equipamentoProjetos->each(function($eP, $value){
+            if($eP->status === EquipamentoProjeto::STATUS_INSTALADO){
+                $eP->status = EquipamentoProjeto::STATUS_ATIVADO;
+                $eP->save();
+            }  
+        });
+    }
+
     public function equipamentos()
     {
         $ids =  $this->tarefas()->pluck('id');
