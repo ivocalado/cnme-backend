@@ -1,7 +1,8 @@
 Olá <strong>{{ $usuario->nome }}</strong>
 
 <p>
-O projeto de implantação do polo CNME {{ $unidade->nome }} foi <b>CANCELADO</b>. 
+O projeto de implantação do polo CNME {{ $unidade->nome }} foi <b>RETOMADO</b>.
+O projeto retornou ao status de <b>{{ $projeto->status }}</b>. 
 </p>
 
 @if (isset($projeto->descricao))

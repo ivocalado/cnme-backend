@@ -140,7 +140,35 @@ class ProjetoController extends Controller
         $projeto->notificar();
 
         return new ProjetoResource($projeto);
+    }
 
+    public function recuperar(Request $request, $projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        if(!isset($projeto)){
+            return response()->json(array('message' => "Projeto não encontrado.") , 422);
+        }
+
+        if(!$request->has('status') || 
+            !ProjetoCnme::checkStatus($request->status) || 
+            $request->status === ProjetoCnme::STATUS_CANCELADO){
+            
+                return response()->json(array('message' => "Status não foi enviado corretamente. Status:(".implode("|",ProjetoCnme::status()).")") , 422);
+        }
+
+        if($projeto->status === ProjetoCnme::STATUS_CANCELADO){
+            
+            $projeto->status = $request->status;
+            $projeto->descricao = $request->has('descricao') ? $request->descricao : $projeto->descricao;
+            $projeto->save();
+            $projeto->recuperar();
+
+        }else
+            return response()->json(array('message' => "Projeto não se encontra cancelado.") , 422);
+
+      
+
+        return new ProjetoResource($projeto);
     }
 
     public function etapas(Request $request, $projetoId){

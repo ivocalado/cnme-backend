@@ -5798,6 +5798,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/1/recuperar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\":\"ENVIADO\",\n\t\"descricao\": \"Atualizar descrição do projeto... esse texto vai para o email do usuario\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/recuperar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"1",
+								"recuperar"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -6811,6 +6852,47 @@
 								"projeto-cnme",
 								"1",
 								"ativar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/1/recuperar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\":\"\",\n\t\"descricao\": \"Atualizar descrição do projeto... esse texto vai para o email do usuario\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/recuperar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"1",
+								"recuperar"
 							]
 						}
 					},

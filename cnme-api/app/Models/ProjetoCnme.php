@@ -32,6 +32,10 @@ class ProjetoCnme extends Model
             ProjetoCnme::STATUS_CANCELADO];
     }
 
+    public static function checkStatus($status){
+        return in_array($status, ProjetoCnme::status());
+    }
+
     public function usuario(){
         return $this->belongsTo(User::class);
     }
@@ -63,6 +67,10 @@ class ProjetoCnme extends Model
     public function notificar(){
         if($this->status === ProjetoCnme::STATUS_CANCELADO)
             MailSender::cancelamento($this);
+    }
+
+    public function recuperar(){
+        MailSender::recuperar($this);
     }
 
     public function validarDatasPrevistas(){

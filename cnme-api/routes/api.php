@@ -183,6 +183,8 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::post('projeto-cnme/criar','API\ProjetoController@store');
     Route::post('projeto-cnme/{projetoId}/cancelar','API\ProjetoController@cancelar');
+    Route::post('projeto-cnme/{projetoId}/recuperar','API\ProjetoController@recuperar');
+
     Route::post('projeto-cnme/{projetoId}/add-equipamento/{equipamentoId}','API\PlanejamentoController@addEquipamento');
     Route::post('projeto-cnme/{projetoId}/add-equipamentos','API\PlanejamentoController@addEquipamentoList');
     Route::delete('projeto-cnme/{projetoId}/remove-equipamentos','API\PlanejamentoController@removeEquipamentoList');
