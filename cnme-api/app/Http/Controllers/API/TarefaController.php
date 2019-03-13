@@ -12,6 +12,7 @@ use App\Models\EquipamentoProjeto;
 use App\Http\Resources\TarefaResource;
 use App\Http\Resources\EquipamentoProjetoResource;
 use App\Http\Resources\EquipamentoResource;
+use App\Models\Etapa;
 
 class TarefaController extends Controller
 {
@@ -250,6 +251,25 @@ class TarefaController extends Controller
             if($projeto->status ===  ProjetoCnme::STATUS_PLANEJAMENTO){
                 DB::beginTransaction();
                 $tarefa->delete();
+
+                if($etapa->tipo === Etapa::TIPO_ENVIO){
+                    $instalacao = $projeto->getEtapaInstalacao();
+                    $ativacao = $projeto->getEtapaAtivacao();
+
+                    if($instalacao)
+                        $instalacao->delete();
+                    
+                    if($ativacao)
+                        $ativacao->delete();
+                }
+
+                if($etapa->tipo === Etapa::TIPO_INSTALACAO){
+                    $ativacao = $projeto->getEtapaAtivacao();
+
+                    if($ativacao)
+                        $ativacao->delete();
+
+                }
     
                 if($etapa->tarefas->isEmpty())
                     $etapa->delete();
