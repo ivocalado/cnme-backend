@@ -79,7 +79,7 @@ class PrestadorQueryComponent{
         INNER JOIN etapas e on e.id = t.etapa_id and e.tipo = 'ENVIO'
         INNER JOIN projeto_cnmes p on p.id = e.projeto_cnme_id
         INNER JOIN unidades u2 on u2.id = p.unidade_id
-        WHERE e.tipo = ? and p.data_inicio is not null
+        WHERE e.tipo = ? and p.data_inicio is not null and p.status != 'CANCELADO'
         ) as t
         GROUP BY unidade_responsavel_id, empresa, status_tarefa
         ) as t2
@@ -161,7 +161,7 @@ class PrestadorQueryComponent{
         INNER JOIN etapas e on e.id = t.etapa_id
         INNER JOIN projeto_cnmes p on p.id = e.projeto_cnme_id
         INNER JOIN unidades u2 on u2.id = p.unidade_id
-        WHERE e.tipo = ? and p.data_inicio is not null
+        WHERE e.tipo = ? and p.data_inicio is not null and p.status != 'CANCELADO'
         ) as t
         GROUP BY unidade_responsavel_id, empresa, estado,uf, status_tarefa
         ) as t2

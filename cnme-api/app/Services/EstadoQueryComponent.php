@@ -122,7 +122,7 @@ class EstadoQueryComponent{
         INNER JOIN etapas e on e.id = t.etapa_id and e.tipo = 'ENVIO'
         INNER JOIN projeto_cnmes p on p.id = e.projeto_cnme_id
         INNER JOIN unidades u2 on u2.id = p.unidade_id
-        WHERE e.tipo = ? and p.data_inicio is not null
+        WHERE e.tipo = ? and p.data_inicio is not null and p.status != 'CANCELADO'
         ) as t
         GROUP BY 
         estado,uf, status_tarefa
@@ -203,7 +203,7 @@ class EstadoQueryComponent{
         INNER JOIN etapas e on e.id = t.etapa_id and e.tipo = 'ENVIO'
         INNER JOIN projeto_cnmes p on p.id = e.projeto_cnme_id
         INNER JOIN unidades u2 on u2.id = p.unidade_id
-        WHERE e.tipo = ? and es.sigla = ? and p.data_inicio is not null
+        WHERE e.tipo = ? and es.sigla = ? and p.data_inicio is not null and p.status != 'CANCELADO'
         ) as t
         GROUP BY 
         estado,uf, municipio, status_tarefa
@@ -222,6 +222,7 @@ class EstadoQueryComponent{
         ->join('localidades', 'unidades.localidade_id','=','localidades.id')
         ->join('estados', 'localidades.estado_id', '=', 'estados.id')
         ->select(DB::raw('count(*) as estado_count, estados.nome, estados.sigla'))
+        ->where('projeto_cnmes.status','!=','CANCELADO')
         ->groupBy('estados.nome','estados.sigla')
         ->get();
 

@@ -73,4 +73,24 @@ class MailSender{
 
     }
 
+    public static function cancelamento($projeto){
+        $unidade = $projeto->unidade;
+        $usuario = $unidade->responsavel;
+
+        $to_name    = $usuario->name;
+        $to_email   = (getenv('APP_ENV') === 'local') ? getenv('MAIL_USERNAME') : $usuario->email;
+        
+        $data = array(
+            'usuario'   => $usuario,
+            'unidade'   => $unidade,
+            'projeto'   => $projeto,
+            "APP_URL"   =>  getenv('APP_URL')
+        );
+        Mail::send( 'emails.cancelamento', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                ->subject('Plataforma CNME - Processo de Implantação');
+                $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação');
+        });
+    }
+
 }

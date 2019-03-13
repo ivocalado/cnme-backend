@@ -17,8 +17,8 @@ class TempoQueryComponent{
         COUNT(DISTINCT(p1.id)) as iniciados,
         COUNT(DISTINCT(p2.id)) as concluidos
         from tempo t 
-        LEFT OUTER JOIN projeto_cnmes p1 on TO_CHAR(p1.data_inicio,'YYYYMM') = t.ano_mes
-        LEFT OUTER JOIN projeto_cnmes p2 on TO_CHAR(p1.data_fim,'YYYYMM') = t.ano_mes
+        LEFT OUTER JOIN projeto_cnmes p1 on TO_CHAR(p1.data_inicio,'YYYYMM') = t.ano_mes and p1.status != 'CANCELADO'
+        LEFT OUTER JOIN projeto_cnmes p2 on TO_CHAR(p1.data_fim,'YYYYMM') = t.ano_mes and p2.status != 'CANCELADO'
         WHERE (CURRENT_DATE - t.data_atual) between 0 and 330
         GROUP BY t.ano_mes, t.mes_ano, t.mes_ano_abrev
         ");
@@ -85,7 +85,7 @@ class TempoQueryComponent{
                 GROUP BY e.regiao, e.sigla,t.ano, t.ano_mes, t.mes_ano, t.mes_ano_abrev, t.mes
                 ORDER BY e.regiao, e.sigla,t.ano, t.ano_mes, t.mes_ano, t.mes_ano_abrev, t.mes
             ) t on t.ano_mes = TO_CHAR(p.data_inicio, 'YYYYMM') and e.sigla = t.uf
-
+            WHERE p.status != 'CANCELADO'
             GROUP BY t.regiao, t.uf, t.ano, t.ano_mes, t.mes_ano, t.mes_ano_abrev, t.mes
             ORDER BY t.regiao, t.uf, t.ano, t.ano_mes, t.mes) tt
         ) ttt

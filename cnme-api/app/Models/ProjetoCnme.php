@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Illuminate\Validation\Rule;
+use App\Services\MailSender;
 
 class ProjetoCnme extends Model
 {
@@ -57,6 +58,11 @@ class ProjetoCnme extends Model
 
     public function equipamentoProjetos(){
         return $this->hasMany(EquipamentoProjeto::class);
+    }
+
+    public function notificar(){
+        if($this->status === ProjetoCnme::STATUS_CANCELADO)
+            MailSender::cancelamento($this);
     }
 
     public function validarDatasPrevistas(){

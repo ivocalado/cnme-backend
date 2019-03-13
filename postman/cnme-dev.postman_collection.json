@@ -2150,6 +2150,16 @@
 						{
 							"name": "GET/api/unidades/u/polos/novos - SEM PROJETO",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -5747,6 +5757,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/1/cancelar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\": \"Atualizar descrição do projeto... esse texto vai para o email do usuario\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/cancelar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"1",
+								"cancelar"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -6145,7 +6196,7 @@
 							"raw": "{\n\t\"name\":\"Gestor Polo teste\",\n\t\"email\": \"poloteste@educacao.al.gov.br\",\n\t\"cpf\": \"444.222.111-30\",\n\t\"unidade_id\": \"5\",\n\t\"password\": \"123456\",\n\t\"funcao\": \"Diretor\",\n\t\"telefone\": \"(82) 92342-1231\"\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=4905b3e7a115c1fd4bcfe39d83ccb89288596eed",
+							"raw": "{{HOSTNAME}}/api/usuarios/confirmar?token1=0ffd814d92b757516ef76b5202e55e4df4d2392c",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6157,7 +6208,7 @@
 							"query": [
 								{
 									"key": "token1",
-									"value": "4905b3e7a115c1fd4bcfe39d83ccb89288596eed"
+									"value": "0ffd814d92b757516ef76b5202e55e4df4d2392c"
 								}
 							]
 						}
@@ -6503,14 +6554,14 @@
 							"raw": "{\n\t\"numero\":\"12345-999\",\n\t\"descricao\": \"Projeto CECR 2.1\",\n\t\"usuario_id\": \"1\",\n\t\"unidade_id\": \"9\",\n\t\"data_inicio_previsto\": \"2019-04-30\",\n\t\"data_fim_previsto\": \"2019-05-25\"\n\t\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/4",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -6536,14 +6587,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/4/etapas",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapas",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"4",
+								"1",
 								"etapas"
 							]
 						}
@@ -6618,10 +6669,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\"\n}"
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\",\n\t\"notificar\": true\n}"
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/4/enviar-all",
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/enviar-all",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -6629,7 +6680,7 @@
 								"api",
 								"etapas",
 								"projeto-cnme",
-								"4",
+								"1",
 								"enviar-all"
 							]
 						}
@@ -6705,7 +6756,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-12\",\n\t\"notificar\":true\n}"
+							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"notificar\":true\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/instalar",

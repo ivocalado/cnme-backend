@@ -116,12 +116,6 @@ class ProjetoController extends Controller
             DB::beginTransaction();
             $projeto = ProjetoCnme::find($id);
 
-            if(isset($projeto->solicitacao_cnme_id)){
-                $solicitacao = SolicitacaoCnme::find($projeto->solicitacao_cnme_id);
-                $solicitacao->status = SolicitacaoCnme::STATUS_CANCELADA;
-                $solicitacao->save();
-            }
-
             $projeto->delete();
             DB::commit();
 
@@ -135,6 +129,18 @@ class ProjetoController extends Controller
                 array('message' => $e->getMessage()) , 500);
 
         }
+    }
+
+    public function cancelar(Request $request, $projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        $projeto->status = ProjetoCnme::STATUS_CANCELADO;
+        $projeto->descricao = $request->has('descricao') ? $request->descricao: "::CANCELADO::".$projeto->descricao;
+        $projeto->save();
+        $projeto->notificar();
+
+        return new ProjetoResource($projeto);
+
     }
 
     public function etapas(Request $request, $projetoId){

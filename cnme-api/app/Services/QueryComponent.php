@@ -91,7 +91,7 @@ class QueryComponent{
         INNER JOIN etapas e on e.id = t.etapa_id
         INNER JOIN projeto_cnmes p on p.id = e.projeto_cnme_id
         INNER JOIN unidades u2 on u2.id = p.unidade_id
-        WHERE p.data_inicio is not null
+        WHERE p.data_inicio is not null and p.status != 'CANCELADO' 
         ORDER BY e.tipo
         ) as t
         GROUP BY etapa, status_tarefa
@@ -119,7 +119,7 @@ class QueryComponent{
         $query->whereNotNull('projeto_cnmes.data_inicio');
         $query->whereNull('tarefas.data_fim');
         $query->where('tarefas.status','=',Tarefa::STATUS_ANDAMENTO)
-        
+        ->where('projeto_cnmes.status','!=',ProjetoCnme::STATUS_CANCELADO)
         ->whereNull('tarefas.data_fim')
         ->where('tarefas.data_fim_prevista','<=',\DB::raw('NOW()'));
 
