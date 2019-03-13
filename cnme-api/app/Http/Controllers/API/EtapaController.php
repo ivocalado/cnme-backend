@@ -116,18 +116,43 @@ class EtapaController extends Controller
                 array('message' => 'Etapa do cronograma não encontrada.') , 404);
         }
 
-        //$ok = Unidade::where('tipo_unidade_id', $id)->get()->isEmpty();
+        $projeto = $etapa->projetoCnme;
+        $ok = $projeto->status === ProjetoCnme::STATUS_PLANEJAMENTO;
 
-        $ok = true;
-        if($ok){
+        try{
+            
+            if($ok){
+                DB::beginTransaction();
+                $instalacao = $projeto->getEtapaInstalacao();
+                $ativacao = $projeto->getEtapaAtivacao();
+                
+                if($etapa->tipo === Etapa::TIPO_ENVIO){
+                    if($instalacao)
+                        $instalacao->delete();
+    
+                    if($ativacao)
+                        $ativacao->delete();
+                }else if($etapa->tipo === Etapa::TIPO_INSTALACAO){
+                    if($ativacao)
+                        $ativacao->delete();
+                }
+    
+                $etapa->delete();
+                DB::commit();
 
-            $etapa->delete();
-            return response(null, 204);
+                return response(null, 204);
+    
+            }else{
+                return response()->json(
+                    array('message' => 'Projeto não está em planejamento. Não pode remover a etapas.') , 422);
+            }
+        }catch(\Exception $e){
+            DB::rollback();
 
-        }else{
-            return response()->json(
-                array('message' => 'Etapa não pode ser excluída por ter tarefas relacionadas. Não pode ser removida') , 422);
+            throw $e;
         }
+
+        
         
     }
 

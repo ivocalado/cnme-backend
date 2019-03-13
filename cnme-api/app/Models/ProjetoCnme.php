@@ -143,6 +143,9 @@ class ProjetoCnme extends Model
         return $errors;
     }
     
+    public function desplanejar(){
+        Etapa::where('projeto_cnme_id', $this->id)->delete();
+    }
 
 
     public function getEtapaEnvio(){

@@ -193,6 +193,16 @@ class PlanejamentoController extends Controller
 
             $kit = Kit::find($kitId);
 
+            if(!isset($kit) || !isset($projeto)){
+                return response()->json(
+                    array('message' => "Referências de kit/projeto inconsistentes.") , 422); 
+            }
+
+            if($projeto->status !== ProjetoCnme::STATUS_PLANEJAMENTO){
+                return response()->json(
+                    array('message' => "Projeto não está em planejamento. Não é possível a remoção.") , 422); 
+            }
+
             $projeto->kit()->dissociate();
             $projeto->save();
             
@@ -202,13 +212,10 @@ class PlanejamentoController extends Controller
                 where('projeto_cnme_id',$projetoId)
                 ->whereIn('equipamento_id', $ids)->delete(); 
 
-            if(!isset($kit) || !isset($projeto)){
-                return response()->json(
-                    array('message' => "Referẽncias de kit/projeto inconsistentes") , 422); 
-            }
 
             $projeto = ProjetoCnme::find($projetoId);
-            
+            $projeto->desplanejar();
+
             DB::commit();
             return new ProjetoResource($projeto);
         }catch(\Exception $e){

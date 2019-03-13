@@ -231,6 +231,46 @@ class TarefaController extends Controller
             return response()->json(
                 array('message' => $e->getMessage()) , 500);
         }
+
+    }
+
+    public function destroy($tarefaId){
+        
+        $tarefa = Tarefa::find($tarefaId);
+
+        if(!isset($tarefa)){
+            return response()->json(
+                array('message' => 'Tarefa não encontrada.') , 404);
+        }
+
+        try{
+            $etapa = $tarefa->etapa;
+            $projeto = $etapa->projetoCnme;
+    
+            if($projeto->status ===  ProjetoCnme::STATUS_PLANEJAMENTO){
+                DB::beginTransaction();
+                $tarefa->delete();
+    
+                if($etapa->tarefas->isEmpty())
+                    $etapa->delete();
+
+                DB::commit();
+            }else{
+                return response()->json(
+                    array('message' => "O projeto não se encontra em planejamento. Não pode ter tarefa removida") , 422);
+            }
+        }catch(\Exception $e){
+            DB::rollback();
+
+            throw $e;
+        }
+
+        
+        
+
+        
+        return response(null, 204);
+      
     }
 
 }
