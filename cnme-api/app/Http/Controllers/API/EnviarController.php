@@ -146,15 +146,17 @@ class EnviarController extends Controller
 
             $tarefaEnvio->fill($request->all());
             
-            $tarefaEnvio->enviar();
+            $etapaEnvio = $tarefaEnvio->enviar();
+            $etapaEnvio->status = Etapa::STATUS_ANDAMENTO;
+            $etapaEnvio->save();
             DB::commit();
 
-            $etapa = Etapa::find($tarefaEnvio->etapa_id);
+            
 
             if($request->notificar  === 'true')
                 $tarefaEnvio->notificar();
                 
-            return new EtapaResource($etapa);
+            return new EtapaResource($etapaEnvio);
 
         }catch(\Exception $e){
             DB::rollback();
@@ -245,6 +247,8 @@ class EnviarController extends Controller
                 $tarefasEnvio->first()->notificar();
             }
                 
+            $etapaEnvio = $projeto->getEtapaEnvio();
+            
             DB::commit();
             return new EtapaResource($etapaEnvio);
 

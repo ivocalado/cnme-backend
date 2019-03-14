@@ -90,6 +90,8 @@ class Tarefa extends Model
         });
 
         $this->save();
+
+        return $etapa;
     }
 
     public function entregar(){
