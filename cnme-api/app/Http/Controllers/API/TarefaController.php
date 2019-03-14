@@ -18,6 +18,10 @@ class TarefaController extends Controller
 {
 
     private $qTipoEtapa;
+
+    public function status(){
+        return Tarefa::status();
+    }
    
     public function tarefasPorResponsavel(Request $request, $empresaId){
         $query = Tarefa::where('unidade_responsavel_id',$empresaId);

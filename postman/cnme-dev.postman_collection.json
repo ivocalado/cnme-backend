@@ -4797,6 +4797,40 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "GET/api/tarefas/t/status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tarefas/t/status",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tarefas",
+										"t",
+										"status"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"description": "Ações sobre a entidade Tarefa\n\nAções implementadas no TarefaController e EtapaController",

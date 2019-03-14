@@ -28,6 +28,15 @@ class Tarefa extends Model
         'data_fim','etapa_id','usuario_id','responsavel_id','unidade_responsavel_id'
     ];
 
+    public static function status(){
+        return [
+            Tarefa::STATUS_ABERTA,
+            Tarefa::STATUS_ANDAMENTO,
+            Tarefa::STATUS_CONCLUIDA,
+            Tarefa::STATUS_CANCELADA,
+        ];
+    }
+
     public function usuario(){
         return $this->belongsTo(User::class);
     }

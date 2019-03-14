@@ -256,6 +256,9 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('tarefas/projeto-cnme/{projetoId}/equipamentos-disponiveis-envio','API\TarefaController@equipamentosDisponiveisEnvio');
     
     Route::get('tarefas/empresas/{empresaId}/tarefas','API\TarefaController@tarefasPorResponsavel');
+
+    Route::get('tarefas/t/status','API\TarefaController@status');
+    
     /**
     * ###################################################################################################### 
     * API      /api/checklist-cnmes
