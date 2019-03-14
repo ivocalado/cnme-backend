@@ -213,6 +213,7 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::post('etapas/projeto-cnme/{projetoId}/add-tarefa-envio','API\EnviarController@addTarefaEnvio');
     Route::post('etapas/projeto-cnme/{projetoId}/tarefa/{tarefaId}/enviar','API\EnviarController@enviar');
+    
     Route::post('etapas/projeto-cnme/{projetoId}/enviar-all','API\EnviarController@enviarAll');
     Route::post('etapas/projeto-cnme/{projetoId}/tarefa/{tarefaId}/entregar','API\EnviarController@entregar');
 
@@ -229,6 +230,12 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::post('etapas/projeto-cnme/{projetoId}/instalar','API\InstalacaoController@instalar');
     Route::post('etapas/projeto-cnme/{projetoId}/ativar','API\AtivacaoController@ativar');
+
+    Route::get('etapas/projeto-cnme/{projetoId}/tarefa/{tarefaId}/enviar/notificar','API\EnviarController@notificar');
+    Route::get('etapas/projeto-cnme/{projetoId}/enviar-all/notificar','API\EnviarController@notificar');
+    Route::get('etapas/projeto-cnme/{projetoId}/tarefa/{tarefaId}/entregar/notificar','API\EnviarController@notificar');
+    Route::get('etapas/projeto-cnme/{projetoId}/instalar/notificar','API\InstalacaoController@notificar');
+    Route::get('etapas/projeto-cnme/{projetoId}/ativar/notificar','API\AtivacaoController@notificar');
 
     /**
      * POST     /api/tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamentos-all                                        * Adiciona na tarefa todos os equipamentos do projeto naquela tarefa

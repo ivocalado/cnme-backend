@@ -151,7 +151,7 @@ class EnviarController extends Controller
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
 
-            if($request->notificar)
+            if($request->notificar  === 'true')
                 $tarefaEnvio->notificar();
                 
             return new EtapaResource($etapa);
@@ -186,7 +186,7 @@ class EnviarController extends Controller
             $tarefaEnvio->entregar();
             DB::commit();
 
-            if($request->notificar)
+            if($request->notificar === 'true')
                 $tarefaEnvio->notificar();
 
             $etapa = Etapa::find($tarefaEnvio->etapa_id);
@@ -201,6 +201,25 @@ class EnviarController extends Controller
                 array('message' => $e->getMessage()) , 500);
 
         }
+    }
+
+    public function notificar(Request $request, $projetoId, $tarefaId = null){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        $etapaEnvio = $projeto->getEtapaEnvio();
+
+
+        
+        if($tarefaId){
+            $tarefaEnvio = Tarefa::find($tarefaId);
+            $tarefaEnvio->notificar();
+        }else{
+            $tarefaEnvio = $etapaEnvio->tarefas->first();
+            $tarefaEnvio->notificar();
+        }
+        
+
+        return new EtapaResource($etapaEnvio);
     }
     /**
      * Faz o envio de todas as tarefas
@@ -222,7 +241,7 @@ class EnviarController extends Controller
                 $t->enviar();
             }     
            
-            if($request->notificar){
+            if($request->notificar  === 'true'){
                 $tarefasEnvio->first()->notificar();
             }
                 

@@ -205,4 +205,16 @@ class AtivacaoController extends Controller
         }
     }
 
+    public function notificar(Request $request, $projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        $etapa = $projeto->getEtapaInstalacao();
+        $tarefa = $etapa->tarefas->last();
+        
+        $tarefa->notificar();
+       
+
+        return new EtapaResource($etapa);
+    }
+
 }

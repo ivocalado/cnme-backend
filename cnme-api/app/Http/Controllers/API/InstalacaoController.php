@@ -162,7 +162,7 @@ class InstalacaoController extends Controller
 
             DB::commit();
 
-            if($request->notificar)
+            if($request->notificar === "true")
                 $tarefaInstalacao->notificar();
 
             return new EtapaResource($etapaInstalacao);
@@ -175,5 +175,17 @@ class InstalacaoController extends Controller
                 array('message' => $e->getMessage()) , 500);
 
         }
+    }
+
+    public function notificar(Request $request, $projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+
+        $etapa = $projeto->getEtapaInstalacao();
+        $tarefa = $etapa->tarefas->last();
+        
+        $tarefa->notificar();
+       
+
+        return new EtapaResource($etapa);
     }
 }

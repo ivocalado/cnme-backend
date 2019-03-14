@@ -4782,7 +4782,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"nome\": \"Planejamento das ações de envio\",\n\t\"descricao\": \"Preenchendo novas informações;...\",\n\t\"numero\": \"MTM33330\"\n}"
+									"raw": ""
 								},
 								"url": {
 									"raw": "{{HOSTNAME}}/api/tarefas/10",
@@ -6684,7 +6684,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\",\n\t\"notificar\": \"true\"\n}"
+							"raw": "{\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"link_externo\": \"http://asdasdasdas.com.br?ss=dadas\",\n\t\"numero\": \"qweqweqw121\",\n\t\"data_inicio\":\"2019-03-05\"\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/tarefa/1/enviar",
@@ -6699,6 +6699,54 @@
 								"tarefa",
 								"1",
 								"enviar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notificar Envio",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/tarefa/1/enviar/notificar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"1",
+								"tarefa",
+								"1",
+								"enviar",
+								"notificar"
 							]
 						}
 					},
@@ -6747,6 +6795,52 @@
 					"response": []
 				},
 				{
+					"name": "Notificar Todos Enviados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/enviar-all/notificar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"1",
+								"enviar-all",
+								"notificar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Entrega de um Envio",
 					"request": {
 						"auth": {
@@ -6770,7 +6864,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Descrição anterior mais um novo texto acrescentado... por enquanto\",\n\t\"data_fim\":\"2019-02-28\",\n\t\"notificar\":\"true\"\n}"
+							"raw": "{\n\t\"descricao\":\"Descrição anterior mais um novo texto acrescentado... por enquanto\",\n\t\"data_fim\":\"2019-02-28\"\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/tarefa/1/entregar",
@@ -6788,6 +6882,54 @@
 							]
 						},
 						"description": "Campos opcionais\n\t\"descricao\":\"Enviar... Tá ok\",\n\t\"data_fim\":\"2019-02-20\""
+					},
+					"response": []
+				},
+				{
+					"name": "Notificar Entrega",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/tarefa/1/entregar/notificar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"1",
+								"tarefa",
+								"1",
+								"entregar",
+								"notificar"
+							]
+						}
 					},
 					"response": []
 				},
@@ -6815,7 +6957,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"notificar\":true\n}"
+							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"notificar\":\"true\"\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/instalar",
@@ -6828,6 +6970,52 @@
 								"projeto-cnme",
 								"1",
 								"instalar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notificar Instalação",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/instalar/notificar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"1",
+								"instalar",
+								"notificar"
 							]
 						}
 					},
@@ -6857,7 +7045,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"numero\":\"OPICIONAL\",\n\t\"link_externo\": \"www.opcional.com.br\",\n\t\"descricao\": \"Opcional... opcional\",\n\t\"data_inicio\":\"2019-05-01\",\n\t\"data_fim\":\"2019-06-02\",\n\t\"notificar\":true\n}"
+							"raw": "{\n\t\"numero\":\"OPICIONAL\",\n\t\"link_externo\": \"www.opcional.com.br\",\n\t\"descricao\": \"Opcional... opcional\",\n\t\"data_inicio\":\"2019-05-01\",\n\t\"data_fim\":\"2019-06-02\"\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/ativar",
@@ -6870,6 +7058,52 @@
 								"projeto-cnme",
 								"1",
 								"ativar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notificar Ativação",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/ativar/notificar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"etapas",
+								"projeto-cnme",
+								"1",
+								"ativar",
+								"notificar"
 							]
 						}
 					},
