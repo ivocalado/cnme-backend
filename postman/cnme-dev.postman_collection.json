@@ -3262,6 +3262,16 @@
 				{
 					"name": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -3269,14 +3279,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/3/remove-kit/1",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/remove-kit/1",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"3",
+								"1",
 								"remove-kit",
 								"1"
 							]
@@ -4624,14 +4634,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/etapas/5",
+									"raw": "{{HOSTNAME}}/api/etapas/8",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"etapas",
-										"5"
+										"8"
 									]
 								}
 							},
@@ -4721,36 +4731,6 @@
 							"response": []
 						},
 						{
-							"name": "DELETE/api/etapas/1/remove-tarefa/1",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{HOSTNAME}}/api/etapas/1/remove-tarefa/2",
-									"host": [
-										"{{HOSTNAME}}"
-									],
-									"path": [
-										"api",
-										"etapas",
-										"1",
-										"remove-tarefa",
-										"2"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "PUT/api/etapas/1/update-tarefa/4",
 							"request": {
 								"method": "PUT",
@@ -4775,6 +4755,44 @@
 										"3",
 										"update-tarefa",
 										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE/api/tarefa/4",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Planejamento das ações de envio\",\n\t\"descricao\": \"Preenchendo novas informações;...\",\n\t\"numero\": \"MTM33330\"\n}"
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/tarefas/10",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"tarefas",
+										"10"
 									]
 								}
 							},
@@ -6852,47 +6870,6 @@
 								"projeto-cnme",
 								"1",
 								"ativar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/1/recuperar",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"status\":\"\",\n\t\"descricao\": \"Atualizar descrição do projeto... esse texto vai para o email do usuario\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/recuperar",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"1",
-								"recuperar"
 							]
 						}
 					},

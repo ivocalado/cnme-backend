@@ -132,6 +132,7 @@ class EtapaController extends Controller
     
                     if($ativacao)
                         $ativacao->delete();
+
                 }else if($etapa->tipo === Etapa::TIPO_INSTALACAO){
                     if($ativacao)
                         $ativacao->delete();
@@ -154,26 +155,6 @@ class EtapaController extends Controller
 
         
         
-    }
-
-    public function removeTarefa(Request $request, $idEtapa, $idTarefa){
-        $etapa = Etapa::find($idEtapa);
-
-        if(!isset($etapa)){
-            return response()->json(
-                array('message' => 'A etapa não existe.') , 422);
-        }
-
-        $tarefa = Tarefa::find($idTarefa);
-
-        if(!isset($tarefa)){
-            return response()->json(
-                array('message' => 'A tarefa não existe.') , 422);
-        }else{
-            $tarefa->delete();
-            return response(null, 204);
-        }
-
     }
 
     public function updateTarefa(Request $request, $idEtapa, $idTarefa){

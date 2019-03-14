@@ -216,7 +216,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::post('etapas/projeto-cnme/{projetoId}/enviar-all','API\EnviarController@enviarAll');
     Route::post('etapas/projeto-cnme/{projetoId}/tarefa/{tarefaId}/entregar','API\EnviarController@entregar');
 
-    Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa');
+    //Route::delete('etapas/{etapaId}/remove-tarefa/{tarefaId}','API\EtapaController@removeTarefa');
     Route::put('etapas/{etapaId}/update-tarefa/{tarefaId}','API\EtapaController@updateTarefa');
 
     Route::get('etapas/{etapaId}/equipamentos','API\EtapaController@equipamentos');
@@ -241,6 +241,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamentos-all','API\TarefaController@addEquipamentosAll');
     Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento/{equipamentoProjetoId}','API\TarefaController@addEquipamentoProjeto');
     Route::post('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/add-equipamento-ids','API\TarefaController@syncEquipamentosProjeto');
+    Route::delete('tarefas/{id}','API\TarefaController@destroy');
 
     Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamento/{equipamentoProjetoId}','API\TarefaController@removeEquipamentoProjeto');
     Route::delete('tarefas/projeto-cnme/{projetoId}/tarefas/{tarefaId}/remove-equipamentos','API\TarefaController@clearEquipamentoProjeto');
