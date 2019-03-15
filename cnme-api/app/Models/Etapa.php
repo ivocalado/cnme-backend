@@ -65,6 +65,24 @@ class Etapa extends Model
         return $this->hasMany(Tarefa::class);
     }
 
+    public function getDataInicio(){
+        return $this->tarefas->max('data_inicio');
+    }
+
+
+    public function getDataFim(){
+        return $this->tarefas->max('data_fim');
+    }
+
+    public function getDataInicioPrevista(){
+        return $this->tarefas->max('data_inicio_prevista');
+    }
+
+
+    public function getDataFimPrevista(){
+        return $this->tarefas->max('data_fim_prevista');
+    }
+
     public function notificarEnviarTodos(){
         MailSender::notificarEnviarTodos($this->projetoCnme);
     }
