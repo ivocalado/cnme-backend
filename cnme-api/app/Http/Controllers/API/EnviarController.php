@@ -243,9 +243,7 @@ class EnviarController extends Controller
                 $t->enviar();
             }     
            
-            if($request->notificar  === 'true'){
-                $tarefasEnvio->first()->notificar();
-            }
+            $etapaEnvio->notificarEnviarTodos();
                 
             $etapaEnvio = $projeto->getEtapaEnvio();
             

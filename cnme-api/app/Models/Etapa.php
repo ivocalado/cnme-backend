@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Services\MailSender;
 
 class Etapa extends Model
 {
@@ -62,6 +63,10 @@ class Etapa extends Model
     public function tarefas()
     {
         return $this->hasMany(Tarefa::class);
+    }
+
+    public function notificarEnviarTodos(){
+        MailSender::notificarEnviarTodos($this->projetoCnme);
     }
 
     public function instalar(){

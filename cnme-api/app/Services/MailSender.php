@@ -106,7 +106,39 @@ class MailSender{
             'projeto'   => $projeto,
             "APP_URL"   =>  getenv('APP_URL')
         );
+
         Mail::send( 'emails.recuperar', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                ->subject('Plataforma CNME - Processo de Implantação');
+                $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação');
+        });
+    }
+
+    public static function notificarEnviarTodos($projeto){
+        $unidade = $projeto->unidade;
+        $usuario = $unidade->responsavel;
+
+        $to_name    = $usuario->name;
+        $to_email   = (getenv('APP_ENV') === 'local') ? getenv('MAIL_USERNAME') : $usuario->email;
+
+        $etapaEnvio = $projeto->getEtapaEnvio();
+        $tarefasEnvio = $etapaEnvio->tarefas;
+
+        $tarefasEnvio->each(function ($t, $k) {
+            $t->notificado_at = date('Y-m-d H:i:s');
+            $t->save();
+        });
+        
+        $data = array(
+            'usuario'   => $usuario,
+            'unidade'   => $unidade,
+            'projeto'   => $projeto,
+            'etapa'   => $etapaEnvio,
+            'envios'   => $tarefasEnvio,
+            "APP_URL"   =>  getenv('APP_URL')
+        );
+
+        Mail::send( 'emails.enviar-all', $data, function($message) use ($to_name, $to_email) {
             $message->to($to_email, $to_name)
                 ->subject('Plataforma CNME - Processo de Implantação');
                 $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação');
