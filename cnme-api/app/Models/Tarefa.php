@@ -24,8 +24,10 @@ class Tarefa extends Model
     public const DESC_TAREFA_ATIVACAO = "Ativaçãos dos equipamentos";
 
     protected $fillable = [
-        'nome','descricao','numero','status','link_externo','data_inicio_prevista','data_fim_prevista','data_inicio',
-        'data_fim','etapa_id','usuario_id','responsavel_id','unidade_responsavel_id'
+        'nome','descricao','numero','status','link_externo',
+        'data_inicio_prevista','data_fim_prevista',
+        'data_inicio', 'data_fim',
+        'etapa_id','usuario_id','responsavel_id','unidade_responsavel_id'
     ];
 
     public static function status(){
@@ -35,6 +37,38 @@ class Tarefa extends Model
             Tarefa::STATUS_CONCLUIDA,
             Tarefa::STATUS_CANCELADA,
         ];
+    }
+
+    public function isAberta(){
+        return $this->status === Tarefa::STATUS_ABERTA;
+    }
+
+    public function isAndamento(){
+        return $this->status === Tarefa::STATUS_ANDAMENTO;
+    }
+
+    public function isConcluida(){
+        return $this->status === Tarefa::STATUS_CONCLUIDA;
+    }
+
+    public function isEnvio(){
+        return $this->etapa->isEnvio();
+    }
+
+    public function isInstalacao(){
+        return $this->etapa->isInstalacao();
+    }
+
+    public function isAtivacao(){
+        return $this->etapa->isAtivacao();
+    }
+
+    public function tipo(){
+        return $this->etapa->tipo;
+    }
+
+    public function getTipo(){
+        return $this->etapa->tipo;
     }
 
     public function usuario(){
@@ -55,6 +89,38 @@ class Tarefa extends Model
 
     public function equipamentosProjetos(){
         return $this->belongsToMany(EquipamentoProjeto::class,'tarefa_equipamento_projeto')->withTimestamps();
+    }
+
+    public function validate(){
+        $messages = [];
+
+        $reponsavel = isset($this->unidadeResponsavel) ? "(".$this->unidadeResponsavel->nome.")." : ".";
+        //.(isset($this->responsavel)) ? "Usuário: ".$this->responsavel->name:".";
+
+        if($this->isConcluida() && $this->data_fim > $this->data_fim_prevista)
+            $messages["infos"][] = "Data fim($this->data_fim) da tarefa de ".$this->tipo()." foi posterior a data fim planejada($this->data_fim_prevista).".$reponsavel;
+
+        if($this->data_inicio > $this->data_inicio_prevista)
+            $messages["infos"][] = "Data início($this->data_inicio) da tarefa ".$this->tipo()." foi posterior a data início planejada($this->data_inicio_prevista)".$reponsavel;
+            
+        if($this->isConcluida() && !isset($this->data_fim))
+            $messages["erros"][] = "A tarefa de ".$this->tipo()." está concluída mas não tem data fim.";
+        
+        if($this->isAndamento() && !isset($this->data_inicio))
+            $messages["erros"][] = "A tarefa de ".$this->tipo()." está em andamento mas não tem data início.";
+
+        if($this->isAndamento() && $this->data_fim_prevista < date('Y-m-d') )
+            $messages["avisos"][] = "A tarefa de ".$this->tipo()." está em atrasada para ser concluída em relação ao cronograma inicial($this->data_fim_prevista).";
+        
+        if($this->isAberta() && $this->data_inicio_prevista < date('Y-m-d'))
+            $messages["avisos"][] = "A tarefa de ".$this->tipo()." está com seu início atrasado em relação ao cronograma inicial($this->data_inicio_prevista).";
+        
+        if($this->isEnvio() && ($this->isAndamento() || $this->isConcluida()) &&  !isset($this->numero))
+            $messages["avisos"][] = "A tarefa de ENVIO está com status $this->status mas não informou número de rastreio.";
+        
+        return $messages;
+       
+
     }
 
     public function notificar(){
@@ -168,7 +234,7 @@ class Tarefa extends Model
     public $rules = [
         'nome'    =>  'required|max:255',
         'numero' => 'max:30',
-        'link_externo' => 'max:255',
+        'link_externo' => 'max:400',
         'status'    =>  'required:max:50',
         'usuario_id' => 'required|integer|exists:users,id',
         'etapa_id' => 'required|integer|exists:etapas,id',

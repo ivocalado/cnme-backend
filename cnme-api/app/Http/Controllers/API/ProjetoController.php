@@ -385,4 +385,15 @@ class ProjetoController extends Controller
         return ProjetoResource::collection( $list->get());
     }
 
+    public function validar($projetoId){
+        $projeto = ProjetoCnme::find($projetoId);
+        $messages = $projeto->validate();
+
+        return response()->json(
+           
+           $messages
+        );  
+
+    }
+
 }

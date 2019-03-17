@@ -18,8 +18,12 @@ class ProjetoCnme extends Model
     public const STATUS_CANCELADO = 'CANCELADO';
 
     protected $fillable = [
-        'id','numero', 'status','descricao','unidade_id','usuario_id','solicitacao_cnme_id',
-        'data_inicio_previsto','data_fim_previsto','data_inicio','data_fim'
+        'id','numero', 'status','descricao',
+        'unidade_id','usuario_id','solicitacao_cnme_id',
+        'data_inicio_previsto',
+        'data_fim_previsto',
+        'data_inicio',
+        'data_fim'
     ];
 
     public static function status(){
@@ -31,6 +35,39 @@ class ProjetoCnme extends Model
             ProjetoCnme::STATUS_ATIVADO, 
             ProjetoCnme::STATUS_CANCELADO];
     }
+
+    public function isPlanejamento(){
+        return $this->status === ProjetoCnme::STATUS_PLANEJAMENTO;
+    }
+
+    public function isEnviado(){
+        return $this->status === ProjetoCnme::STATUS_ENVIADO;
+    }
+
+    public function isEntregue(){
+        return $this->status === ProjetoCnme::STATUS_ENTREGUE;
+    }
+
+    public function isInstalado(){
+        return $this->status === ProjetoCnme::STATUS_INSTALADO;
+    }
+
+    public function isAtivado(){
+        return $this->status === ProjetoCnme::STATUS_ATIVADO;
+    }
+
+    public function isCancelado(){
+        return $this->status === ProjetoCnme::STATUS_CANCELADO;
+    }
+
+    public function isAndamento(){
+        return $this->isEnviado() || $this->isEntregue() ||  $this->isInstalado();
+    }
+
+    public function isAberto(){
+        return $this->isPlanejamento() || $this->isCancelado();
+    }
+
 
     public static function checkStatus($status){
         return in_array($status, ProjetoCnme::status());
@@ -71,6 +108,50 @@ class ProjetoCnme extends Model
 
     public function recuperar(){
         MailSender::recuperar($this);
+    }
+
+    public function validate(){
+        $messages = [];
+        
+        if($this->data_inicio > $this->data_inicio_previsto)
+            $messages["infos"][] = "Projeto $this->numero teve início($this->data_inicio) após a data prevista($this->data_inicio_previsto).";
+        
+        if($this->data_fim > $this->data_fim_previsto)
+            $messages["infos"][] = "Projeto $this->numero teve o fim($this->data_fim) posterior a data prevista($this->data_fim_previsto).";
+
+        if(isset($this->data_fim) && $this->isAndamento())
+            $messages["erros"][] = "Projeto $this->numero possui data de conclusão($this->data_fim) porém ainda está em andamento.";
+        
+        if($this->isAtivado() && !isset($this->data_fim))
+            $messages["erros"][] = "Projeto $this->numero está concluído porém não tem data fim registrada.";
+        
+        if($this->isPlanejamento() && $this->data_inicio_previsto > date('Y-m-d') && $this->data_inicio == null)
+            $messages["avisos"][] = "Projeto $this->numero está em planejamento porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto)";
+        
+        if($this->isAndamento() && $this->data_fim_previsto < date('Y-m-d'))
+            $messages["avisos"][] = "Projeto $this->numero está em $this->status porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto)";
+
+
+        $messageEtapas = $this->etapas->map(function ($e, $key){
+            $result = $e->validate();
+            return $result;
+        });
+
+        $errosEtapas = ($messageEtapas->pluck("erros")->filter()->all());
+        foreach($errosEtapas as $k => $er)
+            $messages["erros"][] = $er[0];
+        
+        $avisosEtapas = ($messageEtapas->pluck("avisos")->filter()->all());
+        foreach($avisosEtapas as $k => $a)
+            $messages["avisos"][] = $a[0];
+        
+        $infosEtapas = ($messageEtapas->pluck("avisos")->filter()->all());
+        foreach($infosEtapas as $k => $i)
+            $messages["avisos"][] = $i[0];
+        
+        
+        return $messages;
+        
     }
 
     public function validarDatasPrevistas(){

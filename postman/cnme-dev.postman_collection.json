@@ -1593,6 +1593,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/1/validar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/validar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"1",
+								"validar"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -4565,6 +4599,16 @@
 						{
 							"name": "GET/api/projeto-cnme/2/etapas",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -4572,14 +4616,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/projeto-cnme/2/etapas",
+									"raw": "{{HOSTNAME}}/api/projeto-cnme/1/etapas",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"projeto-cnme",
-										"2",
+										"1",
 										"etapas"
 									]
 								}
@@ -7138,6 +7182,40 @@
 								"1",
 								"ativar",
 								"notificar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/1/validar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/validar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"1",
+								"validar"
 							]
 						}
 					},

@@ -65,6 +65,33 @@ class Etapa extends Model
         return $this->hasMany(Tarefa::class);
     }
 
+    public function proxima(){
+        if(!$this->hasProxima())
+            return null;
+        
+        return $this->isEnvio() ? 
+            $this->projetoCnme->getEtapaInstalacao():
+            $this->projetoCnme->getEtapaAtivacao();
+
+    }
+
+    public function hasProxima(){
+        return $this->isEnvio() || $this->isInstalacao();
+    }
+
+    public function anterior(){
+        if(!$this->hasAnterior())
+            return null;
+
+        return $this->isInstalacao() ? 
+            $this->projetoCnme->getEtapaEnvio():
+            $this->projetoCnme->getEtapaInstalacao();
+    }
+
+    public function hasAnterior(){
+        return $this->isInstalacao() || $this->isAtivacao();
+    }
+
     public function getDataInicio(){
         return $this->tarefas->max('data_inicio');
     }
@@ -85,6 +112,86 @@ class Etapa extends Model
 
     public function notificarEnviarTodos(){
         MailSender::notificarEnviarTodos($this->projetoCnme);
+    }
+
+    public function isEnvio(){
+        return $this->tipo === Etapa::TIPO_ENVIO;
+    }
+
+    public function isInstalacao(){
+        return $this->tipo === Etapa::TIPO_INSTALACAO;
+    }
+
+    public function isAtivacao(){
+        return $this->tipo === Etapa::TIPO_ATIVACAO;
+    }
+
+    public function isAberta(){
+        return $this->status === Etapa::STATUS_ABERTA;
+    }
+
+    public function isAndamento(){
+        return $this->status === Etapa::STATUS_ANDAMENTO;
+    }
+
+    public function isConcluida(){
+        return $this->status === Etapa::STATUS_CONCLUIDA;
+    }
+
+    public function isCancelada(){
+        return $this->status === Etapa::STATUS_CANCELADA;
+    }
+
+
+    public function validate(){
+        $messages = [];
+       
+    
+        if($this->hasProxima() && $this->getDataFim() > $this->proxima()->getDataInicio())
+            $messages["erros"][] = "A data fim do $this->tipo está posterior ao início da etapa de ".$this->proxima()->tipo.".";
+        
+
+        if($this->isConcluida()){
+            $todasTarefasConcluidas = $this->tarefas->every(function($t, $k){
+                return $t->isConcluida();
+            });
+
+            if(!$todasTarefasConcluidas)
+                $messages["erros"][] = "A etapa de $this->tipo está concluída porém há tarefas pendentes.";
+        }
+
+        if($this->isAndamento()){
+           
+            $result = $this->tarefas->filter(function($t, $k){
+                return $t->isAndamento();
+            });
+            
+
+            if(!$result || $result->isEmpty())
+                $messages["erros"][] = "A etapa de $this->tipo está em andamento porém não há tarefas em andamento.";
+
+           
+        }
+
+        $tarefaMessages = $this->tarefas->map(function ($t, $key){
+            $result = $t->validate();
+            return $result;
+        });
+
+        $errosEtapas = ($tarefaMessages->pluck("erros")->filter()->all());
+        foreach($errosEtapas as $k => $er)
+            $messages["erros"][] = $er[0];
+        
+        $avisosEtapas = ($tarefaMessages->pluck("avisos")->filter()->all());
+        foreach($avisosEtapas as $k => $a)
+            $messages["avisos"][] = $a[0];
+        
+        $infosEtapas = ($tarefaMessages->pluck("avisos")->filter()->all());
+        foreach($infosEtapas as $k => $i)
+            $messages["avisos"][] = $i[0];
+             
+        
+        return $messages;
     }
 
     public function instalar(){

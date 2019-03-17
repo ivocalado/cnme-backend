@@ -177,6 +177,7 @@ Route::middleware('jwt.auth')->group(function(){
     */
 
     Route::apiResource('projeto-cnme', 'API\ProjetoController');
+    Route::get('projeto-cnme/{id}/validar', 'API\ProjetoController@validar');
     Route::get('projeto-cnme/{id}/etapas','API\ProjetoController@etapas');
     Route::get('projeto-cnme/{id}/tarefas','API\ProjetoController@tarefas');
     Route::get('projeto-cnme/p/status','API\ProjetoController@status');
