@@ -113,11 +113,22 @@ class ProjetoCnme extends Model
     public function validate(){
         $messages = [];
         
-        if($this->data_inicio > $this->data_inicio_previsto)
-            $messages["infos"][] = "Projeto $this->numero teve início($this->data_inicio) após a data prevista($this->data_inicio_previsto).";
+        if($this->data_inicio > $this->data_inicio_previsto){
+            $msg = "Projeto $this->numero teve início($this->data_inicio) após a data prevista($this->data_inicio_previsto).";
+            $dateInterval = (new \DateTime($this->data_inicio))->diff(new \DateTime($this->data_inicio_previsto));
+            $msg =  $msg." Houve um atraso de ".$dateInterval->days." dias.";
+            $messages["infos"][] = $msg;
+
+        }
+           
         
-        if($this->data_fim > $this->data_fim_previsto)
-            $messages["infos"][] = "Projeto $this->numero teve o fim($this->data_fim) posterior a data prevista($this->data_fim_previsto).";
+        if($this->data_fim > $this->data_fim_previsto){
+            $msg = "Projeto $this->numero teve o fim($this->data_fim) posterior a data prevista($this->data_fim_previsto).";
+            $dateInterval = (new \DateTime($this->data_fim))->diff(new \DateTime($this->data_fim_previsto));
+            $msg =  $msg." Houve um atraso de ".$dateInterval->days." dias.";
+            $messages["infos"][] = $msg;
+        }
+            
 
         if(isset($this->data_fim) && $this->isAndamento())
             $messages["erros"][] = "Projeto $this->numero possui data de conclusão($this->data_fim) porém ainda está em andamento.";
@@ -125,11 +136,21 @@ class ProjetoCnme extends Model
         if($this->isAtivado() && !isset($this->data_fim))
             $messages["erros"][] = "Projeto $this->numero está concluído porém não tem data fim registrada.";
         
-        if($this->isPlanejamento() && $this->data_inicio_previsto > date('Y-m-d') && $this->data_inicio == null)
-            $messages["avisos"][] = "Projeto $this->numero está em planejamento porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto)";
+        if($this->isPlanejamento() && $this->data_inicio_previsto > date('Y-m-d') && $this->data_inicio == null){
+            $msg = "Projeto $this->numero está em planejamento porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto).";
+            $dateInterval = (new \DateTime(date('Y-m-d')))->diff(new \DateTime($this->data_inicio_previsto));
+            $msg =  $msg." Há um atraso de ".$dateInterval->days." dias.";
+            $messages["avisos"][] = $msg;
+        }
+            
         
-        if($this->isAndamento() && $this->data_fim_previsto < date('Y-m-d'))
-            $messages["avisos"][] = "Projeto $this->numero está em $this->status porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto)";
+        if($this->isAndamento() && $this->data_fim_previsto < date('Y-m-d')){
+            $msg = "Projeto $this->numero está em $this->status porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto).";
+            $dateInterval = (new \DateTime(date('Y-m-d')))->diff(new \DateTime($this->data_fim_previsto));
+            $msg =  $msg." Há um atraso de ".$dateInterval->days." dias.";
+            $messages["avisos"][] = $msg ;
+        }
+            
 
 
         $messageEtapas = $this->etapas->map(function ($e, $key){

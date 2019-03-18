@@ -15,7 +15,11 @@ O polo foi ativado em {{ $data_fim }}.
 O polo está equipado com o kit:
 <ul>
     @foreach ($equipamentos as $e)
-        <li>{{ $e->nome }}</li>
+        <li>{{ $e->nome }}
+        @if (isset($e->requisitos))
+            <small>(Requisitos: {{$e->requisitos}})</small>
+        @endif
+        </li>
     @endforeach
 </ul>
 

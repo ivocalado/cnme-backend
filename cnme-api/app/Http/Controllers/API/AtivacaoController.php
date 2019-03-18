@@ -181,6 +181,7 @@ class AtivacaoController extends Controller
             $etapaAtivacao->save();
 
             $projeto->status = ProjetoCnme::STATUS_ATIVADO;
+            $projeto->data_fim = date('Y-m-d');
             $projeto->save();
 
             $projeto->equipamentoProjetos->each(function($eP, $value){

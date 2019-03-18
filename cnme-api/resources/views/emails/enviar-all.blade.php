@@ -25,7 +25,11 @@ as empresas responsáveis.
 
         <ul>
             @foreach ($env->equipamentosProjetos->pluck('equipamento') as $eq)
-                <li>{{$eq->nome}}</li>
+                <li>{{$eq->nome}}
+                @if (isset($eq->requisitos))
+                    <small>(Requisitos: {{$eq->requisitos}})</small>
+                @endif
+                </li>
             @endforeach
         </ul>
     </p>

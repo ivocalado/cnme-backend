@@ -7188,7 +7188,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/1/validar",
+					"name": "Validar Projeto",
 					"request": {
 						"auth": {
 							"type": "bearer",

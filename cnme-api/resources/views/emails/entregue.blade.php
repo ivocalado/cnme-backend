@@ -8,7 +8,11 @@ Equipamentos foram <b>ENTREGUES</b> em {{ $data_fim }}.
 Os equipamentos previstos nessa entrega são:
 <ul>
     @foreach ($equipamentos as $e)
-        <li>{{$e->nome}}</li>
+        <li>{{$e->nome}}
+        @if (isset($e->requisitos))
+            <small>(Requisitos: {{$e->requisitos}})</small>
+        @endif
+        </li>
     @endforeach
 </ul>
 

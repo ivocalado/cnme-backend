@@ -97,11 +97,21 @@ class Tarefa extends Model
         $reponsavel = isset($this->unidadeResponsavel) ? "(".$this->unidadeResponsavel->nome.")." : ".";
         //.(isset($this->responsavel)) ? "Usuário: ".$this->responsavel->name:".";
 
-        if($this->isConcluida() && $this->data_fim > $this->data_fim_prevista)
-            $messages["infos"][] = "Data fim($this->data_fim) da tarefa de ".$this->tipo()." foi posterior a data fim planejada($this->data_fim_prevista).".$reponsavel;
+        if($this->isConcluida() && $this->data_fim > $this->data_fim_prevista){
+            $msg = "Data fim($this->data_fim) da tarefa de ".$this->tipo()." foi posterior a data fim planejada($this->data_fim_prevista).".$reponsavel;
+            $dateInterval = (new \DateTime($this->data_fim))->diff(new \DateTime($this->data_fim_prevista));
+            $msg =  $msg." Houve um atraso de ".$dateInterval->days." dias.";
+            $messages["infos"][] = $msg;
+        }
+            
 
-        if($this->data_inicio > $this->data_inicio_prevista)
-            $messages["infos"][] = "Data início($this->data_inicio) da tarefa ".$this->tipo()." foi posterior a data início planejada($this->data_inicio_prevista)".$reponsavel;
+        if($this->data_inicio > $this->data_inicio_prevista){
+            $msg = "Data início($this->data_inicio) da tarefa ".$this->tipo()." foi posterior a data início planejada($this->data_inicio_prevista)".$reponsavel;
+            $dateInterval = (new \DateTime($this->data_inicio))->diff(new \DateTime($this->data_inicio_prevista));
+            $msg =  $msg." Houve um atraso de ".$dateInterval->days." dias.";
+            $messages["infos"][] = $msg;
+        }
+            
             
         if($this->isConcluida() && !isset($this->data_fim))
             $messages["erros"][] = "A tarefa de ".$this->tipo()." está concluída mas não tem data fim.";
@@ -109,11 +119,18 @@ class Tarefa extends Model
         if($this->isAndamento() && !isset($this->data_inicio))
             $messages["erros"][] = "A tarefa de ".$this->tipo()." está em andamento mas não tem data início.";
 
-        if($this->isAndamento() && $this->data_fim_prevista < date('Y-m-d') )
+        if($this->isAndamento() && $this->data_fim_prevista < date('Y-m-d') ){
             $messages["avisos"][] = "A tarefa de ".$this->tipo()." está em atrasada para ser concluída em relação ao cronograma inicial($this->data_fim_prevista).";
+        }
+            
         
-        if($this->isAberta() && $this->data_inicio_prevista < date('Y-m-d'))
-            $messages["avisos"][] = "A tarefa de ".$this->tipo()." está com seu início atrasado em relação ao cronograma inicial($this->data_inicio_prevista).";
+        if($this->isAberta() && $this->data_inicio_prevista < date('Y-m-d')){
+            $msg = "A tarefa de ".$this->tipo()." está com seu início atrasado em relação ao cronograma inicial($this->data_inicio_prevista).";
+            $dateInterval = (new \DateTime(date('Y-m-d')))->diff(new \DateTime($this->data_inicio_prevista));
+            $msg =  $msg." Há um atraso de ".$dateInterval->days." dias.";
+            $messages["avisos"][] = $msg;
+        }
+           
         
         if($this->isEnvio() && ($this->isAndamento() || $this->isConcluida()) &&  !isset($this->numero))
             $messages["avisos"][] = "A tarefa de ENVIO está com status $this->status mas não informou número de rastreio.";
