@@ -2897,6 +2897,16 @@
 						{
 							"name": "DELETE/api/equipamentos/6",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -2909,14 +2919,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/equipamentos/6",
+									"raw": "{{HOSTNAME}}/api/equipamentos/1",
 									"host": [
 										"{{HOSTNAME}}"
 									],
 									"path": [
 										"api",
 										"equipamentos",
-										"6"
+										"1"
 									]
 								}
 							},
@@ -4509,6 +4519,16 @@
 				{
 					"name": "DELETE/api/projeto-cnme/5/remove-equipamento/7",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -4516,16 +4536,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/5/remove-equipamento/7",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/1/remove-equipamento/2",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"projeto-cnme",
-								"5",
+								"1",
 								"remove-equipamento",
-								"7"
+								"2"
 							]
 						}
 					},
@@ -6160,6 +6180,91 @@
 			]
 		},
 		{
+			"name": "UC04 - RecuperarSenha",
+			"item": [
+				{
+					"name": "novasenha/EMAIL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/novasenha/poloteste@educacao.al.gov.br",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"novasenha",
+								"poloteste@educacao.al.gov.br"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "novasenha/validar/EMAIL/TOKEN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/novasenha/validar/poloteste@educacao.al.gov.br/65a4bf79292aef5e",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"novasenha",
+								"validar",
+								"poloteste@educacao.al.gov.br",
+								"65a4bf79292aef5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "novasenha/usuario/5/atualizar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/novasenha/usuario/5/atualizar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"novasenha",
+								"usuario",
+								"5",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Testes 01 (Sequencia de chamadas)",
 			"item": [
 				{
@@ -7035,7 +7140,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\",\n\t\"notificar\":\"true\"\n}"
+							"raw": "{\n\t\"descricao\":\"Instalado com sucesso OK\"\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/etapas/projeto-cnme/1/instalar",
@@ -7216,91 +7321,6 @@
 								"projeto-cnme",
 								"1",
 								"validar"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "RecuperarSenha",
-			"item": [
-				{
-					"name": "novasenha/EMAIL",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/novasenha/poloteste@educacao.al.gov.br",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"novasenha",
-								"poloteste@educacao.al.gov.br"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "novasenha/validar/EMAIL/TOKEN",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/novasenha/validar/poloteste@educacao.al.gov.br/65a4bf79292aef5e",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"novasenha",
-								"validar",
-								"poloteste@educacao.al.gov.br",
-								"65a4bf79292aef5e"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "novasenha/usuario/5/atualizar",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"password\": \"123456\"\n}"
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/novasenha/usuario/5/atualizar",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"novasenha",
-								"usuario",
-								"5",
-								"atualizar"
 							]
 						}
 					},

@@ -72,7 +72,7 @@ class Tarefa extends Model
     }
 
     public function usuario(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function etapa(){
@@ -80,7 +80,7 @@ class Tarefa extends Model
     }
 
     public function responsavel(){
-        return $this->belongsTo(User::class,'responsavel_id');
+        return $this->belongsTo(User::class,'responsavel_id')->withTrashed();
     }
 
     public function unidadeResponsavel(){

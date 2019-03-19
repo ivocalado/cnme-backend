@@ -74,7 +74,7 @@ class ProjetoCnme extends Model
     }
 
     public function usuario(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function unidade(){
@@ -86,7 +86,7 @@ class ProjetoCnme extends Model
     }
 
     public function kit(){
-        return $this->belongsTo(Kit::class);
+        return $this->belongsTo(Kit::class)->withTrashed();
     }
 
     public function etapas(){

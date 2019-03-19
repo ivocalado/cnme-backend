@@ -29,7 +29,7 @@ class EquipamentoProjeto extends Model
     }
 
     public function equipamento(){
-        return $this->belongsTo(Equipamento::class); 
+        return $this->belongsTo(Equipamento::class)->withTrashed(); 
     }
 
     public function projetoCnme(){
