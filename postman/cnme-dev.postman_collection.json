@@ -7222,6 +7222,91 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "RecuperarSenha",
+			"item": [
+				{
+					"name": "novasenha/EMAIL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/novasenha/poloteste@educacao.al.gov.br",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"novasenha",
+								"poloteste@educacao.al.gov.br"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "novasenha/validar/EMAIL/TOKEN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/novasenha/validar/poloteste@educacao.al.gov.br/65a4bf79292aef5e",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"novasenha",
+								"validar",
+								"poloteste@educacao.al.gov.br",
+								"65a4bf79292aef5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "novasenha/usuario/5/atualizar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/novasenha/usuario/5/atualizar",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"novasenha",
+								"usuario",
+								"5",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

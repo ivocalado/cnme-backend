@@ -350,11 +350,10 @@ class UsuarioController extends Controller
         }else{
             return response()->json(
                 array('message' => "Token não informado.") , 422);
-        }
-
-
-        
+        }        
     }
+
+   
 
 
 }

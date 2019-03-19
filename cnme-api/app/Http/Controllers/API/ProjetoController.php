@@ -146,7 +146,7 @@ class ProjetoController extends Controller
         $projeto = ProjetoCnme::find($projetoId);
 
         if(!isset($projeto)){
-            return response()->json(array('message' => "Projeto não encontrado.") , 422);
+            return response()->json(array('message' => "Projeto não encontrado.") , 404);
         }
 
         if(!$request->has('status') || 

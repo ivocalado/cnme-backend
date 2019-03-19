@@ -17,13 +17,17 @@ use App\Http\Resources\UnidadeResource;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('login', 'API\AuthController@login');
 Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
 Route::get('usuarios/get', 'API\UsuarioController@getUserPorToken');
+
+Route::get('novasenha/{email}', 'API\RecuperarSenhaController@solicitarNovaSenha');
+Route::get('novasenha/validar/{email}/{token}','API\RecuperarSenhaController@validarSolicitacao');
+Route::post('novasenha/usuario/{usuarioId}/atualizar', 'API\RecuperarSenhaController@atualizarSenha');
 
 
 

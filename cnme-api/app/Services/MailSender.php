@@ -32,6 +32,29 @@ class MailSender{
         });
     }
 
+    public static function notificacaoNovaSenha($user){
+        $to_name    = $user->name;
+        $to_email   = (getenv('APP_ENV') === 'local') ? getenv('MAIL_USERNAME') : $user->email;
+    
+        $data = array(
+            'nome'      =>  $user->name, 
+            "email"     =>  $user->email,
+            "token"     =>  $user->remember_token,
+            "unidade"   =>  $user->unidade->nome,
+            "APP_URL"   =>  getenv('APP_URL')  
+            
+        );
+
+
+        
+
+        Mail::send('emails.recuperar-senha', $data, function($message) use ($to_name, $to_email) {
+             $message->to($to_email, $to_name)
+                 ->subject('Acesso a plataforma CNME');
+                 $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação22');
+        });
+    }
+
     public static function notificar($projeto, $tarefa){
         $unidade = $projeto->unidade;
         $usuario =  $unidade->responsavel;
