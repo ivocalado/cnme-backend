@@ -118,10 +118,8 @@ class ProjetoCnme extends Model
             $dateInterval = (new \DateTime($this->data_inicio))->diff(new \DateTime($this->data_inicio_previsto));
             $msg =  $msg." Houve um atraso de ".$dateInterval->days." dias.";
             $messages["infos"][] = $msg;
-
         }
            
-        
         if($this->data_fim > $this->data_fim_previsto){
             $msg = "Projeto $this->numero teve o fim($this->data_fim) posterior a data prevista($this->data_fim_previsto).";
             $dateInterval = (new \DateTime($this->data_fim))->diff(new \DateTime($this->data_fim_previsto));
