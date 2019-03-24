@@ -2494,6 +2494,16 @@
 				{
 					"name": "GET/api/unidades/10/usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2506,14 +2516,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades/10/usuarios",
+							"raw": "{{HOSTNAME}}/api/unidades/1/usuarios",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"unidades",
-								"10",
+								"1",
 								"usuarios"
 							]
 						}
@@ -3252,6 +3262,16 @@
 				{
 					"name": "DELETE/api/kits/2",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -3259,14 +3279,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/kits/2",
+							"raw": "{{HOSTNAME}}/api/kits/1",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"kits",
-								"2"
+								"1"
 							]
 						}
 					},
