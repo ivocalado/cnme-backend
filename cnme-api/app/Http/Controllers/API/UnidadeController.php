@@ -275,7 +275,7 @@ class UnidadeController extends Controller
      
         return response()->json(
             array(
-            "data" => UserResource::collection(User::where('unidade_id', $idUnidade)->paginate(25))
+            "data" => UserResource::collection(User::where('unidade_id', $idUnidade)->withTrashed()->get())
             ), 200);
     }
 

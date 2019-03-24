@@ -5,11 +5,11 @@ Olá <strong>{{ $nome }}</strong>
     <br/>
     <b>Caso sim</b>, clique no link abaixo e defina uma nova senha.
     <p>
-    Acesse a <a href="{{ $APP_URL }}/novasenha/{{$token}}/{{$email}}">Recuperar Senha</a>
+    Acesse a <a href="{{ $APP_URL }}/usuarios/novasenha/{{$token}}/{{$email}}">Recuperar Senha</a>
     </p>
     Caso o link não funcione, copie o link a seguir no barra de endereço do navegador:
     <p>
-        {{ $APP_URL }}/novasenha/validar/{{$email}}/{{$token}}
+        {{ $APP_URL }}/usuarios/novasenha/validar/{{$email}}/{{$token}}
     </p>
 </p>
 

@@ -51,7 +51,7 @@ class MailSender{
         Mail::send('emails.recuperar-senha', $data, function($message) use ($to_name, $to_email) {
              $message->to($to_email, $to_name)
                  ->subject('Acesso a plataforma CNME');
-                 $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação22');
+                 $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação');
         });
     }
 

@@ -35,7 +35,7 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        return UserResource::collection(User::withTrashed()->paginate(25));
+        return UserResource::collection(User::paginate(25));
     }
     
     public function store(Request $request)

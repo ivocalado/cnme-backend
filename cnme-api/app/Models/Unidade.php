@@ -47,7 +47,7 @@ class Unidade extends Model
     }
 
     public function usuarios(){
-        return $this->hasMany(User::class, 'unidade_id', 'id');
+        return $this->hasMany(User::class, 'unidade_id', 'id')->withTrashed();
     }
 
     public function isPolo(){
