@@ -14,13 +14,17 @@ class AuthController extends Controller
     public function login(Request $request) {
         $credentials = request(['email', 'password']);
         
+       
 
         if (!$token = auth('api')->attempt($credentials)) {
+           
             $userDeletado = User::onlyTrashed()->where('email',$request['email'])->first();
-            if($userDeletado)
-                response()->json(['error' => 'Conta bloqueada. Contate o gestor da sua unidade.'], 401);
-            else
+            if($userDeletado){
+                return response()->json(['error' => 'Conta bloqueada. Contate o gestor da sua unidade.'], 401);
+            }else{
                 return response()->json(['error' => 'Login e/ou senha incorretos.'], 401);
+            }
+                
         }else{
             return response()->json([
                 'token' => $token,

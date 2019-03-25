@@ -232,7 +232,6 @@ class UsuarioController extends Controller
             
             }
             if(isset($usuario)){
-                $usuario->ativo = false;
                 $usuario->name = $usuario->name." (DELETADO)";
                 $usuario->delete();
                 DB::commit();
