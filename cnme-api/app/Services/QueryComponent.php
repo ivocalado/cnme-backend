@@ -80,10 +80,11 @@ class QueryComponent{
 
         e.tipo as etapa,
         CASE 
+            WHEN t.data_fim is null and t.data_inicio is not null and t.data_fim_prevista < now() THEN 'ATRASADA'
             WHEN t.data_fim is null and t.data_inicio is not null THEN 'ANDAMENTO' 
-            WHEN t.data_fim_prevista < now() and t.data_fim is null THEN 'ATRASADA'
+            WHEN t.data_fim is not null and t.data_fim > t.data_fim_prevista THEN 'CONCLUIDA COM ATRASO'
             WHEN t.data_fim is not null THEN 'CONCLUIDA'
-            WHEN t.data_fim > t.data_fim_prevista THEN 'CONCLUIDA COM ATRASO'
+           
         END AS status_tarefa,
         t.id as tarefa_id,
         e.id as etapa_id
