@@ -1139,7 +1139,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados/meses?regiao=centro-oeste&uf=DF",
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/estados/meses",
 									"host": [
 										"{{HOSTNAME}}"
 									],
@@ -1149,16 +1149,6 @@
 										"projetos",
 										"estados",
 										"meses"
-									],
-									"query": [
-										{
-											"key": "regiao",
-											"value": "centro-oeste"
-										},
-										{
-											"key": "uf",
-											"value": "DF"
-										}
 									]
 								}
 							},
@@ -1623,6 +1613,46 @@
 								"projeto-cnme",
 								"1",
 								"validar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/p/andamento?uf=AL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/andamento?uf=AL",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"andamento"
+							],
+							"query": [
+								{
+									"key": "uf",
+									"value": "AL"
+								}
 							]
 						}
 					},
@@ -4004,6 +4034,16 @@
 				{
 					"name": "POST/api/usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -4013,7 +4053,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"Administrador Pinheiro\",\n\t\"email\": \"pinheiro@mec.gov.br\",\n\t\"password\": \"$2y$10$TrooWD7Z8zYNIcMiEqZUlOwtech0WJqdLU0VHX2346Y40qUDvlcHm\",\n\t\"cpf\": \"000.123.312-27\",\n\t\"unidade_id\": \"1\",\n\t\"tipo\": \"administrador\"\n\n}"
+							"raw": "{\n\t\"name\":\"Pinheirinho da alegria\",\n\t\"email\": \"Pinheirinhoalegria@mec.gov.br\",\n\t\"password\": \"123456\",\n\t\"cpf\": \"673.123.312-27\",\n\t\"unidade_id\": \"6\",\n\t\"tipo\": \"gestor\"\n\n}"
 						},
 						"url": {
 							"raw": "{{HOSTNAME}}/api/usuarios",
@@ -4031,6 +4071,16 @@
 				{
 					"name": "GET/api/usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -4104,6 +4154,16 @@
 				{
 					"name": "DELETE/api/usuarios/2",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -4116,14 +4176,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/usuarios/2",
+							"raw": "{{HOSTNAME}}/api/usuarios/7",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"usuarios",
-								"2"
+								"7"
 							]
 						}
 					},
@@ -7341,6 +7401,200 @@
 								"projeto-cnme",
 								"1",
 								"validar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UC 171",
+			"item": [
+				{
+					"name": "{{HOSTNAME}}/api/chamados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST/api/chamados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"assunto\": \"Novo chamado\",\n\t\"descricao\": \"Erro apresentado enquanto...\",\n\t\"usuario_id\":\"1\",\n\t\"projeto_cnme_id\":\"1\",\n\t\"status_id\":\"10\",\n\t\"tipo_id\":\"1\",\n\t\"usuario_responsavel_id\": \"1\",\n\t\"unidade_responsavel_id\": \"1\",\n\t\"prioridade\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET/api/chamados/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados/2",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT/api/chamados/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"prioridade\": \"5\"\n}"
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados/2",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE/api/chamados/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados/2",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"2"
 							]
 						}
 					},

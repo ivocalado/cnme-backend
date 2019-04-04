@@ -200,6 +200,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('projeto-cnme/{projetoId}/equipamentos/status/{status}', 'API\ProjetoController@equipamentosPorStatus');
     Route::get('projeto-cnme/p/pesquisar', 'API\ProjetoController@search');
     Route::get('projeto-cnme/p/atrasados', 'API\ProjetoController@atrasados');
+    Route::get('projeto-cnme/p/andamento', 'API\ProjetoController@andamento');
     Route::get('projeto-cnme/{projetoId}/etapa-envio','API\ProjetoController@getEtapaEnvio');
     Route::get('projeto-cnme/{projetoId}/etapa-instalacao','API\ProjetoController@getEtapaInstalacao');
     Route::get('projeto-cnme/{projetoId}/etapa-ativacao','API\ProjetoController@getEtapaAtivacao');
@@ -298,6 +299,10 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::get('dashboard/projetos/meses','API\DashboardController@queryProjeto12Meses');
     Route::get('dashboard/projetos/estados/meses','API\DashboardController@queryProjetoEstadoAno');
+
+    //CHAMADOS
+
+    Route::apiResource('chamados', 'API\ChamadoController');
 });
 
 

@@ -258,6 +258,32 @@ class ProjetoController extends Controller
         return ProjetoResource::collection($list->paginate(25));
     }
 
+    public function andamento(Request $request){
+        $list = ProjetoCnme::query();
+
+        $list->whereNotNull('data_inicio');
+        $list->whereNull('data_fim');
+
+        if($request->has('uf')){
+            $this->uf = $request->uf;
+            $list->whereHas('unidade', function($query1){
+                $query1->whereHas('localidade',function ($query2) {
+                    $query2->whereHas('estado', function ($query3){
+                        $query3->where('sigla','=',$this->uf);
+                    });
+                });
+            });
+        }
+
+        $list->whereIn('status',
+                                [ProjetoCnme::STATUS_ENVIADO, 
+                                ProjetoCnme::STATUS_ENTREGUE, 
+                                ProjetoCnme::STATUS_INSTALADO, ]);
+        
+        return ProjetoResource::collection($list->paginate(25));
+
+    }
+
     public function atrasados(Request $request){
         $list = ProjetoCnme::query();
 
