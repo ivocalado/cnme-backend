@@ -926,6 +926,41 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/extrato",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/extrato",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"usuarios",
+										"gestores",
+										"extrato"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -7409,7 +7444,7 @@
 			]
 		},
 		{
-			"name": "UC 171",
+			"name": "UC 171 - Chamados",
 			"item": [
 				{
 					"name": "{{HOSTNAME}}/api/chamados",
@@ -7595,6 +7630,84 @@
 								"api",
 								"chamados",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://{{HOSTNAME}}/api/chamados/c/3/add-comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\": \"OioIoOiii\"\n}"
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados/c/3/add-comment",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"c",
+								"3",
+								"add-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/extrato",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/dashboard/usuarios/gestores/extrato",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"usuarios",
+								"gestores",
+								"extrato"
 							]
 						}
 					},

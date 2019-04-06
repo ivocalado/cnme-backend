@@ -159,6 +159,21 @@ class DashboardController extends Controller
 
     }
 
+    public function queryGestoresExtrado(Request $request){
+        $unidadeQuery = new UnidadeQueryComponent();
+
+        $naoConfirmados = $unidadeQuery->countGestoresNaoConfirmados($request->uf);
+        $confirmados = $unidadeQuery->countGestoresConfirmados($request->uf);
+        
+        return response()->json(
+            array(
+                "confirmados" => $confirmados,
+                "nao_confirmados" => $naoConfirmados
+            )
+        );
+
+    }
+
     public function queryStatusEstados(Request $request){
        $estadoComponent = new EstadoQueryComponent();
 

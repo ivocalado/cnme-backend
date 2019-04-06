@@ -290,6 +290,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('dashboard/projetos/etapas/extrato','API\DashboardController@queryProjetosEtapasExtrato');
     Route::get('dashboard/projetos/{etapa}/atrasados/total','API\DashboardController@countAtrasadosPorEtapa');
     Route::get('dashboard/usuarios/gestores/nao-confirmados/total','API\DashboardController@countGestoresNaoConfirmados');
+    Route::get('dashboard/usuarios/gestores/extrato','API\DashboardController@queryGestoresExtrado');
     Route::get('dashboard/projetos/estado/status','API\DashboardController@queryStatusEstados');
     Route::get('dashboard/projetos/{etapa}/empresas','API\DashboardController@queryPrestadoras');
     Route::get('dashboard/projetos/{etapa}/empresas/{empresaId}/estados','API\DashboardController@queryPrestadoraPorEstado');
@@ -303,6 +304,7 @@ Route::middleware('jwt.auth')->group(function(){
     //CHAMADOS
 
     Route::apiResource('chamados', 'API\ChamadoController');
+    Route::post('chamados/c/{id}/add-comment','API\ChamadoController@addComment');
 });
 
 
