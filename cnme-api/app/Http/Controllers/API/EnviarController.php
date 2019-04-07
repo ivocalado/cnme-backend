@@ -141,7 +141,7 @@ class EnviarController extends Controller
             if($tarefaEnvio->etapa->projeto_cnme_id !== $projeto->id ||
                 $tarefaEnvio->etapa->tipo !== Etapa::TIPO_ENVIO){
                 return response()->json(
-                    array('message' => "Projeto/Tarefa não correspondentes a ação de envio." , 422));
+                    array('message' => "Projeto/Tarefa não correspondentes a ação de envio." ),422);
             }
 
             $tarefaEnvio->fill($request->all());
