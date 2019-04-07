@@ -160,7 +160,7 @@ class Tarefa extends Model
 
         if($projeto->status === ProjetoCnme::STATUS_PLANEJAMENTO){
             $projeto->status = ProjetoCnme::STATUS_ENVIADO;
-            $projeto->data_inicio = date("Y-m-d");
+            $projeto->data_inicio = $this->data_inicio;
             $projeto->save();
         }
 
@@ -200,6 +200,7 @@ class Tarefa extends Model
 
         $temEntregasAndamento = $etapa->hasTarefasAbertasAndamento();
 
+
         if(!$temEntregasAndamento){
             $etapa->status = Etapa::STATUS_CONCLUIDA;
             $etapa->save();
@@ -211,7 +212,9 @@ class Tarefa extends Model
             $etapaInstalacao->status = Etapa::STATUS_ANDAMENTO;
             $etapaInstalacao->save();
 
+
             $tarefaInstalacao = $etapaInstalacao->getFirstTarefa();
+
             $tarefaInstalacao->status = Tarefa::STATUS_ANDAMENTO;
             $tarefaInstalacao->data_inicio = $this->data_fim;
             $tarefaInstalacao->save();

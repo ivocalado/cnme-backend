@@ -211,7 +211,7 @@ class DashboardController extends Controller
     protected $newValue = array();
     public function queryProjetosEtapasExtrato(Request $request){
         $queryComponent = new QueryComponent();
-        $result =  $queryComponent->queryProjetosEtapasExtrato();
+        $result =  $queryComponent->queryProjetosEtapasExtrato($request->uf);
 
         collect($result)->map(function($v){
             $v =  (array)$v;

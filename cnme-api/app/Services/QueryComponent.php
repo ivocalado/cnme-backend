@@ -57,48 +57,63 @@ class QueryComponent{
 
     
     public function queryProjetosEtapasExtrato($uf = null){
-        $result = DB::select("
+        
+        $sql = "
         SELECT 
-	etapa,
-        sum(total) total,
-        COALESCE(SUM(total_andamento),0) as total_andamento,
-        COALESCE(SUM(total_atrasada),0) as total_atrasada,
-        COALESCE(SUM(total_concluida),0) as total_concluida,
-        COALESCE(SUM(total_concluida_atrasada),0) as total_concluida_atrasada
-        FROM
-        (
-        SELECT 
-        etapa, 
-        CASE WHEN status_tarefa = 'ANDAMENTO' THEN COUNT(etapa_id) END as total_andamento, 
-        CASE WHEN status_tarefa = 'ATRASADA' THEN COUNT(etapa_id) END as total_atrasada, 
-        CASE WHEN status_tarefa = 'CONCLUIDA' THEN COUNT(etapa_id) END as total_concluida, 
-        CASE WHEN status_tarefa = 'CONCLUIDA COM ATRASO' THEN COUNT(etapa_id) END as total_concluida_atrasada, 
-        status_tarefa, count(etapa_id) as total
-        FROM
-        (	
-        SELECT 
+            etapa,
+            sum(total) total,
+            COALESCE(SUM(total_aberta),0) as total_aberta,
+            COALESCE(SUM(total_andamento),0) as total_andamento,
+            COALESCE(SUM(total_atrasada),0) as total_atrasada,
+            COALESCE(SUM(total_concluida),0) as total_concluida,
+            COALESCE(SUM(total_concluida_atrasada),0) as total_concluida_atrasada
+            FROM
+            (
+            SELECT 
+            etapa, 
+            CASE WHEN status_tarefa = 'ANDAMENTO' THEN COUNT(etapa_id) END as total_andamento, 
+            CASE WHEN status_tarefa = 'ABERTA' THEN COUNT(etapa_id) END as total_aberta, 
+            CASE WHEN status_tarefa = 'ATRASADA' THEN COUNT(etapa_id) END as total_atrasada, 
+            CASE WHEN status_tarefa = 'CONCLUIDA' THEN COUNT(etapa_id) END as total_concluida, 
+            CASE WHEN status_tarefa = 'CONCLUIDA COM ATRASO' THEN COUNT(etapa_id) END as total_concluida_atrasada, 
+            status_tarefa, count(etapa_id) as total
+            FROM
+            (	
+                SELECT 
 
-        e.tipo as etapa,
-        CASE 
-            WHEN t.data_fim is null and t.data_inicio is not null and t.data_fim_prevista < now() THEN 'ATRASADA'
-            WHEN t.data_fim is null and t.data_inicio is not null THEN 'ANDAMENTO' 
-            WHEN t.data_fim is not null and t.data_fim > t.data_fim_prevista THEN 'CONCLUIDA COM ATRASO'
-            WHEN t.data_fim is not null THEN 'CONCLUIDA'
-           
-        END AS status_tarefa,
-        t.id as tarefa_id,
-        e.id as etapa_id
-        FROM tarefas t
-        INNER JOIN etapas e on e.id = t.etapa_id
-        INNER JOIN projeto_cnmes p on p.id = e.projeto_cnme_id
-        INNER JOIN unidades u2 on u2.id = p.unidade_id
-        WHERE p.data_inicio is not null and p.status != 'CANCELADO' 
-        ORDER BY e.tipo
-        ) as t
+                e.tipo as etapa,
+                CASE 
+                    WHEN t.data_fim is null and t.data_inicio is null and t.data_inicio_prevista >= now() THEN 'ABERTA'
+                    WHEN t.data_fim is null and t.data_inicio is null and t.data_inicio_prevista < now() THEN 'ATRASADA'
+                    WHEN t.data_fim is null and t.data_inicio is not null and t.data_fim_prevista < now() THEN 'ATRASADA'
+                    WHEN t.data_fim is null and t.data_inicio is not null THEN 'ANDAMENTO' 
+                    WHEN t.data_fim is not null and t.data_fim > t.data_fim_prevista THEN 'CONCLUIDA COM ATRASO'
+                    WHEN t.data_fim is not null THEN 'CONCLUIDA'
+                
+                END AS status_tarefa,
+                t.id as tarefa_id,
+                e.id as etapa_id
+                FROM tarefas t
+                INNER JOIN etapas e on e.id = t.etapa_id
+                INNER JOIN projeto_cnmes p on p.id = e.projeto_cnme_id
+                INNER JOIN unidades u2 on u2.id = p.unidade_id
+                INNER JOIN localidades l on l.id = u2.localidade_id
+                INNER JOIN estados es on es.id = l.estado_id
+                WHERE p.status != 'CANCELADO' 
+        ";
+            
+        if($uf){
+            $sql = $sql." and es.sigla = '".$uf."' ";
+        }
+
+        
+        $sql = $sql." ORDER BY e.tipo
+            ) as t
         GROUP BY etapa, status_tarefa
         ) as t2
-        GROUP BY etapa
-        ");
+        GROUP BY etapa";
+
+        $result = DB::select($sql);
 
         return $result; 
     }
