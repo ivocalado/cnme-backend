@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Services\MailSender;
-
+use Event;
 class Tarefa extends Model
 {
     public const STATUS_ABERTA = 'ABERTA';
@@ -91,6 +91,14 @@ class Tarefa extends Model
         return $this->belongsToMany(EquipamentoProjeto::class,'tarefa_equipamento_projeto')->withTimestamps();
     }
 
+    public static function boot() {
+        parent::boot();
+
+        static::updated(function($tarefa) {
+	        Event::fire('tarefa.updated', $tarefa);
+	    });
+    }
+
     public function validate(){
         $messages = [];
 
@@ -124,7 +132,7 @@ class Tarefa extends Model
         }
 
         if($this->isConcluida() && $this->data_fim < $this->data_inicio)
-            $messages["erros"][] = "A tarefa de ".$this->tipo()." está com data início posterior a data início.";
+            $messages["erros"][] = "A tarefa de ".$this->tipo()." está com data início posterior a data fim.";
         
         if($this->isAberta() && $this->data_inicio_prevista < date('Y-m-d')){
             $msg = "A tarefa de ".$this->tipo()." está com seu início atrasado em relação ao cronograma inicial($this->data_inicio_prevista).";

@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Validation\Rule;
 use App\Services\MailSender;
 
+use Event;
+
 class ProjetoCnme extends Model
 {
 
@@ -108,6 +110,14 @@ class ProjetoCnme extends Model
 
     public function recuperar(){
         MailSender::recuperar($this);
+    }
+
+    public static function boot() {
+        parent::boot();
+
+        static::updated(function($projeto) {
+	        Event::fire('projeto.updated', $projeto);
+	    });
     }
 
     public function validate(){

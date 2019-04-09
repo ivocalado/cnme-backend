@@ -18,6 +18,18 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'chamado.updated' => [
+            'App\Events\ChamadoEvent@chamadoUpdated',
+
+        ],
+        'projeto.updated' => [
+            'App\Events\ProjetoEvent@projetoUpdated',
+
+        ],
+        'tarefa.updated' => [
+            'App\Events\TarefaEvent@tarefaUpdated',
+
+        ]
     ];
 
     /**
@@ -29,6 +41,5 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
     }
 }

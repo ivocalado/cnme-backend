@@ -305,6 +305,11 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::apiResource('chamados', 'API\ChamadoController');
     Route::post('chamados/c/{id}/add-comment','API\ChamadoController@addComment');
+
+    Route::post('comments/{comment_type}/{id}/add-comment','API\CommentController@addComment');
+    Route::get('comments/{comment_type}/{id}/comments','API\CommentController@comments');
+    Route::delete('comments/{id}','API\CommentController@destroy');
+    Route::put('comments/{id}','API\CommentController@update');
 });
 
 
