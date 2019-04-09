@@ -152,8 +152,6 @@ class EtapaController extends Controller
 
             throw $e;
         }
-
-        
         
     }
 

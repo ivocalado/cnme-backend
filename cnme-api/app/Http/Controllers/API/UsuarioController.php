@@ -351,8 +351,4 @@ class UsuarioController extends Controller
                 array('message' => "Token não informado.") , 422);
         }        
     }
-
-   
-
-
 }
