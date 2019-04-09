@@ -103,6 +103,11 @@ class ProjetoCnme extends Model
         return $this->hasMany(EquipamentoProjeto::class);
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'comment');
+    }
+
     public function notificar(){
         if($this->status === ProjetoCnme::STATUS_CANCELADO)
             MailSender::cancelamento($this);

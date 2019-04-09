@@ -91,6 +91,11 @@ class Tarefa extends Model
         return $this->belongsToMany(EquipamentoProjeto::class,'tarefa_equipamento_projeto')->withTimestamps();
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'comment');
+    }
+
     public static function boot() {
         parent::boot();
 

@@ -70,6 +70,12 @@ class Unidade extends Model
         return $this->isMec() || $this->isTvEscola();
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'comment');
+    }
+
+
     public $rules = [
         'nome'    =>  'required|max:255',
         'email'    =>  'required|unique:unidades|email|max:255',
