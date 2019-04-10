@@ -9,14 +9,20 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CommentResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\ProjetoCnme;
 
 class CommentController extends Controller
 {
 
     public function addComment(Request $request, $commentType, $commentableId ){
         try{
-            $commentType = "App\\Models\\".ucfirst($commentType);
-            if(class_exists($commentType)){
+
+            $commentable = Comment::findCommentable($commentType, $commentableId);
+
+            $commentType = $commentType === "projeto" ? 
+                                                    "App\\Models\\ProjetoCnme" : 
+                                                    "App\\Models\\".ucfirst($commentType);
+            if(class_exists($commentType) && $commentable){
                 $comment = new Comment();
                 $comment->build($request->content,
                             Auth::user(),
@@ -28,8 +34,12 @@ class CommentController extends Controller
 
                 return new CommentResource($comment);
             }else{
-                return response()->json(
-                    array('message' => 'Classe '.$commentType.' não existe no modelo.') , 422);
+                if(!class_exists($commentType))
+                    return response()->json(
+                        array('message' => 'Classe '.$commentType.' não existe no modelo.') , 422);
+            else
+                    return response()->json(
+                        array('message' => 'Não encontrou um registro de '.$commentType.' com o identificador '.$commentableId) , 422);
             }
 
         }catch(\Exception $e){
@@ -40,17 +50,24 @@ class CommentController extends Controller
 
     public function comments($commentType, $commentableId ){
 
+        $commentable = Comment::findCommentable($commentType, $commentableId);
 
-        $commentType = "App\\Models\\".ucfirst($commentType);
-
-        if(class_exists($commentType)){
+        $commentType = $commentType === "projeto" ? 
+                                                    "App\\Models\\ProjetoCnme" : 
+                                                    "App\\Models\\".ucfirst($commentType);
+        
+        if(class_exists($commentType) && $commentable){
             $comments = Comment::where([
                 ['comment_type', '=', $commentType ],
                 ['comment_id', '=', $commentableId ]
             ])->get();
         }else{
-            return response()->json(
-                array('message' => 'Classe '.$commentType.' não existe no modelo.') , 422);
+            if(!class_exists($commentType))
+                return response()->json(
+                    array('message' => 'Classe '.$commentType.' não existe no modelo.') , 422);
+            else
+                return response()->json(
+                    array('message' => 'Não encontrou um registro de '.$commentType.' com o identificar '.$commentableId) , 422);
         }
        
 

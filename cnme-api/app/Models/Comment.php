@@ -34,4 +34,21 @@ class Comment extends Model
     public function usuario(){
         return $this->belongsTo(User::class)->withTrashed();
     }
+
+    public static function findCommentable($commentType, $commentableId){
+        
+        switch($commentType){
+            case "projeto":
+                return ProjetoCnme::find($commentableId);
+            case "tarefa":
+                return  Tarefa::find($commentableId);
+            case "chamado":
+                return Chamado::find($commentableId);
+            case "unidade":
+                return  Unidade::find($commentableId);
+            default:
+                return null;
+        }
+
+    }
 }

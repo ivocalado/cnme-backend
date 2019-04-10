@@ -6862,6 +6862,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/comments/projeto/1/add-comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\": \"grande parteeeeeeeeeeeee\"\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/comments/projeto/1/add-comment",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"comments",
+								"projeto",
+								"1",
+								"add-comment"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
