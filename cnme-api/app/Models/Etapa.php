@@ -186,9 +186,9 @@ class Etapa extends Model
         foreach($avisosEtapas as $k => $a)
             $messages["avisos"][] = $a[0];
         
-        $infosEtapas = ($tarefaMessages->pluck("avisos")->filter()->all());
+        $infosEtapas = ($tarefaMessages->pluck("infos")->filter()->all());
         foreach($infosEtapas as $k => $i)
-            $messages["avisos"][] = $i[0];
+            $messages["infos"][] = $i[0];
              
         
         return $messages;

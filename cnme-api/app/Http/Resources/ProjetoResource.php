@@ -14,6 +14,11 @@ class ProjetoResource extends JsonResource
      */
     public function toArray($request)
     {
+        $messages = $this->validate();
+
+        $avisos = ($messages &&  array_key_exists("avisos", $messages) && count($messages["avisos"]) > 0);
+        $infos = ($messages && array_key_exists("infos", $messages) && count($messages["infos"]) > 0);
+        $erros = ($messages && array_key_exists("erros", $messages) && count($messages["erros"]) > 0);
         return [
             'id' => $this->id,
             'numero' => $this->numero,
@@ -27,8 +32,12 @@ class ProjetoResource extends JsonResource
             'data_fim' => (string)$this->data_fim,
             'data_inicio_previsto' => (string)$this->data_inicio_previsto,
             'data_fim_previsto' => (string)$this->data_fim_previsto,
+            'avisos' => $avisos,
+            'infos' => $infos,
+            'erros' => $erros,
+            'messages' => $this->validate(),
             'created_at' => (string)$this->created_at,
-            'updated_at' => (string)$this->updated_at
+            'updated_at' => (string)$this->updated_at,
         ];
     }
 }

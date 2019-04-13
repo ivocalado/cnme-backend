@@ -151,8 +151,6 @@ class EnviarController extends Controller
             $etapaEnvio->save();
             DB::commit();
 
-            
-
             if($request->notificar  === 'true')
                 $tarefaEnvio->notificar();
                 

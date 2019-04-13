@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EquipamentoTableSeeder::class);
 
         $this->call(UpdateEstadoRegiaoSeeder::class);
+        $this->call(DataBaseTestSeeder::class);
 
        
     }

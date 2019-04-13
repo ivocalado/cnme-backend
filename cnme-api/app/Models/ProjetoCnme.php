@@ -125,6 +125,12 @@ class ProjetoCnme extends Model
 	    });
     }
 
+    /*info  -    Info: Informação sobre conclusao ou inicio atrasado, apenas notifica. Menor nível de alerta
+        Ex.: Houve um atraso de...
+
+    */
+    //aviso -   Alert: 
+    //erro  -    Critical: Erro da aplicação. Inconsistência nos dados
     public function validate(){
         $messages = [];
         
@@ -149,8 +155,8 @@ class ProjetoCnme extends Model
         if($this->isAtivado() && !isset($this->data_fim))
             $messages["erros"][] = "Projeto $this->numero está concluído porém não tem data fim registrada.";
         
-        if($this->isPlanejamento() && $this->data_inicio_previsto > date('Y-m-d') && $this->data_inicio == null){
-            $msg = "Projeto $this->numero está em planejamento porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto).";
+        if($this->isPlanejamento() && $this->data_inicio_previsto < date('Y-m-d') && $this->data_inicio == null){
+            $msg = "Projeto $this->numero está em planejamento porém já está atrasado segundo o cronograma. Início previsto($this->data_inicio_previsto).";
             $dateInterval = (new \DateTime(date('Y-m-d')))->diff(new \DateTime($this->data_inicio_previsto));
             $msg =  $msg." Há um atraso de ".$dateInterval->days." dias.";
             $messages["avisos"][] = $msg;
@@ -179,9 +185,9 @@ class ProjetoCnme extends Model
         foreach($avisosEtapas as $k => $a)
             $messages["avisos"][] = $a[0];
         
-        $infosEtapas = ($messageEtapas->pluck("avisos")->filter()->all());
+        $infosEtapas = ($messageEtapas->pluck("infos")->filter()->all());
         foreach($infosEtapas as $k => $i)
-            $messages["avisos"][] = $i[0];
+            $messages["infos"][] = $i[0];
         
         
         return $messages;
