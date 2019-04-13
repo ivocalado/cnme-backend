@@ -17,6 +17,7 @@ use App\Models\Unidade;
 use App\Models\StatusChamado;
 use App\Models\TipoChamado;
 use Illuminate\Support\Facades\Auth;
+use App\Services\MailSender;
 
 class ChamadoEvent
 {
@@ -40,6 +41,11 @@ class ChamadoEvent
     public function broadcastOn()
     {
         return new PrivateChannel('channel-name');
+    }
+
+    public function chamadoCreated(Chamado $chamado)
+    {
+        MailSender::notificarChamadoCriado($chamado);
     }
 
     public function chamadoUpdated(Chamado $chamado)
@@ -88,9 +94,14 @@ class ChamadoEvent
                 }//end if not updated_at
             }//end foreach
 
-            $comment = new Comment();
-            $comment->build($message,Auth::user(),get_class($chamado), $chamado->id, true);
-            $comment->save();
+            if($message){
+                $comment = new Comment();
+                $comment->build($message, Auth::user(),get_class($chamado), $chamado->id, true);
+                $comment->save();
+
+                MailSender::notificarChamadoAtualizado($chamado, $message);
+            }
+            
             
 
         }

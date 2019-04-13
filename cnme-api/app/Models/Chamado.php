@@ -80,6 +80,10 @@ class Chamado extends Model
 
         static::updated(function($chamado) {
 	        Event::fire('chamado.updated', $chamado);
+        });
+        
+        static::created(function($chamado) {
+	        Event::fire('chamado.created', $chamado);
 	    });
     }
 }

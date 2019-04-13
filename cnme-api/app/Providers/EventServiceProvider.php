@@ -22,6 +22,10 @@ class EventServiceProvider extends ServiceProvider
             'App\Events\ChamadoEvent@chamadoUpdated',
 
         ],
+        'chamado.created' => [
+            'App\Events\ChamadoEvent@chamadoCreated',
+
+        ],
         'projeto.updated' => [
             'App\Events\ProjetoEvent@projetoUpdated',
 

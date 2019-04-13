@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Mail;
 use App\Models\Tarefa;
+use Illuminate\Support\Facades\Auth;
 
 class MailSender{
     
@@ -164,6 +165,50 @@ class MailSender{
         Mail::send( 'emails.enviar-all', $data, function($message) use ($to_name, $to_email) {
             $message->to($to_email, $to_name)
                 ->subject('Plataforma CNME - Processo de Implantação');
+                $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação');
+        });
+    }
+
+    public static function notificarChamadoCriado($chamado){
+        $usuarioReponsavel = $chamado->usuarioResponsavel ? $chamado->usuarioResponsavel : $chamado->unidadeResponsavel->responsavel;
+
+        $to_name    = $usuarioReponsavel->name;
+        $to_email   = (getenv('APP_ENV') === 'local') ? getenv('MAIL_USERNAME') : $usuarioReponsavel->email;
+
+        $data = array(
+            'chamado'   => $chamado,
+            'responsavel' => $usuarioReponsavel,
+            "APP_URL"   =>  getenv('APP_URL')
+        );
+
+        Mail::send( 'emails.chamado-criado', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                ->subject("Plataforma CNME - Abertura de Chamado");
+                $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação');
+        });
+    }
+
+    public static function notificarChamadoAtualizado($chamado, $messages){
+        $usuarioReponsavel = $chamado->usuarioResponsavel ? $chamado->usuarioResponsavel : $chamado->unidadeResponsavel->responsavel;
+
+        $usuario = Auth::user();
+        $to_name    = $usuarioReponsavel->name;
+        $to_email   = (getenv('APP_ENV') === 'local') ? getenv('MAIL_USERNAME') : $usuarioReponsavel->email;
+
+        $messagesArray = explode("\n", $messages);
+        array_pop($messagesArray);
+
+        $data = array(
+            'responsavel' => $usuarioReponsavel,
+            'usuario'   => $usuario,
+            'chamado'   => $chamado,
+            'messages'  =>  $messagesArray,
+            "APP_URL"   =>  getenv('APP_URL')
+        );
+
+        Mail::send( 'emails.chamado-atualizado', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                ->subject("Plataforma CNME - Chamado atualizado");
                 $message->from(getenv('MAIL_USERNAME'),'CNME - Centro Nacional de Mídias da Educação');
         });
     }
