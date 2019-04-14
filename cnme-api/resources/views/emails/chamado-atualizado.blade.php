@@ -5,14 +5,21 @@ Olá <strong>{{ $responsavel->name }}</strong>
     {{$usuario->name}} do(a) {{$chamado->usuario->unidade->nome}} através do sistema
     em {{$chamado->updated_at}}.
     <br/>
-    Alterações:
-    <div class="changes">
-        <ul>
-        @foreach ($messages as $m)
-            <li>{{$m}}</li>
-        @endforeach
-        </ul>
-    </div>
+    @if ($comment->isAuto())
+        Alterações:
+        <div class="changes">
+            <ul>
+            @foreach ($messages as $m)
+                <li>{{$m}}</li>
+            @endforeach
+            </ul>
+        </div>
+    @else
+        <div class="comment">
+            {{$comment->content}}
+        </div>
+    @endif
+    
 
     <br/>
     Você está como responsável por esse chamado, o avalie mais rápido possível.

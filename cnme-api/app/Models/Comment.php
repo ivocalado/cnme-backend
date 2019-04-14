@@ -8,7 +8,7 @@ use App\User;
 class Comment extends Model
 {
     protected $fillable = [
-        'usuario_id', 'comment_id', 'comment_type', 'tipo'
+        'usuario_id', 'comment_id', 'comment_type', 'tipo', 'content'
     ];
 
     function __construct()
@@ -25,6 +25,13 @@ class Comment extends Model
         $this->tipo = $auto ? 'auto':'comment';
     }
 
+    public function isAuto(){
+        return $this->tipo == 'auto';
+    }
+
+    public function isCommentUser(){
+        return $this->tipo == 'comment';
+    }
 
     public function comment()
     {

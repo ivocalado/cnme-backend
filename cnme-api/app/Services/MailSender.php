@@ -188,19 +188,23 @@ class MailSender{
         });
     }
 
-    public static function notificarChamadoAtualizado($chamado, $messages){
+    public static function notificarChamadoAtualizado($chamado, $comment){
         $usuarioReponsavel = $chamado->usuarioResponsavel ? $chamado->usuarioResponsavel : $chamado->unidadeResponsavel->responsavel;
 
         $usuario = Auth::user();
         $to_name    = $usuarioReponsavel->name;
         $to_email   = (getenv('APP_ENV') === 'local') ? getenv('MAIL_USERNAME') : $usuarioReponsavel->email;
 
-        $messagesArray = explode("\n", $messages);
-        array_pop($messagesArray);
-
+        $messagesArray = array();
+        if( $comment->isAuto() ){
+            $messagesArray = explode("\n", $comment->content);
+            array_pop($messagesArray);
+        }
+        
         $data = array(
             'responsavel' => $usuarioReponsavel,
-            'usuario'   => $usuario,
+            'usuario'   => $comment->usuario,
+            'comment'      => $comment,
             'chamado'   => $chamado,
             'messages'  =>  $messagesArray,
             "APP_URL"   =>  getenv('APP_URL')

@@ -58,7 +58,7 @@ class ChamadoEvent
             $message = "";
             foreach($changes as $attr => $value)
             {
-                if($attr != "updated_at"){
+                if($attr != "updated_at" && $attr != "notificado_at"){
                     switch ($attr){
                         case('usuario_responsavel_id'):
                             $usuarioResponsavelOld = User::find($chamado->getOriginal("usuario_responsavel_id"));
@@ -99,7 +99,7 @@ class ChamadoEvent
                 $comment->build($message, Auth::user(),get_class($chamado), $chamado->id, true);
                 $comment->save();
 
-                MailSender::notificarChamadoAtualizado($chamado, $message);
+                MailSender::notificarChamadoAtualizado($chamado, $comment);
             }
             
             

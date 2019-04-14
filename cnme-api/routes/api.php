@@ -305,6 +305,8 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::apiResource('chamados', 'API\ChamadoController');
     Route::post('chamados/c/{id}/add-comment','API\ChamadoController@addComment');
+    Route::get('chamados/{id}/notificar-criacao','API\ChamadoController@notificar');
+    Route::get('chamados/{chamadoId}/comment/{commentId}/notificar','API\ChamadoController@notificarComment');
 
     Route::post('comments/{comment_type}/{id}/add-comment','API\CommentController@addComment');
     Route::get('comments/{comment_type}/{id}/comments','API\CommentController@comments');

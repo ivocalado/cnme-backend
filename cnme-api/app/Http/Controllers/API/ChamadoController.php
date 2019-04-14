@@ -9,6 +9,7 @@ use App\Models\Chamado;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use App\Services\MailSender;
 
 class ChamadoController extends Controller
 {
@@ -105,5 +106,20 @@ class ChamadoController extends Controller
         
         }
 
+    }
+
+    public function notificar(Request $request, $chamadoId){
+        $chamado = Chamado::find($chamadoId);
+        MailSender::notificarChamadoCriado($chamado);
+        $chamado->notificado_at = date('Y-m-d H:i:s');
+        $chamado->save();
+    }
+
+    public function notificarComment(Request $request, $chamadoId, $commentId){
+        $chamado = Chamado::find($chamadoId);
+        $comment = Comment::find($commentId);
+        MailSender::notificarChamadoAtualizado($chamado, $comment);
+        $chamado->notificado_at = date('Y-m-d H:i:s');
+        $chamado->save();
     }
 }
