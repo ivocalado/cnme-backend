@@ -29,7 +29,7 @@ class ChamadoResource extends JsonResource
             'privado' => $this->privado,
             'data_inicio' => (string)$this->data_inicio,
             'data_fim' => (string)$this->data_fim,
-            
+            'notificado_at' => (string)$this->notificado_at,
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at
         ];
