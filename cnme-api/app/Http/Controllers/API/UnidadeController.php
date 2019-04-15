@@ -273,10 +273,7 @@ class UnidadeController extends Controller
 
     public function usuarios($idUnidade){
      
-        return response()->json(
-            array(
-            "data" => UserResource::collection(User::where('unidade_id', $idUnidade)->withTrashed()->get())
-            ), 200);
+        return  UserResource::collection(User::where('unidade_id', $idUnidade)->withTrashed()->paginate(10));
     }
 
     public function search(Request $request){

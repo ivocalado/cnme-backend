@@ -7,14 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Models\TipoEquipamento;
 use App\Models\Equipamento;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\TipoEquipamentoResource;
 
 class TipoEquipamentoController extends Controller
 {
     public function index()
     {
-        return response()->json(
-            TipoEquipamento::paginate(25)
-        );
+        return TipoEquipamentoResource::collection(TipoEquipamento::paginate(10));
     }
 
     public function store(Request $request)
