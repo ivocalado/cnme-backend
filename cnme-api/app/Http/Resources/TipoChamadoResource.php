@@ -16,7 +16,8 @@ class TipoChamadoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nome' => $this->nome
+            'nome' => $this->nome,
+            'descricao' => $this->descricao
         ];
     }
 }

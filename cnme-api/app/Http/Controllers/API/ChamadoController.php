@@ -10,9 +10,29 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use App\Services\MailSender;
+use App\Models\StatusChamado;
+use App\Http\Resources\StatusChamadoResource;
+use App\Http\Resources\TipoChamadoResource;
+use App\Models\TipoChamado;
+use App\Services\UnidadeService;
 
 class ChamadoController extends Controller
 {
+
+    protected $unidadeService;
+
+    function __construct() {
+        $this->unidadeService = new UnidadeService();
+    }
+
+    public function status(){
+        return StatusChamadoResource::collection(StatusChamado::all());
+    }
+
+    public function tipos(){
+        return TipoChamadoResource::collection(TipoChamado::all());
+    }
+
     public function index(){
         return ChamadoResource::collection(Chamado::paginate(25));  
     }
@@ -58,8 +78,24 @@ class ChamadoController extends Controller
                 "messages" => $validator->errors()
                 ), 422); 
         }
+        if(!$request->has('unidade_responsavel_id')){
+            $tvEscola = $this->unidadeService->tvescola();
+            $chamado->unidadeResponsavel()->associate($tvEscola);
+        }
 
         $chamado->fill($chamadoData);
+
+        if($chamado->usuarioResponsavel){
+            if($chamado->usuarioResponsavel->unidade_id != $chamado->unidadeResponsavel->id){
+                return response()->json(
+                    array(
+                    "messages" => "O usuário responsável(".$chamado->usuarioResponsavel->name.") não  está associado a unidade ".$chamado->unidadeResponsavel->nome
+                    ), 422); 
+            }
+        }else{
+            
+        }
+
         $chamado->usuario()->associate(Auth::user());
         $chamado->save();
         

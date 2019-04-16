@@ -17,9 +17,9 @@ use App\Http\Resources\UnidadeResource;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-     return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//      return $request->user();
+// });
 
 Route::post('login', 'API\AuthController@login');
 Route::post('usuarios/confirmar','API\UsuarioController@confirmar');
@@ -304,6 +304,8 @@ Route::middleware('jwt.auth')->group(function(){
     //CHAMADOS
 
     Route::apiResource('chamados', 'API\ChamadoController');
+    Route::get('chamados/c/status', 'API\ChamadoController@status');
+    Route::get('chamados/c/tipos', 'API\ChamadoController@tipos');
     Route::post('chamados/c/{id}/add-comment','API\ChamadoController@addComment');
     Route::get('chamados/{id}/notificar-criacao','API\ChamadoController@notificar');
     Route::get('chamados/{chamadoId}/comment/{commentId}/notificar','API\ChamadoController@notificarComment');
