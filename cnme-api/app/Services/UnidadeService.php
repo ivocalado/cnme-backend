@@ -26,4 +26,10 @@ class UnidadeService{
 
         return $unidades;
     }
+
+    public function empresas(){
+        $empresas = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate(25);
+
+        return $empresas;
+    }
 }

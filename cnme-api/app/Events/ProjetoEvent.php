@@ -12,6 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Models\ProjetoCnme;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class ProjetoEvent
 {
@@ -55,7 +56,8 @@ class ProjetoEvent
             }//end foreach
 
             $comment = new Comment();
-            $comment->build($message,Auth::user(),get_class($projeto), $projeto->id, true);
+            $user = Auth::check()? Auth::user() : User::where('tipo', 'administrador')->first(); 
+            $comment->build($message,$user ,get_class($projeto), $projeto->id, true);
             $comment->save();
         }
     }

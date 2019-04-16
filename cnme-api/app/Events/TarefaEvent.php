@@ -12,6 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Models\Tarefa;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class TarefaEvent
 {
@@ -81,7 +82,10 @@ class TarefaEvent
             }//end foreach
 
             $comment = new Comment();
-            $comment->build($message,Auth::user(),get_class($tarefa), $tarefa->id, true);
+
+            $user = Auth::check()? Auth::user() : User::where('tipo', 'administrador')->first(); 
+            $comment->build($message, $user, get_class($tarefa), $tarefa->id, true);
+            
             $comment->save();
         }
     }
