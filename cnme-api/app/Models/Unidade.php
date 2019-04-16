@@ -27,7 +27,8 @@ class Unidade extends Model
     }
 
     protected $fillable = [
-        'id','nome', 'email','email_institucional', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id','responsavel_id'
+        'id','nome', 'email','email_institucional', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id',
+        'responsavel_id','usuario_chamados_id'
     ];
 
     public function projetoCnme(){
@@ -44,6 +45,10 @@ class Unidade extends Model
 
     public function responsavel(){
         return $this->belongsTo(User::class,'responsavel_id');
+    }
+
+    public function usuarioChamados(){
+        return $this->belongsTo(User::class,'usuario_chamados_id');
     }
 
     public function usuarios(){
@@ -85,7 +90,8 @@ class Unidade extends Model
         'telefone'   => 'nullable',
         'url'   => 'nullable|url|max:255',
         'tipo_unidade_id' => 'required|integer|exists:tipo_unidades,id',
-        'responsavel_id' => 'integer|exists:users,id'
+        'responsavel_id' => 'integer|exists:users,id',
+        'usuario_chamados_id' => 'integer|exists:users,id'
        
     ];
 

@@ -90,6 +90,7 @@ class UnidadeController extends Controller
             $usuarioGestor->save();
 
             $unidade->responsavel_id = $usuarioGestor->id;
+            $unidade->usuario_chamados_id = $usuarioGestor->id;
             $unidade->save();
 
             DB::commit();
@@ -135,22 +136,12 @@ class UnidadeController extends Controller
 
             $unidadeData = $request->all();
 
-            // $validator = Validator::make($unidadeData, $unidade->rules, $unidade->messages);
-
-            // if ($validator->fails()) {
-            //     return response()->json(
-            //         array(
-            //         "messages" => $validator->errors()
-            //         ), 422); 
-            // }
-
             if($request->has('responsavel_id')){
                 $novoReponsavel = User::findOrFail($request['responsavel_id']);
                 if(!$novoReponsavel->isGestor()){
                     $novoReponsavel->tipo = User::TIPO_GESTOR;
                     $novoReponsavel->save();
                 }
-
             }
 
             $unidade->fill($unidadeData);

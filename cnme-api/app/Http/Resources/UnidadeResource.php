@@ -27,6 +27,7 @@ class UnidadeResource extends JsonResource
             'localidade' => new LocalidadeResource($this->localidade),
             'tipo_unidade' => $this->tipoUnidade,
             'responsavel' => $this->responsavel,
+            'usuarioChamados' => $this->usuarioChamados,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at];
     }

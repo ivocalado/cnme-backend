@@ -89,11 +89,11 @@ class ChamadoController extends Controller
             if($chamado->usuarioResponsavel->unidade_id != $chamado->unidadeResponsavel->id){
                 return response()->json(
                     array(
-                    "messages" => "O usuário responsável(".$chamado->usuarioResponsavel->name.") não  está associado a unidade ".$chamado->unidadeResponsavel->nome
+                        "messages" => "O usuário responsável(".$chamado->usuarioResponsavel->name.") não  está associado a unidade ".$chamado->unidadeResponsavel->nome
                     ), 422); 
             }
         }else{
-            
+            $chamado->usuarioResponsavel()->associate($chamado->unidadeResponsavel->usuarioChamados);
         }
 
         $chamado->usuario()->associate(Auth::user());

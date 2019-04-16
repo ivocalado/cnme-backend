@@ -10,7 +10,7 @@ class Chamado extends Model
 {
 
     protected $fillable = [
-        'assunto', 'descricao', 'projeto_cnme_id', 'tarefa_id', 'usuario_id',
+        'assunto', 'descricao', 'projeto_cnme_id', 'tarefa_id',
         'usuario_responsavel_id', 'unidade_responsavel_id', 'data_inicio', 'data_fim',
         'status_id', 'tipo_id', 'prioridade', 'privado'
     ];
