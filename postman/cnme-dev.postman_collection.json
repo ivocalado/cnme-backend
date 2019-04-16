@@ -2494,7 +2494,8 @@
 								"api",
 								"unidades"
 							]
-						}
+						},
+						"description": "codigo_inep\nnome\nemail\nurl\ndiretor\ntelefone\nlocalidade_id\ntipo_unidade_id\ndescricao\nemail_institucional"
 					},
 					"response": []
 				},
@@ -2654,6 +2655,47 @@
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT/api/unidades",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuario_chamados_id\": 33\n}"
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades/6",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades",
+								"6"
+							]
+						},
+						"description": "'nome', 'email','email_institucional', 'codigo_inep', 'diretor', 'telefone', 'url',\n        'responsavel_id','usuario_chamados_id"
 					},
 					"response": []
 				}
@@ -6443,13 +6485,13 @@
 							{
 								"key": "Content-Type",
 								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"assunto\": \"Novo chamado\",\n\t\"descricao\": \"Erro apresentado enquanto...\",\n\t\"usuario_id\":\"1\",\n\t\"projeto_cnme_id\":\"1\",\n\t\"status_id\":\"10\",\n\t\"tipo_id\":\"1\",\n\t\"usuario_responsavel_id\": \"1\",\n\t\"unidade_responsavel_id\": \"1\",\n\t\"prioridade\": \"1\"\n}"
+							"raw": "{\n\t\"assunto\": \"Novo chamado3\",\n\t\"descricao\": \"Erro apresentado enquanto..3.\",\n\t\"usuario_id\":\"1\",\n\t\"projeto_cnme_id\":\"1\",\n\t\"status_id\":\"10\",\n\t\"tipo_id\":\"1\",\n\t\"prioridade\": \"1\",\n\t\"usuario_responsavel_id\": 21\n}"
 						},
 						"url": {
 							"raw": "http://{{HOSTNAME}}/api/chamados",
@@ -6461,7 +6503,8 @@
 								"api",
 								"chamados"
 							]
-						}
+						},
+						"description": "assunto \ndescricao\nprojeto_cnme_id \ntarefa_id *\nusuario_id ** logado\nusuario_responsavel_id integer - default o responsável dos chamados\nunidade_responsavel_id integer - default TV Escola\ndata_inicio \ndata_fim\nstatus_id\ntipo_id\nprioridade DEFAULT 2\nprivado DEFAULT false"
 					},
 					"response": []
 				},
@@ -6523,10 +6566,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prioridade\": \"4\",\n\t\"assunto\": \"643699\",\n\t\"usuario_responsavel_id\": 4,\n\t\"unidade_responsavel_id\": 4\n}"
+							"raw": "{\n\t\"prioridade\": \"5\",\n\t\"assunto\": \"EEEEEE\"\n}"
 						},
 						"url": {
-							"raw": "http://{{HOSTNAME}}/api/chamados/3",
+							"raw": "http://{{HOSTNAME}}/api/chamados/4",
 							"protocol": "http",
 							"host": [
 								"{{HOSTNAME}}"
@@ -6534,7 +6577,7 @@
 							"path": [
 								"api",
 								"chamados",
-								"3"
+								"4"
 							]
 						}
 					},
@@ -6619,6 +6662,156 @@
 								"c",
 								"3",
 								"add-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/chamados/4/notificar-criado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados/4/notificar-criacao",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"4",
+								"notificar-criacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notificar Comment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados/4/comment/9/notificar",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"4",
+								"comment",
+								"9",
+								"notificar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/chamados/c/status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/chamados/c/status",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"c",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/chamados/c/tipos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/chamados/c/tipos",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"c",
+								"tipos"
 							]
 						}
 					},
@@ -7964,6 +8157,43 @@
 								"projeto-cnme",
 								"1",
 								"validar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UTILS",
+			"item": [
+				{
+					"name": "{{HOSTNAME}}/api/kits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/kits",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"kits"
 							]
 						}
 					},
