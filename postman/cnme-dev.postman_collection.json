@@ -6454,7 +6454,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{HOSTNAME}}/api/chamados",
+							"raw": "http://{{HOSTNAME}}/api/chamados?per_page=5",
 							"protocol": "http",
 							"host": [
 								"{{HOSTNAME}}"
@@ -6462,6 +6462,12 @@
 							"path": [
 								"api",
 								"chamados"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "5"
+								}
 							]
 						}
 					},
@@ -6668,7 +6674,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /api/chamados/4/notificar-criado",
+					"name": "GET /api/chamados/1/notificar-criado",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -6687,7 +6693,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{HOSTNAME}}/api/chamados/4/notificar-criacao",
+							"raw": "http://{{HOSTNAME}}/api/chamados/1/notificar-criacao",
 							"protocol": "http",
 							"host": [
 								"{{HOSTNAME}}"
@@ -6695,7 +6701,7 @@
 							"path": [
 								"api",
 								"chamados",
-								"4",
+								"1",
 								"notificar-criacao"
 							]
 						}
