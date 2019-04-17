@@ -32,9 +32,10 @@ class ProjetoController extends Controller
         return ProjetoCnme::status();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return ProjetoResource::collection(ProjetoCnme::paginate(25));   
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return ProjetoResource::collection(ProjetoCnme::paginate( $per_page ));   
     }
 
    
@@ -254,8 +255,8 @@ class ProjetoController extends Controller
             });
 
         }
-
-        return ProjetoResource::collection($list->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return ProjetoResource::collection($list->paginate( $per_page ));
     }
 
     public function andamento(Request $request){
@@ -279,8 +280,9 @@ class ProjetoController extends Controller
                                 [ProjetoCnme::STATUS_ENVIADO, 
                                 ProjetoCnme::STATUS_ENTREGUE, 
                                 ProjetoCnme::STATUS_INSTALADO, ]);
-        
-        return ProjetoResource::collection($list->paginate(25));
+                                
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return ProjetoResource::collection($list->paginate($per_page));
 
     }
 
@@ -320,8 +322,8 @@ class ProjetoController extends Controller
                 $query->where('unidade_responsavel_id','=',$this->unidadeResponsavelId);
         });
 
-
-        return ProjetoResource::collection($list->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return ProjetoResource::collection($list->paginate( $per_page ));
     }
 
     public function getEtapaEnvio($projetoId){

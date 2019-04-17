@@ -23,19 +23,22 @@ class UsuarioController extends Controller
         return User::tipos();
     }
 
-    public function removidos()
+    public function removidos(Request $request)
     {
-        return UserResource::collection(User::onlyTrashed()->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UserResource::collection(User::onlyTrashed()->paginate($per_page));
     }
 
-    public function all()
+    public function all(Request $request)
     {
-        return UserResource::collection(User::withTrashed()->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UserResource::collection(User::withTrashed()->paginate($per_page));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return UserResource::collection(User::paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UserResource::collection(User::paginate($per_page));
     }
     
     public function store(Request $request)
@@ -305,8 +308,8 @@ class UsuarioController extends Controller
             $list->orWhere("email", 'ILIKE', '%'.$request->q.'%');
             $list->orWhere("cpf",$request->q);
         }
-
-        return UserResource::collection($list->orderBy('name')->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UserResource::collection($list->orderBy('name')->paginate($per_page));
     }
 
     public function findByEmail(Request $request){
@@ -321,7 +324,9 @@ class UsuarioController extends Controller
         $list->whereHas('unidade', function($query1){
             $query1->where('classe','=',Unidade::CLASSE_POLO);
         });
-        return UserResource::collection($list->orderBy('created_at')->paginate(25));
+
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UserResource::collection($list->orderBy('created_at')->paginate( $per_page ));
     }
 
     public function getGestoresNaoConfirmados(Request $request){
@@ -334,7 +339,9 @@ class UsuarioController extends Controller
 
 
         $list->whereNull('email_verified_at');
-        return UserResource::collection($list->orderBy('created_at')->paginate(25));
+
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UserResource::collection($list->orderBy('created_at')->paginate( $per_page ));
     }
 
     public function getUserPorToken(Request $request){

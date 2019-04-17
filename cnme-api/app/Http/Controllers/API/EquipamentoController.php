@@ -16,19 +16,21 @@ class EquipamentoController extends Controller
 
     protected $q;
 
-    public function removidos()
+    public function removidos(Request $request)
     {
-        return EquipamentoResource::collection(Equipamento::onlyTrashed()->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return EquipamentoResource::collection(Equipamento::onlyTrashed()->paginate($per_page));
     }
 
     public function all()
     {
-        return EquipamentoResource::collection(Equipamento::withTrashed()->paginate(25));
+        return EquipamentoResource::collection(Equipamento::withTrashed()->get());
     }
    
-    public function index()
+    public function index(Request $request)
     {
-        return EquipamentoResource::collection(Equipamento::paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return EquipamentoResource::collection(Equipamento::paginate($per_page));
     }
 
     public function store(Request $request)
@@ -189,8 +191,8 @@ class EquipamentoController extends Controller
             
             
         }
-
-        return EquipamentoResource::collection($list->orderBy('nome')->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return EquipamentoResource::collection($list->orderBy('nome')->paginate($per_page));
     }
 
 }

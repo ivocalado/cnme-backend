@@ -27,8 +27,9 @@ class UnidadeService{
         return $unidades;
     }
 
-    public function empresas(){
-        $empresas = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate(25);
+    public function empresas($per_page = 25){
+        
+        $empresas = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate( $per_page );
 
         return $empresas;
     }

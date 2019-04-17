@@ -11,9 +11,10 @@ use App\Http\Resources\TipoEquipamentoResource;
 
 class TipoEquipamentoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return TipoEquipamentoResource::collection(TipoEquipamento::paginate(10));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return TipoEquipamentoResource::collection(TipoEquipamento::paginate( $per_page ));
     }
 
     public function store(Request $request)

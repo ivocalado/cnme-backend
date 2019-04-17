@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Log;
 class SolicitacaoProjetoController extends Controller
 {
   
-    public function index()
+    public function index(Request $request)
     {
-        return SolicitacaoResource::collection(SolicitacaoCnme::paginate(25));   
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return SolicitacaoResource::collection(SolicitacaoCnme::paginate( $per_page ));   
     }
 
    

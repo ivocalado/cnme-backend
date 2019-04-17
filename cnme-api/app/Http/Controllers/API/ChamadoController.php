@@ -33,8 +33,9 @@ class ChamadoController extends Controller
         return TipoChamadoResource::collection(TipoChamado::all());
     }
 
-    public function index(){
-        return ChamadoResource::collection(Chamado::paginate(25));  
+    public function index(Request $request){
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return ChamadoResource::collection(Chamado::paginate($per_page));  
     }
 
 
@@ -146,6 +147,11 @@ class ChamadoController extends Controller
 
     public function notificar(Request $request, $chamadoId){
         $chamado = Chamado::find($chamadoId);
+        if(!isset($chamado)){
+            return response()->json(
+                array('message' => 'Chamado não encontrado.') , 404);
+        }
+
         MailSender::notificarChamadoCriado($chamado);
         $chamado->notificado_at = date('Y-m-d H:i:s');
         $chamado->save();
@@ -153,7 +159,18 @@ class ChamadoController extends Controller
 
     public function notificarComment(Request $request, $chamadoId, $commentId){
         $chamado = Chamado::find($chamadoId);
+
+        if(!isset($chamado)){
+            return response()->json(
+                array('message' => 'Chamado não encontrado.') , 404);
+        }
+
         $comment = Comment::find($commentId);
+
+        if(!isset($comment) || $comment->comment_id != $chamadoId){
+            return response()->json(
+                array('message' => 'Comentário não encontrado.') , 404);
+        }
         MailSender::notificarChamadoAtualizado($chamado, $comment);
         $chamado->notificado_at = date('Y-m-d H:i:s');
         $chamado->save();

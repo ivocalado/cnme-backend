@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ChecklistController extends Controller
 {
-    public function index(){
-        return ChecklistResource::collection(Checklist::paginate(25));
+    public function index(Request $request){
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return ChecklistResource::collection(Checklist::paginate( $per_page ));
     }
 
     public function store(Request $request){

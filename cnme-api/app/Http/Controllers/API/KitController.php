@@ -14,20 +14,23 @@ use App\Http\Resources\EquipamentoResource;
 class KitController extends Controller
 {
 
-    public function removidos()
+    public function removidos(Request $request)
     {
-        return KitResource::collection(Kit::onlyTrashed()->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return KitResource::collection(Kit::onlyTrashed()->paginate( $per_page ));
     }
 
-    public function all()
+    public function all(Request $request)
     {
-        return KitResource::collection(Kit::withTrashed()->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return KitResource::collection(Kit::withTrashed()->paginate( $per_page ));
     }
    
    
-    public function index()
+    public function index(Request $request)
     {
-        return KitResource::collection(Kit::paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return KitResource::collection(Kit::paginate( $per_page ));
     }
 
     

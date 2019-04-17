@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Validator;
 class TipoUnidadeController extends Controller
 {
    
-    public function index()
+    public function index(Request $request)
     {
+        $per_page = $request->per_page ? $request->per_page : 25;
         return response()->json(
-            TipoUnidade::paginate(25)
+            TipoUnidade::paginate( $per_page )
         );
     }
 

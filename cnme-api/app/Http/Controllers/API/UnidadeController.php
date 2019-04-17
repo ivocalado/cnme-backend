@@ -22,13 +22,15 @@ class UnidadeController extends Controller
     /**
      * Retornar polos sem projeto
      */
-    public function polosNovos(){
-        return UnidadeResource::collection(Unidade::doesnthave('projetoCnme')->where('classe', Unidade::CLASSE_POLO)->paginate(25));
+    public function polosNovos(Request $request){
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UnidadeResource::collection(Unidade::doesnthave('projetoCnme')->where('classe', Unidade::CLASSE_POLO)->paginate( $per_page ));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return UnidadeResource::collection(Unidade::paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UnidadeResource::collection(Unidade::paginate( $per_page ));
     }
     
     public function store(Request $request)
@@ -262,9 +264,9 @@ class UnidadeController extends Controller
         return new LocalidadeResource($localidade);
     }
 
-    public function usuarios($idUnidade){
-     
-        return  UserResource::collection(User::where('unidade_id', $idUnidade)->withTrashed()->paginate(10));
+    public function usuarios(Request $request, $idUnidade){
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return  UserResource::collection(User::where('unidade_id', $idUnidade)->withTrashed()->paginate( $per_page ));
     }
 
     public function search(Request $request){
@@ -274,7 +276,8 @@ class UnidadeController extends Controller
             $list->orWhere("nome", 'ILIKE', '%'.$request->q.'%');
         }
 
-        return UnidadeResource::collection($list->orderBy('nome')->paginate(25));
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return UnidadeResource::collection($list->orderBy('nome')->paginate( $per_page ));
 
     }
 
@@ -301,13 +304,15 @@ class UnidadeController extends Controller
     }
 
     public function polos(Request $request){
-        $unidades = Unidade::where('classe', Unidade::CLASSE_POLO)->paginate(25);
+        $per_page = $request->per_page ? $request->per_page : 25;
+        $unidades = Unidade::where('classe', Unidade::CLASSE_POLO)->paginate( $per_page );
 
         return UnidadeResource::collection($unidades);
     }
 
     public function empresas(Request $request){
-        $unidades = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate(25);
+        $per_page = $request->per_page ? $request->per_page : 25;
+        $unidades = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate( $per_page );
 
         return UnidadeResource::collection($unidades);
     }
