@@ -130,11 +130,17 @@ class DataBaseTestSeeder extends Seeder
             $this->createEtapaEnvio($projeto);
             $this->createEtapaInstalacao($projeto);
             $this->createEtapaAtivacao($projeto);
-            $tarefaEnvio = $this->enviar($projeto);
 
-            $this->entregarProjeto($projeto, $tarefaEnvio);  
-            $this->instalarProjeto($projeto); 
-            $this->ativarProjeto($projeto);
+            $numero = rand(1, 100);
+
+            if( $numero >= 20)
+                $tarefaEnvio = $this->enviar($projeto);
+            if( $numero >= 30)
+                $this->entregarProjeto($projeto, $tarefaEnvio);
+            if( $numero >= 40)  
+                $this->instalarProjeto($projeto); 
+            if( $numero >= 50) 
+                $this->ativarProjeto($projeto);
             
         }
     }

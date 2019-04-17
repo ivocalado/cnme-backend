@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusChamadoTableSeeder::class);
         $this->call(TipoChamadoTableSeeder::class);
         $this->call(DataBaseTestSeeder::class);
+        $this->call(ChamadoTableSeeder::class);
 
        
     }

@@ -54,7 +54,7 @@ class CreateChamadosTable extends Migration
             $table->dateTime('data_inicio')->nullable();
             $table->dateTime('data_fim')->nullable(); 
 
-            $table->integer('status_id')->unsigned()->default(1);
+            $table->integer('status_id')->unsigned()->default(10);
             $table->foreign('status_id')->references('id')->on('status_chamados');
             //1 Novo
             //2 Aberto

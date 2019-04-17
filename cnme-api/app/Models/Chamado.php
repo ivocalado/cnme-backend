@@ -58,8 +58,8 @@ class Chamado extends Model
         'unidade_responsavel_id'   => 'integer|nullable|exists:unidades,id',
         'data_inicio' => 'nullable|date|before_or_equal:data_fim',
         'data_fim' => 'nullable|date|after_or_equal:data_inicio',
-        'status_id'   => 'integer|required|exists:status_chamados,id',
-        'tipo_id'   => 'integer|required|exists:tipo_chamados,id',
+        'status_id'   => 'integer|exists:status_chamados,id',
+        'tipo_id'   => 'integer|exists:tipo_chamados,id',
         'prioridade'    => 'integer|nullable',
         'privado'    => 'boolean|nullable',
     ];
