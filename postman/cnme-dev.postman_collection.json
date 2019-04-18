@@ -2698,6 +2698,40 @@
 						"description": "'nome', 'email','email_institucional', 'codigo_inep', 'diretor', 'telefone', 'url',\n        'responsavel_id','usuario_chamados_id"
 					},
 					"response": []
+				},
+				{
+					"name": "GET/api/unidades/ID/chamados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/unidades/60/chamados",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"unidades",
+								"60",
+								"chamados"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -6818,6 +6852,41 @@
 								"chamados",
 								"c",
 								"tipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://{{HOSTNAME}}/api/chamados/c/pesquisar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{HOSTNAME}}/api/chamados/c/pesquisar",
+							"protocol": "http",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"chamados",
+								"c",
+								"pesquisar"
 							]
 						}
 					},

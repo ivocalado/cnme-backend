@@ -79,6 +79,7 @@ class ChamadoController extends Controller
                 "messages" => $validator->errors()
                 ), 422); 
         }
+
         if(!$request->has('unidade_responsavel_id')){
             $tvEscola = $this->unidadeService->tvescola();
             $chamado->unidadeResponsavel()->associate($tvEscola);
@@ -174,5 +175,65 @@ class ChamadoController extends Controller
         MailSender::notificarChamadoAtualizado($chamado, $comment);
         $chamado->notificado_at = date('Y-m-d H:i:s');
         $chamado->save();
+    }
+
+    private $uf;
+    private $unidadeId;
+   
+    public function search(Request $request){
+        $list = Chamado::query();
+        if($request->has('status_id')){
+
+            $list->where('status_id', $request->status_id);
+
+        }
+
+        if($request->has('tipo_id')){
+            
+            $list->where('tipo_id', $request->tipo_id);
+
+        }
+
+        if($request->has('q')){
+            $this->q = $request->q;
+            $list->where('descricao','ilike','%'.$request->q.'%')->orWhere('assunto', 'ilike','%'.$request->q.'%');
+
+            $list->orWhereHas('comments', function ($query) {
+                $query->where('content', 'ilike', '%'.$this->q.'%');
+            });  
+
+        }
+
+        if($request->has('unidade_responsavel_id')){
+            
+            $list->where('unidade_responsavel_id', $request->unidade_responsavel_id);
+
+        }
+
+        if($request->has('unidade_id')){
+
+            $this->unidadeId = $request->unidade_id;
+            $list->whereHas('usuario', function($query1){
+                $query1->where('unidade_id', $this->unidadeId);
+            });
+
+        }
+
+        if($request->has('uf')){
+            $this->uf = $request->uf;
+            $list->whereHas('usuario', function($query1){
+                $query1->whereHas('unidade',function ($query2) {
+                    $query2->whereHas('localidade', function ($query3){
+                        $query3->whereHas('estado', function ($query4){
+                            $query4->where('sigla','=',$this->uf);
+                        });
+                    });
+                });
+            });
+
+        }
+
+        $per_page = $request->per_page ? $request->per_page : 25;
+        return ChamadoResource::collection($list->paginate( $per_page ));
     }
 }

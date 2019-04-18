@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use App\Models\TipoUnidade;
+use App\Models\Chamado;
+use App\Http\Resources\ChamadoResource;
 
 class UnidadeController extends Controller
 {
@@ -315,5 +317,17 @@ class UnidadeController extends Controller
         $unidades = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate( $per_page );
 
         return UnidadeResource::collection($unidades);
+    }
+
+    private $unidadeId;
+    public function chamados(Request $request, $unidadeId){
+    
+        $list = Chamado::query();
+        $this->unidadeId = $unidadeId;
+        $list->whereHas('usuario', function($query){
+            $query->where('unidade_id',  $this->unidadeId );
+        });
+
+        return ChamadoResource::collection($list->get());
     }
 }

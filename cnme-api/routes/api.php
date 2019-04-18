@@ -83,6 +83,8 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('unidades/u/empresas/','API\UnidadeController@empresas');
     Route::get('unidades/u/polos/novos','API\UnidadeController@polosNovos');
 
+    Route::get('unidades/{unidadeId}/chamados','API\UnidadeController@chamados')->name('unidade-chamados');
+
 
     /**
      * ################################################################################################################
@@ -309,6 +311,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::post('chamados/c/{id}/add-comment','API\ChamadoController@addComment');
     Route::get('chamados/{id}/notificar-criacao','API\ChamadoController@notificar');
     Route::get('chamados/{chamadoId}/comment/{commentId}/notificar','API\ChamadoController@notificarComment');
+    Route::get('chamados/c/pesquisar','API\ChamadoController@search');
 
     Route::post('comments/{comment_type}/{id}/add-comment','API\CommentController@addComment');
     Route::get('comments/{comment_type}/{id}/comments','API\CommentController@comments');
