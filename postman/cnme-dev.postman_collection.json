@@ -6888,7 +6888,8 @@
 								"c",
 								"pesquisar"
 							]
-						}
+						},
+						"description": "status_id\ntipo_id\nq like chamado(descricao, assunto) ou comments(content)\nunidade_responsavel_id\nunidade_id\nuf"
 					},
 					"response": []
 				}
