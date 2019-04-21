@@ -157,7 +157,7 @@ class Etapa extends Model
             });
 
             if(!$todasTarefasConcluidas)
-                $messages["erros"][] = "A etapa de $this->tipo está concluída porém há tarefas pendentes.";
+                $messages["erros"][] = "A etapa de $this->tipo está CONCLUÍDA porém há tarefas pendentes.";
         }
 
         if($this->isAndamento()){
@@ -168,7 +168,7 @@ class Etapa extends Model
             
 
             if(!$result || $result->isEmpty())
-                $messages["erros"][] = "A etapa de $this->tipo está em andamento porém não há tarefas em andamento.";
+                $messages["erros"][] = "A etapa de $this->tipo está em ANDAMENTO porém não há tarefas PENDENTES.";
 
            
         }

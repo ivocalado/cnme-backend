@@ -156,7 +156,7 @@ class ProjetoCnme extends Model
             $messages["erros"][] = "Projeto $this->numero está concluído porém não tem data fim registrada.";
         
         if($this->isPlanejamento() && $this->data_inicio_previsto < date('Y-m-d') && $this->data_inicio == null){
-            $msg = "Projeto $this->numero está em planejamento porém já está atrasado segundo o cronograma. Início previsto($this->data_inicio_previsto).";
+            $msg = "Projeto $this->numero está em PLANEJAMENTO porém já está atrasado segundo o cronograma. Início previsto($this->data_inicio_previsto).";
             $dateInterval = (new \DateTime(date('Y-m-d')))->diff(new \DateTime($this->data_inicio_previsto));
             $msg =  $msg." Há um atraso de ".$dateInterval->days." dias.";
             $messages["avisos"][] = $msg;
@@ -164,7 +164,7 @@ class ProjetoCnme extends Model
             
         
         if($this->isAndamento() && $this->data_fim_previsto < date('Y-m-d')){
-            $msg = "Projeto $this->numero está em $this->status porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto).";
+            $msg = "Projeto $this->numero está $this->status porém já está atrasado segundo o cronograma. Conclusão prevista($this->data_fim_previsto).";
             $dateInterval = (new \DateTime(date('Y-m-d')))->diff(new \DateTime($this->data_fim_previsto));
             $msg =  $msg." Há um atraso de ".$dateInterval->days." dias.";
             $messages["avisos"][] = $msg ;

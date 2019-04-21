@@ -111,7 +111,7 @@ class Tarefa extends Model
         //.(isset($this->responsavel)) ? "Usuário: ".$this->responsavel->name:".";
 
         if($this->isConcluida() && $this->data_fim > $this->data_fim_prevista){
-            $msg = "Data fim($this->data_fim) da tarefa de ".$this->tipo()." foi posterior a data fim planejada($this->data_fim_prevista).".$reponsavel;
+            $msg = "A data fim($this->data_fim) da tarefa de ".$this->tipo()." foi posterior a data fim planejada($this->data_fim_prevista).".$reponsavel;
             $dateInterval = (new \DateTime($this->data_fim))->diff(new \DateTime($this->data_fim_prevista));
             $msg =  $msg." Houve um atraso de ".$dateInterval->days." dias.";
             $messages["infos"][] = $msg;
@@ -119,7 +119,7 @@ class Tarefa extends Model
             
 
         if($this->data_inicio > $this->data_inicio_prevista){
-            $msg = "Data início($this->data_inicio) da tarefa ".$this->tipo()." foi posterior a data início planejada($this->data_inicio_prevista).".$reponsavel;
+            $msg = "A data início($this->data_inicio) da tarefa ".$this->tipo()." foi posterior a data início planejada($this->data_inicio_prevista).".$reponsavel;
             $dateInterval = (new \DateTime($this->data_inicio))->diff(new \DateTime($this->data_inicio_prevista));
             $msg =  $msg." Houve um atraso de ".$dateInterval->days." dias.";
             $messages["infos"][] = $msg;
