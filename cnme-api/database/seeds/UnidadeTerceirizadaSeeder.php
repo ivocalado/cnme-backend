@@ -55,6 +55,7 @@ class UnidadeTerceirizadaSeeder extends Seeder
         ]);
 
         $empresa->responsavel()->associate($gestorEmpresa);
+        $empresa->usuarioChamados()->associate($gestorEmpresa);
         $empresa->save();
 
 
@@ -95,6 +96,7 @@ class UnidadeTerceirizadaSeeder extends Seeder
         ]);
 
         $empresa2->responsavel()->associate($gestorEmpresa2);
+        $empresa2->usuarioChamados()->associate($gestorEmpresa2);
         $empresa2->save();
     }
 }

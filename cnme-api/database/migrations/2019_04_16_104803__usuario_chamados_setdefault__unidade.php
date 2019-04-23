@@ -14,7 +14,7 @@ class UsuarioChamadosSetdefaultUnidade extends Migration
      */
     public function up()
     {
-        DB::statement("UPDATE unidades set usuario_chamados_id = responsavel_id");
+        
     }
 
     /**

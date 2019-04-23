@@ -45,7 +45,9 @@ class ChamadoEvent
 
     public function chamadoCreated(Chamado $chamado)
     {
-        MailSender::notificarChamadoCriado($chamado);
+        if(getenv('APP_ENV') !== 'local'){
+            MailSender::notificarChamadoCriado($chamado);
+        }
     }
 
     public function chamadoUpdated(Chamado $chamado)
@@ -98,7 +100,7 @@ class ChamadoEvent
                 $comment = new Comment();
                 $comment->build($message, Auth::user(),get_class($chamado), $chamado->id, true);
                 $comment->save();
-
+                
                 MailSender::notificarChamadoAtualizado($chamado, $comment);
             }
             

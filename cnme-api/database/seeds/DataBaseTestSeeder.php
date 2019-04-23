@@ -83,6 +83,7 @@ class DataBaseTestSeeder extends Seeder
                 ]);
 
                 $polo->responsavel()->associate($gestorPolo);
+                $polo->usuarioChamados()->associate($gestorPolo);
                 $polo->save();
 
             }

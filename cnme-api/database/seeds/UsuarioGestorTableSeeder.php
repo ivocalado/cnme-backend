@@ -27,6 +27,7 @@ class UsuarioGestorTableSeeder extends Seeder
         ]);
 
         $mec->responsavel()->associate($gestorMec);
+        $mec->usuarioChamados()->associate($gestorMec);
         $mec->save();
 
         /***************************************** */
@@ -45,6 +46,7 @@ class UsuarioGestorTableSeeder extends Seeder
         ]);
 
         $tv->responsavel()->associate($gestorTV);
+        $tv->usuarioChamados()->associate($gestorTV);
         $tv->save();
 
         /****************************************** */
@@ -60,6 +62,7 @@ class UsuarioGestorTableSeeder extends Seeder
         ]);
 
         $admin->responsavel()->associate($gestorAdmin);
+        $admin->usuarioChamados()->associate($gestorAdmin);
         $admin->save();
     }
 }
