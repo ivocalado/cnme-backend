@@ -32,6 +32,7 @@ class UnidadeController extends Controller
     public function index(Request $request)
     {
         $per_page = $request->per_page ? $request->per_page : 25;
+
         return UnidadeResource::collection(Unidade::paginate( $per_page ));
     }
     
@@ -268,7 +269,13 @@ class UnidadeController extends Controller
 
     public function usuarios(Request $request, $idUnidade){
         $per_page = $request->per_page ? $request->per_page : 25;
-        return  UserResource::collection(User::where('unidade_id', $idUnidade)->withTrashed()->paginate( $per_page ));
+
+        if( $request->has('all') && strtolower($request->all) === 'true'){
+            $users = User::where('unidade_id', $idUnidade)->withTrashed()->paginate( $per_page );
+        }else{
+            $users = User::where('unidade_id', $idUnidade)->paginate( $per_page );
+        }
+        return  UserResource::collection($users);
     }
 
     public function search(Request $request){

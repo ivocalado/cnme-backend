@@ -1386,8 +1386,18 @@
 					"response": []
 				},
 				{
-					"name": "GET/api/projeto-cnme/p/pesquisar?status=CRIADO",
+					"name": "GET/api/projeto-cnme/p/pesquisar?status=PLANEJAMENTO",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -1395,7 +1405,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status=CRIACAO",
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status=PLANEJAMENTO",
 							"host": [
 								"{{HOSTNAME}}"
 							],
@@ -1408,12 +1418,52 @@
 							"query": [
 								{
 									"key": "status",
-									"value": "CRIACAO"
-								},
+									"value": "PLANEJAMENTO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status[]=PLANEJAMENTO;ENVIADO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status[]=PLANEJAMENTO;ENVIADO",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"pesquisar"
+							],
+							"query": [
 								{
 									"key": "",
 									"value": "Bahia",
 									"disabled": true
+								},
+								{
+									"key": "status[]",
+									"value": "PLANEJAMENTO;ENVIADO"
 								}
 							]
 						}
@@ -1454,46 +1504,6 @@
 								{
 									"key": "uf",
 									"value": "AL"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET/api/projeto-cnme/p/pesquisar?status=PLANEJAMENTO",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status=PLANEJAMENTO",
-							"host": [
-								"{{HOSTNAME}}"
-							],
-							"path": [
-								"api",
-								"projeto-cnme",
-								"p",
-								"pesquisar"
-							],
-							"query": [
-								{
-									"key": "status",
-									"value": "PLANEJAMENTO"
 								}
 							]
 						}
@@ -2558,7 +2568,7 @@
 					"response": []
 				},
 				{
-					"name": "GET/api/unidades/10/usuarios",
+					"name": "GET/api/unidades/10/usuarios?all=true",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2582,17 +2592,25 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{HOSTNAME}}/api/unidades/1/usuarios",
+							"raw": "http://{{HOSTNAME}}/api/unidades/11/usuarios?all=true",
+							"protocol": "http",
 							"host": [
 								"{{HOSTNAME}}"
 							],
 							"path": [
 								"api",
 								"unidades",
-								"1",
+								"11",
 								"usuarios"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "true"
+								}
 							]
-						}
+						},
+						"description": "DEFAULT all = false"
 					},
 					"response": []
 				},

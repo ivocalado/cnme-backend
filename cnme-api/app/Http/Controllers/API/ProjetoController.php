@@ -221,16 +221,24 @@ class ProjetoController extends Controller
         $list = ProjetoCnme::query();
         if($request->has('status')){
 
-            $status =  strtoupper($request->status);
-
             $arrayStatus =  ProjetoCnme::status();
 
-            if(!in_array($status, $arrayStatus)){
-                return response()->json(
-                    array('message' => "Consulta por status desconhecido. Status:(".implode("|",$arrayStatus).")") , 422);
+           
+            if(is_array($request->status)){
+                $arrayStatus = explode(';', $request->status[0]);
+
+                $list = $list->whereIn('status', $arrayStatus);
+            }else{
+                $status =  strtoupper($request->status);
+                if(!in_array($status, $arrayStatus)){
+                    return response()->json(
+                        array('message' => "Consulta por status desconhecido. Status:(".implode("|",$arrayStatus).")") , 422);
+                }
+    
+                $list = $list->where('status',$status);
             }
 
-            $list = $list->where('status',$status);
+            
 
         }
 
