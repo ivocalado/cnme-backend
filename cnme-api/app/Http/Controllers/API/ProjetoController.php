@@ -219,6 +219,12 @@ class ProjetoController extends Controller
 
     public function search(Request $request){
         $list = ProjetoCnme::query();
+
+
+        if($request->has('unidade_id')){
+            $list->where('unidade_id', $request->unidade_id);
+        }
+
         if($request->has('status')){
 
             $arrayStatus =  ProjetoCnme::status();
@@ -245,13 +251,21 @@ class ProjetoController extends Controller
         if($request->has('q')){
             $this->q = $request->q; 
 
-            $list->where('descricao','ilike','%'.$request->q.'%')
-            ->orWhereHas('unidade', function ($query) {
-                $query->where('nome', 'ilike', '%'.$this->q.'%')
-                        ->orWhere('codigo_inep', $this->q);
-            });  
-        }
+            // $list->where('descricao','ilike','%'.$request->q.'%')
+            // ->orWhereHas('unidade', function ($query) {
+            //     $query->where('nome', 'ilike', '%'.$this->q.'%')
+            //             ->orWhere('codigo_inep', $this->q);
+            // });  
 
+            $list->where(function ($query){
+                $query->orWhere('descricao','ilike','%'.$this->q.'%')
+                ->orWhereHas('unidade', function ($query2) {
+                        $query2->where('nome', 'ilike', '%'.$this->q.'%')
+                        ->orWhere('codigo_inep', $this->q);
+                    });
+                
+            });
+        }
         if($request->has('uf')){
             $this->uf = $request->uf;
             $list->whereHas('unidade', function($query1){
@@ -263,6 +277,9 @@ class ProjetoController extends Controller
             });
 
         }
+
+        //dd($list->toSql());
+        
         $per_page = $request->per_page ? $request->per_page : 25;
         return ProjetoResource::collection($list->paginate( $per_page ));
     }
