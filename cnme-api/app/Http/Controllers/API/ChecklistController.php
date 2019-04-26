@@ -9,8 +9,10 @@ use App\Models\Checklist;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\Equipamento;
-use App\Models\ItemChecklist;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\ProjetoCnme;
+use App\Http\Resources\ProjetoResource;
 
 class ChecklistController extends Controller
 {
@@ -37,6 +39,7 @@ class ChecklistController extends Controller
 
             
             $checklist->fill($checklistData);
+            $checklist->usuario()->associate(Auth::user());
             $checklist->save();
             DB::commit();
 
@@ -117,62 +120,48 @@ class ChecklistController extends Controller
         }
     }
 
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * COLD CODE - FUNCIONALIDADES FUTURAS
-     */
+    public function checklistProjeto(Request $request, $checklistId, $projetoId){
+        $checklist = Checklist::find($checklistId);
+        $projeto = ProjetoCnme::find($projetoId);
 
-    public function addItemChecklist(Request $request, $checklistId){
+        if($checklist && $projeto){
+            $projeto->checklist()->associate($checklist);
+            $projeto->checklist_at = date("Y-m-d H:i:s");
+            $projeto->usuarioChecklist()->associate(Auth::user());
+            $projeto->save();
+
+            return new ProjetoResource( $projeto );
+        }else{
+            return response()->json(
+                array('message' => 'Projeto/Checklist não encontrados.') , 404);
+        }
+
+
+
+    }
+
+    public function forceDelete($id){
         DB::beginTransaction();
         try {
-            $checklist = Checklist::find($checklistId);
-            $itemChecklist = new ItemChecklist();
 
-            if($request->has('equipamentoId')){
-                $equipamento = Equipamento::find($request->equipamentoId);
+            $checklist = Checklist::find($id);
 
-                if($equipamento)
-                    $itemChecklist->equipamento->associate($equipamento);
+            if(isset($checklist)){
+                if((!$checklist->projetoCnmes || $checklist->projetoCnmes->isEmpty())){
+                    $checklist->forceDelete();
+                    DB::commit();
+                    return response(null,204);
+                }else{
+                    return response()->json(array('message' => 'Checklist não pode ser removido pois já está associado a projetos.') , 422);
+                }
                 
-            }
-            $itemtData = $request->all();
-            $itemtData["checklist_id"] = $checklistId;
-            $validator = Validator::make($itemtData, $itemChecklist->rules, $itemChecklist->messages);
-    
-            if ($validator->fails()) {
-                return response()->json(
-                    array(
-                    "messages" => $validator->errors()
-                    ), 422); 
-            }
-
-            $itemChecklist->fill($itemtData);
-            $itemChecklist->checklist()->associate($checklist);
-            
-            $itemChecklist->save();
-            
-            DB::commit();
-            
-            return new ChecklistResource($checklist);
+            }else
+                return response()->json(array('message' => 'Checklist não encontrado.') , 404);
 
         }catch(\Exception $e){
             DB::rollback();
 
-            Log::error('ChecklistController::addItemChecklist - '.$e->getMessage());
+            Log::error('ChecklistController::destroy - '.$e->getMessage());
 
             return response()->json(
                 array('message' => $e->getMessage()) , 500);
@@ -180,45 +169,4 @@ class ChecklistController extends Controller
         }
     }
 
-    /**
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * COLD CODE - FUNCIONALIDADES FUTURAS
-     */
-
-    public function removeItemChecklist(Request $request, $checklistId, $itemChecklistId){
-        DB::beginTransaction();
-        try {
-            $checklist = Checklist::find($checklistId);
-            $itemChecklist = ItemChecklist::find($itemChecklistId);
-
-            if($checklist->itemChecklists->contains($itemChecklist)){
-                
-                $itemChecklist->delete();
-                DB::commit();
-
-                $checklist = Checklist::find($checklistId);
-
-                return new ChecklistResource($checklist);
-            }
-
-
-        }catch(\Exception $e){
-            DB::rollback();
-
-            Log::error('ChecklistController::removeItemChecklist - '.$e->getMessage());
-
-            return response()->json(
-                array('message' => $e->getMessage()) , 500);
-
-        }
-    }
 }

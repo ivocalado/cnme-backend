@@ -266,15 +266,6 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('tarefas/empresas/{empresaId}/tarefas','API\TarefaController@tarefasPorResponsavel');
 
     Route::get('tarefas/t/status','API\TarefaController@status');
-    
-    /**
-    * ###################################################################################################### 
-    * API      /api/checklist-cnmes
-     */
-    Route::apiResource('checklist-cnmes', 'API\ChecklistCnmeController');
-    Route::get('checklist-cnmes/cc/status','API\ChecklistCnmeController@status');
-
-
 
 
     /**
@@ -317,34 +308,18 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('comments/{comment_type}/{id}/comments','API\CommentController@comments');
     Route::delete('comments/{id}','API\CommentController@destroy');
     Route::put('comments/{id}','API\CommentController@update');
+
+    /**
+    * ###################################################################################################### 
+    * ######################################################################################################
+    * API      
+    * /api/checklist-cnmes
+    *
+    */
+
+    # Checklist
+    Route::apiResource('checklists', 'API\ChecklistController');
+    Route::delete('checklists/{id}/force-delete', 'API\ChecklistController@forceDelete');
+    Route::post('checklists/{checklistId}/projeto-cnme/{projetoId}', 'API\ChecklistController@checklistProjeto');
+   
 });
-
-
-
-
-
-
-
-
-/*
-*
-* Removidos - A proposta era criar um checkilist que fosse reaproveitado entre os projetos e contivesse informações mais detalhadas além dos requisitos dos
-equipamentos
-
-
-Route::apiResource('checklists', 'API\ChecklistController');
-Route::post('checklists/{checklistId}/add-itemchecklist', 'API\ChecklistController@addItemChecklist');
-Route::delete('checklists/{checklistId}/remove-itemchecklist/{itemId}', 'API\ChecklistController@removeItemChecklist');
-*/
-
-
-/*
-* Removidos - Tratam itens do checklist de forma individual.
-*
-Route::post('checklist-cnmes/{checklistCnmeId}/clear-add-items-all', 'API\ChecklistCnmeController@clearAndAddItemsAll');
-Route::post('checklist-cnmes/{checklistCnmeId}/add-itemchecklist', 'API\ChecklistCnmeController@addItemChecklist');
-Route::delete('checklist-cnmes/{checklistCnmeId}/remove-itemchecklist/{itemId}', 'API\ChecklistCnmeController@removeItemChecklist');
-*/
-
-
-

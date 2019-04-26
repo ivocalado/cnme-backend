@@ -83,8 +83,12 @@ class ProjetoCnme extends Model
         return $this->belongsTo(Unidade::class);
     }
 
-    public function solicitacaoCnme(){
-        return $this->belongsTo(SolicitacaoCnme::class);
+    public function checklist(){
+        return $this->belongsTo(Checklist::class);
+    }
+
+    public function usuarioChecklist(){
+        return $this->belongsTo(User::class,'usuario_checklist_id');
     }
 
     public function kit(){

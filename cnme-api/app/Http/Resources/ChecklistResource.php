@@ -18,10 +18,11 @@ class ChecklistResource extends JsonResource
             'id' => $this->id,
             'versao' => $this->versao,
             'descricao' => $this->descricao,
-            'status' => $this->status,
-            'ativo' => $this->status,
             'usuario' => $this->usuario,
-            'itens_checklist' => $this->itemChecklists
+            'deleted' => isset($this->deleted_at),
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at,
+            'deleted_at' => (string) $this->deleted_at
         ];
     }
 }

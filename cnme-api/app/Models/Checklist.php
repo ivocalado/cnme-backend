@@ -4,26 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Checklist extends Model
 {
-    protected $fillable = ['versao', 'descricao','usuario_id'];
+    protected $fillable = ['versao', 'descricao'];
 
     protected $table = "checklists";
+
+    use SoftDeletes;
 
     public function usuario(){
         return $this->belongsTo(User::class); 
     }
 
-    public function itemChecklists(){
-        return $this->hasMany(ItemChecklist::class);
+    public function projetoCnmes(){
+        return $this->hasMany(ProjetoCnme::class);
     }
 
     public $rules = [
         'versao'    =>  'required|unique:checklists|max:100',
-        'descricao'    =>  'required|max:255',
-        'usuario_id'  => 'integer|required'
-    
+        'descricao'    =>  'required'
     ];
 
     public $messages = [

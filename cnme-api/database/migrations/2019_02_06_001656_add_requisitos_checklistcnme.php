@@ -13,11 +13,11 @@ class AddRequisitosChecklistcnme extends Migration
      */
     public function up()
     {
-        Schema::table('checklist_cnmes', function($table) {
+        // Schema::table('checklist_cnmes', function($table) {
 
-            $table->mediumText('requisitos')->nullable();
+        //     //$table->mediumText('requisitos')->nullable();
 
-        });
+        // });
     }
 
     /**

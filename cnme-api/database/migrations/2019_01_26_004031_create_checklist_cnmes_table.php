@@ -13,21 +13,25 @@ class CreateChecklistCnmesTable extends Migration
      */
     public function up()
     {
-        Schema::create('checklist_cnmes', function (Blueprint $table) {
-            $table->increments('id');
+        // Schema::create('checklist_cnmes', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->timestamps();
 
-            // $table->integer('checklist_id')->unsigned();
-            // $table->foreign('checklist_id')->references('id')->on('checklists')->onDelete('cascade');
+        //     $table->integer('checklist_id')->unsigned();
+        //     $table->foreign('checklist_id')->references('id')->on('checklists');
 
-            $table->integer('projeto_cnme_id')->unsigned();
-            $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes')->onDelete('cascade');
+        //     $table->integer('projeto_cnme_id')->unsigned();
+        //     $table->foreign('projeto_cnme_id')->references('id')->on('projeto_cnmes');
 
-            $table->string('descricao', 255);
+        //     $table->integer('usuario_id')->unsigned();
+        //     $table->foreign('usuario_id')->references('id')->on('users');
 
-            $table->string('status', 20);
+        //     $table->dateTime('aprovado_at')->nullable();
 
-            $table->timestamps();
-        });
+        //     $table->boolean('aprovado')->default(false);
+
+            
+        // });
     }
 
     /**

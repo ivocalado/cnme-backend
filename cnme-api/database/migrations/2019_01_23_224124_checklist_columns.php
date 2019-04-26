@@ -14,13 +14,15 @@ class ChecklistColumns extends Migration
     public function up()
     {
         Schema::table('checklists', function($table) {
+
             $table->string('versao', 100);
 
-            $table->string('descricao', 255);
-            $table->boolean('ativo')->default(true);
+            $table->longText('descricao', 255);
 
             $table->integer('usuario_id')->nullable()->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('set null'); 
+            $table->foreign('usuario_id')->references('id')->on('users');
+
+
 
         });
 

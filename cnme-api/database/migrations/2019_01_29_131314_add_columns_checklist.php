@@ -15,7 +15,7 @@ class AddColumnsChecklist extends Migration
     {
         Schema::table('checklist_cnmes', function($table) {
 
-            $table->mediumText('avaliacao')->nullable();
+            //$table->mediumText('avaliacao')->nullable();
 
         });
     }

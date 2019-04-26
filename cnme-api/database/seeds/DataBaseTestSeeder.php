@@ -15,6 +15,7 @@ use App\Models\Etapa;
 use App\Models\Tarefa;
 use App\Services\UnidadeService;
 use App\Models\EquipamentoProjeto;
+use App\Models\Checklist;
 
 class DataBaseTestSeeder extends Seeder
 {
@@ -112,7 +113,13 @@ class DataBaseTestSeeder extends Seeder
             $kit = Kit::all()->random();
 
             $projeto->kit()->associate($kit);
+
+            $checklist = Checklist::first();
+
+            $projeto->checklist()->associate($checklist);
+            $projeto->checklist_at = date("Y-m-d H:i:s");
             $projeto->save();
+
 
             $equipamentos = $kit->equipamentos;
 
@@ -126,7 +133,7 @@ class DataBaseTestSeeder extends Seeder
             }
 
             
-          
+            
 
             $this->createEtapaEnvio($projeto);
             $this->createEtapaInstalacao($projeto);

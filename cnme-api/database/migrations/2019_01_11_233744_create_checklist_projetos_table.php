@@ -16,6 +16,9 @@ class CreateChecklistProjetosTable extends Migration
         Schema::create('checklists', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
+
+
         });
     }
 
