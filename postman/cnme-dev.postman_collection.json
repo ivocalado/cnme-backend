@@ -1192,6 +1192,42 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/empresas/4/ativacao/extrato",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/empresas/2/ativacao/extrato",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"empresas",
+										"2",
+										"ativacao",
+										"extrato"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
