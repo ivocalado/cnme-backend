@@ -277,6 +277,12 @@ class DataBaseTestSeeder extends Seeder
         $randFim = mt_rand($dateTempIni,  $dateTempFim);
         $tarefaInstalacao->data_fim_prevista  =  date("Y-m-d", $randFim);
 
+        $unidadeService = new UnidadeService();
+        $empresasIds = $unidadeService->empresas()->pluck('id')->all();
+        $randIndex = array_rand($empresasIds);
+        
+        $tarefaInstalacao->unidade_responsavel_id =  $empresasIds[$randIndex];
+
         $etapaInstalacao->tarefas()->save($tarefaInstalacao);
 
 
@@ -298,7 +304,11 @@ class DataBaseTestSeeder extends Seeder
         
         $tarefa->usuario_id = $projeto->usuario_id;
 
-        $tarefa->unidade_responsavel_id = $unidadeService->empresas()->first()->id;
+        $empresasIds = $unidadeService->empresas()->pluck('id')->all();
+        $randIndex = array_rand($empresasIds);
+
+
+        $tarefa->unidade_responsavel_id =  $empresasIds[$randIndex];
         $tarefa->nome = Tarefa::DESC_TAREFA_ENVIO;
         $tarefa->status = Tarefa::STATUS_ABERTA;
         $tarefa->numero = rand();

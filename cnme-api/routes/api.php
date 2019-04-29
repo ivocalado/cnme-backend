@@ -286,6 +286,8 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('dashboard/usuarios/gestores/extrato','API\DashboardController@queryGestoresExtrado');
     Route::get('dashboard/projetos/estado/status','API\DashboardController@queryStatusEstados');
     Route::get('dashboard/projetos/{etapa}/empresas','API\DashboardController@queryPrestadoras');
+    Route::get('dashboard/empresas/{empresaId}/extrato','API\DashboardController@queryPrestadorExtrato');
+    Route::get('dashboard/empresas/{empresaId}/{etapa}/extrato','API\DashboardController@queryPrestadorEtapaExtrato');
     Route::get('dashboard/projetos/{etapa}/empresas/{empresaId}/estados','API\DashboardController@queryPrestadoraPorEstado');
 
     Route::get('dashboard/projetos/{etapa}/prazos/estados','API\DashboardController@querPrazosTarefasPorEstado');
@@ -313,7 +315,7 @@ Route::middleware('jwt.auth')->group(function(){
     * ###################################################################################################### 
     * ######################################################################################################
     * API      
-    * /api/checklist-cnmes
+    * /api/checklist-cnmestarefas/empresas/4/tarefas
     *
     */
 

@@ -182,6 +182,22 @@ class DashboardController extends Controller
        return response()->json($result);
     }
 
+    public function queryPrestadorExtrato(Request $request, $prestadorId){
+        $prestadoQuery = new PrestadorQueryComponent();
+ 
+        $result = $prestadoQuery->queryPrestadorExtrato($prestadorId);
+ 
+        return response()->json($result);
+    }
+
+    public function queryPrestadorEtapaExtrato(Request $request, $prestadorId, $etapa){
+        $prestadoQuery = new PrestadorQueryComponent();
+ 
+        $result = $prestadoQuery->queryPrestadorEtapaExtrato($etapa, $prestadorId);
+ 
+        return response()->json($result);
+    }
+
     public function queryPrestadoras(Request $request, $etapa){
         $prestadoQuery = new PrestadorQueryComponent();
         $result = $prestadoQuery->queryPrestadoras($etapa);

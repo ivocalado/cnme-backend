@@ -598,7 +598,277 @@
 					"name": "prestadores",
 					"item": [
 						{
-							"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas/4/estados",
+							"name": "UC02 - Consultar Tarefas por Empresas",
+							"item": [
+								{
+									"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"path": [
+												"api",
+												"tarefas",
+												"empresas",
+												"4",
+												"tarefas"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?etapa=envio",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?etapa=envio",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"path": [
+												"api",
+												"tarefas",
+												"empresas",
+												"4",
+												"tarefas"
+											],
+											"query": [
+												{
+													"key": "etapa",
+													"value": "envio"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+											"host": [
+												"{{HOSTNAME}}"
+											],
+											"path": [
+												"api",
+												"tarefas",
+												"empresas",
+												"4",
+												"tarefas"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "andamento"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?etapa=envio",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+													"host": [
+														"{{HOSTNAME}}"
+													],
+													"path": [
+														"api",
+														"tarefas",
+														"empresas",
+														"4",
+														"tarefas"
+													],
+													"query": [
+														{
+															"key": "status",
+															"value": "andamento"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 04 Mar 2019 21:40:31 -0300"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 05 Mar 2019 00:40:31 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 13,\n            \"nome\": \"Envio dos equipamentos\",\n            \"etapa_id\": 14,\n            \"etapa_tipo\": \"ENVIO\",\n            \"numero\": \"MT34234212\",\n            \"descricao\": null,\n            \"status\": \"ANDAMENTO\",\n            \"link_externo\": null,\n            \"data_inicio_prevista\": \"2019-02-01\",\n            \"data_fim_prevista\": \"2019-02-28\",\n            \"data_inicio\": \"2019-02-03\",\n            \"data_fim\": \"\",\n            \"usuario\": {\n                \"id\": 4,\n                \"name\": \"Admin\",\n                \"email\": \"admin@cnme.gov.br\",\n                \"email_verified_at\": null,\n                \"telefone\": null,\n                \"cpf\": null,\n                \"funcao\": null,\n                \"tipo\": \"administrador\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"unidade_id\": 3,\n                \"deleted_at\": null\n            },\n            \"responsavel\": null,\n            \"unidade_responsavel\": {\n                \"id\": 4,\n                \"codigo_inep\": null,\n                \"nome\": \"Transportador Golaço Log\",\n                \"email\": \"transportadora@golaco.com.br\",\n                \"url\": \"https://www.transportadoragolaco.gov.br/\",\n                \"diretor\": \"Contato Golaço\",\n                \"telefone\": \"(0300 11324234)\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"localidade_id\": 3,\n                \"tipo_unidade_id\": 4,\n                \"responsavel_id\": 1,\n                \"classe\": \"empresa\",\n                \"descricao\": \"Transportadora autorizada pela portaria A3E322DS\",\n                \"email_institucional\": \"faleconosco@transportadora.com.br\",\n                \"admin\": false\n            },\n            \"equipamentos_projeto\": [\n                {\n                    \"id\": 1,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 1,\n                        \"nome\": \"TV Beta 100x\",\n                        \"descricao\": \"Aparelho de televisão 100x\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Mesa de apoio ou suporte para TV 40 / 15kg\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 1,\n                            \"nome\": \"TV\",\n                            \"descricao\": \"Aparelho de televisão\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 2,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 2,\n                        \"nome\": \"Microfone Alpha 100x\",\n                        \"descricao\": \"Microfone\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Espaço livre de respingos de água\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 2,\n                            \"nome\": \"Microfone\",\n                            \"descricao\": \"Aparelho de capitação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 3,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 3,\n                        \"nome\": \"Câmera 4.0 100x\",\n                        \"descricao\": \"Câmera 4.0 4000MHz\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Bom nível de Iluminação\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 3,\n                            \"nome\": \"Câmera\",\n                            \"descricao\": \"Aparelho de capitação de vídeo\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 4,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 4,\n                        \"nome\": \"Box Sound 2 1000w\",\n                        \"descricao\": \"Box Sound 2.0 1000W\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Recomanda para espaço de no máximo 80m²\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 4,\n                            \"nome\": \"Caixa de Som\",\n                            \"descricao\": \"Aparelho de ampliação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 5,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 5,\n                        \"nome\": \"Antena Digital HD Over\",\n                        \"descricao\": \"Antena Digital HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Posicionada em um ponto alto\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 5,\n                            \"nome\": \"Antena\",\n                            \"descricao\": \"Aparelho de para capitação de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 6,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 6,\n                        \"nome\": \"Decodificador Digital Box HD Over\",\n                        \"descricao\": \"Decodificador Digital Box HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Ligação com a TV, antena e caixa de som\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 6,\n                            \"nome\": \"Receptor\",\n                            \"descricao\": \"Receptor decodificador de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                }\n            ],\n            \"created_at\": \"2019-02-28 00:38:20\",\n            \"updated_at\": \"2019-02-28 00:38:20\"\n        }\n    ]\n}"
+										},
+										{
+											"name": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "{{HOSTNAME}}/api/tarefas/empresas/4/tarefas?status=andamento",
+													"host": [
+														"{{HOSTNAME}}"
+													],
+													"path": [
+														"api",
+														"tarefas",
+														"empresas",
+														"4",
+														"tarefas"
+													],
+													"query": [
+														{
+															"key": "status",
+															"value": "andamento"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 04 Mar 2019 21:40:31 -0300"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 05 Mar 2019 00:40:31 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.2.15-0ubuntu0.18.04.1"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 13,\n            \"nome\": \"Envio dos equipamentos\",\n            \"etapa_id\": 14,\n            \"etapa_tipo\": \"ENVIO\",\n            \"numero\": \"MT34234212\",\n            \"descricao\": null,\n            \"status\": \"ANDAMENTO\",\n            \"link_externo\": null,\n            \"data_inicio_prevista\": \"2019-02-01\",\n            \"data_fim_prevista\": \"2019-02-28\",\n            \"data_inicio\": \"2019-02-03\",\n            \"data_fim\": \"\",\n            \"usuario\": {\n                \"id\": 4,\n                \"name\": \"Admin\",\n                \"email\": \"admin@cnme.gov.br\",\n                \"email_verified_at\": null,\n                \"telefone\": null,\n                \"cpf\": null,\n                \"funcao\": null,\n                \"tipo\": \"administrador\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"unidade_id\": 3,\n                \"deleted_at\": null\n            },\n            \"responsavel\": null,\n            \"unidade_responsavel\": {\n                \"id\": 4,\n                \"codigo_inep\": null,\n                \"nome\": \"Transportador Golaço Log\",\n                \"email\": \"transportadora@golaco.com.br\",\n                \"url\": \"https://www.transportadoragolaco.gov.br/\",\n                \"diretor\": \"Contato Golaço\",\n                \"telefone\": \"(0300 11324234)\",\n                \"created_at\": \"2019-02-27 20:32:41\",\n                \"updated_at\": \"2019-02-27 20:32:41\",\n                \"localidade_id\": 3,\n                \"tipo_unidade_id\": 4,\n                \"responsavel_id\": 1,\n                \"classe\": \"empresa\",\n                \"descricao\": \"Transportadora autorizada pela portaria A3E322DS\",\n                \"email_institucional\": \"faleconosco@transportadora.com.br\",\n                \"admin\": false\n            },\n            \"equipamentos_projeto\": [\n                {\n                    \"id\": 1,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 1,\n                        \"nome\": \"TV Beta 100x\",\n                        \"descricao\": \"Aparelho de televisão 100x\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Mesa de apoio ou suporte para TV 40 / 15kg\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 1,\n                            \"nome\": \"TV\",\n                            \"descricao\": \"Aparelho de televisão\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 2,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 2,\n                        \"nome\": \"Microfone Alpha 100x\",\n                        \"descricao\": \"Microfone\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Espaço livre de respingos de água\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 2,\n                            \"nome\": \"Microfone\",\n                            \"descricao\": \"Aparelho de capitação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:41\",\n                        \"updated_at\": \"2019-02-27 20:32:41\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 3,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 3,\n                        \"nome\": \"Câmera 4.0 100x\",\n                        \"descricao\": \"Câmera 4.0 4000MHz\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Bom nível de Iluminação\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 3,\n                            \"nome\": \"Câmera\",\n                            \"descricao\": \"Aparelho de capitação de vídeo\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 4,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 4,\n                        \"nome\": \"Box Sound 2 1000w\",\n                        \"descricao\": \"Box Sound 2.0 1000W\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Recomanda para espaço de no máximo 80m²\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 4,\n                            \"nome\": \"Caixa de Som\",\n                            \"descricao\": \"Aparelho de ampliação de áudio\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 5,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 5,\n                        \"nome\": \"Antena Digital HD Over\",\n                        \"descricao\": \"Antena Digital HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Posicionada em um ponto alto\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 5,\n                            \"nome\": \"Antena\",\n                            \"descricao\": \"Aparelho de para capitação de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                },\n                {\n                    \"id\": 6,\n                    \"detalhes\": null,\n                    \"observacao\": null,\n                    \"status\": \"PLANEJADO\",\n                    \"projeto\": 1,\n                    \"equipamento\": {\n                        \"id\": 6,\n                        \"nome\": \"Decodificador Digital Box HD Over\",\n                        \"descricao\": \"Decodificador Digital Box HD Over\",\n                        \"fornecedor\": \"Digital 100x Tecnologia\",\n                        \"requisitos\": \"Ligação com a TV, antena e caixa de som\",\n                        \"removido\": false,\n                        \"tipo_equipamento\": {\n                            \"id\": 6,\n                            \"nome\": \"Receptor\",\n                            \"descricao\": \"Receptor decodificador de sinal\",\n                            \"created_at\": \"2019-02-27 20:32:41\",\n                            \"updated_at\": \"2019-02-27 20:32:41\"\n                        },\n                        \"created_at\": \"2019-02-27 20:32:42\",\n                        \"updated_at\": \"2019-02-27 20:32:42\",\n                        \"deleted_at\": \"\"\n                    },\n                    \"created_at\": \"2019-02-28 00:13:45\",\n                    \"updated_at\": \"2019-02-28 00:13:45\"\n                }\n            ],\n            \"created_at\": \"2019-02-28 00:38:20\",\n            \"updated_at\": \"2019-02-28 00:38:20\"\n        }\n    ]\n}"
+										}
+									]
+								}
+							],
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "GET/api/dashboard/projetos/envio/empresas/4/estados",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -636,7 +906,7 @@
 							"response": []
 						},
 						{
-							"name": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas/4/estados",
+							"name": "GET/api/dashboard/projetos/instalacao/empresas/4/estados",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -673,7 +943,44 @@
 							"response": []
 						},
 						{
-							"name": "{{HOSTNAME}}/api/dashboard/projetos/envio/empresas",
+							"name": "GET/api/dashboard/projetos/ativacao/empresas/4/estados",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/ativacao/empresas/4/estados",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"ativacao",
+										"empresas",
+										"4",
+										"estados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/projetos/envio/empresas",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -705,6 +1012,184 @@
 									]
 								},
 								"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/projetos/instalacao/empresas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/instalacao/empresas",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"instalacao",
+										"empresas"
+									]
+								},
+								"description": "[\n    {\n        \"unidade_responsavel_id\": 4,\n        \"empresa\": \"Transportador Golaço Log\",\n        \"total\": \"3\",\n        \"total_andamento\": \"0\",\n        \"total_vence_hoje\": \"0\",\n        \"total_atrasada\": \"1\",\n        \"total_concluida\": \"1\",\n        \"total_concluida_atrasada\": \"1\",\n        \"prazo_medio\": \"27.0000000000000000\",\n        \"periodo_medio\": \"19.0000000000000000\",\n        \"atraso_medio\": \"3.5000000000000000\"\n    }\n]"
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/projetos/ativacao/empresas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/projetos/ativacao/empresas",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"projetos",
+										"ativacao",
+										"empresas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/empresas/4/extrato",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/empresas/4/extrato",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"empresas",
+										"4",
+										"extrato"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/empresas/4/envio/extrato",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/empresas/4/envio/extrato",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"empresas",
+										"4",
+										"envio",
+										"extrato"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/dashboard/empresas/4/instalacao/extrato",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/dashboard/empresas/4/instalacao/extrato",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"empresas",
+										"4",
+										"instalacao",
+										"extrato"
+									]
+								}
 							},
 							"response": []
 						}

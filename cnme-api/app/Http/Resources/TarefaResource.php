@@ -22,6 +22,7 @@ class TarefaResource extends JsonResource
             'numero' => $this->numero,
             'descricao' => $this->descricao,
             'status' => $this->status,
+            'projeto' => $this->etapa->projetoCnme,
             'link_externo' => $this->link_externo,
             'data_inicio_prevista' => (string)$this->data_inicio_prevista,
             'data_fim_prevista' => (string)$this->data_fim_prevista,
