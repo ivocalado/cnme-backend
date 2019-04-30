@@ -315,10 +315,10 @@ class DataBaseTestSeeder extends Seeder
 
         $etapa->tarefas()->save($tarefa);
 
-        $equipamentosProjeto = EquipamentoProjeto::where('projeto_cnme_id',$projeto->id);
+        $equipamentosProjetos = EquipamentoProjeto::where('projeto_cnme_id',$projeto->id)->get();
 
-        $tarefa->equipamentosProjetos->merge( $equipamentosProjeto );
-
+        $tarefa->equipamentosProjetos()->saveMany( $equipamentosProjetos );
+        
         $tarefa->save();
        
 

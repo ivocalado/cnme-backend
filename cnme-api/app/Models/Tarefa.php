@@ -181,14 +181,19 @@ class Tarefa extends Model
         $etapa->save();
 
        
-        $equipamentosProjetos = EquipamentoProjeto::where('projeto_cnme_id', $projeto->id)->get();
+        $equipamentosProjetos = ($this->equipamentosProjetos && !$this->equipamentosProjetos->isEmpty())
+                                ? $this->equipamentosProjetos:
+                                EquipamentoProjeto::where('projeto_cnme_id', $projeto->id)->get();
+
         $equipamentosProjetos->each(function ($eP, $key) {
-           
+
             if($eP->status === EquipamentoProjeto::STATUS_PLANEJADO){
                 $eP->status = EquipamentoProjeto::STATUS_ENVIADO;
                 $eP->save();
             }      
         });
+        
+        
 
         $this->save();
 
