@@ -259,6 +259,7 @@ class ProjetoController extends Controller
 
             $list->where(function ($query){
                 $query->orWhere('descricao','ilike','%'.$this->q.'%')
+                ->orWhere('numero','ilike','%'.$this->q.'%')
                 ->orWhereHas('unidade', function ($query2) {
                         $query2->where('nome', 'ilike', '%'.$this->q.'%')
                         ->orWhere('codigo_inep', $this->q);

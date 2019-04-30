@@ -196,7 +196,7 @@ class Etapa extends Model
 
     public function instalar(){
         $this->status = Etapa::STATUS_CONCLUIDA;
-        $this->save();
+        
 
         $this->projetoCnme->status = ProjetoCnme::STATUS_INSTALADO;
         $this->projetoCnme->save();
@@ -211,12 +211,16 @@ class Etapa extends Model
         $tarefaAtivacao->data_inicio = $this->getFirstTarefa()->data_fim;
         $tarefaAtivacao->save();
 
-        $this->projetoCnme->equipamentoProjetos->each(function($eP, $value){
+        $equipamentosProjetos = EquipamentoProjeto::where('projeto_cnme_id', $this->projetoCnme->id)->get();
+        $equipamentosProjetos->each(function ($eP, $key) {
+            
             if($eP->status === EquipamentoProjeto::STATUS_ENTREGUE){
                 $eP->status = EquipamentoProjeto::STATUS_INSTALADO;
                 $eP->save();
-            }  
+            }      
         });
+
+        $this->save();
     }
 
     public function ativar(){
@@ -229,11 +233,13 @@ class Etapa extends Model
         $this->projetoCnme->data_fim = $tarefaAtivacao->data_fim;
         $this->projetoCnme->save();
 
-        $this->projetoCnme->equipamentoProjetos->each(function($eP, $value){
+        $equipamentosProjetos = EquipamentoProjeto::where('projeto_cnme_id', $this->projetoCnme->id)->get();
+        $equipamentosProjetos->each(function ($eP, $key) {
+            
             if($eP->status === EquipamentoProjeto::STATUS_INSTALADO){
                 $eP->status = EquipamentoProjeto::STATUS_ATIVADO;
                 $eP->save();
-            }  
+            }      
         });
     }
 

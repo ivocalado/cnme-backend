@@ -180,7 +180,10 @@ class Tarefa extends Model
         $etapa->status = Etapa::STATUS_ANDAMENTO;
         $etapa->save();
 
-        $this->equipamentosProjetos->each(function ($eP, $key) {
+       
+        $equipamentosProjetos = EquipamentoProjeto::where('projeto_cnme_id', $projeto->id)->get();
+        $equipamentosProjetos->each(function ($eP, $key) {
+           
             if($eP->status === EquipamentoProjeto::STATUS_PLANEJADO){
                 $eP->status = EquipamentoProjeto::STATUS_ENVIADO;
                 $eP->save();
@@ -197,13 +200,17 @@ class Tarefa extends Model
 
         if(!isset($this->data_fim))
             $this->data_fim = date("Y-m-d");
+
+        $etapa = $this->etapa;
+        $projeto = $etapa->projetoCnme;
         
-        $this->equipamentosProjetos->each(function($eP, $value){
+        $equipamentosProjetos = EquipamentoProjeto::where('projeto_cnme_id', $projeto->id)->get();
+        $equipamentosProjetos->each(function ($eP, $key) {
+            
             if($eP->status === EquipamentoProjeto::STATUS_ENVIADO){
                 $eP->status = EquipamentoProjeto::STATUS_ENTREGUE;
                 $eP->save();
-            }
-            
+            }      
         });
 
         $this->save();

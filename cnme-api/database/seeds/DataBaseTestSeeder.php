@@ -141,13 +141,15 @@ class DataBaseTestSeeder extends Seeder
 
             $numero = rand(1, 100);
 
-            if( $numero >= 20)
-                $tarefaEnvio = $this->enviar($projeto);
-            if( $numero >= 30)
+          
+
+            if( $numero >= 25)
+                 $tarefaEnvio = $this->enviar($projeto);
+            if( $numero >= 50)
                 $this->entregarProjeto($projeto, $tarefaEnvio);
-            if( $numero >= 40)  
+            if( $numero >= 65)  
                 $this->instalarProjeto($projeto); 
-            if( $numero >= 50) 
+            if( $numero >= 85) 
                 $this->ativarProjeto($projeto);
             
         }
@@ -236,14 +238,9 @@ class DataBaseTestSeeder extends Seeder
         $tarefaAtivacao->unidade_responsavel_id = $unidadeService->tvescola()->id;
        
         $tarefaAtivacao->data_inicio_prevista = date('Y-m-d', strtotime($tarefaInstalacao->data_fim_prevista. ' + 1 days'));
-        
         $dateTempIni = strtotime($tarefaAtivacao->data_inicio_prevista);
-
-        
         $dateTemp2 = date('Y-m-d', strtotime($tarefaAtivacao->data_inicio_prevista. ' + 10 days'));
         $dateTempFim = strtotime($dateTemp2);
-
-       
         $randFim = mt_rand($dateTempIni,  $dateTempFim);
         $tarefaAtivacao->data_fim_prevista  =  date("Y-m-d", $randFim);
          
@@ -265,14 +262,11 @@ class DataBaseTestSeeder extends Seeder
         $tarefaInstalacao->usuario_id = $tarefaEnvio->usuario_id;
         $tarefaInstalacao->unidade_responsavel_id = $tarefaEnvio->unidade_responsavel_id;
 
+        /**Datas de invervalo aletórias */
+
         $tarefaInstalacao->data_inicio_prevista = date('Y-m-d', strtotime($tarefaEnvio->data_fim_previsto. ' + 1 days'));
-        
         $dateTempIni = strtotime($tarefaInstalacao->data_inicio_prevista);
-
         $dateTemp2 = date('Y-m-d', strtotime($tarefaInstalacao->data_inicio_prevista. ' + 10 days'));
-
-       
-        
         $dateTempFim = strtotime($dateTemp2);
         $randFim = mt_rand($dateTempIni,  $dateTempFim);
         $tarefaInstalacao->data_fim_prevista  =  date("Y-m-d", $randFim);
@@ -318,15 +312,14 @@ class DataBaseTestSeeder extends Seeder
         $date2->add(new DateInterval('P10D'));
         $tarefa->data_fim_prevista = $date2;
         
-       
-        // $tarefa->etapa()->associate( $etapa );
-        // $tarefa->save();
 
         $etapa->tarefas()->save($tarefa);
 
         $equipamentosProjeto = EquipamentoProjeto::where('projeto_cnme_id',$projeto->id);
+
         $tarefa->equipamentosProjetos->merge( $equipamentosProjeto );
 
+        $tarefa->save();
        
 
     }
