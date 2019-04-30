@@ -1536,6 +1536,51 @@
 					"response": []
 				},
 				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?q=000003",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?q=0000038",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"pesquisar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Bahia",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "0000038"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "GET/api/projeto-cnme/p/pesquisar?status=PLANEJAMENTO",
 					"request": {
 						"auth": {
@@ -1576,7 +1621,7 @@
 					"response": []
 				},
 				{
-					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?status[]=PLANEJAMENTO;ENVIADO",
+					"name": "GET/api/projeto-cnme/p/pesquisar?status[]=PLANEJAMENTO;ENVIADO",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1847,6 +1892,51 @@
 								{
 									"key": "uf",
 									"value": "AL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?q=configurado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}/api/projeto-cnme/p/pesquisar?q=configurado",
+							"host": [
+								"{{HOSTNAME}}"
+							],
+							"path": [
+								"api",
+								"projeto-cnme",
+								"p",
+								"pesquisar"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "Bahia",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "configurado"
 								}
 							]
 						}
