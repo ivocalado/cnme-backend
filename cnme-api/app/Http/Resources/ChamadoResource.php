@@ -25,6 +25,7 @@ class ChamadoResource extends JsonResource
             'unidade_responsavel' => $this->unidadeResponsavel,
             'usuario_responsavel' =>$this->usuario,
             'usuario' => $this->usuario,
+            'unidade' => new UnidadeResource($this->usuario->unidade),
             'prioridade' => $this->prioridade,
             'privado' => $this->privado,
             'data_inicio' => (string)$this->data_inicio,
