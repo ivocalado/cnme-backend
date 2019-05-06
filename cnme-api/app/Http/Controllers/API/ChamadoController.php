@@ -237,8 +237,6 @@ class ChamadoController extends Controller
         return ChamadoResource::collection($list->paginate( $per_page ));
     }
 
-    public function responsaveis(Request $request){
 
-    }
 
 }
