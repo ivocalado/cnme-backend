@@ -72,9 +72,9 @@ class TarefaEvent
                             if($attr != "updated_at"){
                                 $oldValue = $tarefa->getOriginal($attr);
                                 if($oldValue)
-                                    $message .= $attr." alterado de ".$oldValue." para ".$value."\n";
+                                    $message .= $attr." alterado(a) de ".$oldValue." para ".$value."\n";
                                 else
-                                    $message .= $attr." configurado para ".$value."\n";
+                                    $message .= $attr." configurado(a) para ".$value."\n";
                             }//end if not updated_at
                     }
                    
