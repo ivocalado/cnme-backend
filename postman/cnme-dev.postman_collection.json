@@ -2582,6 +2582,16 @@
 						{
 							"name": "{{HOSTNAME}}/api/unidades/u/admin",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -4313,6 +4323,40 @@
 										"usuarios",
 										"u",
 										"nao-confirmados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET/api/usuarios/u/admin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/usuarios/u/admin",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"u",
+										"admin"
 									]
 								}
 							},

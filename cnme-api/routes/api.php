@@ -106,6 +106,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::apiResource('usuarios', 'API\UsuarioController');
     Route::post('usuarios/{id}/enviar-convite','API\UsuarioController@enviarConvite');
     Route::get('usuarios/u/tipos','API\UsuarioController@tipos');
+    Route::get('usuarios/u/admin','API\UsuarioController@admin');
     Route::get('usuarios/u/nao-confirmados','API\UsuarioController@getUsuariosNaoConfirmados');
     Route::get('usuarios/u/gestores-nao-confirmados','API\UsuarioController@getGestoresNaoConfirmados');
     Route::get('usuarios/u/pesquisar','API\UsuarioController@search');

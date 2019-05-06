@@ -14,7 +14,7 @@ use App\Models\Tarefa;
 use Illuminate\Support\Facades\Hash;
 use App\Services\MailSender;
 use App\Models\Unidade;
-
+use App\Services\UsuarioService;
 
 class UsuarioController extends Controller
 {
@@ -357,5 +357,13 @@ class UsuarioController extends Controller
             return response()->json(
                 array('message' => "Token não informado.") , 422);
         }        
+    }
+
+    public function admin(Request $request){
+        $usuarioService = new UsuarioService();
+
+        $admin = $usuarioService->admin();
+
+        return new UserResource($admin);
     }
 }
