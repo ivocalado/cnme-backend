@@ -23,7 +23,7 @@ class ChamadoResource extends JsonResource
             'tarefa' => $this->tarefa_id,
             'tipo' => new TipoChamadoResource($this->tipo),
             'unidade_responsavel' => $this->unidadeResponsavel,
-            'usuario_responsavel' =>$this->usuario,
+            'usuario_responsavel' =>$this->usuarioResponsavel,
             'usuario' => $this->usuario,
             'unidade' => new UnidadeResource($this->usuario->unidade),
             'prioridade' => $this->prioridade,
