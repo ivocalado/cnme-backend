@@ -15,6 +15,7 @@ use App\Http\Resources\StatusChamadoResource;
 use App\Http\Resources\TipoChamadoResource;
 use App\Models\TipoChamado;
 use App\Services\UnidadeService;
+use App\Models\Unidade;
 
 class ChamadoController extends Controller
 {
@@ -58,8 +59,22 @@ class ChamadoController extends Controller
         }
 
         $chamadaData = $request->all();
+
+        /**Alteração de responsavel */
+        if(array_key_exists('unidade_responsavel_id',$chamadaData) && 
+            $chamadaData['unidade_responsavel_id'] != $chamado->unidade_responsavel_id &&
+            !array_key_exists('usuario_responsavel_id', $chamadaData)){
+            
+            $novaUnidadeResponsavel = Unidade::find($chamadaData['unidade_responsavel_id']);
+            $chamadaData['usuario_responsavel_id'] = $novaUnidadeResponsavel->usuario_chamados_id;
+        }
         
         $chamado->fill($chamadaData);
+
+        if($chamado->unidade_responsavel_id != $chamado->usuarioResponsavel->unidade_id){
+            return response()->json(
+                array('message' => 'Usuário responsável pelo chamado não pertence a unidade responsável.') , 422);
+        }
         
         $chamado->save();
 

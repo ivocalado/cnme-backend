@@ -6687,10 +6687,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"prioridade\": \"5\",\n\t\"assunto\": \"EEEEEE\"\n}"
+							"raw": "{\n\t\"unidade_responsavel_id\" : 10\n}"
 						},
 						"url": {
-							"raw": "http://{{HOSTNAME}}/api/chamados/4",
+							"raw": "http://{{HOSTNAME}}/api/chamados/2",
 							"protocol": "http",
 							"host": [
 								"{{HOSTNAME}}"
@@ -6698,7 +6698,7 @@
 							"path": [
 								"api",
 								"chamados",
-								"4"
+								"2"
 							]
 						}
 					},
