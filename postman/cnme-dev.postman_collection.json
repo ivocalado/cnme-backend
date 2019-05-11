@@ -6970,7 +6970,7 @@
 								"pesquisar"
 							]
 						},
-						"description": "status_id\ntipo_id\nq like chamado(descricao, assunto) ou comments(content)\nunidade_responsavel_id\nunidade_id\nuf"
+						"description": "status_id\ntipo_id\nq like chamado(descricao, assunto) ou comments(content)\nunidade_responsavel_id\nunidade_id\nuf\npolos=true\ngestoras=true\nempresas=true\nresponsavelPolos=true\nresponsavelGestoras=true\nresponsavelEmpresas=true"
 					},
 					"response": []
 				}

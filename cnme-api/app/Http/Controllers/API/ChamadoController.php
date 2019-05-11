@@ -197,16 +197,56 @@ class ChamadoController extends Controller
    
     public function search(Request $request){
         $list = Chamado::query();
-        if($request->has('status_id')){
 
-            $list->where('status_id', $request->status_id);
-
+        if($request->has('polos') && $request->polos){
+            $list->whereHas('usuario',function ($query) {
+                $query->whereHas('unidade',function ($query1) {
+                    $query1->where('classe',['polo']);
+                });
+            });
+        }
+        
+        if($request->has('gestoras') && $request->gestoras){
+            $list->whereHas('usuario',function ($query) {
+                $query->whereHas('unidade',function ($query1) {
+                    $query1->whereIn('classe',['tvescola','mec']);
+                });
+            });
         }
 
-        if($request->has('tipo_id')){
-            
-            $list->where('tipo_id', $request->tipo_id);
+        if($request->has('empresas') && $request->gestoras){
+            $list->whereHas('usuario',function ($query) {
+                $query->whereHas('unidade',function ($query1) {
+                    $query1->where('classe','empresa');
+                });
+            });
+        }
 
+        if($request->has('responsavelPolos') && $request->responsavelPolos){
+            $list->whereHas('unidadeResponsavel',function ($query) {
+                $query->where('classe',['polo']);
+            });
+        }
+        
+        if($request->has('responsavelGestoras') && $request->responsavelGestoras){
+            $list->whereHas('unidadeResponsavel',function ($query) {
+                    $query->whereIn('classe',['tvescola','mec']);
+            });
+        }
+
+        if($request->has('responsavelEmpresas') && $request->responsavelEmpresas){
+            $list->whereHas('unidadeResponsavel',function ($query) {
+                    $query->where('classe','empresa');
+            });
+        }
+
+
+        if($request->has('status_id')){
+            $list->where('status_id', $request->status_id);
+        }
+
+        if($request->has('tipo_id')){    
+            $list->where('tipo_id', $request->tipo_id);
         }
 
         if($request->has('q')){
@@ -220,18 +260,14 @@ class ChamadoController extends Controller
         }
 
         if($request->has('unidade_responsavel_id')){
-            
             $list->where('unidade_responsavel_id', $request->unidade_responsavel_id);
-
         }
 
         if($request->has('unidade_id')){
-
             $this->unidadeId = $request->unidade_id;
             $list->whereHas('usuario', function($query1){
                 $query1->where('unidade_id', $this->unidadeId);
             });
-
         }
 
         if($request->has('uf')){
@@ -251,7 +287,5 @@ class ChamadoController extends Controller
         $per_page = $request->per_page ? $request->per_page : 25;
         return ChamadoResource::collection($list->paginate( $per_page ));
     }
-
-
 
 }
