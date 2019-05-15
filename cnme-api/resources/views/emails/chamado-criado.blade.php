@@ -6,8 +6,8 @@ Olá <strong>{{ $responsavel->name }}</strong>
     <br/>
     Você está como responsável por esse chamado, o avalie mais rápido possível.
     <br/>
-    O chamado foi criado pelo usuário {{$chamado->usuario->name}} do pólo {{$chamado->usuario->unidade->nome}} através do sistema
-    em  {{$chamado->created_at}}.
+    O chamado foi criado pelo usuário {{$chamado->usuario->name}} do polo {{$chamado->usuario->unidade->nome}} através do sistema
+    em {{$chamado->created_at}}.
 
     Para mais detalhes acesse o sistema através do link abaixo.
     <p>

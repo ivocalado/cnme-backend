@@ -1,7 +1,7 @@
 Olá <strong>{{ $nome }}</strong>
 
 <p>
-O polo CNME {{ $unidade->nome }} está <b>ATIVADO</b>. Vocês estão prontos a aptos a fazer o 
+O polo CNME {{ $unidade->nome }} está <b>ATIVADO</b>. Vocês estão aptos a fazer o 
 melhor uso da plataforma. 
 O polo foi ativado em {{ $data_fim }}. 
 @if ($responsavel && $responsavel->isEmpresa())

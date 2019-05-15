@@ -65,33 +65,33 @@ class ChamadoEvent
                         case('usuario_responsavel_id'):
                             $usuarioResponsavelOld = User::find($chamado->getOriginal("usuario_responsavel_id"));
                             if($usuarioResponsavelOld && $value)
-                                $message .= "Usuário responsável alterado de ".$usuarioResponsavelOld->name." para ".$chamado->usuarioResponsavel->name."\n";
+                                $message .= "Usuário responsável alterado de ".$usuarioResponsavelOld->name." para ".$chamado->usuarioResponsavel->name.";\n";
                             elseif($usuarioResponsavelOld && !isset($value))
-                                $message .= "Usuário responsável ".$usuarioResponsavelOld->name." removido do chamado.\n";
+                                $message .= "Usuário responsável ".$usuarioResponsavelOld->name." removido do chamado;\n";
                             elseif($chamado->usuarioResponsavel)
-                                $message .= "Usuário responsável configurado para".$chamado->usuarioResponsavel->name.".\n";
+                                $message .= "Usuário responsável configurado para".$chamado->usuarioResponsavel->name.";\n";
                             break;
                         case('unidade_responsavel_id'):
                             $unidadeResponsavelOld = Unidade::find($chamado->getOriginal("unidade_responsavel_id"));
                             if($unidadeResponsavelOld)
-                                $message .= "Unidade responsável alterada de ".$unidadeResponsavelOld->nome." para ".$chamado->unidadeResponsavel->nome."\n";
+                                $message .= "Unidade responsável alterada de ".$unidadeResponsavelOld->nome." para ".$chamado->unidadeResponsavel->nome.";\n";
                             else
-                                $message .= "Unidade responsável configurado para ".$chamado->unidadeResponsavel->nome."\n";
+                                $message .= "Unidade responsável configurado para ".$chamado->unidadeResponsavel->nome.";\n";
                             break;
                         case('status_id'):
                             $statusOld = StatusChamado::find($chamado->getOriginal("status_id"));
-                            $message .= "Status de ".$statusOld->nome." para ".$chamado->status->nome."\n";
+                            $message .= "Status de ".$statusOld->nome." para ".$chamado->status->nome.";\n";
                             break;
                         case($attr == 'tipo_id'):
                             $tipoOld = TipoChamado::find($chamado->getOriginal("tipo_id"));
-                            $message .= "Tipo de ".$tipoOld->nome." para ".$chamado->tipo->nome."\n";
+                            $message .= "Tipo de ".$tipoOld->nome." para ".$chamado->tipo->nome.";\n";
                             break;
                         default:
                             $oldValue = $chamado->getOriginal($attr);
                             if($oldValue)
-                                $message .= $attr." alterado(a) de ".$oldValue." para ".$value."\n";
+                                $message .= ucwords($attr)." alterado(a) de ".$oldValue." para ".$value.";\n";
                             else
-                                $message .= $attr." configurado(a) para ".$value."\n";
+                                $message .= ucwords($attr)." configurado(a) para ".$value.";\n";
                     }//end swith
                 }//end if not updated_at
             }//end foreach

@@ -52,29 +52,29 @@ class TarefaEvent
                         case('responsavel_id'):
                             $usuarioResponsavelOld = User::find($tarefa->getOriginal("responsavel_id"));
                             if($usuarioResponsavelOld && $value)
-                                $message .= "Usuário responsável alterado de ".$usuarioResponsavelOld->name." para ".$tarefa->responsavel->name."\n";
+                                $message .= "Usuário responsável alterado de ".$usuarioResponsavelOld->name." para ".$tarefa->responsavel->name.";\n";
                             elseif($usuarioResponsavelOld && !isset($value))
-                                $message .= "Usuário responsável ".$usuarioResponsavelOld->name." removido do tarefa.\n";
+                                $message .= "Usuário responsável ".$usuarioResponsavelOld->name." removido do tarefa;\n";
                             elseif($tarefa->usuarioResponsavel)
-                                $message .= "Usuário responsável configurado para".$tarefa->responsavel->name.".\n";
+                                $message .= "Usuário responsável configurado para".$tarefa->responsavel->name.";\n";
                             break;
                         case('unidade_responsavel_id'):
                             $unidadeResponsavelOld = Unidade::find($tarefa->getOriginal("unidade_responsavel_id"));
                             if($unidadeResponsavelOld && $tarefa->unidadeResponsavel)
                                 $message .= "Unidade responsável alterada de ".$unidadeResponsavelOld->nome." para "
-                                                .$tarefa->unidadeResponsavel->nome."\n";
+                                                .$tarefa->unidadeResponsavel->nome.";\n";
                             elseif($unidadeResponsavelOld && !isset($tarefa->unidadeResponsavel))
-                                $message .= "Unidade responsável ".$unidadeResponsavelOld->name." removida da tarefa.\n";
+                                $message .= "Unidade responsável ".$unidadeResponsavelOld->name." removida da tarefa;\n";
                             elseif($tarefa->unidadeResponsavel)
-                                $message .= "Unidade responsável configurado para ".$tarefa->unidadeResponsavel->nome."\n";
+                                $message .= "Unidade responsável configurado para ".$tarefa->unidadeResponsavel->nome.";\n";
                             break;
                         default: 
                             if($attr != "updated_at"){
                                 $oldValue = $tarefa->getOriginal($attr);
                                 if($oldValue)
-                                    $message .= $attr." alterado(a) de ".$oldValue." para ".$value."\n";
+                                    $message .= ucwords($attr)." alterado(a) de ".$oldValue." para ".$value.";\n";
                                 else
-                                    $message .= $attr." configurado(a) para ".$value."\n";
+                                    $message .= ucwords($attr)." configurado(a) para ".$value.";\n";
                             }//end if not updated_at
                     }
                    
