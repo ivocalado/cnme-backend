@@ -46,13 +46,14 @@ class DataBaseTestSeeder extends Seeder
             for($i = 1; $i<=3; $i++){
                 $nome = strtolower( preg_replace("/[^a-zA-Z0-9-]/", "-", strtr(utf8_decode(trim($e->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),"aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
                 $nome .= " ".$i;
+                $nome = str_replace(' ','',strtolower($nome));
                 $polo = Unidade::create([
                     'nome' => 'Polo '.$e->nome."(".$i.")", 
                     'descricao' => 'Escola de Teste '.$e->nome."(".$i.")",
                     'classe' => Unidade::CLASSE_POLO,
                     'admin' => false,
-                    'email' => strtolower($nome).'@poloteste.com.br',
-                    'email_institucional' => strtolower($nome).'_faleconosco@polo.com.br',
+                    'email' => $nome.'@poloteste.com.br',
+                    'email_institucional' => $nome.'_faleconosco@polo.com.br',
                     'url' => 'https://www.'.$nome.'.gov.br/',
                     'diretor' => 'Contato DIretor',
                     'telefone' => '(0300 34234233)',
@@ -75,7 +76,7 @@ class DataBaseTestSeeder extends Seeder
                 $gestorPolo = User::create([
                     'name' => 'Gestor do Polo '.$e->nome, 
                     'email' => $polo->email,
-                    'password' => Hash::make('dasda623asda2'),
+                    'password' => Hash::make('123456'),
                     'telefone' => $polo->telefone,
                     'cpf' => '999.999.999-'.$e->id,
                     'funcao' => 'Diretor',
