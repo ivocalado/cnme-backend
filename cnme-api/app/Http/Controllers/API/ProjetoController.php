@@ -335,10 +335,20 @@ class ProjetoController extends Controller
         if($request->has('etapa')){
             $this->etapa = $request->etapa;
 
-            $list->whereHas('etapas', function($query1){
-                $query1->where('tipo','=', strtoupper($this->etapa));
-            });
+            if(is_array($this->etapa)){
+                $this->etapa = explode(';', $this->etapa[0]);
+                $list->whereHas('etapas', function($query1){
+                    $query1->whereIn('tipo', $this->etapa);
+                });
+            }else{
+                $list->whereHas('etapas', function($query1){
+                    $query1->where('tipo','=', strtoupper($this->etapa));
+                });
+            }
+            
         }
+
+
         if($request->has('responsavel_id'))
             $this->unidadeResponsavelId = $request->responsavel_id;
 
