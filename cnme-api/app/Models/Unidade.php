@@ -27,7 +27,7 @@ class Unidade extends Model
     }
 
     protected $fillable = [
-        'id','nome', 'email','email_institucional', 'codigo_inep', 'diretor', 'telefone', 'url','localidade_id','tipo_unidade_id',
+        'id','nome', 'email','email_institucional', 'codigo_inep','cnpj','diretor', 'telefone', 'url','localidade_id','tipo_unidade_id',
         'responsavel_id','usuario_chamados_id'
     ];
 
@@ -85,6 +85,7 @@ class Unidade extends Model
         'nome'    =>  'required|max:255',
         'email'    =>  'required|unique:unidades|email|max:255',
         'codigo_inep'       =>  'nullable|unique:unidades|size:8',
+        'cnpj'              =>  'nullable|unique:unidades|size:20',
         'classe'            =>  'nullable|max:20',
         'diretor'   => 'nullable',
         'telefone'   => 'nullable',

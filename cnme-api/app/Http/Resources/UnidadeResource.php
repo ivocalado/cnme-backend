@@ -21,6 +21,7 @@ class UnidadeResource extends JsonResource
             'email' => $this->email,
             'email_institucional' => $this->email_institucional,
             'codigo_inep' => $this->codigo_inep,
+            'cnpj' => $this->cnpj,
             'diretor' => $this->diretor,
             'telefone' => $this->telefone,
             'url' => $this->url,
