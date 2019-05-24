@@ -16,6 +16,7 @@ use App\Http\Resources\TipoChamadoResource;
 use App\Models\TipoChamado;
 use App\Services\UnidadeService;
 use App\Models\Unidade;
+use App\Jobs\SendEmailChamado;
 
 class ChamadoController extends Controller
 {
@@ -115,6 +116,9 @@ class ChamadoController extends Controller
 
         $chamado->usuario()->associate(Auth::user());
         $chamado->save();
+
+        SendEmailChamado::dispatch($chamado)
+            ->delay(now()->addMinutes(1));
         
         return new ChamadoResource($chamado);
 
@@ -147,6 +151,9 @@ class ChamadoController extends Controller
 
             $comment->save();
 
+            SendEmailChamado::dispatch($chamado, $comment)
+                ->delay(now()->addMinutes(1));
+
             return response()->json(
                 array(
                     "data" => $comment
@@ -169,6 +176,7 @@ class ChamadoController extends Controller
         }
 
         MailSender::notificarChamadoCriado($chamado);
+
         $chamado->notificado_at = date('Y-m-d H:i:s');
         $chamado->save();
     }
@@ -187,9 +195,10 @@ class ChamadoController extends Controller
             return response()->json(
                 array('message' => 'Comentário não encontrado.') , 404);
         }
+
         MailSender::notificarChamadoAtualizado($chamado, $comment);
-        $chamado->notificado_at = date('Y-m-d H:i:s');
-        $chamado->save();
+       
+       
     }
 
     private $uf;

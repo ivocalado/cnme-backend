@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Resources\EtapaResource;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\TarefaResource;
+use App\Jobs\SendEmailProjeto;
 
 class EnviarController extends Controller
 {
@@ -240,8 +241,10 @@ class EnviarController extends Controller
             foreach($tarefasEnvio as $t){
                 $t->enviar();
             }     
-           
-            $etapaEnvio->notificarEnviarTodos();
+
+            
+            SendEmailProjeto::dispatch($projeto)
+                ->delay(now()->addMinutes(1));
                 
             $etapaEnvio = $projeto->getEtapaEnvio();
             

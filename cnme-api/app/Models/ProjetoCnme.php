@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Illuminate\Validation\Rule;
-use App\Services\MailSender;
 
 use Event;
+use App\Jobs\SendEmailProjeto;
 
 class ProjetoCnme extends Model
 {
@@ -113,12 +113,16 @@ class ProjetoCnme extends Model
     }
 
     public function notificar(){
-        if($this->status === ProjetoCnme::STATUS_CANCELADO)
-            MailSender::cancelamento($this);
+        if($this->status === ProjetoCnme::STATUS_CANCELADO){
+            SendEmailProjeto::dispatch($this, SendEmailProjeto::TIPO_NOTIFICACAO_CANCELAR)
+                ->delay(now()->addMinutes(1));
+        }
+            
     }
 
     public function recuperar(){
-        MailSender::recuperar($this);
+        SendEmailProjeto::dispatch($this, SendEmailProjeto::TIPO_NOTIFICACAO_RECUPERAR)
+                ->delay(now()->addMinutes(1));
     }
 
     public static function boot() {

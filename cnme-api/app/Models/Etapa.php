@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Services\MailSender;
 
 class Etapa extends Model
 {
@@ -108,10 +107,6 @@ class Etapa extends Model
 
     public function getDataFimPrevista(){
         return $this->tarefas->max('data_fim_prevista');
-    }
-
-    public function notificarEnviarTodos(){
-        MailSender::notificarEnviarTodos($this->projetoCnme);
     }
 
     public function isEnvio(){

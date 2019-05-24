@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Services\MailSender;
 use Event;
+use App\Jobs\SendEmailProjeto;
+
 class Tarefa extends Model
 {
     public const STATUS_ABERTA = 'ABERTA';
@@ -157,7 +158,10 @@ class Tarefa extends Model
 
     public function notificar(){
         $projeto = ProjetoCnme::find($this->etapa->projeto_cnme_id);
-        MailSender::notificar($projeto, $this);
+
+        SendEmailProjeto::dispatch($projeto, SendEmailProjeto::TIPO_NOTIFICACAO_ETAPA, $this)
+                ->delay(now()->addMinutes(1));;
+        
         $this->notificado_at = date('Y-m-d H:i:s');
         $this->save();
     }

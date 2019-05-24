@@ -17,7 +17,7 @@ use App\Models\Unidade;
 use App\Models\StatusChamado;
 use App\Models\TipoChamado;
 use Illuminate\Support\Facades\Auth;
-use App\Services\MailSender;
+use App\Jobs\SendEmailChamado;
 
 class ChamadoEvent
 {
@@ -46,7 +46,8 @@ class ChamadoEvent
     public function chamadoCreated(Chamado $chamado)
     {
         if(getenv('APP_ENV') !== 'local'){
-            MailSender::notificarChamadoCriado($chamado);
+            // SendEmailChamado::dispatch($chamado)
+            //     ->delay(now()->addMinutes(1));
         }
     }
 
@@ -100,8 +101,8 @@ class ChamadoEvent
                 $comment = new Comment();
                 $comment->build($message, Auth::user(),get_class($chamado), $chamado->id, true);
                 $comment->save();
-                
-                MailSender::notificarChamadoAtualizado($chamado, $comment);
+
+                SendEmailChamado::dispatch($chamado, $comment);
             }
             
             

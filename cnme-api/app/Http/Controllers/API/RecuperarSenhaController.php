@@ -5,10 +5,9 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Services\MailSender;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
-
+use App\Jobs\SendEmailConvite;
 
 class RecuperarSenhaController extends Controller
 {
@@ -18,7 +17,12 @@ class RecuperarSenhaController extends Controller
         if($usuario){
             $usuario->remember_token = bin2hex(random_bytes(8));
             $usuario->save();
-            MailSender::notificacaoNovaSenha($usuario);
+
+            $novaSenha = true;
+
+            SendEmailConvite::dispatch($usuario, $novaSenha)
+                ->delay(now()->addMinutes(1));
+            
 
             return response()->json(
                 array('message' => 'Email enviado ao usuário.') , 200); 

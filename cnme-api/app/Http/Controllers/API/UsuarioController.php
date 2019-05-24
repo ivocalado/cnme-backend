@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Log;
 use App\Models\ProjetoCnme;
 use App\Models\Tarefa;
 use Illuminate\Support\Facades\Hash;
-use App\Services\MailSender;
 use App\Models\Unidade;
 use App\Services\UsuarioService;
+use App\Jobs\SendEmailConvite;
 
 class UsuarioController extends Controller
 {
@@ -93,7 +93,10 @@ class UsuarioController extends Controller
             
             $usuario = User::find($usuarioId);
             $usuario->remember_token = bin2hex(random_bytes(20));
-            MailSender::convite($usuario);
+           
+            SendEmailConvite::dispatch($usuario)
+                ->delay(now()->addMinutes(1));
+
             $usuario->convite_at = date('Y-m-d H:i:s');
             $usuario->save();
 
