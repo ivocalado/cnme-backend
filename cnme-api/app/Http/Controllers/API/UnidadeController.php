@@ -319,9 +319,29 @@ class UnidadeController extends Controller
         return UnidadeResource::collection($unidades);
     }
 
+    protected $uf;
     public function empresas(Request $request){
+        $list = Unidade::where('classe', Unidade::CLASSE_EMPRESA);
+
         $per_page = $request->per_page ? $request->per_page : 25;
-        $unidades = Unidade::where('classe', Unidade::CLASSE_EMPRESA)->paginate( $per_page );
+
+        if($request->has('q')){
+            $list->where("cnpj",$request->q);
+            $list->orWhere("nome", 'ILIKE', '%'.$request->q.'%');
+        }
+
+        if($request->has('uf')){
+            $this->uf = $request->uf;
+        
+            $list->whereHas('localidade',function ($query2) {
+                $query2->whereHas('estado', function ($query3){
+                    $query3->where('sigla','=',$this->uf);
+                });
+            });
+
+        }
+
+        $unidades =  $list->paginate( $per_page );
 
         return UnidadeResource::collection($unidades);
     }

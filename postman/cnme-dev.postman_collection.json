@@ -2657,6 +2657,51 @@
 								"description": "retorna a unidade de administração\n"
 							},
 							"response": []
+						},
+						{
+							"name": "{{HOSTNAME}}/api/unidades/u/empresas?q=Trans",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{HOSTNAME}}/api/unidades/u/empresas?q=Direct&uf=AL",
+									"host": [
+										"{{HOSTNAME}}"
+									],
+									"path": [
+										"api",
+										"unidades",
+										"u",
+										"empresas"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Direct"
+										},
+										{
+											"key": "uf",
+											"value": "AL"
+										}
+									]
+								},
+								"description": "q sobre CNPJ ou NOme\nuf"
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -6656,7 +6701,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"assunto\": \"Novo chamado3\",\n\t\"descricao\": \"Erro apresentado enquanto..3.\",\n\t\"usuario_id\":\"1\",\n\t\"projeto_cnme_id\":\"1\",\n\t\"status_id\":\"10\",\n\t\"tipo_id\":\"1\",\n\t\"prioridade\": \"1\",\n\t\"usuario_responsavel_id\": 21\n}"
+							"raw": "{\n\t\"assunto\": \"Novo chamado com email em QUEUE\",\n\t\"descricao\": \"Erro apresentado enquanto..3.\",\n\t\"usuario_id\":\"1\",\n\t\"projeto_cnme_id\":\"1\",\n\t\"status_id\":\"10\",\n\t\"tipo_id\":\"1\",\n\t\"prioridade\": \"1\"\n}"
 						},
 						"url": {
 							"raw": "http://{{HOSTNAME}}/api/chamados",
